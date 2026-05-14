@@ -139,7 +139,7 @@
   }
   .section-label {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
@@ -173,10 +173,18 @@
     opacity: 0.5;
     pointer-events: none;
   }
+  .card-name {
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
   .card-title {
     font-family: var(--display);
     font-weight: 900;
-    font-size: 26px;
+    font-size: 34px;
     line-height: 1.1;
     color: var(--ink);
   }
@@ -282,7 +290,8 @@
 
         <!-- Ollama -->
         <a class="lesson-card" href="./ollama.html">
-          <div class="card-title">Ollama — <em>LLM מקומי</em></div>
+          <div class="card-name">Ollama</div>
+          <div class="card-title"><em>LLM</em> מקומי</div>
           <div class="card-desc">
             הרצת מודלי שפה ישירות על המחשב — בלי ענן, בלי מנוי, בלי הגבלות.
             מהתקנה בפקודה אחת ועד הרצת מודלים גדולים דרך Ollama Cloud.
@@ -301,7 +310,8 @@
 
         <!-- Claude Code -->
         <a class="lesson-card" href="./claude-code.html">
-          <div class="card-title">Claude Code — <em>AI בטרמינל</em></div>
+          <div class="card-name">Claude Code</div>
+          <div class="card-title"><em>AI</em> בטרמינל</div>
           <div class="card-desc">
             כלי command-line של Anthropic שקורא, עורך ומריץ קוד ישירות מהטרמינל.
             מהתקנה ועד Plan Mode, slash commands ו-MCP servers.
@@ -320,7 +330,8 @@
 
         <!-- Agents -->
         <a class="lesson-card" href="./agents.html">
-          <div class="card-title">Agents — <em>סוכנים חכמים</em></div>
+          <div class="card-name">Agents</div>
+          <div class="card-title"><em>סוכנים</em> חכמים</div>
           <div class="card-desc">
             AI שלא רק עונה — אלא מתכנן, משתמש בכלים ופועל בעולם האמיתי.
             מלולאת ReAct ועד הרצת סוכן מקומי על Ollama עם smolagents.
