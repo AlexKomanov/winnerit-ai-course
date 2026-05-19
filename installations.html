@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מדריך ההתקנות · WinnerIT AI Course</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #F2EDE3;
+    --bg-2:        #EAE2D2;
+    --bg-3:        #FBF8F1;
+    --ink:         #1B2336;
+    --ink-soft:    #4D556C;
+    --muted:       #8B8A82;
+    --muted-soft:  #B5B0A4;
+    --coral:       #E04E36;
+    --coral-soft:  #F4B5A8;
+    --forest:      #2F6B49;
+    --mustard:     #E2A93B;
+    --sky:         #4A7BA8;
+    --border:      #D8CCB5;
+    --border-soft: #E5DDC9;
+    --display: 'Frank Ruhl Libre', 'Heebo', serif;
+    --body:    'Heebo', sans-serif;
+    --mono:    'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.55;
+    direction: rtl;
+    background-image: radial-gradient(circle at 1px 1px, rgba(27,35,54,0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  /* ─── FRAME ─── */
+  .frame { position: fixed; inset: 0; display: flex; flex-direction: column; }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    height: 56px; padding: 0 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); border-bottom: 1px solid var(--border-soft);
+    background: rgba(242,237,227,0.85); backdrop-filter: blur(8px); z-index: 10;
+  }
+  .topbar .left { display: flex; align-items: center; gap: 14px; direction: ltr; }
+  .topbar .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+  .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
+  .counter { color: var(--ink); font-weight: 500; }
+  .counter .total { color: var(--muted); }
+
+  /* ─── SLIDES TRACK ─── */
+  .slides {
+    flex: 1; display: flex; overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    scrollbar-width: none; direction: rtl; position: relative;
+  }
+  .slides::-webkit-scrollbar { display: none; }
+  .slide {
+    flex: 0 0 100vw; height: 100%; scroll-snap-align: start; scroll-snap-stop: always;
+    padding: 5vh 7vw 0; position: relative; display: flex; flex-direction: column;
+    overflow: hidden; direction: rtl;
+  }
+
+  /* ─── EDGE ZONES ─── */
+  .edge {
+    position: fixed; top: 56px; bottom: 64px; width: 90px;
+    border: none; background: transparent; cursor: pointer; z-index: 8;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.35s ease; padding: 0;
+  }
+  .edge-prev { right: 0; }
+  .edge-next { left: 0; }
+  .edge:hover { opacity: 1; }
+  .edge .knob {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--bg-3); border: 1px solid var(--border);
+    box-shadow: 0 4px 18px rgba(27,35,54,0.12);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink); transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+  }
+  .edge:hover .knob { background: var(--coral); color: #fff; border-color: var(--coral); transform: scale(1.05); }
+  .edge:disabled { cursor: not-allowed; pointer-events: none; }
+  .edge .knob svg { width: 18px; height: 18px; }
+
+  /* ─── COMMON ─── */
+  h2.title {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(44px, 6vw, 96px); line-height: 1;
+    letter-spacing: -0.025em; color: var(--ink);
+  }
+  h2.title em { font-style: italic; font-weight: 500; color: var(--coral); }
+  p.lead {
+    font-size: clamp(15px, 1.25vw, 20px); line-height: 1.55;
+    color: var(--ink-soft); font-weight: 300; max-width: 860px;
+    margin-top: 12px;
+  }
+  p.caption {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em;
+    color: var(--muted); text-transform: uppercase;
+  }
+
+  /* ─── COVER ─── */
+  .slide-cover { align-items: center; justify-content: center; position: relative; padding: 0; }
+  .cover-mark {
+    position: absolute; top: 5vh; right: 8vw;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted); direction: ltr; display: flex; align-items: center; gap: 10px;
+  }
+  .cover-mark .pin { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+  .cover-cta {
+    position: absolute; bottom: 6vh; left: 8vw;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; color: var(--muted);
+    direction: ltr; display: flex; align-items: center; gap: 12px;
+  }
+  .cover-cta .arr { color: var(--coral); font-size: 16px; }
+  .cover-center { text-align: center; z-index: 2; position: relative; }
+  .cover-title {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(90px, 17vw, 280px); line-height: 0.9;
+    letter-spacing: -0.04em; color: var(--ink); margin: 0;
+  }
+  .cover-title .l { color: var(--coral); }
+  .cover-rule { width: 80px; height: 2px; background: var(--coral); margin: 32px auto 26px; }
+  .cover-sub {
+    font-family: var(--display); font-style: italic; font-weight: 500;
+    font-size: clamp(20px, 2.4vw, 38px); color: var(--ink-soft);
+    line-height: 1.3; letter-spacing: -0.01em;
+  }
+  .deco { position: absolute; pointer-events: none; z-index: 1; opacity: 0.88; }
+  .deco-1 { top: 13%; right: 10%; width: 96px; color: var(--coral); }
+  .deco-2 { top: 20%; left: 11%; width: 68px; color: var(--forest); }
+  .deco-3 { bottom: 22%; left: 16%; width: 52px; color: var(--mustard); }
+  .deco-4 { bottom: 26%; right: 11%; width: 64px; color: var(--sky); }
+  .deco-5 { top: 57%; right: 7%; width: 30px; color: var(--coral); opacity: 0.65; }
+  .deco-6 { top: 62%; left: 8%; width: 44px; color: var(--ink); opacity: 0.5; }
+
+  /* ─── MINI CARDS ─── */
+  .grid-3 {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; margin-top: 28px; flex: 1;
+  }
+  .mini-card {
+    border: 1px solid var(--border); padding: 22px 20px;
+    background: var(--bg-3); position: relative;
+  }
+  .mini-card .tool-lbl {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--coral); margin-bottom: 10px;
+    display: block; direction: ltr; text-align: right;
+  }
+  .mini-card .ico { width: 28px; height: 28px; color: var(--coral); margin-bottom: 12px; }
+  .mini-card h4 {
+    font-family: var(--display); font-size: 20px; font-weight: 700;
+    margin-bottom: 4px; line-height: 1.1; color: var(--ink);
+  }
+  .mini-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+  /* ─── STEP BLOCKS ─── */
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; margin-top: 28px; flex: 1;
+  }
+  .steps-grid.two { grid-template-columns: 1fr 1fr; max-width: 900px; }
+  .step-block {
+    border: 1px solid var(--border); background: var(--bg-3);
+    padding: 24px 22px 20px; display: flex; flex-direction: column;
+    position: relative; transition: border-color 0.25s, transform 0.25s;
+  }
+  .step-block:hover { border-color: var(--coral); transform: translateY(-3px); }
+  .step-num { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; direction: ltr; }
+  .step-num .badge {
+    width: 26px; height: 26px; border-radius: 6px;
+    background: rgba(224,78,54,0.12); color: var(--coral);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-weight: 700; font-size: 13px;
+  }
+  .step-num .lbl {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .step-block h4 {
+    font-family: var(--display); font-size: 24px; font-weight: 700;
+    color: var(--ink); line-height: 1.1; margin-bottom: 8px;
+  }
+  .step-block p {
+    font-size: 13.5px; color: var(--ink-soft); line-height: 1.55;
+    flex: 1; margin-bottom: 16px;
+  }
+  .step-code {
+    background: var(--ink); color: #F2EDE3; border-radius: 6px;
+    padding: 10px 14px; font-family: var(--mono); font-size: 12px;
+    display: flex; align-items: center; gap: 10px; direction: ltr; text-align: left;
+  }
+  .step-code .prompt { color: rgba(242,237,227,0.4); user-select: none; flex-shrink: 0; }
+  .step-code .cmd { flex: 1; color: #9BD3A8; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  .step-code .cmd::-webkit-scrollbar { display: none; }
+  .step-code .cmd .kw { color: #E04E36; }
+  .step-code .cmd .arg { color: #F2EDE3; }
+  .step-code .copy {
+    border: none; background: transparent; color: rgba(242,237,227,0.35);
+    cursor: pointer; padding: 4px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    transition: color 0.2s, background 0.2s; flex-shrink: 0;
+  }
+  .step-code .copy:hover { color: #9BD3A8; background: rgba(155,211,168,0.1); }
+  .step-code .copy.copied { color: #9BD3A8; }
+  .step-code .copy svg { width: 14px; height: 14px; }
+
+  /* ─── STEP ACTION (UI navigation, not terminal) ─── */
+  .step-action {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.04em; color: var(--ink-soft); direction: ltr;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .step-action .act-arrow { color: var(--coral); flex-shrink: 0; font-size: 14px; }
+  .step-action .act-text { color: var(--ink); }
+
+  /* ─── OS TAGS ─── */
+  .os-tag {
+    display: inline-block; font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.14em; text-transform: uppercase; padding: 2px 7px;
+    border-radius: 3px; margin-bottom: 8px;
+  }
+  .os-tag.mac { background: rgba(74,123,168,0.1); color: var(--sky); border: 1px solid rgba(74,123,168,0.28); }
+  .os-tag.win { background: rgba(47,107,73,0.1); color: var(--forest); border: 1px solid rgba(47,107,73,0.28); }
+  .os-tag.both { background: rgba(226,169,59,0.1); color: var(--mustard); border: 1px solid rgba(226,169,59,0.28); }
+
+  /* ─── SPLIT LAYOUT ─── */
+  .split-layout { display: flex; gap: 36px; margin-top: 24px; align-items: flex-start; flex: 1; }
+  .split-content { flex: 1; min-width: 0; }
+  .split-visual { width: 310px; flex-shrink: 0; }
+
+  /* ─── MOCKUP FRAME ─── */
+  .mockup-frame {
+    border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    background: var(--bg-3); box-shadow: 0 8px 32px rgba(27,35,54,0.1);
+  }
+  .mockup-bar {
+    background: var(--bg-2); padding: 9px 14px;
+    display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--border);
+  }
+  .mockup-dot-r { width: 10px; height: 10px; border-radius: 50%; background: #E04E36; }
+  .mockup-dot-y { width: 10px; height: 10px; border-radius: 50%; background: #E2A93B; }
+  .mockup-dot-g { width: 10px; height: 10px; border-radius: 50%; background: #2F6B49; }
+  .mockup-url {
+    flex: 1; background: rgba(27,35,54,0.06); border-radius: 4px;
+    padding: 3px 10px; margin: 0 10px; font-family: var(--mono); font-size: 10px;
+    color: var(--muted); direction: ltr; letter-spacing: 0.03em;
+  }
+  .mockup-body { padding: 18px; direction: ltr; }
+
+  /* ─── NOTE BANNER ─── */
+  .note-banner {
+    margin-top: 16px; padding: 13px 16px;
+    background: rgba(74,123,168,0.07); border: 1px solid rgba(74,123,168,0.22);
+    border-radius: 6px; font-size: 13px; color: var(--ink-soft); line-height: 1.55;
+    direction: rtl;
+  }
+  .note-banner .note-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sky); display: block; margin-bottom: 5px;
+  }
+
+  /* ─── CLOSING ─── */
+  .slide-end {
+    justify-content: center; align-items: center; text-align: center; padding: 0;
+    background-image:
+      radial-gradient(ellipse at center, rgba(224,78,54,0.06) 0%, transparent 65%),
+      radial-gradient(circle at 1px 1px, rgba(27,35,54,0.06) 1px, transparent 0);
+    background-size: auto, 24px 24px;
+  }
+  .slide-end .inner { max-width: 1100px; }
+  .slide-end h1 {
+    font-family: var(--display); font-size: clamp(72px, 11vw, 180px);
+    font-weight: 900; line-height: 0.95; letter-spacing: -0.035em; color: var(--ink);
+  }
+  .slide-end h1 em { font-style: italic; font-weight: 500; color: var(--coral); }
+  .slide-end h1 .dot { color: var(--coral); font-style: normal; }
+  .slide-end .ready-list {
+    margin-top: 48px; display: flex; gap: 28px; justify-content: center;
+    flex-wrap: wrap; direction: ltr;
+  }
+  .slide-end .ready-item {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .slide-end .ready-item .chk { color: var(--forest); font-size: 15px; }
+  .slide-end .sig {
+    margin-top: 56px; font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); direction: ltr;
+  }
+  .slide-end .sig em { color: var(--coral); font-style: italic; }
+
+  /* ─── BOTTOM NAV ─── */
+  .bottombar {
+    height: 64px; padding: 0 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border-soft);
+    background: rgba(242,237,227,0.85); backdrop-filter: blur(8px); z-index: 10;
+  }
+  .bottombar .hint {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted);
+    display: flex; gap: 16px; align-items: center; direction: ltr;
+  }
+  .bottombar .hint kbd {
+    display: inline-block; padding: 3px 8px;
+    background: var(--bg-3); border: 1px solid var(--border); border-bottom-width: 2px;
+    border-radius: 4px; font-family: var(--mono); font-size: 10px; color: var(--ink);
+  }
+  .dots { display: flex; gap: 7px; align-items: center; }
+  .dots button {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--border);
+    border: none; cursor: pointer; padding: 0; transition: all 0.25s;
+  }
+  .dots button.active { background: var(--coral); width: 22px; border-radius: 4px; }
+  .dots button:hover { background: var(--coral-soft); }
+  .nav-btns { display: flex; gap: 8px; }
+  .nav-btn {
+    width: 36px; height: 36px; border: 1px solid var(--border); background: var(--bg-3);
+    border-radius: 6px; cursor: pointer; display: flex; align-items: center;
+    justify-content: center; color: var(--ink); transition: all 0.2s;
+  }
+  .nav-btn:hover { border-color: var(--coral); color: var(--coral); }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .nav-btn svg { width: 14px; height: 14px; }
+
+  @media (max-width: 900px) {
+    .slide { padding: 4vh 5vw 0; }
+    .grid-3, .steps-grid, .steps-grid.two { grid-template-columns: 1fr; }
+    .split-layout { flex-direction: column; }
+    .split-visual { width: 100%; }
+    .bottombar .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="left"><span class="dot"></span> winnerit · ai course</div>
+    <div class="right">
+      <span>מדריך ההתקנות</span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 15</span></span>
+    </div>
+  </header>
+
+  <!-- SLIDES -->
+  <main class="slides" id="slides">
+
+    <!-- ─── 01 · COVER ─── -->
+    <section class="slide slide-cover">
+      <div class="cover-mark"><span class="pin"></span> WinnerIT · AI Course</div>
+
+      <svg class="deco deco-1" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <circle cx="50" cy="50" r="16"/>
+        <line x1="50" y1="6"  x2="50" y2="20"/><line x1="50" y1="80" x2="50" y2="94"/>
+        <line x1="6"  y1="50" x2="20" y2="50"/><line x1="80" y1="50" x2="94" y2="50"/>
+        <line x1="18" y1="18" x2="28" y2="28"/><line x1="72" y1="72" x2="82" y2="82"/>
+        <line x1="82" y1="18" x2="72" y2="28"/><line x1="28" y1="72" x2="18" y2="82"/>
+        <circle cx="50" cy="50" r="7" fill="currentColor" stroke="none" opacity="0.25"/>
+      </svg>
+
+      <svg class="deco deco-2" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="76" height="56" rx="4"/>
+        <line x1="2" y1="16" x2="78" y2="16"/>
+        <circle cx="11" cy="9" r="2.5" fill="currentColor" stroke="none"/>
+        <circle cx="20" cy="9" r="2.5" fill="currentColor" stroke="none"/>
+        <circle cx="29" cy="9" r="2.5" fill="currentColor" stroke="none"/>
+        <path d="M14 29 L22 37 L14 45"/><line x1="28" y1="45" x2="52" y2="45"/>
+      </svg>
+
+      <svg class="deco deco-3" viewBox="0 0 56 68" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="28" y1="6" x2="28" y2="46"/>
+        <polyline points="14,32 28,46 42,32"/>
+        <line x1="6" y1="56" x2="50" y2="56"/>
+        <line x1="4" y1="62" x2="52" y2="62"/>
+      </svg>
+
+      <svg class="deco deco-4" viewBox="0 0 70 70" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="35" cy="35" r="30"/><path d="M19 35 L29 45 L51 23"/>
+      </svg>
+
+      <svg class="deco deco-5" viewBox="0 0 30 30" fill="currentColor" aria-hidden="true">
+        <path d="M15 2 L17 12 L27 14 L17 16 L15 26 L13 16 L3 14 L13 12 Z"/>
+      </svg>
+
+      <svg class="deco deco-6" viewBox="0 0 70 50" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M24 6 L8 25 L24 44"/><path d="M46 6 L62 25 L46 44"/>
+        <line x1="34" y1="46" x2="36" y2="4"/>
+      </svg>
+
+      <div class="cover-center">
+        <h1 class="cover-title">הכנה</h1>
+        <div class="cover-rule"></div>
+        <p class="cover-sub">כל הכלים שנצטרך — לפני שנתחיל</p>
+      </div>
+
+      <div class="cover-cta"><span class="arr">←</span><span>start</span></div>
+    </section>
+
+    <!-- ─── 02 · OVERVIEW ─── -->
+    <section class="slide">
+      <h2 class="title">מה <em>נתקין</em>?</h2>
+      <p class="lead">שישה כלים — כל אחד עם תפקיד ברור בתהליך הפיתוח.</p>
+      <div class="grid-3">
+
+        <div class="mini-card">
+          <span class="tool-lbl">01 · version control</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+            <path d="M6 9v5"/><path d="M18 15v-2a4 4 0 00-4-4H9"/>
+          </svg>
+          <h4>GitHub</h4>
+          <p>חשבון לשמירה ושיתוף קוד</p>
+        </div>
+
+        <div class="mini-card">
+          <span class="tool-lbl">02 · cli tool</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+          </svg>
+          <h4>Git</h4>
+          <p>כלי בקרת גרסאות מקומי</p>
+        </div>
+
+        <div class="mini-card">
+          <span class="tool-lbl">03 · runtime</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 12h8"/><path d="M12 8v8"/>
+          </svg>
+          <h4>Node.js</h4>
+          <p>סביבת הרצה ל-JavaScript</p>
+        </div>
+
+        <div class="mini-card">
+          <span class="tool-lbl">04 · ide</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <h4>VS Code Insiders</h4>
+          <p>עורך קוד + תוסף Claude</p>
+        </div>
+
+        <div class="mini-card">
+          <span class="tool-lbl">05 · ai assistant</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+          <h4>Claude</h4>
+          <p>חשבון Pro, Desktop ו-CLI</p>
+        </div>
+
+        <div class="mini-card">
+          <span class="tool-lbl">06 · local ai + builder</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="12" y1="4" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="20"/>
+          </svg>
+          <h4>Ollama · Lovable</h4>
+          <p>AI מקומי ובנאי אפליקציות</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 03 · GITHUB SIGNUP ─── -->
+    <section class="slide">
+      <h2 class="title"><em>GitHub</em></h2>
+      <p class="lead">נפתח חשבון — זה המקום בו נשמור ונשתף את הקוד שלנו לאורך כל הקורס.</p>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">1</span><span class="lbl">go to site</span></div>
+          <h4>כניסה לאתר</h4>
+          <p>נגיע לדף ההרשמה של GitHub. נבחר שם משתמש באנגלית — הוא יהיה חלק מהקישורים לפרויקטים שלנו.</p>
+          <div class="step-code">
+            <span class="prompt">→</span>
+            <span class="cmd"><span class="arg">github.com/signup</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">2</span><span class="lbl">fill form</span></div>
+          <h4>מילוי הפרטים</h4>
+          <p>נמלא: כתובת אימייל, סיסמה, שם משתמש. לאחר מכן פתרון Captcha קצר, ולחיצה על Create account.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">Email · Password · Username → Create account</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">3</span><span class="lbl">verify email</span></div>
+          <h4>אימות האימייל</h4>
+          <p>GitHub ישלח קוד אימות לאימייל שהזנו. נזין את הקוד — החשבון מוכן.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">Check email → Enter 6-digit code</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 04 · GIT (macOS + Windows) ─── -->
+    <section class="slide">
+      <h2 class="title"><em>Git</em></h2>
+      <p class="lead">נתקין את Git — macOS דרך Homebrew בטרמינל, Windows דרך winget או מתקין גרפי. לסיום נאמת.</p>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <span class="os-tag mac">macOS · Homebrew</span>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">macos install</span></div>
+          <h4>macOS — דרך brew</h4>
+          <p>פקודה אחת בטרמינל. אם Homebrew עדיין לא מותקן — נתקין אותו תחילה מ-<code style="font-family:var(--mono);color:var(--coral);">brew.sh</code>.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">brew</span> <span class="arg">install git</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag win">Windows · Installer</span>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">windows install</span></div>
+          <h4>Windows — installer</h4>
+          <p>נוריד את קובץ ה-.exe מהאתר הרשמי ונריץ. נשאיר את כל ברירות המחדל — Git ייכנס אוטומטית ל-PATH.</p>
+          <div class="step-code">
+            <span class="prompt">→</span>
+            <span class="cmd"><span class="arg">git-scm.com/download/win</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">3</span><span class="lbl">verify</span></div>
+          <h4>אימות ההתקנה</h4>
+          <p>נפתח טרמינל חדש ונריץ. אם מוצג משהו כמו <code style="font-family:var(--mono);color:var(--coral);">git version 2.x.x</code> — ההתקנה הצליחה.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">git</span> <span class="arg">--version</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 06 · GIT CONFIGURE ─── -->
+    <section class="slide">
+      <h2 class="title">Git · <em>הגדרה</em></h2>
+      <p class="lead">נגדיר שם ואימייל — <strong>חובה</strong> להשתמש באותם פרטים כמו חשבון GitHub. כל commit יישמר עם הפרטים האלה.</p>
+      <div class="steps-grid two">
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">set name</span></div>
+          <h4>הגדרת שם</h4>
+          <p>נגדיר את השם שיופיע ב-commits. נשתמש בשם האמיתי שלנו — זה מה שיראו שותפים לפרויקט.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">git</span> <span class="arg">config --global user.name "Your Name"</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">set email</span></div>
+          <h4>הגדרת אימייל</h4>
+          <p>נגדיר את האימייל — <em>חייב</em> להיות זהה לאימייל של חשבון GitHub שפתחנו. זה מחבר בין ה-commits לפרופיל.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">git</span> <span class="arg">config --global user.email "you@..."</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 07 · NODE.JS (macOS + Windows) ─── -->
+    <section class="slide">
+      <h2 class="title"><em>Node.js</em></h2>
+      <p class="lead">סביבת הרצה ל-JavaScript — נבחר בדרך המתאימה לנו, npm מגיע אוטומטית עם ה-Node.</p>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <span class="os-tag mac">macOS · Installer / brew</span>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">macos install</span></div>
+          <h4>macOS — installer</h4>
+          <p>נוריד מהאתר הרשמי, נבחר LTS ונריץ את ה-.pkg. דרך Homebrew אפשרית גם: <code style="font-family:var(--mono);color:var(--coral);">brew install node</code></p>
+          <div class="step-code">
+            <span class="prompt">→</span>
+            <span class="cmd"><span class="arg">nodejs.org/en/download → LTS → .pkg</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag win">Windows · Installer</span>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">windows install</span></div>
+          <h4>Windows — installer</h4>
+          <p>נוריד את ה-LTS מהאתר הרשמי — קובץ .msi. נריץ, נשאיר הכל כברירת מחדל, ו-"Add to PATH" יסומן אוטומטית.</p>
+          <div class="step-code">
+            <span class="prompt">→</span>
+            <span class="cmd"><span class="arg">nodejs.org/en/download → LTS → .msi</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">3</span><span class="lbl">verify</span></div>
+          <h4>אימות ההתקנה</h4>
+          <p>נריץ שתי פקודות בטרמינל — אם מוצגות גרסאות, הכל מותקן בהצלחה. Node ו-npm מוכנים לשימוש.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">node</span> <span class="arg">-v &amp;&amp; npm -v</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 10 · VS CODE INSIDERS ─── -->
+    <section class="slide">
+      <h2 class="title">VS Code <em>Insiders</em></h2>
+      <p class="lead">גרסת הפיתוח של VS Code — עדכונים מוקדמים ותמיכה מקסימלית בתוסף Claude. נוריד ונתקין.</p>
+      <div class="steps-grid two">
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">download insiders</span></div>
+          <h4>הורדת VS Code Insiders</h4>
+          <p>נגיע לדף ההורדות ונבחר את הגרסה למערכת ההפעלה שלנו. נריץ את המתקין ונשאיר ברירות מחדל.</p>
+          <div class="step-code">
+            <span class="prompt">→</span>
+            <span class="cmd"><span class="arg">insiders.vscode.com/download</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">first launch</span></div>
+          <h4>הפעלה ראשונה</h4>
+          <p>נפתח את VS Code Insiders ונוודא שהעורך נטען בהצלחה. הסמל של Insiders הוא ירוק — שונה מ-VS Code הרגיל.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">Open VS Code Insiders ✓</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="note-banner">
+        <span class="note-label">שים לב · already have an editor?</span>
+        יש לכם כבר <strong>VS Code</strong>, <strong>Cursor</strong>, או <strong>Antigravity</strong>? אפשר להישאר איתם — התוסף של Claude עובד גם שם. VS Code Insiders מומלץ כנקודת התחלה נקייה.
+      </div>
+    </section>
+
+    <!-- ─── 11 · CLAUDE CODE EXTENSION ─── -->
+    <section class="slide">
+      <h2 class="title">תוסף <em>Claude</em></h2>
+      <p class="lead">נתקין את תוסף Claude בתוך VS Code Insiders — האינטגרציה בין העורך לבין ה-AI.</p>
+      <div class="split-layout">
+        <div class="split-content">
+          <div class="steps-grid" style="margin-top:0; grid-template-columns:1fr; gap:14px;">
+
+            <div class="step-block">
+              <span class="os-tag both">macOS · Windows</span>
+              <div class="step-num"><span class="badge">1</span><span class="lbl">open extensions</span></div>
+              <h4>פתיחת Extensions</h4>
+              <p>נפתח את חלונית ה-Extensions בעזרת קיצור המקשים. ב-Windows: Ctrl+Shift+X, ב-macOS: <span style="font-size:1.15em;">⌘</span>+Shift+X.</p>
+              <div class="step-action">
+                <span class="act-arrow">→</span>
+                <span class="act-text"><span style="font-size:16px;line-height:1;">⌘</span>+Shift+X (mac) · Ctrl+Shift+X (win)</span>
+              </div>
+            </div>
+
+            <div class="step-block">
+              <span class="os-tag both">macOS · Windows</span>
+              <div class="step-num"><span class="badge">2</span><span class="lbl">install extension</span></div>
+              <h4>חיפוש והתקנה</h4>
+              <p>נחפש בשורת החיפוש את שם התוסף המדויק. נמצא את התוסף של Anthropic ונלחץ Install.</p>
+              <div class="step-action">
+                <span class="act-arrow">→</span>
+                <span class="act-text">Search "claude code for vscode" → Install</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="split-visual">
+          <div class="mockup-frame">
+            <div class="mockup-bar">
+              <span class="mockup-dot-r"></span><span class="mockup-dot-y"></span><span class="mockup-dot-g"></span>
+              <span class="mockup-url">Extensions — VS Code Insiders</span>
+            </div>
+            <div class="mockup-body" style="padding:12px;">
+              <svg viewBox="0 0 240 250" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+                <!-- Search bar -->
+                <rect x="0" y="0" width="240" height="28" rx="4" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="1"/>
+                <text x="10" y="18" font-family="monospace" font-size="10" fill="#8B8A82">claude code for vscode</text>
+                <text x="224" y="18" font-family="monospace" font-size="11" fill="#8B8A82">✕</text>
+                <!-- Result item -->
+                <rect x="0" y="36" width="240" height="70" rx="4" fill="rgba(224,78,54,0.05)" stroke="#D8CCB5" stroke-width="1"/>
+                <!-- Extension icon placeholder -->
+                <rect x="8" y="44" width="40" height="40" rx="6" fill="#E04E36" opacity="0.15"/>
+                <rect x="8" y="44" width="40" height="40" rx="6" fill="none" stroke="#E04E36" stroke-width="1"/>
+                <text x="28" y="72" text-anchor="middle" font-family="serif" font-size="24" fill="#E04E36">C</text>
+                <!-- Extension info — two-line title keeps text clear of Install button -->
+                <text x="56" y="52" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#1B2336">Claude Code</text>
+                <text x="56" y="63" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#1B2336">for VSCode</text>
+                <text x="56" y="76" font-family="Arial,sans-serif" font-size="9" fill="#4D556C">Anthropic</text>
+                <!-- Install button — right side, vertically centered in card -->
+                <rect x="166" y="46" width="70" height="28" rx="5" fill="#E04E36"/>
+                <text x="201" y="64" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="700" fill="#FBF8F1">Install</text>
+                <!-- Divider -->
+                <line x1="0" y1="114" x2="240" y2="114" stroke="#E5DDC9" stroke-width="1"/>
+                <!-- Other results (greyed) -->
+                <rect x="0" y="122" width="240" height="56" rx="4" fill="#EAE2D2" opacity="0.5"/>
+                <rect x="8" y="130" width="32" height="32" rx="4" fill="#D8CCB5"/>
+                <text x="52" y="144" font-family="Arial,sans-serif" font-size="9" fill="#8B8A82">Claude AI Chat</text>
+                <text x="52" y="157" font-family="Arial,sans-serif" font-size="8" fill="#B5B0A4">third-party · unofficial</text>
+                <rect x="0" y="185" width="240" height="56" rx="4" fill="#EAE2D2" opacity="0.3"/>
+                <rect x="8" y="193" width="32" height="32" rx="4" fill="#D8CCB5" opacity="0.7"/>
+                <text x="52" y="207" font-family="Arial,sans-serif" font-size="9" fill="#8B8A82">Claude Assistant</text>
+                <text x="52" y="220" font-family="Arial,sans-serif" font-size="8" fill="#B5B0A4">third-party · unofficial</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 12 · CLAUDE ACCOUNT ─── -->
+    <section class="slide">
+      <h2 class="title"><em>Claude</em> · חשבון</h2>
+      <p class="lead">נירשם לחשבון Claude ונשדרג ל-Pro — מנוי שמאפשר גישה לכלים מתקדמים, כולל Claude Code CLI.</p>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">1</span><span class="lbl">sign up</span></div>
+          <h4>יצירת חשבון</h4>
+          <p>נגיע לאתר ונירשם עם כתובת אימייל או דרך חשבון Google / Apple. נאמת את הכתובת בהודעה שנקבל.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">claude.ai → Sign up</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">2</span><span class="lbl">upgrade pro</span></div>
+          <h4>שדרוג ל-Pro</h4>
+          <p>מתוך Settings → Billing, נבחר ב-Pro. המנוי כולל גישה למודלים החזקים ביותר ולימיט גבוה יותר.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">Settings → Billing → Upgrade to Pro</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">3</span><span class="lbl">first chat</span></div>
+          <h4>שיחה ראשונה</h4>
+          <p>נוודא שהחשבון עובד — נפתח שיחה חדשה ונשאל משהו פשוט. כדאי לבחור מודל Claude Sonnet 4.5 ומעלה.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">New chat → "שלום!" ✓</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 13 · CLAUDE DESKTOP ─── -->
+    <section class="slide">
+      <h2 class="title">Claude <em>Desktop</em></h2>
+      <p class="lead">אפליקציית desktop מאפשרת לחבר את Claude לקבצים, כלים ומחשב שלנו — מעבר לדפדפן.</p>
+      <div class="steps-grid two">
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">download</span></div>
+          <h4>הורדת Desktop</h4>
+          <p>נגיע לדף ההורדות ונבחר את הגרסה למערכת שלנו. נריץ את המתקין ונאשר את ההרשאות הנדרשות.</p>
+          <div class="step-code">
+            <span class="prompt">→</span>
+            <span class="cmd"><span class="arg">claude.ai/download</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">sign in</span></div>
+          <h4>התחברות לחשבון</h4>
+          <p>נפתח את האפליקציה ונתחבר עם חשבון Claude שיצרנו. הדפדפן ייפתח לאישור — נאשר ונחזור לאפליקציה.</p>
+          <div class="step-code">
+            <span class="prompt">→</span>
+            <span class="cmd"><span class="arg">Open Claude Desktop → Sign in → Authorize</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 14 · CLAUDE CODE CLI ─── -->
+    <section class="slide">
+      <h2 class="title">Claude <em>Code</em> CLI</h2>
+      <p class="lead">כלי שורת הפקודה של Claude — נריץ את סקריפט ההתקנה הרשמי לפלטפורמה שלנו ונתחבר לחשבון.</p>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <span class="os-tag mac">macOS · curl script</span>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">macos install</span></div>
+          <h4>macOS — התקנה</h4>
+          <p>נריץ את סקריפט ההתקנה הרשמי בטרמינל. הסקריפט יתקין את Claude Code ויוסיף אותו ל-PATH אוטומטית.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">curl</span> <span class="arg">-fsSL https://claude.ai/install.sh | sh</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag win">Windows · PowerShell</span>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">windows install</span></div>
+          <h4>Windows — התקנה</h4>
+          <p>נפתח PowerShell ונריץ את הפקודה. הסקריפט יוריד וייתקין את Claude Code — Claude Code יהיה זמין ב-Terminal.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">iwr</span> <span class="arg">-useb https://claude.ai/install.ps1 | iex</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">3</span><span class="lbl">login</span></div>
+          <h4>התחברות ראשונה</h4>
+          <p>נריץ בטרמינל — הדפדפן ייפתח לאישור גישה לחשבון Claude שלנו. תהליך חד-פעמי, לאחריו Claude Code מוכן.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">claude</span> <span class="arg">login</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 15 · OLLAMA (macOS + Windows) ─── -->
+    <section class="slide">
+      <h2 class="title"><em>Ollama</em></h2>
+      <p class="lead">כלי להרצת מודלי AI מקומית — macOS דרך סקריפט בטרמינל, Windows דרך מתקין גרפי.</p>
+      <div class="steps-grid two">
+
+        <div class="step-block">
+          <span class="os-tag mac">macOS · curl / dmg</span>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">macos install</span></div>
+          <h4>macOS — Terminal</h4>
+          <p>הסקריפט מזהה את המארכיטקטורה (Apple Silicon / Intel) ומתקין אוטומטית. חלופה גרפית: <span dir="ltr">.dmg</span> מ-<code style="font-family:var(--mono);color:var(--coral);">ollama.com/download</code></p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">curl</span> <span class="arg">-fsSL https://ollama.com/install.sh | sh</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag win">Windows · PowerShell</span>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">windows install</span></div>
+          <h4>Windows — PowerShell</h4>
+          <p>הסקריפט מתקין Ollama אוטומטית. לאחר ההתקנה יתווסף לשורת המשימות ויפעל ברקע.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">irm</span> <span class="arg">https://ollama.com/install.ps1 | iex</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 17 · OLLAMA PULL & RUN ─── -->
+    <section class="slide">
+      <h2 class="title">Ollama · <em>הרצה</em></h2>
+      <p class="lead">נוריד מודל מקומי ונשוחח איתו — הורדה חד-פעמית, לאחריה עובד offline לחלוטין.</p>
+      <div class="steps-grid two">
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">pull model</span></div>
+          <h4>הורדת מודל</h4>
+          <p>נוריד את gemma4 — מודל קל ומהיר של Google. כ-2GB, הורדה חד-פעמית. תוצגנה שורות התקדמות.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">ollama</span> <span class="arg">pull gemma4</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <span class="os-tag both">macOS · Windows</span>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">run & chat</span></div>
+          <h4>הרצה ושיחה</h4>
+          <p>נריץ ונתחיל שיחה ישירות בטרמינל. לצאת: <code dir="ltr" style="font-family:var(--mono);color:var(--coral);">/bye</code>. המודל עובד לגמרי מקומית, ללא רשת.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">ollama</span> <span class="arg">run gemma4</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 18 · LOVABLE ─── -->
+    <section class="slide">
+      <h2 class="title"><em>Lovable</em></h2>
+      <p class="lead">פלטפורמת AI לבניית אפליקציות web — מ-prompt לאפליקציה עובדת. נירשם ונוודא שהחשבון מוכן.</p>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">1</span><span class="lbl">sign up</span></div>
+          <h4>יצירת חשבון</h4>
+          <p>נגיע לאתר ונירשם דרך חשבון Google — כניסה מהירה ללא צורך בסיסמה נפרדת. ניתן גם להירשם עם אימייל.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">lovable.dev → Continue with Google</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">2</span><span class="lbl">explore dashboard</span></div>
+          <h4>היכרות עם הממשק</h4>
+          <p>נסתכל על ה-dashboard — Projects, Credits ואפשרויות ה-AI. יש תוכנית חינמית עם מכסה חודשית להתחלה.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">Dashboard → Explore UI</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">3</span><span class="lbl">first project</span></div>
+          <h4>פרויקט ראשון</h4>
+          <p>ניצור פרויקט ניסיון — נזין prompt פשוט ונראה איך Lovable בונה אפליקציה. רק כדי לוודא שהכל עובד.</p>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">New Project → enter a prompt → Generate</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 19 · CLOSING ─── -->
+    <section class="slide slide-end">
+      <div class="inner">
+        <p class="caption" style="margin-bottom:32px;">ready to go</p>
+        <h1>
+          הכל<span class="dot">.</span><br>
+          <em>מוכן.</em>
+        </h1>
+        <div class="ready-list">
+          <span class="ready-item"><span class="chk">✓</span> GitHub</span>
+          <span class="ready-item"><span class="chk">✓</span> Git</span>
+          <span class="ready-item"><span class="chk">✓</span> Node.js</span>
+          <span class="ready-item"><span class="chk">✓</span> VS Code Insiders</span>
+          <span class="ready-item"><span class="chk">✓</span> Claude</span>
+          <span class="ready-item"><span class="chk">✓</span> Ollama</span>
+          <span class="ready-item"><span class="chk">✓</span> Lovable</span>
+        </div>
+        <div class="sig">WinnerIT · <em>AI Course</em></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EDGE CLICK ZONES -->
+  <button class="edge edge-prev" id="edgePrev" aria-label="previous slide">
+    <span class="knob">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </span>
+  </button>
+  <button class="edge edge-next" id="edgeNext" aria-label="next slide">
+    <span class="knob">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </span>
+  </button>
+
+  <!-- BOTTOM BAR -->
+  <footer class="bottombar">
+    <div class="hint">
+      <span>navigate</span>
+      <kbd>←</kbd>
+      <kbd>→</kbd>
+    </div>
+    <div class="dots" id="dots"></div>
+    <div class="nav-btns">
+      <button class="nav-btn" id="prev" aria-label="previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <button class="nav-btn" id="next" aria-label="next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const slidesEl = document.getElementById('slides');
+  const slides   = Array.from(slidesEl.querySelectorAll('.slide'));
+  const total    = slides.length;
+  const dotsEl   = document.getElementById('dots');
+  const curEl    = document.getElementById('cur');
+  const prevBtn  = document.getElementById('prev');
+  const nextBtn  = document.getElementById('next');
+  const edgePrev = document.getElementById('edgePrev');
+  const edgeNext = document.getElementById('edgeNext');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.dataset.idx = i;
+    b.setAttribute('aria-label', 'slide ' + (i + 1));
+    b.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(b);
+  });
+
+  function goTo(idx) {
+    idx = Math.max(0, Math.min(total - 1, idx));
+    slides[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    current = idx;
+    updateUI();
+  }
+
+  function updateUI() {
+    curEl.textContent = String(current + 1).padStart(2, '0');
+    Array.from(dotsEl.children).forEach((d, i) => d.classList.toggle('active', i === current));
+    prevBtn.disabled  = current === 0;
+    nextBtn.disabled  = current === total - 1;
+    edgePrev.disabled = current === 0;
+    edgeNext.disabled = current === total - 1;
+  }
+
+  const obs = new IntersectionObserver((entries) => {
+    let bestRatio = 0, bestIdx = current;
+    entries.forEach(e => {
+      if (e.intersectionRatio > bestRatio) {
+        bestRatio = e.intersectionRatio;
+        bestIdx   = slides.indexOf(e.target);
+      }
+    });
+    if (bestRatio > 0.5 && bestIdx !== current) { current = bestIdx; updateUI(); }
+  }, { root: slidesEl, threshold: [0.3, 0.5, 0.75, 1.0] });
+  slides.forEach(s => obs.observe(s));
+
+  document.addEventListener('keydown', e => {
+    if      (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
+    else if (e.key === 'ArrowRight' || e.key === 'PageUp')                   { e.preventDefault(); goTo(current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End')  { e.preventDefault(); goTo(total - 1); }
+  });
+
+  prevBtn.addEventListener('click',  () => goTo(current - 1));
+  nextBtn.addEventListener('click',  () => goTo(current + 1));
+  edgePrev.addEventListener('click', () => goTo(current - 1));
+  edgeNext.addEventListener('click', () => goTo(current + 1));
+
+  let wheelLock = false;
+  slidesEl.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && Math.abs(e.deltaY) > 10) {
+      e.preventDefault();
+      if (wheelLock) return;
+      wheelLock = true;
+      goTo(current + (e.deltaY > 0 ? 1 : -1));
+      setTimeout(() => { wheelLock = false; }, 500);
+    }
+  }, { passive: false });
+
+  function snapToCurrent() {
+    slides[current].scrollIntoView({ behavior: 'auto', inline: 'start', block: 'nearest' });
+  }
+  window.addEventListener('resize', snapToCurrent);
+  window.addEventListener('load',   snapToCurrent);
+  updateUI();
+  requestAnimationFrame(snapToCurrent);
+
+  document.querySelectorAll('.step-code .copy').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const cmd = btn.closest('.step-code').querySelector('.cmd').textContent.trim();
+      try {
+        await navigator.clipboard.writeText(cmd);
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 1400);
+      } catch (_) {}
+    });
+  });
+</script>
+
+</body>
+</html>

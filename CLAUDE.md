@@ -7,6 +7,7 @@ Hebrew-language HTML presentations for the WinnerIT AI course. Each lesson is a 
 | File | Topic | Slides |
 |---|---|---|
 | `ollama.html` | Ollama — running language models locally + Ollama Cloud | 20 |
+| `installations.html` | Dev environment setup — GitHub, Git, Node.js, VS Code, Claude, Ollama, Lovable | 15 |
 
 More lessons will be added as sibling HTML files. Each file should follow the conventions below.
 
@@ -55,9 +56,12 @@ Loaded via Google Fonts in one preconnect + stylesheet link.
 
 ### Patterns
 
-- **Eyebrow:** small uppercase mono label in coral with a short coral horizontal line. Format: `XX · english-mark` (e.g., `13 · cloud`).
+- **Eyebrow:** small uppercase mono label in coral with a short coral horizontal line. Format: `XX · english-mark` (e.g., `13 · cloud`). **Used only in `ollama.html`. New presentations do not use eyebrows — omit them entirely.**
 - **Italic accent inside titles:** wrap a key noun in `<em>` — it renders italic in coral. This is the deck's signature emphasis style.
 - **Step blocks** (numbered cards with copyable command): coral square badge with number, Hebrew title, paragraph, dark code line with copy icon at the bottom. Class `.step-block` inside `.steps-grid` (default 3 cols, `.two` variant for 2 cols).
+- **`.step-code`** (dark terminal block inside a step-block): for real shell commands the user types. Prompt `>_`, colored keywords via `.kw` / `.arg` spans, copy button.
+- **`.step-action`** (light cream block inside a step-block): for UI navigation steps — clicking, searching, opening menus. Uses `var(--bg-2)` background with a coral `→` arrow and plain text. Never use `.step-code` for UI actions; it looks like a terminal command and confuses students.
+- **`.os-tag`** (small badge at top-right of step-block): platform indicator. Variants: `.os-tag.mac` (macOS only), `.os-tag.win` (Windows only), `.os-tag.both` (both). Text is uppercase mono in coral.
 - **Mini-cards** (3-up bullet cards): used on the "cloud problem" slide and "cloud intro" slide. Icon at top, title, short paragraph.
 - **Link banner:** dashed-border card pointing to an external page (`ollama.com/download`, `ollama.com/search`). Class `.link-banner` with `.lb-text` and `.lb-link`.
 - **Big corner numerals:** large translucent number in a slide corner. Class `.corner-num`. Decorative.
@@ -139,6 +143,30 @@ If model names go stale, update them in: models slide, what-is terminal mock, qu
 - Copy-to-clipboard on step-blocks is implemented in the inline `<script>` at the bottom — uses the async Clipboard API, flashes the copy icon green for 1.4s on success.
 - Fonts are the only network request (Google Fonts CDN). The deck works offline once fonts are cached.
 
+## Slide Order (installations.html, 15 slides)
+
+No eyebrows. Slide numbers in comments reflect original numbering (some were merged).
+
+| # | Slide |
+|---|---|
+| 01 | Cover |
+| 02 | Overview — what we're installing and why |
+| 03 | GitHub — signup |
+| 04 | Git — install (macOS curl + Windows installer, combined) |
+| 05 | Git — configure (user name + email) |
+| 06 | Node.js — install (macOS .pkg / brew, Windows .msi, combined) |
+| 07 | VS Code Insiders — install |
+| 08 | Claude Extension — install in VS Code |
+| 09 | Claude Account — signup + Pro upgrade |
+| 10 | Claude Desktop — install |
+| 11 | Claude Code CLI — native install scripts (macOS curl / Windows PowerShell) |
+| 12 | Ollama — install (macOS curl / Windows PowerShell, combined) |
+| 13 | Ollama — pull & run (ollama pull + ollama run) |
+| 14 | Lovable — signup + first project |
+| 15 | Closing |
+
+---
+
 ## When making changes
 
 - **Voice check:** any new Hebrew text should be in plural "we" form. Audit verbs especially.
@@ -149,3 +177,5 @@ If model names go stale, update them in: models slide, what-is terminal mock, qu
 - **After adding/removing slides**, update the `/ N` counter in the topbar and verify the eyebrow numbering is sequential.
 - **Verify navigation** (← / →, edge zones, dots, wheel) still works after structural changes — the `IntersectionObserver` setup assumes all slides are direct children of `#slides`.
 - **Always test in a real browser** before declaring done — the design depends on the dot grid, film grain, font loading, and RTL behavior, none of which show up in static review.
+- **Split-layout overflow:** `split-layout` (content left + visual mockup right) overflows the viewport when the content side has 3+ stacked step-blocks. The wheel-scroll handler captures the scroll and navigates slides instead of scrolling content. Fix: remove `split-layout` and use a horizontal `steps-grid` (or `steps-grid two`) instead. Never use `split-layout` with more than 2 step-blocks on the content side.
+- **`.step-code` vs `.step-action`:** use `.step-code` only for actual shell commands. UI actions (opening a panel, clicking Install, navigating menus) must use `.step-action`. Putting UI steps in a dark terminal block confuses students into thinking they need to type something.
