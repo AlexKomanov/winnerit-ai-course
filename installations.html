@@ -55,6 +55,9 @@
   .topbar .left { display: flex; align-items: center; gap: 14px; direction: ltr; }
   .topbar .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
   .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
+  .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
+  .back-home:hover { background: var(--coral); color: #fff; }
+  .back-home svg { width: 12px; height: 12px; flex-shrink: 0; }
   .counter { color: var(--ink); font-weight: 500; }
   .counter .total { color: var(--muted); }
 
@@ -170,7 +173,7 @@
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 18px; margin-top: 28px; flex: 1;
   }
-  .steps-grid.two { grid-template-columns: 1fr 1fr; max-width: 900px; }
+  .steps-grid.two { grid-template-columns: 1fr 1fr; max-width: 900px; margin-left: auto; margin-right: auto; }
   .step-block {
     border: 1px solid var(--border); background: var(--bg-3);
     padding: 24px 22px 20px; display: flex; flex-direction: column;
@@ -351,7 +354,7 @@
 
   <!-- TOP BAR -->
   <header class="topbar">
-    <div class="left"><span class="dot"></span> winnerit · ai course</div>
+    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a></div>
     <div class="right">
       <span>מדריך ההתקנות</span>
       <span class="counter"><span id="cur">01</span> <span class="total">/ 15</span></span>
@@ -523,12 +526,11 @@
     <!-- ─── 04 · GIT (macOS + Windows) ─── -->
     <section class="slide">
       <h2 class="title"><em>Git</em></h2>
-      <p class="lead">נתקין את Git — macOS דרך Homebrew בטרמינל, Windows דרך winget או מתקין גרפי. לסיום נאמת.</p>
+      <p class="lead">מערכת ניהול גרסאות — נבחר בדרך המתאימה למערכת שלנו.</p>
       <div class="steps-grid">
 
         <div class="step-block">
           <span class="os-tag mac">macOS · Homebrew</span>
-          <div class="step-num"><span class="badge">1</span><span class="lbl">macos install</span></div>
           <h4>macOS — דרך brew</h4>
           <p>פקודה אחת בטרמינל. אם Homebrew עדיין לא מותקן — נתקין אותו תחילה מ-<code style="font-family:var(--mono);color:var(--coral);">brew.sh</code>.</p>
           <div class="step-code">
@@ -540,7 +542,6 @@
 
         <div class="step-block">
           <span class="os-tag win">Windows · Installer</span>
-          <div class="step-num"><span class="badge">2</span><span class="lbl">windows install</span></div>
           <h4>Windows — installer</h4>
           <p>נוריד את קובץ ה-.exe מהאתר הרשמי ונריץ. נשאיר את כל ברירות המחדל — Git ייכנס אוטומטית ל-PATH.</p>
           <div class="step-code">
@@ -552,7 +553,7 @@
 
         <div class="step-block">
           <span class="os-tag both">macOS · Windows</span>
-          <div class="step-num"><span class="badge">3</span><span class="lbl">verify</span></div>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">verify</span></div>
           <h4>אימות ההתקנה</h4>
           <p>נפתח טרמינל חדש ונריץ. אם מוצג משהו כמו <code style="font-family:var(--mono);color:var(--coral);">git version 2.x.x</code> — ההתקנה הצליחה.</p>
           <div class="step-code">
@@ -606,7 +607,6 @@
 
         <div class="step-block">
           <span class="os-tag mac">macOS · Installer / brew</span>
-          <div class="step-num"><span class="badge">1</span><span class="lbl">macos install</span></div>
           <h4>macOS — installer</h4>
           <p>נוריד מהאתר הרשמי, נבחר LTS ונריץ את ה-.pkg. דרך Homebrew אפשרית גם: <code style="font-family:var(--mono);color:var(--coral);">brew install node</code></p>
           <div class="step-code">
@@ -618,7 +618,6 @@
 
         <div class="step-block">
           <span class="os-tag win">Windows · Installer</span>
-          <div class="step-num"><span class="badge">2</span><span class="lbl">windows install</span></div>
           <h4>Windows — installer</h4>
           <p>נוריד את ה-LTS מהאתר הרשמי — קובץ .msi. נריץ, נשאיר הכל כברירת מחדל, ו-"Add to PATH" יסומן אוטומטית.</p>
           <div class="step-code">
@@ -630,7 +629,7 @@
 
         <div class="step-block">
           <span class="os-tag both">macOS · Windows</span>
-          <div class="step-num"><span class="badge">3</span><span class="lbl">verify</span></div>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">verify</span></div>
           <h4>אימות ההתקנה</h4>
           <p>נריץ שתי פקודות בטרמינל — אם מוצגות גרסאות, הכל מותקן בהצלחה. Node ו-npm מוכנים לשימוש.</p>
           <div class="step-code">
@@ -691,7 +690,7 @@
               <span class="os-tag both">macOS · Windows</span>
               <div class="step-num"><span class="badge">1</span><span class="lbl">open extensions</span></div>
               <h4>פתיחת Extensions</h4>
-              <p>נפתח את חלונית ה-Extensions בעזרת קיצור המקשים. ב-Windows: Ctrl+Shift+X, ב-macOS: <span style="font-size:1.15em;">⌘</span>+Shift+X.</p>
+              <p>נפתח את חלונית ה-Extensions בעזרת קיצור המקשים המתאים למערכת.</p>
               <div class="step-action">
                 <span class="act-arrow">→</span>
                 <span class="act-text"><span style="font-size:16px;line-height:1;">⌘</span>+Shift+X (mac) · Ctrl+Shift+X (win)</span>
@@ -784,7 +783,7 @@
         <div class="step-block">
           <div class="step-num"><span class="badge">3</span><span class="lbl">first chat</span></div>
           <h4>שיחה ראשונה</h4>
-          <p>נוודא שהחשבון עובד — נפתח שיחה חדשה ונשאל משהו פשוט. כדאי לבחור מודל Claude Sonnet 4.5 ומעלה.</p>
+          <p>נוודא שהחשבון עובד — נפתח שיחה חדשה ונשאל משהו פשוט. ניתן להשאיר את המודל כברירת מחדל, או לבחור Claude Sonnet 4.5 ומעלה.</p>
           <div class="step-action">
             <span class="act-arrow">→</span>
             <span class="act-text">New chat → "שלום!" ✓</span>
@@ -797,7 +796,7 @@
     <!-- ─── 13 · CLAUDE DESKTOP ─── -->
     <section class="slide">
       <h2 class="title">Claude <em>Desktop</em></h2>
-      <p class="lead">אפליקציית desktop מאפשרת לחבר את Claude לקבצים, כלים ומחשב שלנו — מעבר לדפדפן.</p>
+      <p class="lead">אפליקציית Desktop מאפשרת לחבר את Claude לקבצים, כלים ומחשב שלנו — מעבר לדפדפן.</p>
       <div class="steps-grid two">
 
         <div class="step-block">
@@ -817,10 +816,9 @@
           <div class="step-num"><span class="badge">2</span><span class="lbl">sign in</span></div>
           <h4>התחברות לחשבון</h4>
           <p>נפתח את האפליקציה ונתחבר עם חשבון Claude שיצרנו. הדפדפן ייפתח לאישור — נאשר ונחזור לאפליקציה.</p>
-          <div class="step-code">
-            <span class="prompt">→</span>
-            <span class="cmd"><span class="arg">Open Claude Desktop → Sign in → Authorize</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          <div class="step-action">
+            <span class="act-arrow">→</span>
+            <span class="act-text">Open Claude Desktop → Sign in → Authorize</span>
           </div>
         </div>
 
@@ -847,9 +845,9 @@
 
         <div class="step-block">
           <span class="os-tag win">Windows · PowerShell</span>
-          <div class="step-num"><span class="badge">2</span><span class="lbl">windows install</span></div>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">windows install</span></div>
           <h4>Windows — התקנה</h4>
-          <p>נפתח PowerShell ונריץ את הפקודה. הסקריפט יוריד וייתקין את Claude Code — Claude Code יהיה זמין ב-Terminal.</p>
+          <p>הסקריפט יוריד וייתקין אוטומטית — הכלי יהיה זמין ב-Terminal לאחר ההתקנה.</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
             <span class="cmd"><span class="kw">iwr</span> <span class="arg">-useb https://claude.ai/install.ps1 | iex</span></span>
@@ -859,7 +857,7 @@
 
         <div class="step-block">
           <span class="os-tag both">macOS · Windows</span>
-          <div class="step-num"><span class="badge">3</span><span class="lbl">login</span></div>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">login</span></div>
           <h4>התחברות ראשונה</h4>
           <p>נריץ בטרמינל — הדפדפן ייפתח לאישור גישה לחשבון Claude שלנו. תהליך חד-פעמי, לאחריו Claude Code מוכן.</p>
           <div class="step-code">
@@ -875,12 +873,11 @@
     <!-- ─── 15 · OLLAMA (macOS + Windows) ─── -->
     <section class="slide">
       <h2 class="title"><em>Ollama</em></h2>
-      <p class="lead">כלי להרצת מודלי AI מקומית — macOS דרך סקריפט בטרמינל, Windows דרך מתקין גרפי.</p>
+      <p class="lead">כלי להרצת מודלי AI מקומית — נבחר את דרך ההתקנה המתאימה למערכת שלנו.</p>
       <div class="steps-grid two">
 
         <div class="step-block">
           <span class="os-tag mac">macOS · curl / dmg</span>
-          <div class="step-num"><span class="badge">1</span><span class="lbl">macos install</span></div>
           <h4>macOS — Terminal</h4>
           <p>הסקריפט מזהה את המארכיטקטורה (Apple Silicon / Intel) ומתקין אוטומטית. חלופה גרפית: <span dir="ltr">.dmg</span> מ-<code style="font-family:var(--mono);color:var(--coral);">ollama.com/download</code></p>
           <div class="step-code">
@@ -891,10 +888,9 @@
         </div>
 
         <div class="step-block">
-          <span class="os-tag win">Windows · PowerShell</span>
-          <div class="step-num"><span class="badge">2</span><span class="lbl">windows install</span></div>
+          <span class="os-tag win">Windows · PowerShell / exe</span>
           <h4>Windows — PowerShell</h4>
-          <p>הסקריפט מתקין Ollama אוטומטית. לאחר ההתקנה יתווסף לשורת המשימות ויפעל ברקע.</p>
+          <p>הסקריפט מתקין Ollama אוטומטית. חלופה גרפית: קובץ <span dir="ltr">.exe</span> מ-<code style="font-family:var(--mono);color:var(--coral);">ollama.com/download</code></p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
             <span class="cmd"><span class="kw">irm</span> <span class="arg">https://ollama.com/install.ps1 | iex</span></span>
