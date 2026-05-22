@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Generator · בדיקות מ-PRD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EDE3;
+    --bg-2: #EAE2D2;
+    --bg-3: #FBF8F1;
+    --ink: #1B2336;
+    --ink-soft: #4D556C;
+    --muted: #8B8A82;
+    --muted-soft: #B5B0A4;
+    --coral: #E04E36;
+    --coral-soft: #F4B5A8;
+    --forest: #2F6B49;
+    --mustard: #E2A93B;
+    --sky: #4A7BA8;
+    --border: #D8CCB5;
+    --border-soft: #E5DDC9;
+    --display: 'Frank Ruhl Libre', 'Heebo', serif;
+    --body: 'Heebo', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 400;
+    line-height: 1.55;
+    direction: rtl;
+    background-image: radial-gradient(circle at 1px 1px, rgba(27,35,54,0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .frame { position: fixed; inset: 0; display: flex; flex-direction: column; }
+
+  /* ─── TOPBAR ─── */
+  .topbar {
+    height: 56px; padding: 0 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); border-bottom: 1px solid var(--border-soft);
+    background: rgba(242,237,227,0.85); backdrop-filter: blur(8px); z-index: 10;
+  }
+  .topbar .left { display: flex; align-items: center; gap: 14px; direction: ltr; }
+  .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
+  .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
+  .back-home:hover { background: var(--coral); color: #fff; }
+  .counter { color: var(--ink); font-weight: 500; }
+  .counter .total { color: var(--muted); }
+
+  /* ─── SLIDES TRACK ─── */
+  .slides {
+    flex: 1; display: flex; overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none;
+    direction: rtl; position: relative;
+  }
+  .slides::-webkit-scrollbar { display: none; }
+  .slide {
+    flex: 0 0 100vw; height: 100%; scroll-snap-align: start; scroll-snap-stop: always;
+    padding: 6vh 8vw; position: relative; display: flex; flex-direction: column;
+    overflow: hidden; direction: rtl;
+  }
+
+  /* ─── EDGE ZONES ─── */
+  .edge {
+    position: fixed; top: 56px; bottom: 64px; width: 90px;
+    border: none; background: transparent; cursor: pointer; z-index: 8;
+    display: flex; align-items: center; justify-content: center; opacity: 0;
+    transition: opacity 0.35s ease; padding: 0;
+  }
+  .edge-prev { right: 0; }
+  .edge-next { left: 0; }
+  .edge:hover { opacity: 1; }
+  .edge .knob {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--bg-3); border: 1px solid var(--border);
+    box-shadow: 0 4px 18px rgba(27,35,54,0.12);
+    display: flex; align-items: center; justify-content: center; color: var(--ink);
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+  }
+  .edge:hover .knob { background: var(--coral); color: #fff; border-color: var(--coral); transform: scale(1.05); }
+  .edge:disabled { cursor: not-allowed; pointer-events: none; }
+  .edge .knob svg { width: 18px; height: 18px; }
+
+  /* ─── COMMON ─── */
+  h2.title {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(52px, 6.5vw, 108px); line-height: 1; letter-spacing: -0.025em; color: var(--ink);
+  }
+  h2.title em { font-style: italic; font-weight: 500; color: var(--coral); }
+  p.lead {
+    font-size: clamp(17px, 1.45vw, 23px); line-height: 1.55;
+    color: var(--ink-soft); font-weight: 300; max-width: 700px;
+  }
+  p.caption {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .corner-num {
+    position: absolute; bottom: 5vh; inset-inline-end: 8vw;
+    font-family: var(--display); font-weight: 900; font-size: 200px;
+    line-height: 1; color: var(--coral); opacity: 0.07; direction: ltr; pointer-events: none;
+  }
+
+  /* ─── COVER ─── */
+  .slide-cover { align-items: center; justify-content: center; position: relative; }
+  .cover-mark {
+    position: absolute; top: 5vh; right: 8vw;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted); direction: ltr; display: flex; align-items: center; gap: 10px;
+  }
+  .cover-mark .pin { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+  .cover-cta {
+    position: absolute; bottom: 6vh; left: 8vw;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; color: var(--muted);
+    direction: ltr; display: flex; align-items: center; gap: 12px;
+  }
+  .cover-cta .arr { color: var(--coral); font-size: 16px; }
+  .cover-center { text-align: center; z-index: 2; position: relative; }
+  .cover-title {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(72px, 13vw, 210px); line-height: 0.88; letter-spacing: -0.05em;
+    color: var(--ink); direction: ltr; margin: 0;
+  }
+  .cover-title .l { color: var(--coral); }
+  .cover-rule { width: 80px; height: 2px; background: var(--coral); margin: 32px auto 24px; }
+  .cover-sub {
+    font-family: var(--display); font-style: italic; font-weight: 500;
+    font-size: clamp(20px, 2.4vw, 36px); color: var(--ink-soft); line-height: 1.3;
+  }
+  .deco { position: absolute; pointer-events: none; z-index: 1; opacity: 0.9; }
+  .deco-1 { top: 12%; right: 10%; width: 88px; color: var(--coral); }
+  .deco-2 { top: 18%; left: 12%; width: 60px; color: var(--forest); }
+  .deco-3 { bottom: 20%; left: 16%; width: 52px; color: var(--mustard); }
+  .deco-4 { bottom: 18%; right: 13%; width: 54px; color: var(--sky); }
+  .deco-5 { top: 58%; right: 7%; width: 28px; color: var(--coral); opacity: 0.6; }
+
+  /* ─── INFO CARDS ─── */
+  .slide-info { justify-content: center; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 56px; }
+  .info-card { border: 1px solid var(--border); background: var(--bg-3); padding: 36px 32px; }
+  .info-card.need { border-top: 3px solid var(--coral); }
+  .info-card.get  { border-top: 3px solid var(--forest); }
+  .info-card .info-lbl {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 18px; display: flex; align-items: center; gap: 8px; direction: rtl;
+  }
+  .info-card .info-lbl svg { flex-shrink: 0; width: 16px; height: 16px; }
+  .info-card.need .info-lbl { color: var(--coral); }
+  .info-card.get  .info-lbl { color: var(--forest); }
+  .info-card h3 { font-family: var(--display); font-weight: 900; font-size: 40px; line-height: 1; color: var(--ink); margin-bottom: 24px; }
+  .info-card ul { list-style: none; }
+  .info-card ul li {
+    padding: 13px 0; border-bottom: 1px dashed var(--border-soft);
+    color: var(--ink-soft); font-size: 15px; display: flex; gap: 14px; align-items: flex-start;
+  }
+  .info-card ul li:last-child { border-bottom: none; }
+  .info-card ul li .ic { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
+  .info-card.need ul li .ic { color: var(--coral); }
+  .info-card.get  ul li .ic { color: var(--forest); }
+  .info-card ul li strong { color: var(--ink); font-weight: 700; }
+
+  /* ─── STATEMENT ─── */
+  .slide-statement { justify-content: center; }
+  .slide-statement .body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+
+  /* ─── MINI CARDS (4-up) ─── */
+  .slide-four { justify-content: center; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 52px; }
+  .mini-card { border: 1px solid var(--border); padding: 38px 34px; background: var(--bg-3); }
+  .mini-card .num {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--muted);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 8px; direction: ltr;
+  }
+  .mini-card .num .nb {
+    width: 22px; height: 22px; border-radius: 4px; background: rgba(224,78,54,0.1);
+    color: var(--coral); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 12px;
+  }
+  .mini-card h4 { font-family: var(--display); font-size: 30px; font-weight: 900; margin-bottom: 6px; line-height: 1.05; color: var(--ink); }
+  .mini-card .en-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 16px; direction: ltr;
+  }
+  .mini-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+  .mini-card.p1 { border-top: 3px solid var(--coral); }
+  .mini-card.p2 { border-top: 3px solid var(--forest); }
+  .mini-card.p3 { border-top: 3px solid var(--mustard); }
+  .mini-card.p4 { border-top: 3px solid var(--sky); }
+
+  /* ─── POSTER ─── */
+  .slide-poster { justify-content: center; align-items: stretch; }
+  .slide-poster h1.mega {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(52px, 8.5vw, 140px); line-height: 0.93; letter-spacing: -0.03em; color: var(--ink);
+  }
+  .slide-poster h1.mega .a { color: var(--coral); }
+  .slide-poster h1.mega .b { color: var(--forest); font-style: italic; font-weight: 500; }
+  .slide-poster h1.mega .c { color: var(--mustard); }
+  .slide-poster .sub {
+    font-family: var(--display); font-style: italic; font-size: clamp(20px, 2.2vw, 34px);
+    font-weight: 500; color: var(--ink-soft); margin-top: 36px; max-width: 680px;
+  }
+
+  /* ─── STEP BLOCKS ─── */
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  .step-block {
+    border: 1px solid var(--border); background: var(--bg-3); padding: 26px 24px 22px;
+    display: flex; flex-direction: column;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .step-block:hover { border-color: var(--coral); transform: translateY(-3px); }
+  .step-num { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; direction: ltr; }
+  .step-num .badge {
+    width: 26px; height: 26px; border-radius: 6px; background: rgba(224,78,54,0.12);
+    color: var(--coral); display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-weight: 700; font-size: 13px;
+  }
+  .step-num .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+  .step-block h4 { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
+  .step-block p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; flex: 1; margin-bottom: 18px; }
+  .step-code {
+    background: var(--ink); color: #F2EDE3; border-radius: 6px; padding: 10px 14px;
+    font-family: var(--mono); font-size: 12px; direction: ltr; text-align: left;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .step-code .prompt { color: rgba(242,237,227,0.38); user-select: none; flex-shrink: 0; }
+  .step-code .cmd { flex: 1; color: #9BD3A8; white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .step-code .cmd::-webkit-scrollbar { display: none; }
+  .step-code .kw { color: #E04E36; }
+  .step-action {
+    background: var(--bg-2); border: 1px solid var(--border-soft); border-radius: 6px;
+    padding: 10px 14px; font-size: 13px; color: var(--ink-soft);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .step-action .arr { color: var(--coral); font-weight: 700; flex-shrink: 0; }
+
+  /* ─── CLOSING ─── */
+  .slide-end {
+    justify-content: center; align-items: center; text-align: center;
+    background-image:
+      radial-gradient(ellipse at center, rgba(224,78,54,0.06) 0%, transparent 65%),
+      radial-gradient(circle at 1px 1px, rgba(27,35,54,0.06) 1px, transparent 0);
+    background-size: auto, 24px 24px;
+  }
+  .slide-end .inner { max-width: 1100px; }
+  .slide-end h1 {
+    font-family: var(--display); font-size: clamp(64px, 10vw, 168px);
+    font-weight: 900; line-height: 0.95; letter-spacing: -0.035em; color: var(--ink);
+  }
+  .slide-end h1 em { font-style: italic; font-weight: 500; color: var(--coral); }
+  .slide-end .sig {
+    margin-top: 72px; font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); direction: ltr;
+  }
+  .slide-end .sig em { color: var(--coral); font-style: italic; }
+
+  /* ─── BOTTOMBAR ─── */
+  .bottombar {
+    height: 64px; padding: 0 32px; display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border-soft); background: rgba(242,237,227,0.85);
+    backdrop-filter: blur(8px); z-index: 10;
+  }
+  .bottombar .hint {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); display: flex; gap: 16px; align-items: center; direction: ltr;
+  }
+  .bottombar .hint kbd {
+    display: inline-block; padding: 3px 8px; background: var(--bg-3);
+    border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px;
+    font-family: var(--mono); font-size: 10px; color: var(--ink);
+  }
+  .dots { display: flex; gap: 8px; align-items: center; }
+  .dots button {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--border);
+    border: none; cursor: pointer; padding: 0; transition: all 0.25s;
+  }
+  .dots button.active { background: var(--coral); width: 24px; border-radius: 4px; }
+  .dots button:hover { background: var(--coral-soft); }
+  .nav-btns { display: flex; gap: 8px; }
+  .nav-btn {
+    width: 36px; height: 36px; border: 1px solid var(--border); background: var(--bg-3);
+    border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: var(--ink); transition: all 0.2s;
+  }
+  .nav-btn:hover { border-color: var(--coral); color: var(--coral); }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .nav-btn svg { width: 14px; height: 14px; }
+
+  /* ─── FILM GRAIN ─── */
+  body::after {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  @media (max-width: 900px) {
+    .slide { padding: 4vh 5vw; }
+    .info-grid { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .slide-statement .body-grid { grid-template-columns: 1fr; }
+    .bottombar .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <header class="topbar">
+    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a></div>
+    <div class="right">
+      <span>Test Generator · בדיקות מ-PRD</span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
+    </div>
+  </header>
+
+  <main class="slides" id="slides">
+
+    <!-- ─── 01 · COVER ─── -->
+    <section class="slide slide-cover">
+      <div class="cover-mark"><span class="pin"></span> WinnerIT · AI Course</div>
+
+      <!-- Clipboard / document -->
+      <svg class="deco deco-1" viewBox="0 0 88 100" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="16" y="14" width="56" height="72" rx="4"/>
+        <rect x="28" y="4" width="32" height="16" rx="3"/>
+        <line x1="28" y1="38" x2="60" y2="38"/>
+        <line x1="28" y1="52" x2="60" y2="52"/>
+        <line x1="28" y1="66" x2="48" y2="66"/>
+      </svg>
+
+      <!-- Checkmark circle -->
+      <svg class="deco deco-2" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="30" cy="30" r="26"/>
+        <polyline points="18 30 26 38 42 22"/>
+      </svg>
+
+      <!-- Gear -->
+      <svg class="deco deco-3" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="28" cy="28" r="8"/>
+        <path d="M28 6v6M28 44v6M6 28h6M44 28h6M11.5 11.5l4.2 4.2M40.3 40.3l4.2 4.2M44.5 11.5l-4.2 4.2M15.7 40.3l-4.2 4.2"/>
+      </svg>
+
+      <!-- Terminal -->
+      <svg class="deco deco-4" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="4" y="10" width="48" height="36" rx="4"/>
+        <polyline points="14 22 22 28 14 34"/>
+        <line x1="26" y1="34" x2="42" y2="34"/>
+      </svg>
+
+      <!-- Small star -->
+      <svg class="deco deco-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M12 2L14.4 9.6 22 12 14.4 14.4 12 22 9.6 14.4 2 12 9.6 9.6z"/>
+      </svg>
+
+      <div class="cover-center">
+        <h1 class="cover-title"><span class="l">T</span>EST GEN</h1>
+        <div class="cover-rule"></div>
+        <div class="cover-sub">בדיקות אוטומטיות מ-PRD — בלי לכתוב שורה אחת ידנית</div>
+      </div>
+
+      <div class="cover-cta"><span class="arr">←</span> להתחיל</div>
+    </section>
+
+    <!-- ─── 02 · OVERVIEW ─── -->
+    <section class="slide slide-info">
+      <h2 class="title">מה <em>נלמד</em></h2>
+      <div class="info-grid">
+
+        <div class="info-card need">
+          <div class="info-lbl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            קצת רקע
+          </div>
+          <h3>כבר עשינו</h3>
+          <ul>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>יש לנו פרויקט עם Claude Code</span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>אנחנו יודעים מה זה Agents ו-Skills</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="info-card get">
+          <div class="info-lbl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            מה נקבל
+          </div>
+          <h3>נצא עם</h3>
+          <ul>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>הבנה מה זה <strong>PRD</strong> ולמה הוא הבסיס לבדיקות</span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>flow אוטומטי: PRD ← test cases ← Playwright</span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span><strong>שילוב</strong> של Agents, Gems ו-Skills</span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>בדיקות שרצות בלי כתיבה ידנית</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 03 · WHAT IS A PRD ─── -->
+    <section class="slide slide-statement">
+      <div class="body-grid">
+        <div>
+          <h2 class="title">מה זה <em>PRD</em>?</h2>
+          <p class="lead" style="margin-top:28px;">
+            PRD (Product Requirements Document) הוא מסמך שמתאר מה המוצר צריך לעשות —
+            features, user flows, edge cases, וקריטריוני קבלה.
+          </p>
+          <p class="lead" style="margin-top:18px;">
+            כשה-AI קורא PRD טוב, הוא מבין בדיוק מה לבדוק —
+            <em style="color:var(--coral);">ויכול לכתוב את הבדיקות בעצמו.</em>
+          </p>
+          <p class="caption" style="margin-top:32px;">requirements → tests · automated</p>
+        </div>
+
+        <!-- PRD → AI → Test Cases → Playwright diagram -->
+        <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg"
+             style="width:100%;max-width:560px;align-self:center;direction:ltr" aria-label="PRD to Playwright flow">
+          <!-- PRD box -->
+          <rect x="10" y="90" width="76" height="80" rx="4" fill="#FBF8F1" stroke="#D8CCB5" stroke-width="1.2"/>
+          <text x="48" y="118" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#E04E36" font-weight="700">PRD</text>
+          <text x="48" y="134" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#8B8A82">requirements</text>
+          <text x="48" y="148" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#8B8A82">user flows</text>
+          <text x="48" y="162" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#8B8A82">edge cases</text>
+
+          <!-- Arrow PRD → AI -->
+          <line x1="86" y1="130" x2="112" y2="130" stroke="#D8CCB5" stroke-width="1.2"/>
+          <polyline points="108,126 114,130 108,134" stroke="#D8CCB5" stroke-width="1.2" fill="none"/>
+
+          <!-- AI box -->
+          <rect x="114" y="100" width="92" height="60" rx="4" fill="rgba(224,78,54,0.06)" stroke="#E04E36" stroke-width="1.2"/>
+          <text x="160" y="122" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#E04E36" letter-spacing="1">AI AGENT</text>
+          <text x="160" y="138" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">קורא ומנתח</text>
+          <text x="160" y="152" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">את ה-PRD</text>
+
+          <!-- Arrow AI → Test Cases -->
+          <line x1="206" y1="130" x2="230" y2="130" stroke="#D8CCB5" stroke-width="1.2"/>
+          <polyline points="226,126 232,130 226,134" stroke="#D8CCB5" stroke-width="1.2" fill="none"/>
+
+          <!-- Test Cases box -->
+          <rect x="232" y="90" width="78" height="80" rx="4" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.2"/>
+          <text x="271" y="115" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#2F6B49" letter-spacing="1">PLAYWRIGHT</text>
+          <text x="271" y="131" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">test files</text>
+          <text x="271" y="146" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">assertions</text>
+          <text x="271" y="161" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">edge cases</text>
+
+          <!-- Label row -->
+          <text x="48" y="194" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#8B8A82">מסמך</text>
+          <text x="160" y="194" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#8B8A82">Claude Code</text>
+          <text x="271" y="194" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#2F6B49">בדיקות מוכנות</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ─── 04 · THE FLOW ─── -->
+    <section class="slide slide-four">
+      <h2 class="title">ה<em>flow</em> האוטומטי</h2>
+      <div class="grid-4">
+
+        <div class="mini-card p1">
+          <div class="num"><span class="nb">1</span> prd</div>
+          <h4>PRD</h4>
+          <div class="en-label">Requirements</div>
+          <p>מסמך דרישות ברור — user stories, acceptance criteria, edge cases. ככל שהמסמך מדויק יותר, הבדיקות איכותיות יותר.</p>
+        </div>
+
+        <div class="mini-card p2">
+          <div class="num"><span class="nb">2</span> agent</div>
+          <h4>Agent</h4>
+          <div class="en-label">AI Reader</div>
+          <p>Claude Code agent קורא את ה-PRD, מזהה תרחישים ויוצר רשימת test cases מסודרת.</p>
+        </div>
+
+        <div class="mini-card p3">
+          <div class="num"><span class="nb">3</span> generate</div>
+          <h4>Generate</h4>
+          <div class="en-label">Test Code</div>
+          <p>ה-Agent כותב קבצי Playwright — test files מלאים, עם selectors, assertions ו-edge cases.</p>
+        </div>
+
+        <div class="mini-card p4">
+          <div class="num"><span class="nb">4</span> run</div>
+          <h4>Run</h4>
+          <div class="en-label">Execute</div>
+          <p>מריצים את הבדיקות עם Claude Code CLI. ה-Agent מפרש שגיאות ומתקן אוטומטית.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 05 · POSTER ─── -->
+    <section class="slide slide-poster">
+      <h1 class="mega">
+        <span class="a">קרא.</span><br>
+        <span class="b">ייצר.</span><br>
+        <em style="color:var(--mustard);font-style:italic;font-weight:500;">הרץ.</em>
+      </h1>
+      <div class="sub">
+        PRD טוב + AI = test suite מלא — בלי שעות של כתיבה ידנית.
+      </div>
+    </section>
+
+    <!-- ─── 06 · SETUP ─── -->
+    <section class="slide">
+      <h2 class="title">מכינים את ה<em>סביבה</em></h2>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">prd</span>
+          </div>
+          <h4>מכינים PRD</h4>
+          <p>כותבים או מייבאים מסמך PRD. חשוב לכלול: user flows, acceptance criteria, וקריטריוני הצלחה.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            PRD.md — מסמך דרישות בפורמט Markdown
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">playwright</span>
+          </div>
+          <h4>מתקינים Playwright</h4>
+          <p>מוסיפים Playwright לפרויקט. Claude Code ידאג לקבצי הגדרה בסיסיים.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">npx</span> playwright install</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">skill</span>
+          </div>
+          <h4>מגדירים את ה-Skill</h4>
+          <p>מגדירים Skill שמנחה את Claude Code לקרוא PRD וליצור test cases לפי פורמט הפרויקט.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            .claude/test-generator.md — Skill מותאם
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 07 · RUNNING THE GENERATOR ─── -->
+    <section class="slide">
+      <h2 class="title">מריצים את ה<em>Generator</em></h2>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">invoke</span>
+          </div>
+          <h4>מפעילים את ה-Agent</h4>
+          <p>מפעילים את Claude Code עם ה-Skill ומצביעים על קובץ ה-PRD. ה-Agent מתחיל לקרוא ולנתח.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            /test-generator PRD.md — מפעיל את ה-Skill
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">review</span>
+          </div>
+          <h4>בודקים את התוצאות</h4>
+          <p>ה-Agent מציג את ה-test cases שייצר לפני כתיבתם. אנחנו יכולים לאשר, לדחות, או לבקש שינויים.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            Claude Code מציג test plan לאישור
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">run</span>
+          </div>
+          <h4>מריצים ומתקנים</h4>
+          <p>אחרי אישור, ה-Agent כותב את הקבצים ומריץ. שגיאות מפורשות ומתוקנות אוטומטית.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">npx</span> playwright test</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 08 · CLOSING ─── -->
+    <section class="slide slide-end">
+      <div class="inner">
+        <h1>נקרא<span style="color:var(--border)">.</span><br><em>נייצר</em><span style="color:var(--border)">.</span><br>נריץ<span style="color:var(--border)">.</span></h1>
+        <div class="sig">winnerit · ai course · <em>test generator</em></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EDGE ZONES -->
+  <button class="edge edge-prev" id="btn-prev" aria-label="previous">
+    <div class="knob">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </button>
+  <button class="edge edge-next" id="btn-next" aria-label="next">
+    <div class="knob">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </div>
+  </button>
+
+  <footer class="bottombar">
+    <div class="hint">
+      <kbd>←</kbd><kbd>Space</kbd> הבא
+      <kbd>→</kbd> הקודם
+    </div>
+    <div class="dots" id="dots"></div>
+    <div class="nav-btns">
+      <button class="nav-btn" id="nb-prev" aria-label="prev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <button class="nav-btn" id="nb-next" aria-label="next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const slidesEl = document.getElementById('slides');
+  const curEl    = document.getElementById('cur');
+  const dotsEl   = document.getElementById('dots');
+  const slides   = Array.from(slidesEl.querySelectorAll('.slide'));
+  const N        = slides.length;
+  let current    = 0;
+
+  slides.forEach((_,i) => {
+    const b = document.createElement('button');
+    if (i === 0) b.classList.add('active');
+    b.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(b);
+  });
+
+  function goTo(idx) {
+    idx = Math.max(0, Math.min(N-1, idx));
+    current = idx;
+    slides[idx].scrollIntoView({ inline: 'start', behavior: 'smooth' });
+    update();
+  }
+
+  function update() {
+    const pad = n => String(n).padStart(2,'0');
+    curEl.textContent = pad(current + 1);
+    document.querySelectorAll('.dots button').forEach((b,i) => b.classList.toggle('active', i === current));
+    document.getElementById('btn-prev').disabled = current === N-1;
+    document.getElementById('btn-next').disabled = current === 0;
+    document.getElementById('nb-prev').disabled  = current === N-1;
+    document.getElementById('nb-next').disabled  = current === 0;
+  }
+
+  document.getElementById('btn-prev').addEventListener('click', () => goTo(current + 1));
+  document.getElementById('btn-next').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nb-prev').addEventListener('click',  () => goTo(current + 1));
+  document.getElementById('nb-next').addEventListener('click',  () => goTo(current - 1));
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+        current = slides.indexOf(e.target);
+        update();
+      }
+    });
+  }, { root: slidesEl, threshold: 0.5 });
+  slides.forEach(s => obs.observe(s));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft'  || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowRight' || e.key === 'PageUp')                    { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'Home') goTo(0);
+    if (e.key === 'End')  goTo(N-1);
+  });
+
+  let wt; slidesEl.addEventListener('wheel', e => {
+    e.preventDefault();
+    clearTimeout(wt);
+    wt = setTimeout(() => { goTo(e.deltaY > 0 ? current + 1 : current - 1); }, 60);
+  }, { passive: false });
+
+  update();
+})();
+</script>
+</body>
+</html>
