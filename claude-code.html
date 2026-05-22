@@ -74,6 +74,9 @@
     background: var(--coral);
   }
   .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
+  .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
+  .back-home:hover { background: var(--coral); color: #fff; }
+  .back-home svg { width: 12px; height: 12px; flex-shrink: 0; }
   .counter { color: var(--ink); font-weight: 500; }
   .counter .total { color: var(--muted); }
 
@@ -898,7 +901,7 @@
 
   <!-- TOP BAR -->
   <header class="topbar">
-    <div class="left"><span class="dot"></span> winnerit · ai course</div>
+    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a></div>
     <div class="right">
       <span>Claude Code · עוזר AI בטרמינל</span>
       <span class="counter"><span id="cur">01</span> <span class="total">/ 17</span></span>
@@ -1554,7 +1557,6 @@
         Claude Code עושה הכי טוב כשנותנים לו context ברור —<br>
         ומבקשים ממנו לתכנן לפני שמממש.
       </p>
-      <div class="corner-num">3</div>
     </section>
 
     <!-- ─── 18 · CLOSING ─── -->

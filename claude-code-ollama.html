@@ -70,6 +70,9 @@
   .topbar .left { display: flex; align-items: center; gap: 14px; direction: ltr; }
   .topbar .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
   .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
+  .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
+  .back-home:hover { background: var(--coral); color: #fff; }
+  .back-home svg { width: 12px; height: 12px; flex-shrink: 0; }
   .counter { color: var(--ink); font-weight: 500; }
   .counter .total { color: var(--muted); }
 
@@ -525,7 +528,7 @@
 
   <!-- TOP BAR -->
   <header class="topbar">
-    <div class="left"><span class="dot"></span> winnerit · ai course</div>
+    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a></div>
     <div class="right">
       <span>Claude Code + Ollama</span>
       <span class="counter"><span id="cur">01</span> <span class="total">/ 15</span></span>
@@ -785,7 +788,6 @@
           <span>64k tokens = minimum · more = better</span>
         </div>
       </div>
-      <div class="corner-num">64k</div>
     </section>
 
     <!-- ─── 06 · 04 · models ─── -->
@@ -806,7 +808,7 @@
         <div class="model">
           <div class="badge">G</div>
           <div class="info">
-            <div class="name">glm-4.7-flash</div>
+            <div class="name">glm-5.1</div>
             <div class="by">Zhipu AI · 30B MoE · 19 GB</div>
             <span class="tag local">local · 32 GB RAM</span>
           </div>
@@ -856,7 +858,7 @@
             <td>24 GB</td>
           </tr>
           <tr>
-            <td><span class="mname">glm-4.7-flash</span></td>
+            <td><span class="mname">glm-5.1</span></td>
             <td><span class="bar" style="width:90px;"></span><span class="size">19 GB</span></td>
             <td>20 GB</td>
             <td>32 GB</td>
@@ -872,7 +874,7 @@
       <p class="lead" style="margin-top:36px;max-width:920px;font-size:16px;">
         <strong style="color:var(--ink);">המלצה לרוב המשתמשים:</strong>
         Mac עם 16GB unified memory מריץ את qwen3.5:9b בנוחות. לביצועים גבוהים יותר — gpt-oss:20b על 24GB.
-        ל-glm-4.7-flash דרושים לפחות 32GB.
+        ל-glm-5.1 דרושים לפחות 32GB.
       </p>
     </section>
 
@@ -901,7 +903,7 @@
           <p>נוסיף <code style="font-family:var(--mono);color:var(--coral);font-size:13px;">--model</code> לבחירת מודל. Ollama יוריד את המודל אוטומטית אם הוא לא קיים.</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">ollama</span> <span class="arg">launch claude --model glm-4.7-flash</span></span>
+            <span class="cmd"><span class="kw">ollama</span> <span class="arg">launch claude --model glm-5.1</span></span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -1110,7 +1112,7 @@
             <div class="desc">הפעלה עם מודל ברירת מחדל</div>
           </div>
           <div class="cli-row">
-            <div class="cmd"><span class="a">ollama</span> launch claude --model <span class="b">glm-4.7-flash</span></div>
+            <div class="cmd"><span class="a">ollama</span> launch claude --model <span class="b">glm-5.1</span></div>
             <div class="desc">בחירת מודל ספציפי</div>
           </div>
           <div class="cli-row">

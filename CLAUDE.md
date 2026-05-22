@@ -2,14 +2,7 @@
 
 Hebrew-language HTML presentations for the WinnerIT AI course. Each lesson is a single self-contained HTML file (no build step, no dependencies) intended to be opened directly in a browser and presented.
 
-## Files
-
-| File | Topic | Slides |
-|---|---|---|
-| `ollama.html` | Ollama — running language models locally + Ollama Cloud | 20 |
-| `installations.html` | Dev environment setup — GitHub, Git, Node.js, VS Code, Claude, Ollama, Lovable | 15 |
-
-More lessons will be added as sibling HTML files. Each file should follow the conventions below.
+Each `.html` file in the project root is a lesson (or `index.html`, the catalog). To see what files exist and what they cover, read the directory and the file titles — do not rely on any list here.
 
 ---
 
@@ -21,6 +14,8 @@ More lessons will be added as sibling HTML files. Each file should follow the co
 - **No lesson numbers** in chrome or content (the course's lesson numbering hasn't been finalized).
 - **No mentions of session duration / time** anywhere.
 - Use the **English word** for borrowed tech terms rather than Hebrew transliteration where the English word is more idiomatic — e.g., `offline` not `אופליין`.
+
+---
 
 ## Design System
 
@@ -60,37 +55,59 @@ Loaded via Google Fonts in one preconnect + stylesheet link.
 - **Italic accent inside titles:** wrap a key noun in `<em>` — it renders italic in coral. This is the deck's signature emphasis style.
 - **Step blocks** (numbered cards with copyable command): coral square badge with number, Hebrew title, paragraph, dark code line with copy icon at the bottom. Class `.step-block` inside `.steps-grid` (default 3 cols, `.two` variant for 2 cols).
 - **`.step-code`** (dark terminal block inside a step-block): for real shell commands the user types. Prompt `>_`, colored keywords via `.kw` / `.arg` spans, copy button.
-- **`.step-action`** (light cream block inside a step-block): for UI navigation steps — clicking, searching, opening menus. Uses `var(--bg-2)` background with a coral `→` arrow and plain text. Never use `.step-code` for UI actions; it looks like a terminal command and confuses students.
+- **`.step-action`** (light cream block inside a step-block): for UI navigation steps — clicking, searching, opening menus, typing into a chat box. Uses `var(--bg-2)` background with a coral `→` arrow and plain text. Never use `.step-code` for UI actions; it looks like a terminal command and confuses students.
 - **`.os-tag`** (small badge at top-right of step-block): platform indicator. Variants: `.os-tag.mac` (macOS only), `.os-tag.win` (Windows only), `.os-tag.both` (both). Text is uppercase mono in coral.
 - **Mini-cards** (3-up bullet cards): used on the "cloud problem" slide and "cloud intro" slide. Icon at top, title, short paragraph.
-- **Link banner:** dashed-border card pointing to an external page (`ollama.com/download`, `ollama.com/search`). Class `.link-banner` with `.lb-text` and `.lb-link`.
-- **Big corner numerals:** large translucent number in a slide corner. Class `.corner-num`. Decorative.
+- **Link banner:** dashed-border card pointing to an external page. Class `.link-banner` with `.lb-text` and `.lb-link`.
+- **No corner numerals.** The `.corner-num` class (large translucent background number) exists in older files but is **not used in new presentations**. Do not add corner numbers to new slides.
 - **Film grain + dot grid background.** Both subtle. Don't remove.
 
-## Slide Order (ollama.html, 20 slides)
+### Topbar (every presentation)
 
-| # | Eyebrow | Slide |
+Every presentation has an identical topbar pattern:
+
+```html
+<header class="topbar">
+  <div class="left">
+    <a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+  </div>
+  <div class="right">
+    <span>Presentation Title · Hebrew subtitle</span>
+    <span class="counter"><span id="cur">01</span> <span class="total">/ NN</span></span>
+  </div>
+</header>
+```
+
+- `.back-home` is a coral-bordered pill button (no SVG arrow, text only). It fills solid coral on hover.
+- The `/ NN` counter must match the actual number of `<section class="slide"` elements in the file. Count them — do not guess.
+- No "winnerit · ai course" text in the topbar — only the back button and the presentation title.
+
+---
+
+## Slide structure
+
+Every presentation follows the same arc:
+
+1. **Cover** — title + decorative SVG icons, no body copy.
+2. **Overview** — two info cards: prerequisites on one side, outcomes on the other.
+3. **Content slides** — use existing layout patterns (see below). Typically 5–15 slides.
+4. **Closing** — three Hebrew verb bullets (e.g., נוריד · נריץ · נבנה) matching the lesson's actions.
+
+### Layout patterns (use existing, don't invent new ones)
+
+| Pattern | Class | When |
 |---|---|---|
-| 01 | — | Cover (pure title + decorative SVG icons) |
-| 02 | `00 · overview` | Prerequisites + outcomes (two info cards) |
-| 03 | `01 · what is` | What is Ollama (statement + mini terminal) |
-| 04 | `02 · concept` | What is an LLM (definition + neural-net SVG) |
-| 05 | `03 · models` | Popular models grid (link to ollama.com/search) |
-| 06 | `04 · the problem` | Cloud AI — 3 problems (mini-cards) |
-| 07 | `05 · the shift` | Poster: מקומי. פרטי. חופשי. |
-| 08 | `06 · benefit 01` | Privacy |
-| 09 | `07 · benefit 02` | Free / no costs |
-| 10 | `08 · benefit 03` | Offline |
-| 11 | `09 · benefit 04` | Instant response |
-| 12 | `10 · comparison` | Local vs Cloud side-by-side |
-| 13 | `11 · install` | One install command + link |
-| 14 | `12 · quick start` | 3 step blocks: pull → run → chat |
-| 15 | `13 · cloud` | Ollama Cloud intro (3 mini-cards) |
-| 16 | `14 · cloud setup` | 3 step blocks: signup → signin → pull+run |
-| 17 | `15 · the rule` | Poster: RAM rule |
-| 18 | `16 · memory` | RAM size table |
-| 19 | `17 · cli` | Grouped CLI commands (models / service & cloud) |
-| 20 | — | Closing: נוריד · נריץ · נבנה |
+| Statement | `.slide-statement` | Defining a concept in one sentence + supporting detail |
+| Poster | `.slide-poster` | One-slide emphasis: big bold phrase, minimal copy |
+| Step blocks | `.steps-grid` + `.step-block` | Numbered how-to sequence (max 3 per row) |
+| Mini-cards | `.slide-three` / `.slide-four` | 3–4 parallel concepts with icons |
+| Side-by-side | `.slide-vs` | Comparing two things (e.g., local vs cloud) |
+| Info grid | `.slide-info` | Prerequisites / outcomes (cover slide 2) |
+| Why grid | `.slide-why` | Single benefit with icon, title, paragraph |
+| CLI table | `.slide-cli` | Grouped command reference |
+| Closing | `.slide-end` | Final verb-bullet slide |
+
+---
 
 ## Navigation (horizontal, RTL flow)
 
@@ -108,62 +125,69 @@ Loaded via Google Fonts in one preconnect + stylesheet link.
 
 > ⚠️ Don't change `direction: rtl` on `.slides` to `ltr` — that breaks the visual flow even though `scrollLeft` math becomes simpler. The current `scrollIntoView` approach handles RTL correctly without falling back to manual scrollLeft arithmetic.
 
-## Model versions (verify before each refresh)
+---
 
-The presentation references current LLM versions. These move fast — re-verify against `https://ollama.com/search` periodically.
+## index.html — Course Catalog
 
-**As of last update:**
+`index.html` is the course landing page, not a presentation. It lists all lessons grouped into module cards. Read `index.html` to see the current module structure — do not rely on a list here.
 
-- `gemma4` — used as the default example model in CLI, quick-start, and the what-is terminal demo.
-- Models slide lists 6 representative models:
-  - gemma4 (Google · קל ומהיר)
-  - qwen 3.5 (Alibaba · רב־לשוני)
-  - mistral-medium-3.5 (Mistral AI · צרפת)
-  - deepseek-v4-pro (DeepSeek · reasoning)
-  - glm-5.1 (Zhipu AI · קוד פתוח)
-  - gemini-3-flash-preview (Google · ענן בלבד)
-- Cloud-model example throughout uses `deepseek-v4-pro:cloud` (the `:cloud` tag pattern).
-- The slide also links to `ollama.com/search` so viewers can see the live catalog.
+### Module card structure
 
-If model names go stale, update them in: models slide, what-is terminal mock, quick-start (3 cards), cloud-setup step 3, CLI commands table, and the closing CTA.
+```html
+<div class="module-card" data-color="mustard|coral|forest|sky">
+  <div class="module-strip"></div>
+  <button class="module-toggle" aria-expanded="false" onclick="toggleModule(this)">
+    <div class="module-meta">
+      <div class="module-label">שיעור N · english-slug</div>
+      <div class="module-title">Hebrew title <span class="en">English Title</span></div>
+      <div class="module-desc">Short description.</div>
+      <div class="module-tags"><span class="tag">Tag</span> …</div>
+    </div>
+    <div class="module-chevron">…svg chevron…</div>
+  </button>
+  <div class="module-body">
+    <a class="lesson-row" href="./filename.html">
+      <div class="lesson-row-info">
+        <div class="lesson-row-name">Short name</div>
+        <div class="lesson-row-title">One-line description</div>
+      </div>
+      <div class="lesson-row-cta">פתיחה</div>
+    </a>
+  </div>
+</div>
+```
 
-## External Links
+- **Tags** must list only tools/topics actually covered by the lessons inside that module.
+- **`.lesson-row-cta`** is a coral-bordered pill button (text only, no SVG arrow). Fills on hover.
+- **"שיעורים בקרוב"** placeholder: use a `.soon-row` div inside `.module-body` for modules with no lessons yet.
 
-| What | Where |
-|---|---|
-| Install script (primary) | `https://ollama.com/install.sh` (run via `curl -fsSL https://ollama.com/install.sh \| sh`) |
-| Download page (all platforms) | `https://ollama.com/download` |
-| Model catalog | `https://ollama.com/search` |
-| Cloud signup | `https://ollama.com/signup` |
+### Flow module (ordered learning path)
+
+Add `class="flow-module"` to a module card when the lessons have a required reading order. This activates:
+- Numbered coral badges (`.lesson-row-step`) on each lesson row
+- A dashed vertical coral line connecting badge centers
+
+```html
+<div class="lesson-row-left">
+  <div class="lesson-row-step">1</div>
+  <div class="lesson-row-info">…</div>
+</div>
+```
+
+---
+
+## Model names in presentations
+
+Model names (e.g., in ollama.html, claude-code-ollama.html) go stale quickly. Before updating any presentation that shows model names: check `https://ollama.com/search` for the current list, then find and replace all occurrences in the file. Model names appear in: models grid, terminal demo, step blocks, CLI command table, RAM/memory notes.
+
+---
 
 ## Tech Notes
 
-- **Single HTML file**, no build step. Open `ollama.html` in any modern browser.
-- All decoration is inline SVG. No external images. (Title-slide decorations: llama, terminal, lock, CPU, sparkle, speech bubble.)
-- Copy-to-clipboard on step-blocks is implemented in the inline `<script>` at the bottom — uses the async Clipboard API, flashes the copy icon green for 1.4s on success.
-- Fonts are the only network request (Google Fonts CDN). The deck works offline once fonts are cached.
-
-## Slide Order (installations.html, 15 slides)
-
-No eyebrows. Slide numbers in comments reflect original numbering (some were merged).
-
-| # | Slide |
-|---|---|
-| 01 | Cover |
-| 02 | Overview — what we're installing and why |
-| 03 | GitHub — signup |
-| 04 | Git — install (macOS curl + Windows installer, combined) |
-| 05 | Git — configure (user name + email) |
-| 06 | Node.js — install (macOS .pkg / brew, Windows .msi, combined) |
-| 07 | VS Code Insiders — install |
-| 08 | Claude Extension — install in VS Code |
-| 09 | Claude Account — signup + Pro upgrade |
-| 10 | Claude Desktop — install |
-| 11 | Claude Code CLI — native install scripts (macOS curl / Windows PowerShell) |
-| 12 | Ollama — install (macOS curl / Windows PowerShell, combined) |
-| 13 | Ollama — pull & run (ollama pull + ollama run) |
-| 14 | Lovable — signup + first project |
-| 15 | Closing |
+- **Single HTML file**, no build step. Open any `.html` directly in a modern browser.
+- All decoration is inline SVG. No external images.
+- Copy-to-clipboard on step-blocks uses the async Clipboard API — flashes the copy icon green for 1.4s on success.
+- Fonts are the only network request (Google Fonts CDN). Decks work offline once fonts are cached.
 
 ---
 
@@ -173,9 +197,11 @@ No eyebrows. Slide numbers in comments reflect original numbering (some were mer
 - **Don't introduce new fonts** without a reason — the Frank Ruhl Libre / Heebo / JetBrains Mono trio is the deck's voice.
 - **Don't introduce dark mode or a second palette** — the cream + coral identity is intentional.
 - **Don't add Hebrew labels back into eyebrows.** The dual-language convention was removed.
+- **No corner numbers.** Don't add `.corner-num` to new slides. The pattern exists in older files but is deprecated.
 - **New slides** should use one of the existing layout patterns (statement, step-blocks, mini-cards, why-grid, poster, info-grid). Avoid one-off layouts.
-- **After adding/removing slides**, update the `/ N` counter in the topbar and verify the eyebrow numbering is sequential.
+- **After adding/removing slides**, update the `/ N` counter in the topbar. Count `<section class="slide"` elements in the file to get the correct number.
 - **Verify navigation** (← / →, edge zones, dots, wheel) still works after structural changes — the `IntersectionObserver` setup assumes all slides are direct children of `#slides`.
-- **Always test in a real browser** before declaring done — the design depends on the dot grid, film grain, font loading, and RTL behavior, none of which show up in static review.
-- **Split-layout overflow:** `split-layout` (content left + visual mockup right) overflows the viewport when the content side has 3+ stacked step-blocks. The wheel-scroll handler captures the scroll and navigates slides instead of scrolling content. Fix: remove `split-layout` and use a horizontal `steps-grid` (or `steps-grid two`) instead. Never use `split-layout` with more than 2 step-blocks on the content side.
-- **`.step-code` vs `.step-action`:** use `.step-code` only for actual shell commands. UI actions (opening a panel, clicking Install, navigating menus) must use `.step-action`. Putting UI steps in a dark terminal block confuses students into thinking they need to type something.
+- **Split-layout overflow:** `split-layout` (content left + visual mockup right) overflows the viewport when the content side has 3+ stacked step-blocks. Fix: use a horizontal `steps-grid` instead. Never use `split-layout` with more than 2 step-blocks on the content side.
+- **`.step-code` vs `.step-action`:** use `.step-code` only for actual shell commands. UI actions (opening a panel, clicking Install, navigating menus, typing into a chat box) must use `.step-action`. Putting UI steps in a dark terminal block confuses students into thinking they need to type something.
+- **Topbar back button:** always include `<a href="index.html" class="back-home">חזרה לכל השיעורים</a>` in every presentation topbar. No SVG arrow on the button — text only.
+- **index.html tags:** when adding a lesson to a module card, update the `module-tags` to include the new topic. Tags must reflect only what's actually covered.
