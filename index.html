@@ -333,12 +333,15 @@
 
   /* ─── SOON PLACEHOLDER ─── */
   .soon-row {
-    padding: 28px 32px;
+    padding: 16px 32px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
     color: var(--muted);
+    border-bottom: 1px solid var(--border-soft);
   }
+  .soon-row:last-child { border-bottom: none; }
   .soon-row .soon-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
@@ -690,22 +693,25 @@
         </div>
 
         <!-- ── LESSON 2: AI Agents ── -->
-        <div class="module-card" data-color="forest">
+        <!-- ── LESSON 2: AI at Work ── -->
+        <div class="module-card flow-module" data-color="forest">
           <div class="module-strip"></div>
           <button class="module-toggle" aria-expanded="false" onclick="toggleModule(this)">
             <div class="module-meta">
-              <div class="module-label">שיעור 2 · ai agents</div>
+              <div class="module-label">שיעור 2 · ai at work</div>
               <div class="module-title">
-                סוכני AI
-                <span class="en">AI Agents</span>
+                AI בעבודה האמיתית
+                <span class="en">AI at Work</span>
               </div>
               <div class="module-desc">
-                בונים סוכני AI אישיים — Gemini Gems לאוטומציה של משימות חוזרות.
+                Skills, Agents, בדיקות מבוססות PRD, בדיקות API לממשק המשתמש, וניהול משימות ב-Linear.
               </div>
               <div class="module-tags">
                 <span class="tag">Gemini Gems</span>
                 <span class="tag">Agents</span>
-                <span class="tag">Automation</span>
+                <span class="tag">Testing</span>
+                <span class="tag">API</span>
+                <span class="tag">Linear</span>
               </div>
             </div>
             <div class="module-chevron">
@@ -716,57 +722,54 @@
           </button>
           <div class="module-body">
             <a class="lesson-row" href="./gems.html">
-              <div class="lesson-row-info">
-                <div class="lesson-row-name">Gemini Gems</div>
-                <div class="lesson-row-title">סוכן AI אישי — הגדר פעם, השתמש תמיד</div>
+              <div class="lesson-row-left">
+                <div class="lesson-row-step">1</div>
+                <div class="lesson-row-info">
+                  <div class="lesson-row-name">Skills</div>
+                  <div class="lesson-row-title">Gemini Gems — סוכן AI אישי, הגדר פעם השתמש תמיד</div>
+                </div>
               </div>
               <div class="lesson-row-cta">פתיחה</div>
             </a>
-            <div class="soon-row">
-              <div class="soon-dot"></div>
-              <span>שיעורים נוספים בקרוב</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── MODULE 3: Agentic Automation ── -->
-        <div class="module-card" data-color="sky">
-          <div class="module-strip"></div>
-          <button class="module-toggle" aria-expanded="false" onclick="toggleModule(this)">
-            <div class="module-meta">
-              <div class="module-label">מודול 3 · agentic automation</div>
-              <div class="module-title">
-                אוטומציה עם סוכני AI
-                <span class="en">Agentic Automation</span>
-              </div>
-              <div class="module-desc">
-                סוכני AI שמתכננים, כותבים קוד ומנהלים משימות —
-                Claude Code CLI עם MCP servers לכל מערכת.
-              </div>
-              <div class="module-tags">
-                <span class="tag">Claude Code CLI</span>
-                <span class="tag">Playwright MCP</span>
-                <span class="tag">GitHub MCP</span>
-                <span class="tag">Linear MCP</span>
-              </div>
-            </div>
-            <div class="module-chevron">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
-            </div>
-          </button>
-          <div class="module-body">
             <a class="lesson-row" href="./agents.html">
-              <div class="lesson-row-info">
-                <div class="lesson-row-name">Agents</div>
-                <div class="lesson-row-title">סוכנים חכמים — AI שמתכנן ופועל בעולם האמיתי</div>
+              <div class="lesson-row-left">
+                <div class="lesson-row-step">2</div>
+                <div class="lesson-row-info">
+                  <div class="lesson-row-name">Agents</div>
+                  <div class="lesson-row-title">סוכנים חכמים — AI שמתכנן ופועל בעולם האמיתי</div>
+                </div>
               </div>
               <div class="lesson-row-cta">פתיחה</div>
             </a>
             <div class="soon-row">
-              <div class="soon-dot"></div>
-              <span>שיעורים נוספים בקרוב</span>
+              <div class="lesson-row-left">
+                <div class="lesson-row-step" style="opacity:0.35;">3</div>
+                <div>
+                  <div style="font-weight:700;color:var(--ink);font-size:17px;">Test Generator</div>
+                  <div style="font-size:15px;color:var(--ink-soft);">יצירת בדיקות אוטומטית מ-PRD — Agents, Gems ו-Skills בפעולה</div>
+                </div>
+              </div>
+              <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">בקרוב</span>
+            </div>
+            <div class="soon-row">
+              <div class="lesson-row-left">
+                <div class="lesson-row-step" style="opacity:0.35;">4</div>
+                <div>
+                  <div style="font-weight:700;color:var(--ink);font-size:17px;">API Testing</div>
+                  <div style="font-size:15px;color:var(--ink-soft);">בדיקות API לממשק המשתמש — Playwright ו-Claude Code</div>
+                </div>
+              </div>
+              <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">בקרוב</span>
+            </div>
+            <div class="soon-row">
+              <div class="lesson-row-left">
+                <div class="lesson-row-step" style="opacity:0.35;">5</div>
+                <div>
+                  <div style="font-weight:700;color:var(--ink);font-size:17px;">Linear</div>
+                  <div style="font-size:15px;color:var(--ink-soft);">ניהול טיקטים — המערכת, ה-flow ועבודה עם AI</div>
+                </div>
+              </div>
+              <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">בקרוב</span>
             </div>
           </div>
         </div>
