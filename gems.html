@@ -56,6 +56,12 @@
   .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
   .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
   .back-home:hover { background: var(--coral); color: #fff; }
+  .fs-btn {
+    border: 1.5px solid var(--border); background: transparent; border-radius: 6px;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--muted); transition: all 0.15s; padding: 0; flex-shrink: 0;
+  }
+  .fs-btn:hover { border-color: var(--coral); color: var(--coral); }
   .back-home svg { width: 12px; height: 12px; flex-shrink: 0; }
   .counter { color: var(--ink); font-weight: 500; }
   .counter .total { color: var(--muted); }
@@ -464,7 +470,12 @@
 <div class="frame">
 
   <header class="topbar">
-    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a></div>
+    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    <button class="fs-btn" id="btn-fs" aria-label="מסך מלא" title="מסך מלא">
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+      <svg class="icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="display:none"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
+    </button>
+  </div>
     <div class="right">
       <span>Gems · סוכן AI אישי</span>
       <span class="counter"><span id="cur">01</span> <span class="total">/ 11</span></span>
@@ -1065,6 +1076,25 @@
 
   update();
 })();
+
+  // Fullscreen toggle
+  (function(){
+    const btn = document.getElementById('btn-fs');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      const full = !!document.fullscreenElement;
+      btn.querySelector('.icon-expand').style.display = full ? 'none' : '';
+      btn.querySelector('.icon-compress').style.display = full ? '' : 'none';
+      btn.setAttribute('aria-label', full ? 'צא ממסך מלא' : 'מסך מלא');
+    });
+  })();
 </script>
 </body>
 </html>

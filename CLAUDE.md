@@ -70,6 +70,10 @@ Every presentation has an identical topbar pattern:
 <header class="topbar">
   <div class="left">
     <a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    <button class="fs-btn" id="btn-fs" aria-label="מסך מלא" title="מסך מלא">
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+      <svg class="icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="display:none"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
+    </button>
   </div>
   <div class="right">
     <span>Presentation Title · Hebrew subtitle</span>
@@ -79,8 +83,31 @@ Every presentation has an identical topbar pattern:
 ```
 
 - `.back-home` is a coral-bordered pill button (no SVG arrow, text only). It fills solid coral on hover.
+- `.fs-btn` is the fullscreen toggle button — a 32×32 icon button next to the back button. Uses two SVG icons: `.icon-expand` (enter fullscreen) and `.icon-compress` (exit fullscreen), toggled via JS on the `fullscreenchange` event. CSS:
+  ```css
+  .fs-btn {
+    border: 1.5px solid var(--border); background: transparent; border-radius: 6px;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--muted); transition: all 0.15s; padding: 0; flex-shrink: 0;
+  }
+  .fs-btn:hover { border-color: var(--coral); color: var(--coral); }
+  ```
+  JS (add inside the existing IIFE script):
+  ```js
+  const btn = document.getElementById('btn-fs');
+  btn.addEventListener('click', () => {
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen(); }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    const full = !!document.fullscreenElement;
+    btn.querySelector('.icon-expand').style.display = full ? 'none' : '';
+    btn.querySelector('.icon-compress').style.display = full ? '' : 'none';
+    btn.setAttribute('aria-label', full ? 'צא ממסך מלא' : 'מסך מלא');
+  });
+  ```
 - The `/ NN` counter must match the actual number of `<section class="slide"` elements in the file. Count them — do not guess.
-- No "winnerit · ai course" text in the topbar — only the back button and the presentation title.
+- No "winnerit · ai course" text in the topbar — only the back button, fullscreen button, and the presentation title.
 
 ---
 
@@ -204,4 +231,5 @@ Model names (e.g., in ollama.html, claude-code-ollama.html) go stale quickly. Be
 - **Split-layout overflow:** `split-layout` (content left + visual mockup right) overflows the viewport when the content side has 3+ stacked step-blocks. Fix: use a horizontal `steps-grid` instead. Never use `split-layout` with more than 2 step-blocks on the content side.
 - **`.step-code` vs `.step-action`:** use `.step-code` only for actual shell commands. UI actions (opening a panel, clicking Install, navigating menus, typing into a chat box) must use `.step-action`. Putting UI steps in a dark terminal block confuses students into thinking they need to type something.
 - **Topbar back button:** always include `<a href="index.html" class="back-home">חזרה לכל השיעורים</a>` in every presentation topbar. No SVG arrow on the button — text only.
+- **Fullscreen button:** always include the `.fs-btn` button with `id="btn-fs"` next to the back button in `.left`. See the Topbar section above for the exact HTML, CSS, and JS snippet.
 - **index.html tags:** when adding a lesson to a module card, update the `module-tags` to include the new topic. Tags must reflect only what's actually covered.

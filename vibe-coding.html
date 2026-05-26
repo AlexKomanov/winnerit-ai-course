@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skills · הרחבת Claude Code</title>
+<title>Vibe Coding · בניית מוצרים עם AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -112,11 +112,6 @@
     font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em;
     color: var(--muted); text-transform: uppercase;
   }
-  .corner-num {
-    position: absolute; bottom: 5vh; inset-inline-end: 8vw;
-    font-family: var(--display); font-weight: 900; font-size: 200px;
-    line-height: 1; color: var(--coral); opacity: 0.07; direction: ltr; pointer-events: none;
-  }
 
   /* ─── COVER ─── */
   .slide-cover { align-items: center; justify-content: center; position: relative; }
@@ -146,10 +141,9 @@
   }
   .deco { position: absolute; pointer-events: none; z-index: 1; opacity: 0.9; }
   .deco-1 { top: 12%; right: 10%; width: 88px; color: var(--coral); }
-  .deco-2 { top: 18%; left: 12%; width: 60px; color: var(--forest); }
-  .deco-3 { bottom: 20%; left: 16%; width: 52px; color: var(--mustard); }
-  .deco-4 { bottom: 18%; right: 13%; width: 54px; color: var(--sky); }
-  .deco-5 { top: 58%; right: 7%; width: 28px; color: var(--coral); opacity: 0.6; }
+  .deco-2 { top: 18%; left: 12%; width: 60px; color: var(--sky); }
+  .deco-3 { bottom: 20%; left: 16%; width: 52px; color: var(--forest); }
+  .deco-4 { bottom: 18%; right: 13%; width: 54px; color: var(--mustard); }
 
   /* ─── INFO CARDS ─── */
   .slide-info { justify-content: center; }
@@ -180,30 +174,6 @@
   .slide-statement { justify-content: center; }
   .slide-statement .body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 
-  /* ─── MINI CARDS (4-up) ─── */
-  .slide-four { justify-content: center; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 52px; }
-  .mini-card { border: 1px solid var(--border); padding: 38px 34px; background: var(--bg-3); }
-  .mini-card .num {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--muted);
-    margin-bottom: 20px; display: flex; align-items: center; gap: 8px; direction: ltr;
-  }
-  .mini-card .num .nb {
-    width: 22px; height: 22px; border-radius: 4px; background: rgba(224,78,54,0.1);
-    color: var(--coral); display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 12px;
-  }
-  .mini-card h4 { font-family: var(--display); font-size: 30px; font-weight: 900; margin-bottom: 6px; line-height: 1.05; color: var(--ink); }
-  .mini-card .en-label {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 16px; direction: ltr;
-  }
-  .mini-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
-  .mini-card.p1 { border-top: 3px solid var(--coral); }
-  .mini-card.p2 { border-top: 3px solid var(--forest); }
-  .mini-card.p3 { border-top: 3px solid var(--mustard); }
-  .mini-card.p4 { border-top: 3px solid var(--sky); }
-
   /* ─── POSTER ─── */
   .slide-poster { justify-content: center; align-items: stretch; }
   .slide-poster h1.mega {
@@ -218,38 +188,38 @@
     font-weight: 500; color: var(--ink-soft); margin-top: 36px; max-width: 680px;
   }
 
-  /* ─── STEP BLOCKS ─── */
-  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
-  .step-block {
-    border: 1px solid var(--border); background: var(--bg-3); padding: 26px 24px 22px;
-    display: flex; flex-direction: column;
-    transition: border-color 0.25s, transform 0.25s;
+  /* ─── MINI CARDS (3-up) ─── */
+  .slide-three { justify-content: center; }
+  .grid-3 {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px;
   }
-  .step-block:hover { border-color: var(--coral); transform: translateY(-3px); }
-  .step-num { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; direction: ltr; }
-  .step-num .badge {
-    width: 26px; height: 26px; border-radius: 6px; background: rgba(224,78,54,0.12);
-    color: var(--coral); display: inline-flex; align-items: center; justify-content: center;
-    font-family: var(--mono); font-weight: 700; font-size: 13px;
+  .mini-card {
+    border: 1px solid var(--border); padding: 32px 28px; background: var(--bg-3); position: relative;
   }
-  .step-num .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
-  .step-block h4 { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
-  .step-block p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; flex: 1; margin-bottom: 18px; }
-  .step-code {
-    background: var(--ink); color: #F2EDE3; border-radius: 6px; padding: 10px 14px;
-    font-family: var(--mono); font-size: 12px; direction: ltr; text-align: left;
-    display: flex; align-items: center; gap: 8px;
+  .mini-card .ico { width: 36px; height: 36px; color: var(--coral); margin-bottom: 24px; }
+  .mini-card h4 { font-family: var(--display); font-size: 28px; font-weight: 700; margin-bottom: 8px; line-height: 1.1; color: var(--ink); }
+  .mini-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+  .mini-card.c1 { border-top: 3px solid var(--coral); }
+  .mini-card.c2 { border-top: 3px solid var(--forest); }
+  .mini-card.c3 { border-top: 3px solid var(--mustard); }
+  .mini-card .step-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 8px; background: rgba(224,78,54,0.1);
+    color: var(--coral); font-family: var(--mono); font-weight: 700; font-size: 14px;
+    margin-bottom: 20px;
   }
-  .step-code .prompt { color: rgba(242,237,227,0.38); user-select: none; flex-shrink: 0; }
-  .step-code .cmd { flex: 1; color: #9BD3A8; white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
-  .step-code .cmd::-webkit-scrollbar { display: none; }
-  .step-code .kw { color: #E04E36; }
-  .step-action {
-    background: var(--bg-2); border: 1px solid var(--border-soft); border-radius: 6px;
-    padding: 10px 14px; font-size: 13px; color: var(--ink-soft);
-    display: flex; align-items: flex-start; gap: 10px;
-  }
-  .step-action .arr { color: var(--coral); font-weight: 700; flex-shrink: 0; }
+
+  /* ─── MINI CARDS (4-up) ─── */
+  .slide-four { justify-content: center; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 52px; }
+  .mini-card-4 { border: 1px solid var(--border); padding: 30px 24px; background: var(--bg-3); }
+  .mini-card-4 .ico { width: 32px; height: 32px; margin-bottom: 20px; }
+  .mini-card-4 h4 { font-family: var(--display); font-size: 24px; font-weight: 700; margin-bottom: 8px; line-height: 1.1; color: var(--ink); }
+  .mini-card-4 p { font-size: 13px; color: var(--ink-soft); line-height: 1.55; }
+  .mini-card-4.p1 { border-top: 3px solid var(--coral); }
+  .mini-card-4.p2 { border-top: 3px solid var(--forest); }
+  .mini-card-4.p3 { border-top: 3px solid var(--mustard); }
+  .mini-card-4.p4 { border-top: 3px solid var(--sky); }
 
   /* ─── CLOSING ─── */
   .slide-end {
@@ -312,8 +282,7 @@
   @media (max-width: 900px) {
     .slide { padding: 4vh 5vw; }
     .info-grid { grid-template-columns: 1fr; }
-    .grid-4 { grid-template-columns: 1fr 1fr; }
-    .steps-grid { grid-template-columns: 1fr; }
+    .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .slide-statement .body-grid { grid-template-columns: 1fr; }
     .bottombar .hint { display: none; }
   }
@@ -330,8 +299,8 @@
     </button>
   </div>
     <div class="right">
-      <span>Skills · הרחבת Claude Code</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
+      <span>Vibe Coding · בניית מוצרים עם AI</span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 10</span></span>
     </div>
   </header>
 
@@ -339,43 +308,21 @@
 
     <!-- ─── 01 · COVER ─── -->
     <section class="slide slide-cover">
-      <div class="cover-mark"><span class="pin"></span> WinnerIT · AI Course</div>
+      <div class="cover-mark"><span class="pin"></span>vibe coding</div>
 
-      <!-- Puzzle piece -->
-      <svg class="deco deco-1" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
-        <path d="M20 20 L20 42 C14 42 8 46 8 52 C8 58 14 62 20 62 L20 80 L80 80 L80 62 C86 62 92 58 92 52 C92 46 86 42 80 42 L80 20 L58 20 C58 14 54 8 50 8 C46 8 42 14 42 20 Z"/>
-      </svg>
-
-      <!-- Terminal -->
-      <svg class="deco deco-2" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect x="4" y="8" width="52" height="44" rx="4"/>
-        <polyline points="14 24 22 30 14 36"/>
-        <line x1="24" y1="36" x2="46" y2="36"/>
-      </svg>
-
-      <!-- Gear -->
-      <svg class="deco deco-3" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="28" cy="28" r="8"/>
-        <path d="M28 6 L30 14 C32 14 34 15 36 16 L43 11 L45 13 L40 20 C41 22 42 24 42 26 L50 28 L50 30 L42 32 C42 34 41 36 40 38 L45 45 L43 47 L36 42 C34 43 32 44 30 44 L28 52 L26 52 L24 44 C22 44 20 43 18 42 L11 47 L9 45 L14 38 C13 36 12 34 12 32 L4 30 L4 28 L12 26 C12 24 13 22 14 20 L9 13 L11 11 L18 16 C20 15 22 14 24 14 Z"/>
-      </svg>
-
-      <!-- Star -->
-      <svg class="deco deco-4" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
-        <path d="M28 6 L33 20 L48 20 L36 29 L41 44 L28 35 L15 44 L20 29 L8 20 L23 20 Z"/>
-      </svg>
-
-      <!-- Sparkle -->
-      <svg class="deco deco-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-        <path d="M12 2L14.4 9.6 22 12 14.4 14.4 12 22 9.6 14.4 2 12 9.6 9.6z"/>
-      </svg>
+      <!-- decorative icons -->
+      <svg class="deco deco-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <svg class="deco deco-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <svg class="deco deco-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <svg class="deco deco-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
 
       <div class="cover-center">
-        <h1 class="cover-title"><span class="l">S</span>KILLS</h1>
+        <h1 class="cover-title">Vibe<br><span class="l">Coding</span></h1>
         <div class="cover-rule"></div>
-        <div class="cover-sub">הרחבת Claude Code בכישורים מותאמים</div>
+        <p class="cover-sub">לתאר, לקבל, לבנות — בלי לכתוב שורת קוד אחת</p>
       </div>
 
-      <div class="cover-cta"><span class="arr">←</span> להתחיל</div>
+      <div class="cover-cta"><span class="arr">→</span> לחץ ← להתחלה</div>
     </section>
 
     <!-- ─── 02 · OVERVIEW ─── -->
@@ -392,11 +339,11 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>יש לנו Claude Code CLI מותקן</span>
+              <span>הכרנו את <strong>GitHub</strong>, <strong>Git</strong> ו-<strong>Claude Code</strong></span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>אנחנו יודעים להשתמש ב-slash commands</span>
+              <span>הבנו שאפשר לתת ל-AI לכתוב <strong>קוד</strong> בשבילנו</span>
             </li>
           </ul>
         </div>
@@ -410,19 +357,15 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>הבנה מה זה <strong>Skills</strong> ב-Claude Code</span>
+              <span>הבנה מה זה <strong>vibe coding</strong> ולמה זה שינה הכל</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>יכולת <strong>להפעיל</strong> skills קיימים</span>
+              <span>הכרת ה-<strong>loop</strong> של בניית מוצר עם AI</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>יכולת <strong>ליצור</strong> skill מותאם אישית</span>
-            </li>
-            <li>
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>workflow חכם ויעיל יותר</span>
+              <span>מתי <strong>להשתמש</strong> בגישה הזו ומתי לא</span>
             </li>
           </ul>
         </div>
@@ -430,203 +373,185 @@
       </div>
     </section>
 
-    <!-- ─── 03 · WHAT ARE SKILLS ─── -->
+    <!-- ─── 03 · WHAT IS VIBE CODING ─── -->
     <section class="slide slide-statement">
       <div class="body-grid">
         <div>
-          <h2 class="title">מה זה <em>Skill</em>?</h2>
+          <h2 class="title">מה זה <em>vibe coding</em>?</h2>
+          <p class="lead" style="margin-top:32px;">
+            מושג שטבע <strong>Andrej Karpathy</strong> ב-2025: במקום לכתוב קוד — אנחנו <em>מתארים</em> מה אנחנו רוצים. ה-AI כותב, אנחנו בודקים וממשיכים הלאה. הקוד עצמו כמעט לא מעניין אותנו.
+          </p>
           <p class="lead" style="margin-top:28px;">
-            Skill הוא קובץ Markdown עם הוראות מובנות שמנחות את Claude Code למשימות ספציפיות —
-            בדיקות, debugging, code review, ועוד.
+            זה לא קיצור דרך — זו דרך עבודה שלמה. כלים כמו <strong>Lovable</strong>, <strong>Claude Code</strong> ו-<strong>Cursor</strong> הפכו את זה לאפשרי לכולם.
           </p>
-          <p class="lead" style="margin-top:18px;">
-            במקום לכתוב בכל פעם את אותן ההנחיות מחדש, מגדירים skill אחד ומפעילים אותו עם
-            <em style="color:var(--coral);">/skill-name</em>.
-          </p>
-          <p class="caption" style="margin-top:32px;">reusable · composable · team-shareable</p>
         </div>
-
-        <!-- Skill flow diagram -->
-        <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg"
-             style="width:100%;max-width:520px;align-self:center;direction:ltr" aria-label="Skill workflow diagram">
-          <!-- Skill File box -->
-          <rect x="10" y="80" width="110" height="60" rx="4" fill="#FBF8F1" stroke="#E04E36" stroke-width="1.5"/>
-          <text x="65" y="103" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#E04E36" letter-spacing="1.5">SKILL FILE</text>
-          <text x="65" y="119" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#8B8A82">.claude/my-skill.md</text>
-          <text x="65" y="133" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">instructions + steps</text>
-
-          <!-- Arrow 1 -->
-          <line x1="122" y1="110" x2="148" y2="110" stroke="#D8CCB5" stroke-width="1.5"/>
-          <polyline points="144,106 150,110 144,114" stroke="#D8CCB5" stroke-width="1.5" fill="none"/>
-
-          <!-- Claude Code box -->
-          <rect x="150" y="80" width="110" height="60" rx="4" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.5"/>
-          <text x="205" y="103" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#2F6B49" letter-spacing="1.5">CLAUDE CODE</text>
-          <text x="205" y="120" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#4D556C">reads &amp; follows</text>
-          <text x="205" y="133" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#4D556C">the instructions</text>
-
-          <!-- Arrow 2 -->
-          <line x1="262" y1="110" x2="288" y2="110" stroke="#D8CCB5" stroke-width="1.5"/>
-          <polyline points="284,106 290,110 284,114" stroke="#D8CCB5" stroke-width="1.5" fill="none"/>
-
-          <!-- Output box -->
-          <rect x="290" y="80" width="22" height="60" rx="4" fill="rgba(226,169,59,0.12)" stroke="#E2A93B" stroke-width="1.5"/>
-          <text x="301" y="115" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#E2A93B" writing-mode="vertical-rl" letter-spacing="1">WORKFLOW</text>
-
-          <!-- Invoke label -->
-          <text x="65" y="60" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8B8A82" letter-spacing="1">/my-skill</text>
-          <line x1="65" y1="64" x2="65" y2="78" stroke="#E04E36" stroke-width="1" stroke-dasharray="3,2"/>
-        </svg>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div style="border:1px solid var(--border);border-top:3px solid var(--coral);background:var(--bg-3);padding:28px 24px;">
+            <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;direction:ltr;">andrej karpathy · 2025</p>
+            <p style="font-size:16px;color:var(--ink-soft);line-height:1.6;font-style:italic;">"I mostly just vibe code now... I don't really read the code, I just describe it."</p>
+          </div>
+          <div style="border:1px solid var(--border-soft);background:var(--bg-2);padding:24px;border-radius:2px;">
+            <p style="font-size:14px;color:var(--ink-soft);line-height:1.6;">הרעיון: ה-AI הוא המפתח. אנחנו אחראים על <strong style="color:var(--ink);">הכיוון, הבדיקה והאיטרציה</strong> — לא על כתיבת השורות.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ─── 04 · ANATOMY ─── -->
+    <!-- ─── 04 · THE LOOP POSTER ─── -->
+    <section class="slide slide-poster">
+      <h1 class="mega"><span class="a">תאר.</span><br><span class="b">קבל.</span><br><span class="c">בדוק.</span></h1>
+      <p class="sub">לא נכתוב קוד — נכוון, נבדוק, ונחזור על התהליך.</p>
+    </section>
+
+    <!-- ─── 05 · THE LOOP ─── -->
+    <section class="slide slide-three">
+      <h2 class="title">ה-<em>loop</em> של vibe coding</h2>
+      <div class="grid-3">
+
+        <div class="mini-card c1">
+          <div class="step-badge">1</div>
+          <h4>תאר בשפה טבעית</h4>
+          <p>נכתוב מה נרצה לבנות — בעברית או באנגלית, בפרוזה רגילה. ככל שנהיה ספציפיים יותר, כך ה-AI יבין טוב יותר.</p>
+        </div>
+
+        <div class="mini-card c2">
+          <div class="step-badge" style="background:rgba(47,107,73,0.1);color:var(--forest);">2</div>
+          <h4>ה-AI כותב קוד</h4>
+          <p>הכלי מייצר קוד עובד — בדרך כלל תוך שניות. לא חייבים לקרוא כל שורה. מספיק לבדוק שהפלט נראה כמו שציפינו.</p>
+        </div>
+
+        <div class="mini-card c3">
+          <div class="step-badge" style="background:rgba(226,169,59,0.1);color:var(--mustard);">3</div>
+          <h4>נבדוק ונמשיך</h4>
+          <p>נפעיל את הפיצ'ר, נבדוק שהוא עובד, ונחזור לתאר את השלב הבא. כשמשהו לא עובד — נתאר את הבעיה ונבקש תיקון.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 06 · TOOLS ─── -->
     <section class="slide slide-four">
-      <h2 class="title">מרכיבי ה<em>Skill</em></h2>
+      <h2 class="title">הכלים <em>הפופולריים</em></h2>
       <div class="grid-4">
 
-        <div class="mini-card p1">
-          <div class="num"><span class="nb">1</span> name</div>
-          <h4>שם</h4>
-          <div class="en-label">Slug</div>
-          <p>שם קצר ב-kebab-case — זה מה שמקלידים ב-<code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">/skill-name</code>. מזהה ייחודי בתוך הפרויקט.</p>
+        <div class="mini-card-4 p1">
+          <svg class="ico" style="color:var(--coral);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+          <h4>Lovable</h4>
+          <p>מתארים אפליקציה בטקסט — מקבלים React + Supabase מוכן לפריסה. אין צורך בסביבת פיתוח.</p>
         </div>
 
-        <div class="mini-card p2">
-          <div class="num"><span class="nb">2</span> trigger</div>
-          <h4>טריגר</h4>
-          <div class="en-label">When to Use</div>
-          <p>מתי להפעיל את ה-Skill — תנאים, קונטקסט, או סיטואציות שבהן הוא רלוונטי.</p>
+        <div class="mini-card-4 p2">
+          <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          <h4>Base44</h4>
+          <p>כלי ישראלי לבניית מוצרים דיגיטליים עם AI. ממשק פשוט, מתמקד בהפיכת רעיונות למוצרים עובדים.</p>
         </div>
 
-        <div class="mini-card p3">
-          <div class="num"><span class="nb">3</span> description</div>
-          <h4>תיאור</h4>
-          <div class="en-label">Description</div>
-          <p>משפט אחד שמסביר מה ה-Skill עושה — עוזר ל-AI להחליט מתי להפעיל אוטומטית.</p>
+        <div class="mini-card-4 p3">
+          <svg class="ico" style="color:var(--mustard);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <h4>Claude Code</h4>
+          <p>AI בטרמינל. עובד על codebase קיים, מבין את כל הפרויקט, מריץ פקודות ומתקן באגים.</p>
         </div>
 
-        <div class="mini-card p4">
-          <div class="num"><span class="nb">4</span> body</div>
-          <h4>גוף</h4>
-          <div class="en-label">Instructions</div>
-          <p>ההוראות עצמן — תהליך, checklist, דוגמאות. ה-AI עוקב אחריהן צעד אחר צעד.</p>
+        <div class="mini-card-4 p4">
+          <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+          <h4>OpenAI Codex</h4>
+          <p>סוכן הקידוד של OpenAI. עובד בענן עם גישה לטרמינל, מריץ קוד, בודק ומתקן — בלי לפתוח IDE.</p>
+        </div>
+
+      </div>
+      <p style="margin-top:32px;font-size:13px;color:var(--muted);font-family:var(--mono);letter-spacing:0.04em;">✦ &nbsp;עוד כלים: Cursor · Replit Agent · Bolt · v0 · Windsurf</p>
+    </section>
+
+    <!-- ─── 07 · WHAT IT UNLOCKS ─── -->
+
+    <section class="slide slide-four">
+      <h2 class="title">מה זה <em>פותח</em></h2>
+      <div class="grid-4">
+
+        <div class="mini-card-4 p1">
+          <svg class="ico" style="color:var(--coral);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <h4>לכולם</h4>
+          <p>מעצבים, מנהלי מוצר, יזמים — כולם יכולים לבנות. אין צורך ברקע בפיתוח.</p>
+        </div>
+
+        <div class="mini-card-4 p2">
+          <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h4>מהיר</h4>
+          <p>מרעיון ל-MVP בשעות. מה שלקח שבועות — עכשיו לוקח יום.</p>
+        </div>
+
+        <div class="mini-card-4 p3">
+          <svg class="ico" style="color:var(--mustard);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <h4>ממוקד</h4>
+          <p>במקום להתמקד בסינטקס ובטכניקה — נתמקד במה שמשנה: חוויה, לוגיקה, ערך.</p>
+        </div>
+
+        <div class="mini-card-4 p4">
+          <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          <h4>איטרטיבי</h4>
+          <p>נבנה, נבדוק, נשנה כיוון — בקלות. הלולאה קצרה מספיק כדי לנסות הרבה רעיונות.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 05 · POSTER ─── -->
-    <section class="slide slide-poster">
-      <h1 class="mega">
-        <span class="a">הגדר.</span><br>
-        <span class="b">הפעל.</span><br>
-        <em style="color:var(--mustard);font-style:italic;font-weight:500;">חסוך.</em>
-      </h1>
-      <div class="sub">
-        Skill שנכתב פעם אחת יכול לשפר כל session — לבד, לצוות, לכל פרויקט.
-      </div>
-    </section>
+    <!-- ─── 07 · WHEN TO USE ─── -->
+    <section class="slide slide-three">
+      <h2 class="title">מתי <em>כן</em> ומתי <em>לא</em></h2>
+      <div class="grid-3">
 
-    <!-- ─── 06 · USING SKILLS ─── -->
-    <section class="slide">
-      <h2 class="title">משתמשים ב<em>Skill</em></h2>
-      <div class="steps-grid">
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">1</span>
-            <span class="lbl">find</span>
-          </div>
-          <h4>מגלים skills זמינים</h4>
-          <p>בכל session ניתן לראות אילו skills מוגדרים בפרויקט — ב-CLAUDE.md או בתיקיית <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">.claude/</code>.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            /help — רשימת הפקודות הזמינות
-          </div>
+        <div class="mini-card c1">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+          <h4>אידיאלי</h4>
+          <p>פרוטוטייפים, כלים פנימיים, אפליקציות צד, MVP, אוטומציות אישיות, דאשבורדים. כל מקום שצריך לזוז מהר.</p>
         </div>
 
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">2</span>
-            <span class="lbl">invoke</span>
-          </div>
-          <h4>מפעילים את ה-Skill</h4>
-          <p>מקלידים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">/</code> ואז שם ה-Skill. Claude Code טוען את ההוראות ומתחיל לפעול לפיהן.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            /code-review — מפעיל skill לבדיקת קוד
-          </div>
+        <div class="mini-card c2">
+          <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <h4>בזהירות</h4>
+          <p>מערכות production קריטיות, קוד שמישהו אחר צריך לתחזק, לוגיקה עסקית מורכבת — כאן צריך לקרוא ולהבין.</p>
         </div>
 
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">3</span>
-            <span class="lbl">follow</span>
-          </div>
-          <h4>עוקבים אחרי התהליך</h4>
-          <p>ה-Skill מנחה את Claude Code — הוא עשוי לשאול שאלות, להריץ פקודות, ולספק checklist ברור.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Claude Code עוקב אחרי ה-checklist
-          </div>
+        <div class="mini-card c3">
+          <svg class="ico" style="color:var(--mustard);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h4>הכלל</h4>
+          <p>ככל שהסיכון גבוה יותר — נצטרך להבין יותר. Vibe coding מצוין לחקירה מהירה, פחות לתשתיות.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 07 · CREATING A SKILL ─── -->
-    <section class="slide">
-      <h2 class="title">יוצרים <em>Skill</em> חדש</h2>
-      <div class="steps-grid">
+    <!-- ─── 08 · TIPS ─── -->
+    <section class="slide slide-three">
+      <h2 class="title">טיפים <em>לשיטה</em></h2>
+      <div class="grid-3">
 
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">1</span>
-            <span class="lbl">create</span>
-          </div>
-          <h4>יוצרים קובץ</h4>
-          <p>יוצרים קובץ <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">.md</code> בתיקיית <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">.claude/</code> בפרויקט. שם הקובץ הוא שם ה-Skill.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd">mkdir -p .claude &amp;&amp; touch .claude/my-skill.md</span>
-          </div>
+        <div class="mini-card c1">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <h4>לתאר בדיוק</h4>
+          <p>ככל שנתאר את הבעיה בצורה ברורה יותר — הפלט יהיה טוב יותר. הקפידו על הקשר, דוגמאות ומגבלות.</p>
         </div>
 
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">2</span>
-            <span class="lbl">define</span>
-          </div>
-          <h4>כותבים את ה-Skill</h4>
-          <p>מוסיפים frontmatter עם <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">name</code>, <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">description</code>, ו-<code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">when_to_use</code> — ואז את גוף ההוראות ב-Markdown.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            frontmatter + הוראות מפורטות ב-Markdown
-          </div>
+        <div class="mini-card c2">
+          <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          <h4>לאיטרציות קצרות</h4>
+          <p>עדיף לבקש צעד קטן, לבדוק, ולמשיך — מאשר לבנות הכל בבקשה אחת גדולה שקשה לתקן.</p>
         </div>
 
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">3</span>
-            <span class="lbl">test</span>
-          </div>
-          <h4>מנסים ומשפרים</h4>
-          <p>מפעילים את ה-Skill ב-Claude Code ובודקים שהוא עושה מה שרצינו. מעדכנים את הקובץ לפי הצורך.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            /my-skill — מריצים ובודקים
-          </div>
+        <div class="mini-card c3">
+          <svg class="ico" style="color:var(--mustard);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <h4>לבדוק תמיד</h4>
+          <p>ה-AI לא תמיד צודק. נפעיל את הקוד, נבדוק edge cases, ואם משהו לא עובד — נתאר את הבאג ונבקש תיקון.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 08 · CLOSING ─── -->
+    <!-- ─── 09 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
-        <h1>נגדיר<span style="color:var(--border)">.</span><br><em>נפעיל</em><span style="color:var(--border)">.</span><br>נחסוך<span style="color:var(--border)">.</span></h1>
-        <div class="sig">winnerit · ai course · <em>skills</em></div>
+        <h1>נתאר<span style="color:var(--border)">.</span><br><em>נקבל</em><span style="color:var(--border)">.</span><br>נבנה<span style="color:var(--border)">.</span></h1>
+        <div class="sig">winnerit · ai course · <em>vibe coding</em></div>
       </div>
     </section>
 

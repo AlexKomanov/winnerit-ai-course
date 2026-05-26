@@ -55,6 +55,12 @@
   .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
   .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
   .back-home:hover { background: var(--coral); color: #fff; }
+  .fs-btn {
+    border: 1.5px solid var(--border); background: transparent; border-radius: 6px;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--muted); transition: all 0.15s; padding: 0; flex-shrink: 0;
+  }
+  .fs-btn:hover { border-color: var(--coral); color: var(--coral); }
   .counter { color: var(--ink); font-weight: 500; }
   .counter .total { color: var(--muted); }
 
@@ -99,7 +105,7 @@
   }
   h2.title em { font-style: italic; font-weight: 500; color: var(--coral); }
   p.lead {
-    font-size: clamp(17px, 1.45vw, 23px); line-height: 1.55;
+    font-size: clamp(20px, 1.7vw, 27px); line-height: 1.55;
     color: var(--ink-soft); font-weight: 300; max-width: 700px;
   }
   p.caption {
@@ -157,7 +163,7 @@
   .info-card ul { list-style: none; }
   .info-card ul li {
     padding: 13px 0; border-bottom: 1px dashed var(--border-soft);
-    color: var(--ink-soft); font-size: 15px; display: flex; gap: 14px; align-items: flex-start;
+    color: var(--ink-soft); font-size: 17px; display: flex; gap: 14px; align-items: flex-start;
   }
   .info-card ul li:last-child { border-bottom: none; }
   .info-card ul li .ic { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
@@ -187,7 +193,7 @@
     font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
     text-transform: uppercase; color: var(--muted); margin-bottom: 16px; direction: ltr;
   }
-  .mini-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+  .mini-card p { font-size: 16px; color: var(--ink-soft); line-height: 1.55; }
   .mini-card.p1 { border-top: 3px solid var(--coral); }
   .mini-card.p2 { border-top: 3px solid var(--forest); }
   .mini-card.p3 { border-top: 3px solid var(--mustard); }
@@ -223,7 +229,7 @@
   }
   .step-num .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
   .step-block h4 { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
-  .step-block p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; flex: 1; margin-bottom: 18px; }
+  .step-block p { font-size: 16px; color: var(--ink-soft); line-height: 1.55; flex: 1; margin-bottom: 18px; }
   .step-code {
     background: var(--ink); color: #F2EDE3; border-radius: 6px; padding: 10px 14px;
     font-family: var(--mono); font-size: 12px; direction: ltr; text-align: left;
@@ -312,7 +318,12 @@
 <div class="frame">
 
   <header class="topbar">
-    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a></div>
+    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    <button class="fs-btn" id="btn-fs" aria-label="מסך מלא" title="מסך מלא">
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+      <svg class="icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="display:none"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
+    </button>
+  </div>
     <div class="right">
       <span>GitHub · ניהול קוד ושיתוף פעולה</span>
       <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
@@ -436,7 +447,6 @@
             כל שינוי, כל גרסה, כל שיתוף —
             <em style="color:var(--coral);">נשמרים ומסונכרנים אוטומטית.</em>
           </p>
-          <p class="caption" style="margin-top:32px;">github.com · cloud-based code hosting</p>
         </div>
 
         <!-- Local ↔ GitHub diagram -->
@@ -484,28 +494,24 @@
         <div class="mini-card p1">
           <div class="num"><span class="nb">1</span> repo</div>
           <h4>Repository</h4>
-          <div class="en-label">מאגר קוד</div>
           <p>כל הקבצים, ההיסטוריה וה-commits של הפרויקט — כולם בתיקייה אחת, מסונכרנת לענן.</p>
         </div>
 
         <div class="mini-card p2">
           <div class="num"><span class="nb">2</span> branch</div>
           <h4>Branch</h4>
-          <div class="en-label">ענף עבודה</div>
           <p>עובדים על פיצ'ר חדש <strong>בנפרד</strong> מהקוד הראשי — בלי לשבור את מה שעובד.</p>
         </div>
 
         <div class="mini-card p3">
           <div class="num"><span class="nb">3</span> fork</div>
           <h4>Fork</h4>
-          <div class="en-label">עותק אישי</div>
           <p>עותק אישי של repository של מישהו אחר — הבסיס לתרומה לפרויקטי <strong>קוד פתוח</strong>.</p>
         </div>
 
         <div class="mini-card p4">
           <div class="num"><span class="nb">4</span> PR</div>
           <h4>Pull Request</h4>
-          <div class="en-label">בקשת מיזוג</div>
           <p>בקשה לאחד שינויים מ-branch חזרה ל-main — כולל אפשרות ל-<strong>code review</strong>.</p>
         </div>
 
@@ -536,10 +542,10 @@
             <span class="lbl">clone</span>
           </div>
           <h4>משכפלים למחשב</h4>
-          <p>מעתיקים את ה-URL מ-GitHub ומריצים את הפקודה — Git יוצר תיקייה עם כל הקוד.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> clone https://github.com/user/repo.git</span>
+          <p>לוחצים על Code ב-GitHub, מעתיקים את ה-URL, ומריצים git clone בטרמינל — Git יוצר תיקייה מקומית עם כל הקוד.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            GitHub · Code · Copy URL → git clone
           </div>
         </div>
 
@@ -550,9 +556,9 @@
           </div>
           <h4>פותחים בעורך</h4>
           <p>נכנסים לתיקייה שנוצרה ופותחים אותה ב-VS Code — מוכנים להתחיל לעבוד.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">cd</span> repo &amp;&amp; <span class="kw">code</span> .</span>
+          <div class="step-action">
+            <span class="arr">→</span>
+            VS Code · File · Open Folder · בחרו את התיקייה
           </div>
         </div>
 
@@ -570,10 +576,10 @@
             <span class="lbl">branch</span>
           </div>
           <h4>עובדים על ענף</h4>
-          <p>יוצרים ענף חדש לכל פיצ'ר או תיקון — כך ה-main נשאר יציב ונקי.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> checkout -b feature/login</span>
+          <p>יוצרים ענף חדש לכל פיצ'ר או תיקון — כך ה-main נשאר יציב ונקי, ואפשר לעבוד במקביל.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            branch חדש לכל פיצ'ר · main נשאר יציב
           </div>
         </div>
 
@@ -583,10 +589,10 @@
             <span class="lbl">push</span>
           </div>
           <h4>שולחים לענן</h4>
-          <p>אחרי commits, שולחים את הענף ל-GitHub כדי שאחרים יוכלו לראות ולבדוק.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> push origin feature/login</span>
+          <p>אחרי commits, שולחים את הענף ל-GitHub — הוא מופיע שם ואחרים יכולים לראות ולהעיר.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            git push → הענף מופיע ב-GitHub
           </div>
         </div>
 
@@ -722,6 +728,25 @@
 
   update();
 })();
+
+  // Fullscreen toggle
+  (function(){
+    const btn = document.getElementById('btn-fs');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      const full = !!document.fullscreenElement;
+      btn.querySelector('.icon-expand').style.display = full ? 'none' : '';
+      btn.querySelector('.icon-compress').style.display = full ? '' : 'none';
+      btn.setAttribute('aria-label', full ? 'צא ממסך מלא' : 'מסך מלא');
+    });
+  })();
 </script>
 </body>
 </html>

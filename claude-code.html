@@ -76,6 +76,12 @@
   .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
   .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
   .back-home:hover { background: var(--coral); color: #fff; }
+  .fs-btn {
+    border: 1.5px solid var(--border); background: transparent; border-radius: 6px;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--muted); transition: all 0.15s; padding: 0; flex-shrink: 0;
+  }
+  .fs-btn:hover { border-color: var(--coral); color: var(--coral); }
   .back-home svg { width: 12px; height: 12px; flex-shrink: 0; }
   .counter { color: var(--ink); font-weight: 500; }
   .counter .total { color: var(--muted); }
@@ -185,7 +191,7 @@
   }
   h2.title .accent { color: var(--coral); }
   p.lead {
-    font-size: clamp(18px, 1.5vw, 24px);
+    font-size: clamp(20px, 1.7vw, 27px);
     line-height: 1.5;
     color: var(--ink-soft);
     font-weight: 300;
@@ -442,7 +448,7 @@
     color: var(--ink);
   }
   .mini-card p {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--ink-soft);
     line-height: 1.55;
   }
@@ -535,7 +541,7 @@
     margin-bottom: 10px;
   }
   .step-block p {
-    font-size: 14.5px;
+    font-size: 16.5px;
     color: var(--ink-soft);
     line-height: 1.55;
     flex: 1;
@@ -901,10 +907,15 @@
 
   <!-- TOP BAR -->
   <header class="topbar">
-    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a></div>
+    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    <button class="fs-btn" id="btn-fs" aria-label="מסך מלא" title="מסך מלא">
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+      <svg class="icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="display:none"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
+    </button>
+  </div>
     <div class="right">
       <span>Claude Code · עוזר AI בטרמינל</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 17</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 15</span></span>
     </div>
   </header>
 
@@ -1107,90 +1118,7 @@
       </div>
     </section>
 
-    <!-- ─── 05 · INSTALL ─── -->
-    <section class="slide">
-      <h2 class="title">נתקין את <em>Claude Code</em></h2>
-      <p class="lead" style="margin-top:20px;max-width:860px;">פקודה אחת — בוחרים לפי המערכת.</p>
-      <div class="steps-grid">
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">1</span><span class="lbl">option · macos / linux</span></div>
-          <h4>macOS · Linux · WSL</h4>
-          <p>ההתקנה המומלצת. מתעדכנת אוטומטית ברקע לגרסה החדשה ביותר.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">curl</span> <span class="arg">-fsSL https://claude.ai/install.sh | bash</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">2</span><span class="lbl">option · homebrew</span></div>
-          <h4>Homebrew</h4>
-          <p>חלופה למשתמשי Mac שמעדיפים Homebrew. לא מתעדכן אוטומטית — נריץ <code style="font-family:var(--mono);color:var(--coral);">brew upgrade</code> ידנית.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">brew</span> <span class="arg">install --cask claude-code</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">3</span><span class="lbl">option · windows</span></div>
-          <h4>Windows PowerShell</h4>
-          <p>נפתח PowerShell ונריץ את הפקודה. למשתמשי CMD ו-WinGet יש הוראות נפרדות בתיעוד.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">irm</span> <span class="arg">https://claude.ai/install.ps1 | iex</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-      <div class="link-banner">
-        <span class="lb-text">הוראות מלאות, desktop app ו-VS Code extension — <strong>code.claude.com/docs</strong></span>
-        <a href="https://code.claude.com/docs/en/overview#get-started" target="_blank" rel="noopener" class="lb-link">
-          code.claude.com/docs
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- ─── 06 · LOGIN ─── -->
-    <section class="slide">
-      <h2 class="title">נתחבר ל-<em>Claude</em></h2>
-      <p class="lead" style="margin-top:20px;max-width:860px;">בהרצה הראשונה נתבקש להתחבר — פעם אחת. לאחר מכן הפרטים נשמרים אוטומטית.</p>
-      <div class="steps-grid two" style="margin-top:50px;">
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">1</span><span class="lbl">step · run</span></div>
-          <h4>נריץ claude</h4>
-          <p>ניכנס לתיקיית הפרויקט ונריץ. בהרצה הראשונה Claude Code יזהה שאין חיבור ויפנה אותנו להתחברות.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">claude</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">2</span><span class="lbl">step · browser</span></div>
-          <h4>נאשר בדפדפן</h4>
-          <p>נפתח חלון דפדפן — נכנסים עם חשבון Claude.ai (Pro / Max / Team / Enterprise). אפשר גם להתחבר מחדש מתי שנרצה.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">/login</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-      <p style="margin-top:40px;font-size:14px;color:var(--muted);font-family:var(--mono);letter-spacing:0.04em;">
-        ✦ &nbsp;אין מינוי? אפשר גם להתחבר דרך <strong style="color:var(--ink-soft);">Anthropic Console</strong> עם API Key — תשלום לפי שימוש ללא מינוי חודשי.
-      </p>
-    </section>
-
-    <!-- ─── 08 · FIRST RUN ─── -->
+    <!-- ─── 05 · FIRST RUN ─── -->
     <section class="slide slide-firstrun">
       <div class="body-grid">
         <div>
@@ -1719,6 +1647,25 @@
       } catch (err) { /* clipboard not available */ }
     });
   });
+
+  // Fullscreen toggle
+  (function(){
+    const btn = document.getElementById('btn-fs');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+    document.addEventListener('fullscreenchange', () => {
+      const full = !!document.fullscreenElement;
+      btn.querySelector('.icon-expand').style.display = full ? 'none' : '';
+      btn.querySelector('.icon-compress').style.display = full ? '' : 'none';
+      btn.setAttribute('aria-label', full ? 'צא ממסך מלא' : 'מסך מלא');
+    });
+  })();
 </script>
 
 </body>
