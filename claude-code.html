@@ -831,28 +831,6 @@
     backdrop-filter: blur(8px);
     z-index: 10;
   }
-  .bottombar .hint {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    direction: ltr;
-  }
-  .bottombar .hint kbd {
-    display: inline-block;
-    padding: 3px 8px;
-    background: var(--bg-3);
-    border: 1px solid var(--border);
-    border-bottom-width: 2px;
-    border-radius: 4px;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--ink);
-  }
   .dots {
     display: flex;
     gap: 8px;
@@ -898,7 +876,6 @@
     .slide-firstrun .body-grid,
     .slide-claudemd .body-grid { grid-template-columns: 1fr; gap: 30px; }
     .slide-three .grid-3 { grid-template-columns: 1fr 1fr; }
-    .bottombar .hint { display: none; }
   }
 </style>
 </head>
@@ -1520,11 +1497,6 @@
 
   <!-- BOTTOM BAR -->
   <footer class="bottombar">
-    <div class="hint">
-      <span>navigate</span>
-      <kbd>←</kbd>
-      <kbd>→</kbd>
-    </div>
     <div class="dots" id="dots"></div>
     <div class="nav-btns">
       <button class="nav-btn" id="prev" aria-label="previous">

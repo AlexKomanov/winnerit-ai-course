@@ -272,15 +272,6 @@
     border-top: 1px solid var(--border-soft); background: rgba(242,237,227,0.85);
     backdrop-filter: blur(8px); z-index: 10;
   }
-  .bottombar .hint {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--muted); display: flex; gap: 16px; align-items: center; direction: ltr;
-  }
-  .bottombar .hint kbd {
-    display: inline-block; padding: 3px 8px; background: var(--bg-3);
-    border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 4px;
-    font-family: var(--mono); font-size: 10px; color: var(--ink);
-  }
   .dots { display: flex; gap: 8px; align-items: center; }
   .dots button {
     width: 8px; height: 8px; border-radius: 50%; background: var(--border);
@@ -310,7 +301,6 @@
     .grid-4 { grid-template-columns: 1fr 1fr; }
     .steps-grid { grid-template-columns: 1fr; }
     .slide-statement .body-grid { grid-template-columns: 1fr; }
-    .bottombar .hint { display: none; }
   }
 </style>
 </head>
@@ -530,10 +520,6 @@
           </div>
           <h4>יוצרים Repository</h4>
           <p>ב-GitHub לוחצים New → מזינים שם לפרויקט → בוחרים Public או Private → לוחצים Create repository.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            github.com · New repository · Create
-          </div>
         </div>
 
         <div class="step-block">
@@ -543,10 +529,6 @@
           </div>
           <h4>משכפלים למחשב</h4>
           <p>לוחצים על Code ב-GitHub, מעתיקים את ה-URL, ומריצים git clone בטרמינל — Git יוצר תיקייה מקומית עם כל הקוד.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            GitHub · Code · Copy URL → git clone
-          </div>
         </div>
 
         <div class="step-block">
@@ -554,12 +536,8 @@
             <span class="badge">3</span>
             <span class="lbl">open</span>
           </div>
-          <h4>פותחים בעורך</h4>
+          <h4>פותחים בעורך הקוד</h4>
           <p>נכנסים לתיקייה שנוצרה ופותחים אותה ב-VS Code — מוכנים להתחיל לעבוד.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            VS Code · File · Open Folder · בחרו את התיקייה
-          </div>
         </div>
 
       </div>
@@ -577,10 +555,6 @@
           </div>
           <h4>עובדים על ענף</h4>
           <p>יוצרים ענף חדש לכל פיצ'ר או תיקון — כך ה-main נשאר יציב ונקי, ואפשר לעבוד במקביל.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            branch חדש לכל פיצ'ר · main נשאר יציב
-          </div>
         </div>
 
         <div class="step-block">
@@ -590,10 +564,6 @@
           </div>
           <h4>שולחים לענן</h4>
           <p>אחרי commits, שולחים את הענף ל-GitHub — הוא מופיע שם ואחרים יכולים לראות ולהעיר.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            git push → הענף מופיע ב-GitHub
-          </div>
         </div>
 
         <div class="step-block">
@@ -603,10 +573,6 @@
           </div>
           <h4>פותחים Pull Request</h4>
           <p>ב-GitHub לוחצים Compare &amp; pull request, מוסיפים תיאור ושולחים לעיון לפני מיזוג.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            GitHub · Pull requests · New pull request · Merge
-          </div>
         </div>
 
       </div>
@@ -648,10 +614,6 @@
   </button>
 
   <footer class="bottombar">
-    <div class="hint">
-      <kbd>←</kbd><kbd>Space</kbd> הבא
-      <kbd>→</kbd> הקודם
-    </div>
     <div class="dots" id="dots"></div>
     <div class="nav-btns">
       <button class="nav-btn" id="nb-prev" aria-label="prev">
@@ -692,16 +654,16 @@
     const pad = n => String(n).padStart(2,'0');
     curEl.textContent = pad(current + 1);
     document.querySelectorAll('.dots button').forEach((b,i) => b.classList.toggle('active', i === current));
-    document.getElementById('btn-prev').disabled = current === N-1;
-    document.getElementById('btn-next').disabled = current === 0;
-    document.getElementById('nb-prev').disabled  = current === N-1;
-    document.getElementById('nb-next').disabled  = current === 0;
+    document.getElementById('btn-prev').disabled = current === 0;
+    document.getElementById('btn-next').disabled = current === N-1;
+    document.getElementById('nb-prev').disabled  = current === 0;
+    document.getElementById('nb-next').disabled  = current === N-1;
   }
 
-  document.getElementById('btn-prev').addEventListener('click', () => goTo(current + 1));
-  document.getElementById('btn-next').addEventListener('click', () => goTo(current - 1));
-  document.getElementById('nb-prev').addEventListener('click',  () => goTo(current + 1));
-  document.getElementById('nb-next').addEventListener('click',  () => goTo(current - 1));
+  document.getElementById('btn-prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('btn-next').addEventListener('click', () => goTo(current + 1));
+  document.getElementById('nb-prev').addEventListener('click',  () => goTo(current - 1));
+  document.getElementById('nb-next').addEventListener('click',  () => goTo(current + 1));
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {

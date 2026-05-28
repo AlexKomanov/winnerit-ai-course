@@ -319,16 +319,6 @@
     border-top: 1px solid var(--border-soft);
     background: rgba(242,237,227,0.85); backdrop-filter: blur(8px); z-index: 10;
   }
-  .bottombar .hint {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--muted);
-    display: flex; gap: 16px; align-items: center; direction: ltr;
-  }
-  .bottombar .hint kbd {
-    display: inline-block; padding: 3px 8px;
-    background: var(--bg-3); border: 1px solid var(--border); border-bottom-width: 2px;
-    border-radius: 4px; font-family: var(--mono); font-size: 10px; color: var(--ink);
-  }
   .dots { display: flex; gap: 7px; align-items: center; }
   .dots button {
     width: 7px; height: 7px; border-radius: 50%; background: var(--border);
@@ -351,7 +341,6 @@
     .grid-3, .steps-grid, .steps-grid.two { grid-template-columns: 1fr; }
     .split-layout { flex-direction: column; }
     .split-visual { width: 100%; }
-    .bottombar .hint { display: none; }
   }
 </style>
 </head>
@@ -1021,11 +1010,6 @@
 
   <!-- BOTTOM BAR -->
   <footer class="bottombar">
-    <div class="hint">
-      <span>navigate</span>
-      <kbd>←</kbd>
-      <kbd>→</kbd>
-    </div>
     <div class="dots" id="dots"></div>
     <div class="nav-btns">
       <button class="nav-btn" id="prev" aria-label="previous">
