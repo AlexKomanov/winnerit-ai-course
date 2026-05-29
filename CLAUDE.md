@@ -233,3 +233,6 @@ Model names (e.g., in ollama.html, claude-code-ollama.html) go stale quickly. Be
 - **Topbar back button:** always include `<a href="index.html" class="back-home">חזרה לכל השיעורים</a>` in every presentation topbar. No SVG arrow on the button — text only.
 - **Fullscreen button:** always include the `.fs-btn` button with `id="btn-fs"` next to the back button in `.left`. See the Topbar section above for the exact HTML, CSS, and JS snippet.
 - **index.html tags:** when adding a lesson to a module card, update the `module-tags` to include the new topic. Tags must reflect only what's actually covered.
+- **Minimum card body font size: 16px.** `.mini-card p` and `.step-block p` must never be below `16px` in the base CSS. Smaller sizes look unreadable when projected or on a laptop screen. Files with 13–14px base were a known bug; the standard is 16px.
+- **Laptop viewport (`@media (max-height: 900px)`) minimums:** `.mini-card p` min `15px`, `.step-block p` min `14px`. Do not reduce card body text below these thresholds in the max-height query.
+- **Every presentation must include `@media (max-height: 900px)`** — the compact-viewport query that scales down paddings, title sizes, and margins for MacBook screens (~700–900px viewport height). The script that adds it lives in the project; when creating a new presentation, copy the block from any recent `.html` file.

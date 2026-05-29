@@ -172,7 +172,7 @@
     font-family: var(--display); font-size: 20px; font-weight: 700;
     margin-bottom: 4px; line-height: 1.1; color: var(--ink);
   }
-  .mini-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+  .mini-card p { font-size: 16px; color: var(--ink-soft); line-height: 1.5; }
 
   /* ─── STEP BLOCKS ─── */
   .steps-grid {
@@ -341,6 +341,29 @@
     .grid-3, .steps-grid, .steps-grid.two { grid-template-columns: 1fr; }
     .split-layout { flex-direction: column; }
     .split-visual { width: 100%; }
+  }
+
+  @media (max-height: 900px) {
+    .slide { padding: 3vh 8vw; }
+    h2.title { font-size: clamp(32px, 3.5vw, 56px); }
+    p.lead { font-size: clamp(15px, 1.4vw, 22px); }
+    .cover-title { font-size: clamp(56px, 10vw, 160px); }
+    .info-grid { margin-top: 24px; gap: 20px; }
+    .info-card { padding: 20px 22px; }
+    .info-card h3 { font-size: 26px; margin-bottom: 12px; }
+    .info-card ul li { padding: 7px 0; font-size: 15px; }
+    .steps-grid { margin-top: 24px; gap: 14px; }
+    .step-block { padding: 16px 18px 14px; }
+    .step-block h4 { font-size: 18px; }
+    .step-block p { font-size: 14px; margin-bottom: 10px; }
+    .grid-4 { margin-top: 24px; gap: 14px; }
+    .mini-card { padding: 20px 22px; }
+    .mini-card h4 { font-size: 20px; }
+    .mini-card p { font-size: 15px; }
+    .slide-end h1 { font-size: clamp(40px, 7vw, 108px); }
+    .slide-end .sig { margin-top: 36px; }
+    .slide-poster h1.mega { font-size: clamp(36px, 6vw, 96px); }
+    .slide-poster .sub { margin-top: 18px; font-size: clamp(15px, 1.8vw, 26px); }
   }
 </style>
 </head>
