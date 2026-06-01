@@ -246,6 +246,7 @@ Model names (e.g., in ollama.html, claude-code-ollama.html) go stale quickly. Be
 - **Don't add Hebrew labels back into eyebrows.** The dual-language convention was removed.
 - **No corner numbers.** Don't add `.corner-num` to new slides. The pattern exists in older files but is deprecated.
 - **New slides** should use one of the existing layout patterns (statement, step-blocks, mini-cards, why-grid, poster, info-grid). Avoid one-off layouts.
+- **Vertical centering on content slides:** the base `.slide` class uses `flex-direction: column` without `justify-content: center`, so content sticks to the top by default. Any slide that contains a title + steps-grid (or title + cards) and isn't a named variant (`.slide-poster`, `.slide-end`, `.slide-info`, etc.) must have `style="justify-content:center;"` on the `<section>` to keep content vertically centered.
 - **After adding/removing slides**, update the `/ N` counter in the topbar. Count `<section class="slide"` elements in the file to get the correct number.
 - **Verify navigation** (← / →, edge zones, dots, wheel) still works after structural changes — the `IntersectionObserver` setup assumes all slides are direct children of `#slides`.
 - **Split-layout overflow:** `split-layout` (content left + visual mockup right) overflows the viewport when the content side has 3+ stacked step-blocks. Fix: use a horizontal `steps-grid` instead. Never use `split-layout` with more than 2 step-blocks on the content side.
