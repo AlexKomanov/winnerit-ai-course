@@ -6,6 +6,23 @@ Each `.html` file in the project root is a lesson (or `index.html`, the catalog)
 
 ---
 
+## Workflow Defaults
+
+- Prefer the simplest direct approach. Do NOT invoke brainstorming, planning, subagents, or worktrees for small/simple requests unless explicitly asked.
+- After starting a dev server, immediately report the actual port (e.g., 8080 vs 3000) so the user knows where to look.
+- For visual tweaks (font sizes, spacing), prefer small incremental changes — bumps tend to come out too large on the first try.
+
+---
+
+## Hebrew/RTL Presentations
+
+- All presentations are Hebrew RTL. When adding navigation, prev should go right and next should go left.
+- Place RTL punctuation (? and !) on the correct (left) side of Hebrew text.
+- New presentations belong under שיעור 1 (lesson 1) by default unless told otherwise — never שיעור 0 (setup).
+- Match the existing visual style (cards, fonts, badges) of sibling presentations before introducing new design patterns.
+
+---
+
 ## Voice & Language
 
 - **Hebrew, RTL.** `<html lang="he" dir="rtl">`. All body copy is Hebrew.
@@ -14,6 +31,8 @@ Each `.html` file in the project root is a lesson (or `index.html`, the catalog)
 - **No lesson numbers** in chrome or content (the course's lesson numbering hasn't been finalized).
 - **No mentions of session duration / time** anywhere.
 - Use the **English word** for borrowed tech terms rather than Hebrew transliteration where the English word is more idiomatic — e.g., `offline` not `אופליין`.
+- Use **"מחשב"** (computer) when referring to the user's local machine — not "מכשיר" (device).
+- Use **"ארכיטקטורה"** for architecture — not "אדריכלות".
 
 ---
 
@@ -53,6 +72,7 @@ Loaded via Google Fonts in one preconnect + stylesheet link.
 
 - **Eyebrow:** small uppercase mono label in coral with a short coral horizontal line. Format: `XX · english-mark` (e.g., `13 · cloud`). **Used only in `ollama.html`. New presentations do not use eyebrows — omit them entirely.**
 - **Italic accent inside titles:** wrap a key noun in `<em>` — it renders italic in coral. This is the deck's signature emphasis style.
+- **Poster slide** (`.slide-poster`): full-slide emphasis with a large `<h1 class="mega">` and an optional `.sub` subtitle. CSS must use `justify-content: center; align-items: center; text-align: center;` — content is centered both vertically and horizontally. Do **not** use `align-items: stretch` or `text-align: right` on poster slides.
 - **Step blocks** (numbered cards with copyable command): coral square badge with number, Hebrew title, paragraph, dark code line with copy icon at the bottom. Class `.step-block` inside `.steps-grid` (default 3 cols, `.two` variant for 2 cols).
 - **`.step-code`** (dark terminal block inside a step-block): for real shell commands the user types. Prompt `>_`, colored keywords via `.kw` / `.arg` spans, copy button.
 - **`.step-action`** (light cream block inside a step-block): for UI navigation steps — clicking, searching, opening menus, typing into a chat box. Uses `var(--bg-2)` background with a coral `→` arrow and plain text. Never use `.step-code` for UI actions; it looks like a terminal command and confuses students.
@@ -236,3 +256,5 @@ Model names (e.g., in ollama.html, claude-code-ollama.html) go stale quickly. Be
 - **Minimum card body font size: 16px.** `.mini-card p` and `.step-block p` must never be below `16px` in the base CSS. Smaller sizes look unreadable when projected or on a laptop screen. Files with 13–14px base were a known bug; the standard is 16px.
 - **Laptop viewport (`@media (max-height: 900px)`) minimums:** `.mini-card p` min `15px`, `.step-block p` min `14px`. Do not reduce card body text below these thresholds in the max-height query.
 - **Every presentation must include `@media (max-height: 900px)`** — the compact-viewport query that scales down paddings, title sizes, and margins for MacBook screens (~700–900px viewport height). The script that adds it lives in the project; when creating a new presentation, copy the block from any recent `.html` file.
+- **Hebrew/English bidi mixing:** when a line contains Hebrew connectors ("או", "ומעלה", "מעבד") interspersed with English tech terms, the browser's bidi algorithm visually reverses the English words. Fix: replace Hebrew connectors with punctuation (`/`, `+`) and wrap the English value portion in `<span dir="ltr">…</span>`. Example: `<strong>Terminal</strong> · <span dir="ltr">Bash / Zsh / PowerShell / CMD</span>`.
+- **Slash commands inline in Hebrew text:** an inline `<code>` element containing a slash command (e.g. `/clear`) inside an RTL paragraph will render the slash on the wrong side. Always add `direction:ltr;unicode-bidi:embed` to the `<code>` style: `<code style="…;direction:ltr;unicode-bidi:embed;">/clear</code>`.

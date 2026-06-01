@@ -205,7 +205,7 @@
   .mini-card.p4 { border-top: 3px solid var(--sky); }
 
   /* ─── POSTER ─── */
-  .slide-poster { justify-content: center; align-items: stretch; }
+  .slide-poster { justify-content: center; align-items: center; text-align: center; }
   .slide-poster h1.mega {
     font-family: var(--display); font-weight: 900;
     font-size: clamp(52px, 8.5vw, 140px); line-height: 0.93; letter-spacing: -0.03em; color: var(--ink);
@@ -455,8 +455,7 @@
           </p>
           <p class="lead" style="margin-top:18px;">
             במקום לכתוב קוד ידנית, אנחנו
-            <em style="color:var(--coral);">מתארים מה אנחנו רוצים</em>
-            וה-AI בונה, עורך ופורס בשבילנו.
+            <em style="color:var(--coral);">מתארים את מה שאנחנו רוצים</em> <span style="white-space:nowrap">וה-<span dir="ltr" style="unicode-bidi:embed">AI</span></span> בונה, עורך ופורס בשבילנו.
           </p>
           <p class="caption" style="margin-top:32px;">lovable.dev · full-stack app builder</p>
         </div>
@@ -473,7 +472,7 @@
           <rect x="22" y="98" width="106" height="16" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
           <text x="75" y="109" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">Backend + DB</text>
           <rect x="22" y="122" width="106" height="16" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="75" y="133" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">Deploy + CI/CD</text>
+          <text x="75" y="133" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C" direction="ltr">Deploy + CI/CD</text>
           <text x="75" y="172" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="11" fill="#E04E36">ימים / שבועות</text>
           <text x="75" y="190" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="10" fill="#8B8A82">דורש ידע נרחב</text>
 
@@ -486,11 +485,11 @@
           <text x="245" y="94" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">או באנגלית</text>
           <line x1="245" y1="104" x2="245" y2="118" stroke="#D8CCB5" stroke-width="1"/>
           <rect x="192" y="118" width="106" height="16" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="245" y="129" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">AI בונה הכל ✓</text>
+          <text x="245" y="129" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C" direction="rtl">AI בונה הכל ✓</text>
           <rect x="192" y="142" width="106" height="16" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="245" y="153" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">Preview חי ✓</text>
+          <text x="245" y="153" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C" direction="rtl">Preview חי ✓</text>
           <rect x="192" y="166" width="106" height="16" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="245" y="177" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">Deploy אוטומטי ✓</text>
+          <text x="245" y="177" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C" direction="rtl">Deploy אוטומטי ✓</text>
           <text x="245" y="215" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="11" fill="#2F6B49">דקות</text>
           <text x="245" y="233" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="10" fill="#8B8A82">ללא ניסיון קודם</text>
         </svg>
@@ -558,10 +557,6 @@
           </div>
           <h4>נכנסים ל-Lovable</h4>
           <p>נכנסים לאתר ומתחברים עם חשבון Google. מקבלים מכסה חינמית של הודעות AI לניסיון.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            lovable.dev · Sign in with Google
-          </div>
         </div>
 
         <div class="step-block">
@@ -571,10 +566,6 @@
           </div>
           <h4>מתארים את האפליקציה</h4>
           <p>לוחצים <strong>New Project</strong> וכותבים תיאור בשפה טבעית — מה האפליקציה עושה, למי היא מיועדת, איך היא נראית.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Build a simple todo list app
-          </div>
         </div>
 
         <div class="step-block">
@@ -583,11 +574,7 @@
             <span class="lbl">preview</span>
           </div>
           <h4>Preview חי</h4>
-          <p>תוך כ-30 שניות ה-AI מייצר קוד ואנחנו רואים אפליקציה עובדת בפאנל הימני. ניתן ללחוץ, לגלול ולבדוק.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Preview panel — האפליקציה עובדת
-          </div>
+          <p>תוך זמן קצר ה-AI מייצר קוד ואנחנו רואים אפליקציה עובדת בפאנל הימני. ניתן ללחוץ, לגלול ולבדוק.</p>
         </div>
 
       </div>
@@ -605,10 +592,6 @@
           </div>
           <h4>שיחה עם ה-AI</h4>
           <p>כותבים בתיבת הצ'אט מה לשנות — בעברית או באנגלית. ה-AI מבין הקשר ומעדכן רק את מה שביקשנו.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            שנה את הצבע הראשי לכחול
-          </div>
         </div>
 
         <div class="step-block">
@@ -618,10 +601,6 @@
           </div>
           <h4>שינויים בזמן אמת</h4>
           <p>כל שינוי נראה מיד ב-Preview. ניתן לדחות שינוי עם <strong>Undo</strong> אם הוא לא מתאים — וחוזרים לגרסה הקודמת.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Undo — חזרה לגרסה הקודמת
-          </div>
         </div>
 
         <div class="step-block">
@@ -631,10 +610,6 @@
           </div>
           <h4>פרסום</h4>
           <p>כשמרוצים מהתוצאה לוחצים <strong>Publish</strong>. האפליקציה מקבלת URL ציבורי ומוכנה לשיתוף — ניתן גם לחבר דומיין משלנו.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Publish — URL ציבורי מוכן לשיתוף
-          </div>
         </div>
 
       </div>

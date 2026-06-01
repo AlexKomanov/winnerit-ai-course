@@ -309,7 +309,11 @@
   .mini-card p { font-size: 16px; color: var(--ink-soft); line-height: 1.55; }
 
   /* ─── POSTER ─── */
-  .slide-poster { justify-content: center; align-items: stretch; text-align: right; }
+  .slide-poster {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
   h1.mega { font-family: var(--display); font-weight: 900; line-height: 0.92; letter-spacing: -0.03em; color: var(--ink); }
   .slide-poster h1.mega { font-size: clamp(56px, 9vw, 150px); line-height: 0.95; }
   .slide-poster h1.mega .a { color: var(--coral); }
@@ -562,7 +566,7 @@
   </div>
     <div class="right">
       <span>Claude Code + Ollama</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 15</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 11</span></span>
     </div>
   </header>
 
@@ -702,7 +706,7 @@
           <p class="lead" style="margin-top:32px;">
             Claude Code שולח בקשות ל-API — בדרך כלל לשרתי Anthropic בענן.
             כשנגדיר שלושה משתני סביבה פשוטים, הוא ישלח את אותן הבקשות
-            ל-Ollama המקומי שרץ במחשב שלנו. שום דבר לא עוזב את המכשיר.
+            ל-Ollama המקומי שרץ במחשב שלנו. שום דבר לא עוזב את המחשב.
           </p>
           <p style="margin-top:36px;font-family:var(--mono);font-size:15px;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;">claude code → ollama api → local model</p>
         </div>
@@ -746,31 +750,16 @@
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
           </svg>
           <h4>עצמאות מלאה</h4>
-          <p>עובד offline, ללא תלות בשרתי Anthropic, ללא הגבלות. אנחנו שולטים בכלי שלנו.</p>
+          <p>עובד offline, ללא תלות בשרתי Anthropic, ללא הגבלות.</p>
         </div>
       </div>
     </section>
 
     <!-- ─── 05 · 03 · the catch ─── -->
     <section class="slide slide-poster">
-      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.04;pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="cpu-tile" width="80" height="80" patternUnits="userSpaceOnUse">
-            <svg viewBox="0 0 50 50" width="40" height="40" x="20" y="20" fill="none" stroke="#1B2336" stroke-width="1.2">
-              <rect x="10" y="10" width="30" height="30" rx="2"/>
-              <rect x="17" y="17" width="16" height="16"/>
-              <line x1="10" y1="16" x2="5" y2="16"/><line x1="10" y1="25" x2="5" y2="25"/><line x1="10" y1="34" x2="5" y2="34"/>
-              <line x1="40" y1="16" x2="45" y2="16"/><line x1="40" y1="25" x2="45" y2="25"/><line x1="40" y1="34" x2="45" y2="34"/>
-              <line x1="16" y1="10" x2="16" y2="5"/><line x1="25" y1="10" x2="25" y2="5"/><line x1="34" y1="10" x2="34" y2="5"/>
-              <line x1="16" y1="40" x2="16" y2="45"/><line x1="25" y1="40" x2="25" y2="45"/><line x1="34" y1="40" x2="34" y2="45"/>
-            </svg>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#cpu-tile)"/>
-      </svg>
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-        <h1 class="mega"><span class="a">חומרה</span>.<br><span class="b">זיכרון</span>.<br><span class="c">ביצועים</span>.</h1>
-        <p class="sub">המחשב הוא המוח של המודל. ה-RAM שלנו קובע אילו מודלים נוכל להריץ — ואת איכות התשובות שנקבל.</p>
+      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <h1 class="mega"><span class="a">ממשק ענן</span>.<br><span class="b">מודל מקומי</span>.<br><span class="c">שליטה מלאה</span>.</h1>
+        <p class="sub">Claude Code הוא הכלי. Ollama הוא המנוע. ביחד — עוצמה של AI מתקדם עם פרטיות של מחשב אישי.</p>
       </div>
     </section>
 
@@ -781,7 +770,7 @@
         <h2 class="title">Claude Code דורש לפחות<br>בחלון ההקשר<br><em>64,000 tokens</em>.</h2>
         <p class="lead" style="margin-top:28px;max-width:820px;">
           Claude Code שולח הקשר ארוך מאוד — קוד, קבצים, היסטוריית שיחה ומידע על הפרויקט.
-          מודל עם חלון קטן מ-64k יכשל. כל המודלים שהצגנו עומדים בדרישה הזאת.
+          מודל עם חלון קטן מ-64k יכשל.
         </p>
 
         <!-- settings path + slider widget -->
@@ -861,52 +850,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ─── 07 · 05 · memory ─── -->
-    <section class="slide">
-      <h2 class="title">כמה RAM <em>נצטרך</em>?</h2>
-      <table class="ram-table">
-        <thead>
-          <tr>
-            <th>מודל</th>
-            <th>גודל קובץ</th>
-            <th>RAM מינ׳</th>
-            <th>מומלץ</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="mname">qwen3.5:9b</span></td>
-            <td><span class="bar" style="width:32px;"></span><span class="size">6.6 GB</span></td>
-            <td>8 GB</td>
-            <td>16 GB</td>
-          </tr>
-          <tr>
-            <td><span class="mname">gpt-oss:20b</span></td>
-            <td><span class="bar" style="width:64px;"></span><span class="size">14 GB</span></td>
-            <td>16 GB</td>
-            <td>24 GB</td>
-          </tr>
-          <tr>
-            <td><span class="mname">glm-5.1</span></td>
-            <td><span class="bar" style="width:90px;"></span><span class="size">19 GB</span></td>
-            <td>20 GB</td>
-            <td>32 GB</td>
-          </tr>
-          <tr>
-            <td><span class="mname">gpt-oss:120b-cloud</span></td>
-            <td><span class="bar sky" style="width:20px;opacity:0.4;"></span><span class="size" style="color:var(--sky);">ענן</span></td>
-            <td style="color:var(--muted);">—</td>
-            <td style="color:var(--sky);font-size:14px;">חיבור + חשבון Ollama</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="lead" style="margin-top:36px;max-width:920px;font-size:16px;">
-        <strong style="color:var(--ink);">המלצה לרוב המשתמשים:</strong>
-        Mac עם 16GB unified memory מריץ את qwen3.5:9b בנוחות. לביצועים גבוהים יותר — gpt-oss:20b על 24GB.
-        ל-glm-5.1 דרושים לפחות 32GB.
-      </p>
     </section>
 
     <!-- ─── 08 · launch ─── -->
@@ -997,119 +940,7 @@
       </div>
     </section>
 
-    <!-- ─── 11 · 09 · cloud ─── -->
-    <section class="slide slide-three">
-      <h2 class="title">מצב <em>ענן</em> — מודלים ענקיים</h2>
-      <p class="lead" style="margin-top:18px;max-width:860px;">
-        חלק מהמודלים גדולים מדי בשביל לרוץ מקומית. ל-Ollama יש שירות ענן שמריץ אותם בשבילנו — דרך אותה ממשק בדיוק, רק עם תגית <code style="font-family:var(--mono);color:var(--sky);">:cloud</code>.
-      </p>
-      <div class="grid-3" style="margin-top:50px;">
-        <div class="mini-card" style="border-top:2px solid var(--sky);">
-          <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>
-          </svg>
-          <h4>120B+ פרמטרים</h4>
-          <p>גישה למודלים שלא נכנסים בזיכרון המקומי — ביצועים מקסימליים ללא השקעה בחומרה.</p>
-        </div>
-        <div class="mini-card" style="border-top:2px solid var(--sky);">
-          <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-          </svg>
-          <h4>אותה ממשק</h4>
-          <p>אותן פקודות, אותם משתני סביבה — רק מוסיפים <code style="font-family:var(--mono);font-size:13px;color:var(--sky);">:cloud</code> לסוף שם המודל.</p>
-        </div>
-        <div class="mini-card" style="border-top:2px solid var(--sky);">
-          <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-          <h4>דרישה: חשבון</h4>
-          <p>נרשם לפלטפורמת Ollama ונחבר את החשבון מהטרמינל. הרישום חינמי.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── 12 · 10 · cloud setup ─── -->
-    <section class="slide">
-      <h2 class="title">הגדרת <em>מצב ענן</em></h2>
-      <p class="lead" style="margin-top:16px;">שלושה צעדים לגישה למודלים הגדולים ביותר דרך שרתי Ollama.</p>
-      <div class="steps-grid">
-
-        <div class="step-block" style="border-top:2px solid var(--sky);">
-          <div class="step-num"><span class="badge" style="background:rgba(74,123,168,0.12);color:var(--sky);">1</span><span class="lbl">step · register</span></div>
-          <h4>נרשם לפלטפורמה</h4>
-          <p>נפתח חשבון חינמי ב-Ollama Platform. ניכנס לאתר, נשלים את ההרשמה ונאמת את כתובת המייל.</p>
-          <div class="step-code" style="background:#1a2640;">
-            <span class="prompt" style="color:rgba(74,123,168,0.6);">#</span>
-            <span class="cmd" style="color:rgba(74,123,168,0.9);">ollama.com/signup</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block" style="border-top:2px solid var(--sky);">
-          <div class="step-num"><span class="badge" style="background:rgba(74,123,168,0.12);color:var(--sky);">2</span><span class="lbl">step · login</span></div>
-          <h4>נתחבר מהטרמינל</h4>
-          <p>נפעיל את תהליך ה-login. Ollama יפתח דפדפן לאישור החיבור — נמשיך לפי ההוראות.</p>
-          <div class="step-code" style="background:#1a2640;">
-            <span class="prompt" style="color:rgba(74,123,168,0.6);">&gt;_</span>
-            <span class="cmd" style="color:rgba(74,123,168,0.9);"><span style="color:#6ba8d4;">ollama</span> login</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block" style="border-top:2px solid var(--sky);">
-          <div class="step-num"><span class="badge" style="background:rgba(74,123,168,0.12);color:var(--sky);">3</span><span class="lbl">step · cloud launch</span></div>
-          <h4>נפעיל עם מודל ענן</h4>
-          <p>נשתמש בתגית <code style="font-family:var(--mono);color:var(--sky);font-size:13px;">:cloud</code> בשם המודל. Ollama ינתב את הבקשות לשרתי הענן שלו.</p>
-          <div class="step-code" style="background:#1a2640;">
-            <span class="prompt" style="color:rgba(74,123,168,0.6);">&gt;_</span>
-            <span class="cmd" style="color:rgba(74,123,168,0.9);"><span style="color:#6ba8d4;">ollama</span> launch claude --model gpt-oss:120b-cloud</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── 14 · 12 · local vs cloud ─── -->
-    <section class="slide slide-vs">
-      <h2 class="title">מקומי <em>או</em> ענן?</h2>
-      <div class="vs-grid">
-        <div class="vs-col local">
-          <svg class="vs-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <line x1="8" y1="21" x2="16" y2="21"/>
-            <line x1="12" y1="17" x2="12" y2="21"/>
-          </svg>
-          <div class="lbl">LOCAL · OLLAMA</div>
-          <h3>מקומי</h3>
-          <ul>
-            <li><span class="p">+</span><span>פרטיות מקסימלית — הקוד לא עוזב את המחשב</span></li>
-            <li><span class="p">+</span><span>ללא עלויות שימוש מתמשכות</span></li>
-            <li><span class="p">+</span><span>עובד offline, ללא תלות בשרתים</span></li>
-            <li><span class="p">−</span><span>דרישות חומרה גבוהות (16–32GB+)</span></li>
-            <li><span class="p">−</span><span>מודלים קטנים יחסית לענן</span></li>
-          </ul>
-        </div>
-        <div class="vs-divider">vs</div>
-        <div class="vs-col cloud">
-          <svg class="vs-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>
-          </svg>
-          <div class="lbl">CLOUD · OLLAMA PLATFORM</div>
-          <h3>ענן</h3>
-          <ul>
-            <li><span class="p">+</span><span>מודלים ענקיים — 120B פרמטרים ומעלה</span></li>
-            <li><span class="p">+</span><span>אין צורך בחומרה חזקה</span></li>
-            <li><span class="p">+</span><span>ביצועים גבוהים יותר</span></li>
-            <li><span class="p">−</span><span>דרישת חיבור לאינטרנט</span></li>
-            <li><span class="p">−</span><span>תלות בחשבון ושירות Ollama</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── 15 · 13 · cli ─── -->
+    <!-- ─── cli ─── -->
     <section class="slide">
       <h2 class="title">פקודות <em>מהירות</em></h2>
       <div class="cli-table">
