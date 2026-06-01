@@ -454,7 +454,7 @@
             <span class="lbl">github</span>
           </div>
           <h4>מחברים GitHub</h4>
-          <p>בהגדרות הפרויקט ב-Lovable מחברים את חשבון GitHub. Lovable יוצר repository חדש אוטומטית עם כל הקוד.</p>
+          <p>מחברים את Lovable לחשבון GitHub. כל הקוד עולה אוטומטית ל-<span dir="ltr">GitHub</span> ל-<span dir="ltr">repository</span> חדש.</p>
         </div>
 
       </div>
@@ -467,11 +467,20 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">4</span>
+            <span class="badge">1</span>
+            <span class="lbl">terminal</span>
+          </div>
+          <h4>פותחים Claude Code</h4>
+          <p>פותחים Terminal ומריצים Claude Code — הוא לא צריך להיות בתוך תיקיית פרויקט בשלב הזה.</p>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
             <span class="lbl">clone</span>
           </div>
-          <h4>Clone למחשב</h4>
-          <p>מבקשים מ-Claude Code לשכפל את הפרויקט — הוא מריץ git clone ופותח את התיקייה.</p>
+          <h4>Clone מ-GitHub</h4>
+          <p>מבקשים מ-Claude Code לשכפל את הפרויקט — הוא מריץ git clone ושם את הקוד בתיקייה שנבחר.</p>
           <div class="step-code">
             <span class="prompt">›</span>
             <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Clone [paste HTTPS URL from GitHub] to a local folder</span>
@@ -481,25 +490,11 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">5</span>
-            <span class="lbl">open</span>
+            <span class="badge">3</span>
+            <span class="lbl">vscode</span>
           </div>
-          <h4>פותחים Claude Code</h4>
-          <p>פותחים את אפליקציית Claude Code ומנווטים לתיקיית הפרויקט שנוצרה — מכאן הכל קורה דרך שיחה.</p>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">6</span>
-            <span class="lbl">explore</span>
-          </div>
-          <h4>מכירים את הפרויקט</h4>
-          <p>מבקשים מ-Claude Code לסרוק את הפרויקט ולהסביר את המבנה — ככה נדע איפה כל דבר נמצא לפני שמתחילים לשנות.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Scan this project and explain its structure — what each folder and main file does</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
+          <h4>פותחים ב-VSCode</h4>
+          <p>פותחים את תיקיית הפרויקט ב-VSCode, פותחים Terminal ומריצים Claude Code.</p>
         </div>
 
       </div>
@@ -508,11 +503,11 @@
     <!-- ─── 05 · RUN LOCALLY ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">מריצים <em>מקומית</em></h2>
-      <div class="steps-grid two">
+      <div class="steps-grid">
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">7</span>
+            <span class="badge">1</span>
             <span class="lbl">install</span>
           </div>
           <h4>תלויות והרצה</h4>
@@ -526,7 +521,7 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">8</span>
+            <span class="badge">2</span>
             <span class="lbl">/init</span>
           </div>
           <h4>יוצרים CLAUDE.md</h4>
@@ -536,6 +531,27 @@
             <span class="cmd"><span class="kw">/init</span></span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">example</span>
+          </div>
+          <h4>CLAUDE.md לדוגמה</h4>
+          <p>הקובץ שנוצר נראה בערך כך — Claude Code ישתמש בו בכל שיחה כדי להבין את הפרויקט.</p>
+          <pre style="background:#1B2336;color:#EAE2D2;font-family:var(--mono);font-size:11px;border-radius:8px;padding:10px 12px;margin-top:10px;line-height:1.6;direction:ltr;text-align:left;overflow:hidden;flex-shrink:0;"># My Todo App
+
+React + Supabase task manager.
+
+## Stack
+- React, TypeScript, Tailwind
+- Supabase (auth + database)
+
+## Structure
+src/components/ – UI components
+src/pages/      – page routes
+src/lib/        – Supabase client</pre>
         </div>
 
       </div>
@@ -548,7 +564,7 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">9</span>
+            <span class="badge">1</span>
             <span class="lbl">change</span>
           </div>
           <h4>שינוי קטן</h4>
@@ -562,7 +578,7 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">10</span>
+            <span class="badge">2</span>
             <span class="lbl">push</span>
           </div>
           <h4>Commit ו-Push</h4>
@@ -584,7 +600,7 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">11</span>
+            <span class="badge">1</span>
             <span class="lbl">sync</span>
           </div>
           <h4>Lovable מזהה שינויים</h4>
@@ -593,11 +609,11 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">12</span>
+            <span class="badge">2</span>
             <span class="lbl">deploy</span>
           </div>
-          <h4>Redeploy ב-Lovable</h4>
-          <p>לוחצים Redeploy ב-Lovable כדי שהגרסה הפרוסה תשקף את הקוד המעודכן שהגיע מ-Claude Code.</p>
+          <h4>Update ב-Lovable</h4>
+          <p>לוחצים Update ב-Lovable כדי שהגרסה הפרוסה תשקף את הקוד המעודכן שהגיע מ-GitHub.</p>
         </div>
 
       </div>
@@ -606,11 +622,20 @@
     <!-- ─── 08 · TWO-WAY SYNC ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">סנכרון <em>דו-כיווני</em></h2>
-      <div class="steps-grid two">
+      <div class="steps-grid">
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">13</span>
+            <span class="badge">1</span>
+            <span class="lbl">lovable</span>
+          </div>
+          <h4>שינוי מ-Lovable</h4>
+          <p>מבצעים שינוי נוסף דרך צ'אט Lovable. כשמרוצים לוחצים Publish — Lovable מבצע commit לשינוי ומפרסם את הגרסה.</p>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
             <span class="lbl">github</span>
           </div>
           <h4>GitHub מתעדכן</h4>
@@ -619,7 +644,7 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">14</span>
+            <span class="badge">3</span>
             <span class="lbl">pull</span>
           </div>
           <h4>Pull מקומית</h4>
