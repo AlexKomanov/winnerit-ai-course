@@ -344,7 +344,7 @@
   </div>
     <div class="right">
       <span>Skills · הרחבת Claude Code</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 09</span></span>
     </div>
   </header>
 
@@ -451,43 +451,39 @@
           <p class="lead" style="margin-top:28px;">
             Skill הוא תיקייה עם קובץ <em style="color:var(--coral);">SKILL.md</em> — הוראות שמנחות את Claude Code למשימה ספציפית. מגדירים פעם אחת, ו-Claude טוען אוטומטית כשצריך.
           </p>
-          <p class="lead" style="margin-top:18px;">
-            Claude קורא את תיאור ה-Skill ומפעיל אותו אוטומטית כשהבקשה רלוונטית — או שמפעילים ידנית עם <em style="color:var(--coral);">/skill-name</em>.
-          </p>
           <p class="caption" style="margin-top:32px;">reusable · auto-invoked · team-shareable</p>
         </div>
 
         <!-- Skill flow diagram -->
-        <svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg"
-             style="width:100%;max-width:520px;align-self:center;direction:ltr" aria-label="Skill workflow diagram">
-          <!-- Skill File box -->
-          <rect x="10" y="80" width="110" height="60" rx="4" fill="#FBF8F1" stroke="#E04E36" stroke-width="1.5"/>
-          <text x="65" y="100" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#E04E36" letter-spacing="1.5">SKILL FILE</text>
-          <text x="65" y="114" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#8B8A82">.claude/skills/my-skill/</text>
-          <text x="65" y="126" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#E04E36">SKILL.md</text>
-          <text x="65" y="138" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">instructions + steps</text>
+        <svg viewBox="0 0 360 155" fill="none" xmlns="http://www.w3.org/2000/svg"
+             style="width:100%;align-self:center;direction:ltr" aria-label="Skill workflow diagram">
+          <!-- SKILL FILE box -->
+          <rect x="5" y="48" width="148" height="72" rx="5" fill="#FBF8F1" stroke="#E04E36" stroke-width="1.5"/>
+          <text x="79" y="65" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#E04E36" letter-spacing="1.5">SKILL FILE</text>
+          <text x="79" y="79" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7"><tspan fill="#8B8A82">.claude/skills/my-skill/</tspan><tspan fill="#E04E36">SKILL.md</tspan></text>
+          <text x="79" y="107" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9.5" fill="#4D556C">instructions + steps</text>
 
           <!-- Arrow 1 -->
-          <line x1="122" y1="110" x2="148" y2="110" stroke="#D8CCB5" stroke-width="1.5"/>
-          <polyline points="144,106 150,110 144,114" stroke="#D8CCB5" stroke-width="1.5" fill="none"/>
+          <line x1="155" y1="84" x2="170" y2="84" stroke="#D8CCB5" stroke-width="1.5"/>
+          <polyline points="166,80 172,84 166,88" stroke="#D8CCB5" stroke-width="1.5" fill="none"/>
 
-          <!-- Claude Code box -->
-          <rect x="150" y="80" width="110" height="60" rx="4" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.5"/>
-          <text x="205" y="103" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#2F6B49" letter-spacing="1.5">CLAUDE CODE</text>
-          <text x="205" y="120" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#4D556C">reads &amp; follows</text>
-          <text x="205" y="133" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#4D556C">the instructions</text>
+          <!-- CLAUDE CODE box -->
+          <rect x="174" y="48" width="128" height="72" rx="5" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.5"/>
+          <text x="238" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#2F6B49" letter-spacing="1.5">CLAUDE CODE</text>
+          <text x="238" y="86" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="10.5" fill="#4D556C">reads &amp; follows</text>
+          <text x="238" y="101" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="10.5" fill="#4D556C">the instructions</text>
 
           <!-- Arrow 2 -->
-          <line x1="262" y1="110" x2="288" y2="110" stroke="#D8CCB5" stroke-width="1.5"/>
-          <polyline points="284,106 290,110 284,114" stroke="#D8CCB5" stroke-width="1.5" fill="none"/>
+          <line x1="304" y1="84" x2="319" y2="84" stroke="#D8CCB5" stroke-width="1.5"/>
+          <polyline points="315,80 321,84 315,88" stroke="#D8CCB5" stroke-width="1.5" fill="none"/>
 
-          <!-- Output box -->
-          <rect x="290" y="80" width="22" height="60" rx="4" fill="rgba(226,169,59,0.12)" stroke="#E2A93B" stroke-width="1.5"/>
-          <text x="301" y="115" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#E2A93B" writing-mode="vertical-rl" letter-spacing="1">WORKFLOW</text>
+          <!-- WORKFLOW box -->
+          <rect x="323" y="48" width="32" height="72" rx="4" fill="rgba(226,169,59,0.12)" stroke="#E2A93B" stroke-width="1.5"/>
+          <text x="339" y="88" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#E2A93B" writing-mode="vertical-rl" letter-spacing="1">WORKFLOW</text>
 
           <!-- Invoke label -->
-          <text x="65" y="60" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8B8A82" letter-spacing="1">/my-skill</text>
-          <line x1="65" y1="64" x2="65" y2="78" stroke="#E04E36" stroke-width="1" stroke-dasharray="3,2"/>
+          <text x="79" y="28" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#8B8A82" letter-spacing="1">/my-skill</text>
+          <line x1="79" y1="33" x2="79" y2="46" stroke="#E04E36" stroke-width="1" stroke-dasharray="3,2"/>
         </svg>
       </div>
     </section>
@@ -501,28 +497,28 @@
           <div class="num"><span class="nb">1</span> name</div>
           <h4>שם</h4>
           <div class="en-label">Slug</div>
-          <p>שם תיקיית ה-Skill ב-kebab-case — הופך לפקודה <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">/skill-name</code>. מזהה ייחודי בתוך הפרויקט.</p>
+          <p>שם תיקיית ה-Skill ב-kebab-case, שהופך לפקודה <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/skill-name</code>. מזהה ייחודי בתוך הפרויקט.</p>
         </div>
 
         <div class="mini-card p2">
           <div class="num"><span class="nb">2</span> description</div>
           <h4>תיאור</h4>
           <div class="en-label">When + What</div>
-          <p>מה ה-Skill עושה ומתי להפעיל אותו — Claude קורא שדה זה כדי להחליט לטעון את ה-Skill אוטומטית.</p>
+          <p>מה ה-Skill עושה ומתי להפעיל אותו. Claude קורא שדה זה כדי להחליט אם להשתמש ב-Skill.</p>
         </div>
 
         <div class="mini-card p3">
           <div class="num"><span class="nb">3</span> allowed-tools</div>
           <h4>כלים</h4>
           <div class="en-label">Allowed Tools</div>
-          <p>רשימת הכלים שה-Skill מורשה להשתמש בהם — <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">Read Write Edit Bash</code>. ללא בקשת אישור בכל פעם.</p>
+          <p>רשימת הכלים שה-Skill מורשה להשתמש בהם: <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">Read Write Edit Bash</code>. ללא בקשת אישור בכל פעם.</p>
         </div>
 
         <div class="mini-card p4">
           <div class="num"><span class="nb">4</span> body</div>
           <h4>גוף</h4>
           <div class="en-label">Instructions</div>
-          <p>ההוראות עצמן ב-Markdown — תהליך, checklist, דוגמאות. ה-AI עוקב אחריהן צעד אחר צעד.</p>
+          <p>ההוראות עצמן ב-Markdown: תהליך, checklist, דוגמאות. ה-AI עוקב אחריהן צעד אחר צעד.</p>
         </div>
 
       </div>
@@ -536,7 +532,7 @@
         <em style="color:var(--mustard);font-style:italic;font-weight:500;">חסוך.</em>
       </h1>
       <div class="sub">
-        Skill שנכתב פעם אחת יכול לשפר כל session — לבד, לצוות, לכל פרויקט.
+        Skill שנכתב פעם אחת יכול לשפר כל session.
       </div>
     </section>
 
@@ -551,10 +547,10 @@
             <span class="lbl">find</span>
           </div>
           <h4>מגלים skills זמינים</h4>
-          <p>Skills מאוחסנים בתיקיית <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">.claude/skills/</code> בפרויקט. כל תיקייה בתוכה היא Skill — שם התיקייה הוא שם הפקודה.</p>
+          <p>Skills מאוחסנים בתיקיית <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">.claude/skills/</code> בפרויקט. אפשר לראות את כולם בפקודה <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/skills</code>.</p>
           <div class="step-action">
             <span class="arr">→</span>
-            .claude/skills/code-review/SKILL.md
+            <span dir="ltr">/skills</span> — מציג את כל ה-Skills הזמינים
           </div>
         </div>
 
@@ -564,10 +560,10 @@
             <span class="lbl">invoke</span>
           </div>
           <h4>מפעילים את ה-Skill</h4>
-          <p>מקלידים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">/skill-name</code> ידנית, או שפשוט מבקשים משהו רלוונטי וClaudeמטעין אוטומטית.</p>
+          <p>מקלידים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/skill-name</code> ידנית, או שפשוט מבקשים משהו רלוונטי ו-Claude טוען אוטומטית את ה-Skills המתאימים.</p>
           <div class="step-action">
             <span class="arr">→</span>
-            /code-review — או "review the PR changes"
+            <span dir="ltr">/code-review</span> — או "review the PR changes"
           </div>
         </div>
 
@@ -595,26 +591,26 @@
         <div class="step-block">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">create</span>
+            <span class="lbl">identify</span>
           </div>
-          <h4>יוצרים תיקייה</h4>
-          <p>יוצרים תיקייה עם שם ה-Skill בתוך <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">.claude/skills/</code> — ובתוכה קובץ <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">SKILL.md</code>.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd">mkdir -p .claude/skills/my-skill</span>
+          <h4>מזהים מה לאטמט</h4>
+          <p>חושבים על משימה שחוזרת על עצמה ורוצים לתת לה שם ותהליך קבוע.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            לדוגמה: code review, debugging, עדכון README
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">define</span>
+            <span class="lbl">create</span>
           </div>
-          <h4>כותבים את ה-Skill</h4>
-          <p>ב-<code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">SKILL.md</code> מוסיפים frontmatter עם <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">name</code>, <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">description</code>, ו-<code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">allowed-tools</code> — ואז גוף ההוראות ב-Markdown.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            frontmatter + הוראות מפורטות ב-Markdown
+          <h4>מפעילים Skill Creator</h4>
+          <p>מריצים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/plugin</code> ובוחרים <strong>skill-creator</strong> מהרשימה. הוא עובר תהליך יצירה מובנה ומייצר Skill חדש.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">/plugin</span></span>
           </div>
         </div>
 
@@ -623,18 +619,52 @@
             <span class="badge">3</span>
             <span class="lbl">test</span>
           </div>
-          <h4>מנסים ומשפרים</h4>
-          <p>מפעילים את ה-Skill ב-Claude Code ובודקים שהוא עושה מה שרצינו. מעדכנים את הקובץ לפי הצורך.</p>
+          <h4>בודקים ומשפרים</h4>
+          <p>Claude יצר את ה-Skill. מפעילים ובודקים שהוא עושה מה שרצינו. אפשר לבקש שינויים.</p>
           <div class="step-action">
             <span class="arr">→</span>
-            /my-skill — מריצים ובודקים
+            <span dir="ltr">/code-review</span> — ובודקים שזה עובד
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 08 · CLOSING ─── -->
+    <!-- ─── 08 · SKILL VIA PROMPT ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">Skill <em>מפרומפט</em></h2>
+      <div class="steps-grid" style="grid-template-columns: repeat(2, 1fr);">
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">describe</span>
+          </div>
+          <h4>מתארים ל-Claude Code</h4>
+          <p>מבקשים בשפה טבעית ליצור Skill — מתארים מה הוא צריך לעשות ומתי להפעיל אותו.</p>
+          <div class="step-code" style="direction:ltr;font-family:var(--body);white-space:normal;font-size:13px;">
+            <span class="prompt" style="font-family:var(--mono);">›</span>
+            <span class="cmd" style="color:#9BD3A8;white-space:normal;">Create a skill called "code-review" for reviewing PRs — check tests, security, and naming conventions</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">result</span>
+          </div>
+          <h4>Claude יוצר את הקבצים</h4>
+          <p>Claude יוצר את התיקייה וכותב <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;">SKILL.md</code> עם כל ההגדרות וההוראות — מוכן לשימוש מיד.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            <span dir="ltr">.claude/skills/code-review/SKILL.md</span> נוצר
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 09 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
         <h1>נגדיר<span style="color:var(--border)">.</span><br><em>נפעיל</em><span style="color:var(--border)">.</span><br>נחסוך<span style="color:var(--border)">.</span></h1>
