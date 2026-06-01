@@ -387,6 +387,9 @@
   .hw-icon svg { width: 14px; height: 14px; }
   .hw-label { font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--ink); }
   .hw-desc  { font-size: 13px; color: var(--muted); margin-top: 1px; }
+  a.hw-row { text-decoration: none; color: inherit; cursor: pointer; transition: background 0.15s; }
+  a.hw-row:hover { background: var(--border-soft); }
+  a.hw-row:hover .lesson-row-cta { background: var(--coral); color: #fff; }
 
   /* ─── BACKGROUND ICONS ─── */
   .bg-icons {
@@ -716,15 +719,16 @@
               </div>
               <div class="lesson-row-cta">פתיחה</div>
             </a>
-            <div class="hw-row">
+            <a class="hw-row" href="./hw-vibe-coding.html">
               <div class="hw-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
               </div>
-              <div>
+              <div style="flex:1;">
                 <div class="hw-label">שיעורי בית</div>
-                <div class="hw-desc">משימות לתרגול עצמי לאחר השיעור</div>
+                <div class="hw-desc">Lovable + Claude Code · ה-flow המלא</div>
               </div>
-            </div>
+              <div class="lesson-row-cta">פתיחה</div>
+            </a>
           </div>
         </div>
 
