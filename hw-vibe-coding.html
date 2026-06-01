@@ -212,6 +212,10 @@
   .step-code .cmd { flex: 1; color: #9BD3A8; white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
   .step-code .cmd::-webkit-scrollbar { display: none; }
   .step-code .kw { color: #E04E36; }
+  .step-code .copy { border: none; background: transparent; color: rgba(242,237,227,0.35); cursor: pointer; padding: 4px; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s, background 0.2s; flex-shrink: 0; }
+  .step-code .copy:hover { color: #9BD3A8; background: rgba(155,211,168,0.1); }
+  .step-code .copy.copied { color: #9BD3A8; }
+  .step-code .copy svg { width: 14px; height: 14px; }
   .step-action {
     background: var(--bg-2); border: 1px solid var(--border-soft); border-radius: 6px;
     padding: 10px 14px; font-size: 13px; color: var(--ink-soft);
@@ -433,10 +437,6 @@
           </div>
           <h4>פרויקט חדש</h4>
           <p>בוחרים נושא לאפליקציה — מעקב הוצאות, מנהל משימות, או חנות פשוטה. מתארים ב-Lovable מה אנחנו רוצים לבנות.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            New Project · מתארים בשפה טבעית
-          </div>
         </div>
 
         <div class="step-block">
@@ -446,10 +446,6 @@
           </div>
           <h4>מפרסמים</h4>
           <p>כשמרוצים מה-preview לוחצים Publish. האפליקציה מקבלת URL ציבורי — שומרים את הכתובת.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Publish · שומרים את ה-URL
-          </div>
         </div>
 
         <div class="step-block">
@@ -459,10 +455,6 @@
           </div>
           <h4>מחברים GitHub</h4>
           <p>בהגדרות הפרויקט ב-Lovable מחברים את חשבון GitHub. Lovable יוצר repository חדש אוטומטית עם כל הקוד.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Settings · Connect to GitHub
-          </div>
         </div>
 
       </div>
@@ -479,36 +471,34 @@
             <span class="lbl">clone</span>
           </div>
           <h4>Clone למחשב</h4>
-          <p>מעתיקים את ה-SSH URL מ-GitHub ומריצים clone בטרמינל.</p>
+          <p>מבקשים מ-Claude Code לשכפל את הפרויקט — הוא מריץ git clone ופותח את התיקייה.</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> clone &lt;repo-url&gt;</span>
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Clone [paste HTTPS URL from GitHub] to a local folder</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">5</span>
-            <span class="lbl">vscode</span>
+            <span class="lbl">open</span>
           </div>
-          <h4>פותחים ב-VSCode</h4>
-          <p>פותחים את תיקיית הפרויקט ב-VSCode ועוברים על המבנה — תיקיות src, components, וקבצי הגדרה.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">code</span> .</span>
-          </div>
+          <h4>פותחים Claude Code</h4>
+          <p>פותחים את אפליקציית Claude Code ומנווטים לתיקיית הפרויקט שנוצרה — מכאן הכל קורה דרך שיחה.</p>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">6</span>
-            <span class="lbl">claude</span>
+            <span class="lbl">explore</span>
           </div>
-          <h4>פותחים Claude Code</h4>
-          <p>מריצים Claude Code בטרמינל בתוך תיקיית הפרויקט. מוודאים שאנחנו ב-directory הנכון.</p>
+          <h4>מכירים את הפרויקט</h4>
+          <p>מבקשים מ-Claude Code לסרוק את הפרויקט ולהסביר את המבנה — ככה נדע איפה כל דבר נמצא לפני שמתחילים לשנות.</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">claude</span></span>
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Scan this project and explain its structure — what each folder and main file does</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
@@ -526,10 +516,11 @@
             <span class="lbl">install</span>
           </div>
           <h4>תלויות והרצה</h4>
-          <p>מתקינים את כל חבילות הפרויקט ומריצים שרת פיתוח מקומי. פותחים דפדפן ומוודאים שרואים את האפליקציה.</p>
+          <p>מבקשים מ-Claude Code להתקין את כל חבילות הפרויקט ולהפעיל שרת פיתוח מקומי. פותחים דפדפן ומוודאים שרואים את האפליקציה.</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">npm</span> install &amp;&amp; <span class="kw">npm</span> run dev</span>
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Install all npm dependencies and start the local development server</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
@@ -540,9 +531,10 @@
           </div>
           <h4>יוצרים CLAUDE.md</h4>
           <p>מריצים <code style="font-family:var(--mono);direction:ltr;unicode-bidi:embed;">/init</code> בתוך Claude Code. הכלי סורק את הפרויקט ויוצר קובץ CLAUDE.md — הקשר שיעזור ל-AI להבין את המבנה.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            בתוך Claude Code: <code style="font-family:var(--mono);direction:ltr;unicode-bidi:embed;">/init</code>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">/init</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
@@ -560,10 +552,11 @@
             <span class="lbl">change</span>
           </div>
           <h4>שינוי קטן</h4>
-          <p>מבקשים מ-Claude Code לבצע שינוי קטן — כותרת, צבע, כפתור חדש. פותחים את הדפדפן ומוודאים שרואים את השינוי בשרת המקומי.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            מבקשים שינוי בצ'אט · מוודאים בדפדפן
+          <p>כותבים בצ'אט של Claude Code בקשה לשינוי קטן. מוודאים שהשינוי נראה בדפדפן על השרת המקומי.</p>
+          <div class="step-code">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Change the main heading color to blue and increase its font size by 20%</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
@@ -573,10 +566,11 @@
             <span class="lbl">push</span>
           </div>
           <h4>Commit ו-Push</h4>
-          <p>מבצעים commit עם הודעה ברורה ומעלים ל-GitHub. נכנסים ל-repository ומוודאים שה-commit הגיע.</p>
+          <p>מבקשים מ-Claude Code לבצע commit עם הודעה ברורה ולדחוף ל-GitHub — הוא מריץ את כל פקודות ה-git בשבילנו.</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> add . &amp;&amp; <span class="kw">git</span> commit -m "..." &amp;&amp; <span class="kw">git</span> push</span>
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Commit all changes with a descriptive message and push to the main branch</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
@@ -593,12 +587,8 @@
             <span class="badge">11</span>
             <span class="lbl">sync</span>
           </div>
-          <h4>מסנכרנים מ-GitHub</h4>
-          <p>חוזרים ל-Lovable ומסנכרנים את השינויים שעשינו עם Claude Code — כך ה-AI יודע על הקוד החדש שהוספנו.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Lovable · Settings · Sync from GitHub
-          </div>
+          <h4>Lovable מזהה שינויים</h4>
+          <p>Lovable עוקב אחרי ה-repository ב-GitHub ומזהה את ה-commit החדש אוטומטית — אין צורך לסנכרן ידנית.</p>
         </div>
 
         <div class="step-block">
@@ -606,12 +596,8 @@
             <span class="badge">12</span>
             <span class="lbl">deploy</span>
           </div>
-          <h4>שינויים ו-Deploy</h4>
-          <p>מבקשים מ-Lovable לבצע שינוי נוסף בצ'אט. לאחר שמרוצים לוחצים Publish לעדכון ה-deploy הציבורי.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            Chat בלובבל · שינוי נוסף · Publish
-          </div>
+          <h4>Redeploy ב-Lovable</h4>
+          <p>לוחצים Redeploy ב-Lovable כדי שהגרסה הפרוסה תשקף את הקוד המעודכן שהגיע מ-Claude Code.</p>
         </div>
 
       </div>
@@ -629,10 +615,6 @@
           </div>
           <h4>GitHub מתעדכן</h4>
           <p>פותחים את ה-repository ב-GitHub. רואים שה-commit החדש מ-Lovable הגיע אוטומטית ל-branch הראשי.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            GitHub repository · Commits · commit חדש
-          </div>
         </div>
 
         <div class="step-block">
@@ -641,10 +623,11 @@
             <span class="lbl">pull</span>
           </div>
           <h4>Pull מקומית</h4>
-          <p>חוזרים לטרמינל ומושכים את השינויים. השרת המקומי מתעדכן ורואים מיד את השינויים שנעשו ב-Lovable.</p>
+          <p>מבקשים מ-Claude Code למשוך את השינויים מ-GitHub — השרת המקומי מתעדכן ורואים מיד את מה שנעשה ב-Lovable.</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> pull</span>
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Pull the latest changes from GitHub</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
@@ -763,6 +746,17 @@
     btn.querySelector('.icon-expand').style.display = full ? 'none' : '';
     btn.querySelector('.icon-compress').style.display = full ? '' : 'none';
     btn.setAttribute('aria-label', full ? 'צא ממסך מלא' : 'מסך מלא');
+  });
+  document.querySelectorAll('.step-code .copy').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const cmd = btn.closest('.step-code').querySelector('.cmd').textContent.trim();
+      try {
+        await navigator.clipboard.writeText(cmd);
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 1400);
+      } catch (err) {}
+    });
   });
 })();
 </script>
