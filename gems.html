@@ -177,7 +177,7 @@
   /* ─── STATEMENT ─── */
   .slide-statement { justify-content: center; }
   .slide-statement .body-grid {
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: 72px; align-items: center;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
   }
 
   /* ─── MINI CARDS (4-up) ─── */
@@ -360,6 +360,14 @@
     margin-top: 20px; padding: 12px 16px; background: rgba(47,107,73,0.06);
     border: 1px solid rgba(47,107,73,0.2); font-size: 13.5px; color: var(--forest);
   }
+  .qa-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .qa-table th {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); padding: 6px 12px; border-bottom: 2px solid var(--border); text-align: right;
+  }
+  .qa-table td { padding: 9px 12px; border-bottom: 1px dashed var(--border-soft); color: var(--ink-soft); font-size: 14px; line-height: 1.45; vertical-align: top; }
+  .qa-table td.field { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .qa-table tr:last-child td { border-bottom: none; }
 
   /* ─── PRE-MADE + MANAGE ─── */
   .slide-premade { justify-content: center; }
@@ -583,12 +591,12 @@
             במקום לכתוב מחדש את ה-prompt בכל שיחה,
             אנחנו <em style="color:var(--coral);">מגדירים פעם אחת</em> ומשתמשים שוב ושוב.
           </p>
-          <p class="caption" style="margin-top:32px;">מקור: gemini.google.com/overview/gems</p>
+          <p class="caption" style="margin-top:32px;">מקור: gemini.google/overview/gems/</p>
         </div>
 
         <!-- Comparison diagram SVG -->
         <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg"
-             style="width:100%;max-width:340px;align-self:center;direction:ltr" aria-label="Gem vs Chat diagram">
+             style="width:100%;max-width:460px;align-self:center;direction:ltr" aria-label="Gem vs Chat diagram">
           <!-- Chat column -->
           <rect x="10" y="10" width="130" height="240" rx="4" fill="#FBF8F1" stroke="#D8CCB5" stroke-width="1"/>
           <text x="75" y="36" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8B8A82" letter-spacing="2">CHAT REGULAR</text>
@@ -684,12 +692,11 @@
             <span class="badge">1</span>
             <span class="lbl">navigation</span>
           </div>
-          <h4>פותחים את Gemini</h4>
-          <p>נכנסים לכתובת <strong>gemini.google.com</strong> מחשבון Google.
-             פותחים את ה-sidebar ומוצאים את קטגוריית <strong>Gems</strong>.</p>
+          <h4>פותחים את Gem Manager</h4>
+          <p>נכנסים ישירות ל-<strong>Gem Manager</strong> מחשבון Google. שם רואים את ה-Gems המוכנים של Google ואת ה-Gems האישיים שלנו.</p>
           <div class="step-code">
             <span class="prompt">🌐</span>
-            <span class="cmd">gemini.google.com</span>
+            <span class="cmd">gemini.google.com/gems</span>
           </div>
         </div>
 
@@ -699,9 +706,7 @@
             <span class="lbl">create</span>
           </div>
           <h4>New Gem</h4>
-          <p>לוחצים <strong>Explore Gems</strong> ואז <strong>New Gem</strong>.
-             נותנים שם ומזינים הוראות — Persona, Task, Context, Format.
-             ניתן גם ללחוץ על <strong>✦ Re-write</strong> ו-Gemini יעזור להרחיב.</p>
+          <p>לוחצים <strong>New Gem</strong> ב-Gem Manager. ממלאים <strong>Name</strong> ו-<strong>Description</strong>, כותבים הוראות בשדה <strong>Instructions</strong>, בוחרים <strong>Default tool</strong> (אופציונלי) ומעלים קבצים ל-<strong>Knowledge</strong>. ניתן ללחוץ <strong>✦ Re-write</strong> ו-Gemini יעזור להרחיב את ההוראות.</p>
           <div class="step-code">
             <span class="prompt">✦</span>
             <span class="cmd"><span class="kw">Use Gemini</span> to re-write instructions</span>
@@ -714,9 +719,7 @@
             <span class="lbl">preview &amp; save</span>
           </div>
           <h4>בדיקה ושמירה</h4>
-          <p>בחלונית הימנית בודקים את ה-Gem עם prompt לדוגמה לפני השמירה.
-             לאחר שמחים — לוחצים <strong>Save</strong>.
-             ה-Gem יופיע תחת <strong>My Gems</strong> ב-sidebar.</p>
+          <p>בחלונית ה-Preview הימנית בודקים את ה-Gem עם prompt לדוגמה. לאחר שמרוצים — לוחצים <strong>Save</strong>. ה-Gem יופיע ב-Gem Manager.</p>
           <div class="step-code">
             <span class="prompt">💾</span>
             <span class="cmd"><span class="kw">Save</span> → My Gems</span>
@@ -780,7 +783,7 @@
 
         <!-- LEFT: editor -->
         <div class="ui-panel left">
-          <div class="ui-panel-title">Gem Editor — gemini.google.com</div>
+          <div class="ui-panel-title">New Gem — gemini.google.com/gems</div>
 
           <div class="ui-field">
             <label>Name</label>
@@ -788,17 +791,24 @@
           </div>
 
           <div class="ui-field">
+            <label>Description</label>
+            <div class="ui-input" style="color:var(--muted);font-size:13px;">עוזר לכתיבת מקרי בדיקה לפרויקטי SaaS</div>
+          </div>
+
+          <div class="ui-field">
             <label>Instructions</label>
-            <div style="margin-bottom:6px;display:flex;flex-wrap:wrap;gap:4px">
-              <span class="ui-section-badge persona">Persona</span>
-              <span class="ui-section-badge task">Task</span>
-              <span class="ui-section-badge context">Context</span>
-              <span class="ui-section-badge format">Format</span>
-            </div>
-            <div class="ui-textarea">אתה בודק תוכנה בכיר עם ניסיון ב-Agile.
+            <div class="ui-textarea" style="height:96px;">אתה בודק תוכנה בכיר עם ניסיון ב-Agile.
 המשימה שלך: לכתוב מקרי בדיקה בעברית בהתאם למסמכי הפרויקט המצורפים.
 הקשר: אנחנו עובדים על אפליקציית SaaS — שלב ה-Sprint הנוכחי.
 פורמט: טבלה עם עמודות מס׳ / תיאור / קלט / פלט צפוי / עדיפות.</div>
+          </div>
+
+          <div class="ui-field">
+            <label>Default tool</label>
+            <div class="ui-input" style="font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;direction:ltr;">
+              No default tool
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
           </div>
 
           <div class="ui-field">
@@ -808,8 +818,8 @@
               product-requirements.pdf
             </div>
             <div class="ui-know-row">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              test-plan-sprint-14.docx (Drive)
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12a10 10 0 11-20 0 10 10 0 0120 0z"/><path d="M12 8v4l3 3"/></svg>
+              Add from Drive · Photos · NotebookLM…
             </div>
           </div>
         </div>
@@ -849,22 +859,15 @@
             הגדרת ה-Gem
           </div>
           <h4>מה שמגדירים</h4>
-          <div class="qa-row">
-            <span class="qr-tag">persona</span>
-            <p>בודק תוכנה בכיר, ניסיון ב-Agile, מכיר את ה-stack של הפרויקט</p>
-          </div>
-          <div class="qa-row">
-            <span class="qr-tag">task</span>
-            <p>כתיבת מקרי בדיקה, ניתוח edge cases, זיהוי פערים בין PRD לבין ה-implementation</p>
-          </div>
-          <div class="qa-row">
-            <span class="qr-tag">context</span>
-            <p>שם הפרויקט, סביבת העבודה, הצוות, מגבלות ידועות</p>
-          </div>
-          <div class="qa-row">
-            <span class="qr-tag">format</span>
-            <p>טבלת מקרי בדיקה בעברית: מס׳ / תיאור / קלט / פלט צפוי / עדיפות / סטטוס</p>
-          </div>
+          <table class="qa-table">
+            <thead><tr><th>שדה</th><th>ערך</th></tr></thead>
+            <tbody>
+              <tr><td class="field">Name</td><td><strong>QA Assistant</strong> — שם ברור שמזהה את ה-Gem</td></tr>
+              <tr><td class="field">Description</td><td>עוזר לכתיבת מקרי בדיקה לפרויקטי SaaS</td></tr>
+              <tr><td class="field">Instructions</td><td>בודק תוכנה בכיר, Agile. מקרי בדיקה בעברית. פורמט: מס׳ / תיאור / קלט / פלט / עדיפות</td></tr>
+              <tr><td class="field">Default tool</td><td>No default tool</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="qa-block result">
@@ -873,22 +876,15 @@
             קבצי ידע לצרף
           </div>
           <h4>מה מעלים</h4>
-          <div class="qa-row">
-            <span class="qr-tag">drive</span>
-            <p><strong>מסמך דרישות (PRD)</strong> — מתעדכן אוטומטית</p>
-          </div>
-          <div class="qa-row">
-            <span class="qr-tag">drive</span>
-            <p><strong>תוכנית הבדיקות</strong> — test plan ו-regression checklist</p>
-          </div>
-          <div class="qa-row">
-            <span class="qr-tag">upload</span>
-            <p><strong>תבנית דוח באג</strong> — bug report template</p>
-          </div>
-          <div class="qa-row">
-            <span class="qr-tag">upload</span>
-            <p><strong>גלוסרי מונחים</strong> — מונחי הפרויקט והדומיין</p>
-          </div>
+          <table class="qa-table">
+            <thead><tr><th>מקור</th><th>קובץ</th></tr></thead>
+            <tbody>
+              <tr><td class="field">Drive</td><td><strong>מסמך דרישות (PRD)</strong> — מתעדכן אוטומטית</td></tr>
+              <tr><td class="field">Drive</td><td><strong>תוכנית הבדיקות</strong> — test plan ו-regression checklist</td></tr>
+              <tr><td class="field">Upload</td><td><strong>תבנית דיווח באג</strong> — bug report template</td></tr>
+              <tr><td class="field">Upload</td><td><strong>גלוסרי מונחים</strong> — מונחי הפרויקט והדומיין</td></tr>
+            </tbody>
+          </table>
           <div class="qa-note">
             כאשר ה-Gem מסתמך על מסמך — הוא <strong>מציין את המקור</strong>.
             כך ניתן לאמת כל תשובה מול הדרישות המקוריות.
@@ -898,74 +894,37 @@
       </div>
     </section>
 
-    <!-- ─── 10 · PRE-MADE + MANAGE ─── -->
+    <!-- ─── 10 · MANAGE ─── -->
     <section class="slide slide-premade">
-      <h2 class="title">Gems <em>מוכנים</em> וניהול</h2>
+      <h2 class="title">ניהול <em>Gems</em></h2>
 
-      <div class="premade-grid">
-        <div class="pm-card">
-          <svg class="pm-ico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-            <circle cx="18" cy="18" r="14"/>
-            <path d="M12 18c0-3.3 2.7-6 6-6s6 2.7 6 6"/><line x1="18" y1="22" x2="18" y2="26"/>
-          </svg>
-          <h4>Brainstormer</h4>
-          <p>סיעור מוחות ורעיונות</p>
+      <div class="grid-4">
+
+        <div class="mini-card p1">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;display:block;"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <h4>Pin</h4>
+          <p>מצמידים Gem לתפריט הצד לגישה מהירה. שימושי ל-Gems שמשתמשים בהם באופן קבוע ורוצים להגיע אליהם בלחיצה אחת.</p>
         </div>
-        <div class="pm-card">
-          <svg class="pm-ico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-            <rect x="6" y="10" width="24" height="18" rx="2"/>
-            <line x1="6" y1="16" x2="30" y2="16"/>
-            <circle cx="11" cy="13" r="1" fill="currentColor"/><circle cx="16" cy="13" r="1" fill="currentColor"/>
-          </svg>
-          <h4>Coding Partner</h4>
-          <p>עוזר קוד ופתרון בעיות</p>
+
+        <div class="mini-card p2">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;display:block;"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          <h4>Edit</h4>
+          <p>עורכים את ההוראות, ה-Description, ה-Default tool וקבצי ה-Knowledge בכל עת — ה-Gem מתעדכן מיד לכל השיחות הבאות.</p>
         </div>
-        <div class="pm-card">
-          <svg class="pm-ico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-            <path d="M18 4L22 14H32L24 20L27 30L18 24L9 30L12 20L4 14H14Z"/>
-          </svg>
-          <h4>Learning Coach</h4>
-          <p>ליווי למידה אישי</p>
+
+        <div class="mini-card p3">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--mustard)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;display:block;"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <h4>Share</h4>
+          <p>משתפים את ה-Gem עם חברי צוות — כולם מקבלים גישה לאותה הגדרה מדויקת ועובדים עם אותו הקשר.</p>
         </div>
-        <div class="pm-card">
-          <svg class="pm-ico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-            <path d="M8 28V12l10-8 10 8v16"/><rect x="14" y="18" width="8" height="10"/>
-          </svg>
-          <h4>Career Guide</h4>
-          <p>ייעוץ ופיתוח קריירה</p>
+
+        <div class="mini-card p4">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--sky)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;display:block;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+          <h4>Delete</h4>
+          <p>מוחקים Gem שאינו בשימוש. המחיקה היא לצמיתות — לא ניתן לשחזר את ההוראות או הקבצים שצורפו.</p>
         </div>
-        <div class="pm-card">
-          <svg class="pm-ico" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-            <path d="M6 8h24M6 16h18M6 24h12"/><path d="M26 20l6 6-6 6"/>
-          </svg>
-          <h4>Writing Editor</h4>
-          <p>עריכת טקסטים וכתיבה</p>
-        </div>
+
       </div>
-
-      <p class="caption" style="margin-top:20px;margin-bottom:12px;">ניהול Gems</p>
-      <div class="manage-row">
-        <div class="mgr-chip pin">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-          Pin — גישה מהירה
-        </div>
-        <div class="mgr-chip edit">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          Edit — עדכון הוראות וקבצים
-        </div>
-        <div class="mgr-chip share">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-          Share — שיתוף עם אחרים
-        </div>
-        <div class="mgr-chip del">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
-          Delete — מחיקה לצמיתות
-        </div>
-      </div>
-
-      <p class="caption" style="margin-top:16px;color:var(--muted-soft)">
-        ⚠ מגבלה ידועה: Gems לא עובדים עם Gemini Live (שיחות קוליות) · מקור: support.google.com/gemini
-      </p>
     </section>
 
     <!-- ─── 11 · CLOSING ─── -->
