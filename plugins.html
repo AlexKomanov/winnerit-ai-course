@@ -311,7 +311,7 @@
     </div>
     <div class="right">
       <span>Plugins · הרחבת Claude Code</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 07</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 06</span></span>
     </div>
   </header>
 
@@ -464,7 +464,7 @@
             <span class="lbl">open</span>
           </div>
           <h4>פותחים Plugin Browser</h4>
-          <p>מריצים את הפקודה <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/plugin</code> ב-Claude Code. נפתחת רשימה של Plugins זמינים.</p>
+          <p>מריצים את הפקודה <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/plugin</code> ב-Claude Code. עוברים ל-Installed tab לראות אילו Plugins כבר מותקנים ופעילים.</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
             <span class="cmd"><span class="kw">/plugin</span></span>
@@ -508,22 +508,35 @@
         <div class="step-block">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">official</span>
+            <span class="lbl">discover</span>
           </div>
-          <h4>Marketplace רשמי</h4>
-          <p>ה-Marketplace הרשמי של Anthropic זמין אוטומטית. פותחים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/plugin</code> ועוברים ל-Discover tab לגלות מה יש.</p>
+          <h4>Discover Tab</h4>
+          <p>פותחים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/plugin</code> ועוברים ל-Discover tab — רואים את כל ה-Plugins הזמינים ומתקינים ישירות מהממשק.</p>
           <div class="step-action">
             <span class="arr">→</span>
-            <span dir="ltr">/plugin</span> → Discover tab
+            <span dir="ltr">/plugin → Discover → Install</span>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">custom</span>
+            <span class="lbl">install</span>
           </div>
-          <h4>Marketplace קהילתי</h4>
+          <h4>התקנה בפקודה</h4>
+          <p>אפשר גם להתקין Plugin ישירות בפקודה, מבלי לפתוח את ה-Browser — שימושי לאוטומציה.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">/plugin</span> install github@claude-plugins-official</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">marketplace</span>
+          </div>
+          <h4>הוספת Marketplace</h4>
           <p>מוסיפים Marketplace נוסף — קהילתי, של הצוות, או כל מקור אחר (GitHub, GitLab, URL).</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
@@ -531,35 +544,10 @@
           </div>
         </div>
 
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">3</span>
-            <span class="lbl">install</span>
-          </div>
-          <h4>מתקינים Plugin</h4>
-          <p>מתקינים Plugin לפי שם ושם ה-Marketplace. לאחר ההתקנה מריצים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/reload-plugins</code> להפעלה.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">/plugin</span> install github@claude-plugins-official</span>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- ─── 06 · POSTER ─── -->
-    <section class="slide slide-poster">
-      <h1 class="mega">
-        <span class="a">התקן.</span><br>
-        <span class="b">הפעל.</span><br>
-        <em style="color:var(--mustard);font-style:italic;font-weight:500;">חסוך.</em>
-      </h1>
-      <div class="sub">
-        Plugin שמישהו כתב פעם אחת יכול לחסוך לנו שעות עבודה.
-      </div>
-    </section>
-
-    <!-- ─── 07 · CLOSING ─── -->
+    <!-- ─── 06 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
         <h1>נתקין<span style="color:var(--border)">.</span><br><em>נפעיל</em><span style="color:var(--border)">.</span><br>נחסוך<span style="color:var(--border)">.</span></h1>
