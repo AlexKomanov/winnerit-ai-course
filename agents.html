@@ -872,7 +872,7 @@
   </div>
     <div class="right">
       <span>Agents · סוכנים חכמים</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 18</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 14</span></span>
     </div>
   </header>
 
@@ -995,14 +995,17 @@
         </div>
         <div>
           <div class="term">
-            <div class="term-bar"><i></i><i></i><i></i><span class="tt">agent session</span></div>
+            <div class="term-bar"><i></i><i></i><i></i><span class="tt">claude code · agent session</span></div>
             <div class="term-body">
-              <div><span class="pr">user ›</span> מי זכה בגביע העולם ב־2022?</div>
-              <div style="margin-top:8px;"><span class="out">🔧 web_search("2022 FIFA World Cup winner")</span></div>
-              <div><span class="out">🔍 result: Argentina defeated France...</span></div>
-              <div style="margin-top:8px;"><span class="ok">agent ›</span> ארגנטינה זכתה ב־2022</div>
-              <div style="color:rgba(242,237,227,0.4);">   בגמר נגד צרפת, 4:2 בפנדלים.</div>
-              <div style="margin-top:8px;"><span class="pr">user ›</span> <span class="cur"></span></div>
+              <div><span class="pr">user ›</span> create a Python project with /health endpoint</div>
+              <div style="margin-top:8px;"><span class="out">🔧 create_file("app.py")</span></div>
+              <div><span class="ok">✓</span> <span class="out">created</span></div>
+              <div><span class="out">🔧 write_file("app.py", "from flask import Flask...")</span></div>
+              <div><span class="ok">✓</span> <span class="out">written</span></div>
+              <div><span class="out">🔧 run_command("pip install flask")</span></div>
+              <div><span class="ok">✓</span> <span class="out">flask 3.0.3 installed</span></div>
+              <div style="margin-top:8px;"><span class="ok">agent ›</span> project ready. run: <span style="color:#E04E36;">python app.py</span></div>
+              <div style="margin-top:4px;"><span class="pr">user ›</span> <span class="cur"></span></div>
             </div>
           </div>
         </div>
@@ -1043,11 +1046,10 @@
       </div>
 
       <p class="caption" style="margin-top:36px;text-align:center;">הלולאה חוזרת עד שהסוכן מחליט שהמשימה הושלמה</p>
-      <div class="corner-num">02</div>
     </section>
 
     <!-- ─── 05 · VS CHAT ─── -->
-    <section class="slide slide-vs">
+    <section class="slide slide-vs" style="justify-content:center;">
       <h2 class="title">Chat <em>vs</em> Agent</h2>
       <div class="vs-grid">
 
@@ -1085,7 +1087,7 @@
     </section>
 
     <!-- ─── 06 · TOOLS ─── -->
-    <section class="slide slide-three">
+    <section class="slide slide-three" style="justify-content:center;">
       <h2 class="title">הכלים של <em>הסוכן</em></h2>
       <div class="grid-3">
 
@@ -1114,7 +1116,6 @@
         </div>
 
       </div>
-      <div class="corner-num">04</div>
     </section>
 
     <!-- ─── 07 · POSTER ─── -->
@@ -1178,170 +1179,7 @@
       </div>
     </section>
 
-    <!-- ─── 11 · FRAMEWORKS ─── -->
-    <section class="slide slide-models">
-      <h2 class="title">frameworks <em>פופולריים</em></h2>
-      <p class="lead" style="margin-top:14px;max-width:800px;">ספריות שעוטפות את לולאת ה-agent ומספקות כלים, זיכרון ותזמור מוכנים לשימוש.</p>
-      <div class="models-grid">
-        <div class="model">
-          <div class="badge" style="color:var(--forest);">LC</div>
-          <div class="info">
-            <div class="name">LangChain</div>
-            <div class="by">הנפוצה ביותר · אקוסיסטם ענק</div>
-          </div>
-        </div>
-        <div class="model">
-          <div class="badge" style="color:var(--coral);">CA</div>
-          <div class="info">
-            <div class="name">CrewAI</div>
-            <div class="by">סוכנים עם תפקידים · multi-agent</div>
-          </div>
-        </div>
-        <div class="model">
-          <div class="badge" style="color:var(--mustard);">SA</div>
-          <div class="info">
-            <div class="name">smolagents</div>
-            <div class="by">HuggingFace · קל וקומפקטי</div>
-          </div>
-        </div>
-        <div class="model">
-          <div class="badge" style="color:var(--sky);">AG</div>
-          <div class="info">
-            <div class="name">AutoGen</div>
-            <div class="by">Microsoft · שיחות בין סוכנים</div>
-          </div>
-        </div>
-        <div class="model">
-          <div class="badge">LG</div>
-          <div class="info">
-            <div class="name">LangGraph</div>
-            <div class="by">LangChain · workflows כגרף</div>
-          </div>
-        </div>
-        <div class="model">
-          <div class="badge" style="color:var(--muted);">···</div>
-          <div class="info">
-            <div class="name">ועוד רבים</div>
-            <div class="by">התחום גדל בקצב מהיר</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── 12 · LOCAL AGENTS ─── -->
-    <section class="slide slide-statement">
-      <div class="body-grid">
-        <div>
-          <h2 class="title">Agents <em>+ Ollama</em></h2>
-          <p class="lead" style="margin-top:28px;">
-            רוב ה-frameworks תומכים ב-OpenAI API — ו-Ollama חושף בדיוק אותו API.
-            <strong style="color:var(--ink);font-weight:700;">סוכן מקומי לחלוטין: ללא ענן, ללא עלות, ללא פגיעה בפרטיות.</strong>
-          </p>
-          <p class="lead" style="margin-top:16px;">
-            נשתמש ב-<em style="color:var(--coral);">smolagents</em> עם <em style="color:var(--coral);">gemma4</em> דרך Ollama.
-          </p>
-        </div>
-        <div>
-          <div class="term">
-            <div class="term-bar"><i></i><i></i><i></i><span class="tt">local agent · ollama</span></div>
-            <div class="term-body">
-              <div><span class="pr">$</span> ollama pull gemma4</div>
-              <div><span class="out">pulling manifest ...</span></div>
-              <div><span class="ok">✓</span> <span class="out">model ready (4.7 GB)</span></div>
-              <div style="margin-top:10px;"><span class="pr">$</span> python agent.py</div>
-              <div><span class="out">🔧 search("אוכלוסיית ישראל 2025")</span></div>
-              <div><span class="out">🔍 ~9.9 million...</span></div>
-              <div><span class="ok">agent ›</span> כ-9.9 מיליון תושבים.</div>
-              <div style="margin-top:4px;"><span class="cur"></span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── 13 · SETUP ─── -->
-    <section class="slide slide-statement">
-      <h2 class="title">מגדירים את <em>הסביבה</em></h2>
-      <div class="steps-grid">
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">1</span><span class="lbl">install</span></div>
-          <h4>מתקינים smolagents</h4>
-          <p>ספריית הסוכנים של HuggingFace — קומפקטית ותומכת ב-Ollama באמצעות OpenAI-compatible API.</p>
-          <div class="step-code">
-            <span class="prompt">$</span>
-            <span class="cmd"><span class="kw">pip</span> <span class="arg">install smolagents</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">2</span><span class="lbl">connect</span></div>
-          <h4>מחברים ל-Ollama</h4>
-          <p>מגדירים את המודל המקומי כ-backend של הסוכן — Ollama רץ על localhost:11434.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd"><span class="kw">from</span> <span class="arg">smolagents import</span> <span class="kw">OpenAIServerModel</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">3</span><span class="lbl">define tools</span></div>
-          <h4>מגדירים כלים</h4>
-          <p>כל כלי הוא פונקציה Python עם docstring — הסוכן לומד ממנה מתי ואיך להשתמש בו.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd"><span class="kw">from</span> <span class="arg">smolagents import tool</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── 14 · RUN ─── -->
-    <section class="slide slide-statement">
-      <h2 class="title">מריצים את <em>הסוכן</em></h2>
-      <div class="steps-grid">
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">1</span><span class="lbl">build</span></div>
-          <h4>בונים את הסוכן</h4>
-          <p>מאחדים מודל + כלים לאובייקט אחד. הסוכן יחליט בעצמו מתי להשתמש בכל כלי.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd"><span class="kw">agent</span> = <span class="arg">ToolCallingAgent(tools, model)</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">2</span><span class="lbl">run</span></div>
-          <h4>שולחים משימה</h4>
-          <p>מגדירים את המשימה בשפה טבעית — הסוכן מתכנן ומריץ את כל הצעדים הנדרשים.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd"><span class="arg">agent</span>.<span class="kw">run</span>(<span class="arg">"חפש ותסכם..."</span>)</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">3</span><span class="lbl">inspect</span></div>
-          <h4>בודקים את ה-trace</h4>
-          <p>רואים בדיוק אילו כלים הופעלו ובאיזה סדר — שקיפות מלאה על כל ההחלטות.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd"><span class="kw">print</span>(<span class="arg">agent.logs</span>)</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── 15 · MULTI-AGENT ─── -->
+    <!-- ─── 11 · MULTI-AGENT ─── -->
     <section class="slide slide-statement">
       <h2 class="title">מערכות <em>multi-agent</em></h2>
       <p class="lead" style="margin-top:12px;max-width:780px;">סוכן ראשי (orchestrator) מנהל קבוצה של סוכני-עובד מתמחים — כל אחד מבצע את החלק שלו.</p>
@@ -1383,11 +1221,43 @@
           </div>
         </div>
       </div>
-      <div class="corner-num">13</div>
     </section>
 
-    <!-- ─── 16 · RISKS ─── -->
-    <section class="slide slide-three">
+    <!-- ─── 12 · CREATE AGENTS ─── -->
+    <section class="slide slide-three" style="justify-content:center;">
+      <h2 class="title">ניהול <em>Agents</em></h2>
+      <div class="grid-3">
+
+        <div class="mini-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+          </svg>
+          <h4 style="direction:ltr;text-align:left;">/agents</h4>
+          <p>פקודה שפותחת ממשק עם טאבים לניהול כל ה-Agents — built-in, user, project ו-plugin.</p>
+        </div>
+
+        <div class="mini-card">
+          <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="10 8 16 12 10 16 10 8"/>
+          </svg>
+          <h4>Running Tab</h4>
+          <p>מציג את כל ה-Agents הפעילים כרגע. אפשר לפתוח agent לצפייה בפעולות שלו או לעצור אותו.</p>
+        </div>
+
+        <div class="mini-card">
+          <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+          </svg>
+          <h4>Library Tab</h4>
+          <p>רשימת כל ה-Agents הזמינים. יוצרים agent חדש עם Claude או ידנית, עורכים הגדרות, ומוחקים.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 13 · RISKS ─── -->
+    <section class="slide slide-three" style="justify-content:center;">
       <h2 class="title">סיכונים <em>שצריך להכיר</em></h2>
       <div class="grid-3">
 
@@ -1397,8 +1267,8 @@
             <line x1="12" y1="9" x2="12" y2="13"/>
             <line x1="12" y1="17" x2="12.01" y2="17"/>
           </svg>
-          <h4>הלוצינציות בכלים</h4>
-          <p>הסוכן עשוי לקרוא לכלי עם פרמטרים שגויים, להמציא תוצאות, או להסיק מסקנות מוטעות מהנתונים שקיבל.</p>
+          <h4>שגיאות בכלים</h4>
+          <p>הסוכן קורא לכלים, אך עשוי לשגות בפרמטרים, לפרש תוצאות בטעות, ולהמשיך לפעול על מידע שגוי.<br><strong style="color:var(--coral);">תמיד בודקים את ה-trace.</strong></p>
         </div>
 
         <div class="mini-card">
@@ -1409,7 +1279,7 @@
             <path d="M21 13v2a4 4 0 01-4 4H3"/>
           </svg>
           <h4>לולאות אינסופיות</h4>
-          <p>ללא הגדרת max_steps הסוכן יכול להיתקע בלולאה ולבזבז משאבים. תמיד מגדירים מגבלת צעדים.</p>
+          <p>סוכן ללא הגבלה ממשיך לנצח — שורף קריאות API, כסף וזמן עד שייעצר מבחוץ.<br><strong style="color:var(--coral);">תמיד מגדירים max_steps.</strong></p>
         </div>
 
         <div class="mini-card">
@@ -1418,25 +1288,13 @@
             <path d="M7 11V7a5 5 0 0110 0v4"/>
           </svg>
           <h4>הרשאות-יתר</h4>
-          <p>סוכן עם גישה לקבצים, DB או API יכול לגרום נזק בלתי הפיך. נותנים רק הרשאות מינימליות הכרחיות.</p>
+          <p>גישה רחבה מדי — מחיקת קבצים, שינויי DB, שליחת בקשות לא מכוונות — עלולה לגרום נזק בלתי הפיך.<br><strong style="color:var(--coral);">sandbox + מינימום הרשאות.</strong></p>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 17 · THE RULE ─── -->
-    <section class="slide slide-poster">
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
-        <h1 class="mega" style="font-size:clamp(44px,6.5vw,108px);line-height:1.1;">
-          <span class="a">עם כוח גדול</span><br>
-          <span class="b">— אחריות</span><br>
-          <span class="c">גדולה.</span>
-        </h1>
-        <div class="sub">נגדיר הרשאות מינימליות. נבדוק כל פעולה. נשמור על שליטה.</div>
-      </div>
-    </section>
-
-    <!-- ─── 18 · CLOSING ─── -->
+    <!-- ─── 14 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
         <p class="caption" style="margin-bottom:32px;">let's build</p>
@@ -1447,7 +1305,7 @@
         </h1>
         <div class="closing-cmd">
           <span class="p">➜</span>
-          <span><span class="c">agent</span>.run("נבנה משהו מדהים")</span>
+          <span><span class="c">let's implement it</span></span>
         </div>
         <div class="sig">WinnerIT · <em>AI Course</em></div>
       </div>
