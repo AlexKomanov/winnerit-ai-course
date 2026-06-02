@@ -500,47 +500,47 @@
       </div>
     </section>
 
-    <!-- ─── 05 · ADDING FROM REPO ─── -->
+    <!-- ─── 05 · MARKETPLACES ─── -->
     <section class="slide" style="justify-content:center;">
-      <h2 class="title">הוספה מ<em>GitHub</em></h2>
+      <h2 class="title">מגלים דרך <em>Marketplace</em></h2>
       <div class="steps-grid">
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">find</span>
+            <span class="lbl">official</span>
           </div>
-          <h4>מוצאים Plugin ב-GitHub</h4>
-          <p>מחפשים Plugin מתאים. כל פרויקט GitHub שמכיל יכולות מוכנות יכול לשמש כ-Plugin.</p>
+          <h4>Marketplace רשמי</h4>
+          <p>ה-Marketplace הרשמי של Anthropic זמין אוטומטית. פותחים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/plugin</code> ועוברים ל-Discover tab לגלות מה יש.</p>
           <div class="step-action">
             <span class="arr">→</span>
-            פרויקט GitHub עם יכולות מוכנות
+            <span dir="ltr">/plugin</span> → Discover tab
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">add</span>
+            <span class="lbl">custom</span>
           </div>
-          <h4>מוסיפים ל-Claude Code</h4>
-          <p>מוסיפים את ה-Plugin לפרויקט על ידי ציון ה-URL של ה-repository.</p>
+          <h4>Marketplace קהילתי</h4>
+          <p>מוסיפים Marketplace נוסף — קהילתי, של הצוות, או כל מקור אחר (GitHub, GitLab, URL).</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">/plugin</span> add &lt;repo-url&gt;</span>
+            <span class="cmd"><span class="kw">/plugin</span> marketplace add anthropics/claude-plugins-community</span>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">3</span>
-            <span class="lbl">use</span>
+            <span class="lbl">install</span>
           </div>
-          <h4>Plugin מותקן ומוכן</h4>
-          <p>ה-Plugin מופיע ברשימת <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/plugin</code>. כל ה-Skills שלו זמינים לשימוש מיידי.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            זמין ברשימת <span dir="ltr">/plugin</span>
+          <h4>מתקינים Plugin</h4>
+          <p>מתקינים Plugin לפי שם ושם ה-Marketplace. לאחר ההתקנה מריצים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/reload-plugins</code> להפעלה.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">/plugin</span> install github@claude-plugins-official</span>
           </div>
         </div>
 
