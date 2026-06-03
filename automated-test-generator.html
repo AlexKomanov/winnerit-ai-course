@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test Generator · בדיקות מ-PRD</title>
+<title>Automated Test Generator · בדיקות אוטומטיות מ-PRD</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -343,8 +343,8 @@
     </button>
   </div>
     <div class="right">
-      <span>Test Generator · בדיקות מ-PRD</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
+      <span>Automated Test Generator · Playwright Agents</span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 07</span></span>
     </div>
   </header>
 
@@ -390,7 +390,7 @@
       <div class="cover-center">
         <h1 class="cover-title"><span class="l">T</span>EST GEN</h1>
         <div class="cover-rule"></div>
-        <div class="cover-sub">בדיקות אוטומטיות מ-PRD — בלי לכתוב שורה אחת ידנית</div>
+        <div class="cover-sub">Playwright Agents — בדיקות אוטומטיות שכותבות את עצמן</div>
       </div>
 
       <div class="cover-cta"><span class="arr">←</span> להתחיל</div>
@@ -414,7 +414,7 @@
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>אנחנו יודעים מה זה Agents ו-Skills</span>
+              <span>יודעים מה זה Skills ו-Agents</span>
             </li>
           </ul>
         </div>
@@ -428,15 +428,11 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>הבנה מה זה <strong>PRD</strong> ולמה הוא הבסיס לבדיקות</span>
+              <span>שלושת הסוכנים — <span dir="ltr">Planner, Generator, Healer</span></span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>flow אוטומטי: PRD ← test cases ← Playwright</span>
-            </li>
-            <li>
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span><strong>שילוב</strong> של Agents, Gems ו-Skills</span>
+              <span><span dir="ltr">מוצר ← סוכנים ← טסטים אוטומטיים</span></span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -448,108 +444,73 @@
       </div>
     </section>
 
-    <!-- ─── 03 · WHAT IS A PRD ─── -->
-    <section class="slide slide-statement">
-      <div class="body-grid">
-        <div>
-          <h2 class="title">מה זה <em>PRD</em>?</h2>
-          <p class="lead" style="margin-top:28px;">
-            PRD (Product Requirements Document) הוא מסמך שמתאר מה המוצר צריך לעשות —
-            features, user flows, edge cases, וקריטריוני קבלה.
-          </p>
-          <p class="lead" style="margin-top:18px;">
-            כשה-AI קורא PRD טוב, הוא מבין בדיוק מה לבדוק —
-            <em style="color:var(--coral);">ויכול לכתוב את הבדיקות בעצמו.</em>
-          </p>
-          <p class="caption" style="margin-top:32px;">requirements → tests · automated</p>
-        </div>
-
-        <!-- PRD → AI → Test Cases → Playwright diagram -->
-        <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg"
-             style="width:100%;max-width:560px;align-self:center;direction:ltr" aria-label="PRD to Playwright flow">
-          <!-- PRD box -->
-          <rect x="10" y="90" width="76" height="80" rx="4" fill="#FBF8F1" stroke="#D8CCB5" stroke-width="1.2"/>
-          <text x="48" y="118" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="11" fill="#E04E36" font-weight="700">PRD</text>
-          <text x="48" y="134" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#8B8A82">requirements</text>
-          <text x="48" y="148" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#8B8A82">user flows</text>
-          <text x="48" y="162" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#8B8A82">edge cases</text>
-
-          <!-- Arrow PRD → AI -->
-          <line x1="86" y1="130" x2="112" y2="130" stroke="#D8CCB5" stroke-width="1.2"/>
-          <polyline points="108,126 114,130 108,134" stroke="#D8CCB5" stroke-width="1.2" fill="none"/>
-
-          <!-- AI box -->
-          <rect x="114" y="100" width="92" height="60" rx="4" fill="rgba(224,78,54,0.06)" stroke="#E04E36" stroke-width="1.2"/>
-          <text x="160" y="122" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#E04E36" letter-spacing="1">AI AGENT</text>
-          <text x="160" y="138" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">קורא ומנתח</text>
-          <text x="160" y="152" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">את ה-PRD</text>
-
-          <!-- Arrow AI → Test Cases -->
-          <line x1="206" y1="130" x2="230" y2="130" stroke="#D8CCB5" stroke-width="1.2"/>
-          <polyline points="226,126 232,130 226,134" stroke="#D8CCB5" stroke-width="1.2" fill="none"/>
-
-          <!-- Test Cases box -->
-          <rect x="232" y="90" width="78" height="80" rx="4" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.2"/>
-          <text x="271" y="115" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#2F6B49" letter-spacing="1">PLAYWRIGHT</text>
-          <text x="271" y="131" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">test files</text>
-          <text x="271" y="146" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">assertions</text>
-          <text x="271" y="161" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">edge cases</text>
-
-          <!-- Label row -->
-          <text x="48" y="194" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#8B8A82">מסמך</text>
-          <text x="160" y="194" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#8B8A82">Claude Code</text>
-          <text x="271" y="194" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#2F6B49">בדיקות מוכנות</text>
-        </svg>
-      </div>
-    </section>
-
-    <!-- ─── 04 · THE FLOW ─── -->
-    <section class="slide slide-four">
-      <h2 class="title">ה<em>flow</em> האוטומטי</h2>
-      <div class="grid-4">
+    <!-- ─── 03 · THREE AGENTS ─── -->
+    <section class="slide slide-four" style="justify-content:center;">
+      <h2 class="title">שלושת <em>הסוכנים</em></h2>
+      <div class="grid-4" style="grid-template-columns:repeat(3,1fr);">
 
         <div class="mini-card p1">
-          <div class="num"><span class="nb">1</span> prd</div>
-          <h4>PRD</h4>
-          <div class="en-label">Requirements</div>
-          <p>מסמך דרישות ברור — user stories, acceptance criteria, edge cases. ככל שהמסמך מדויק יותר, הבדיקות איכותיות יותר.</p>
+          <div class="num"><span class="nb">🎭</span> planner</div>
+          <h4>Planner</h4>
+          <div class="en-label">Explore → Plan</div>
+          <p>מסייר באפליקציה ויוצר תוכנית בדיקות קריאה ב-Markdown. שומר בתיקיית <span dir="ltr">specs</span>.</p>
         </div>
 
         <div class="mini-card p2">
-          <div class="num"><span class="nb">2</span> agent</div>
-          <h4>Agent</h4>
-          <div class="en-label">AI Reader</div>
-          <p>Claude Code agent קורא את ה-PRD, מזהה תרחישים ויוצר רשימת test cases מסודרת.</p>
+          <div class="num"><span class="nb">🎭</span> generator</div>
+          <h4>Generator</h4>
+          <div class="en-label">Plan → Tests</div>
+          <p>הופך את תוכנית ה-Markdown לקבצי טסט.<br>מאמת selectors ו-assertions בזמן אמת.</p>
         </div>
 
         <div class="mini-card p3">
-          <div class="num"><span class="nb">3</span> generate</div>
-          <h4>Generate</h4>
-          <div class="en-label">Test Code</div>
-          <p>ה-Agent כותב קבצי Playwright — test files מלאים, עם selectors, assertions ו-edge cases.</p>
-        </div>
-
-        <div class="mini-card p4">
-          <div class="num"><span class="nb">4</span> run</div>
-          <h4>Run</h4>
-          <div class="en-label">Execute</div>
-          <p>מריצים את הבדיקות עם Claude Code CLI. ה-Agent מפרש שגיאות ומתקן אוטומטית.</p>
+          <div class="num"><span class="nb">🎭</span> healer</div>
+          <h4>Healer</h4>
+          <div class="en-label">Fix → Pass</div>
+          <p>מריץ את הטסטים, מאתר כשלים, מתקן locators ו-waits — ומריץ מחדש עד שהטסטים עוברים.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 05 · POSTER ─── -->
-    <section class="slide slide-poster">
-      <h1 class="mega">
-        <span class="a">קרא.</span><br>
-        <span class="b">ייצר.</span><br>
-        <em style="color:var(--mustard);font-style:italic;font-weight:500;">הרץ.</em>
-      </h1>
-      <div class="sub">
-        PRD טוב + AI = test suite מלא — בלי שעות של כתיבה ידנית.
+    <!-- ─── 04 · SEED TEST ─── -->
+    <section class="slide slide-statement">
+      <div class="body-grid">
+        <div>
+          <h2 class="title">ה-<em>Seed Test</em></h2>
+          <p class="lead" style="margin-top:28px;">
+            טסט קצר שמאתחל את הסביבה — login, fixtures, global setup.
+            הוא הבסיס שממנו כל הסוכנים יוצאים.
+          </p>
+          <p class="lead" style="margin-top:18px;">
+            ה-Planner מריץ אותו כדי לאתחל את הסביבה לפני הסיור.
+            הטסטים שייווצרו יאמצו את הסגנון והמבנה שלו.
+          </p>
+          <p class="caption" style="margin-top:32px;"><span dir="ltr">seed → planner → generator → healer</span></p>
+        </div>
+
+        <div style="direction:ltr;align-self:stretch;display:flex;align-items:center;">
+          <div style="background:var(--ink);border-radius:8px;overflow:hidden;width:100%;">
+            <div style="padding:10px 16px;background:rgba(255,255,255,0.05);font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(242,237,227,0.35);">tests/seed.spec.ts</div>
+            <pre style="padding:20px 24px;font-family:var(--mono);font-size:13.5px;line-height:1.65;color:#C8D8E8;margin:0;overflow:visible;white-space:pre;"><span style="color:#9BD3A8;">import</span> { test, expect } <span style="color:#9BD3A8;">from</span> <span style="color:#E2A93B;">'./fixtures'</span>;
+
+test(<span style="color:#E2A93B;">'seed'</span>, <span style="color:#9BD3A8;">async</span> ({ page }) => {
+  <span style="color:#8B8A82;">// Navigate to login page</span>
+  <span style="color:#9BD3A8;">await</span> page.goto(<span style="color:#E2A93B;">'/'</span>);
+
+  <span style="color:#8B8A82;">// Fill in login form</span>
+  <span style="color:#9BD3A8;">await</span> page.getByLabel(<span style="color:#E2A93B;">'Username'</span>).fill(testUsername);
+  <span style="color:#9BD3A8;">await</span> page.getByLabel(<span style="color:#E2A93B;">'Password'</span>).fill(<span style="color:#E2A93B;">'password123'</span>);
+  <span style="color:#9BD3A8;">await</span> page.getByRole(<span style="color:#E2A93B;">'button'</span>, { name: <span style="color:#E2A93B;">'Login'</span> }).click();
+
+  <span style="color:#8B8A82;">// Verify successful login</span>
+  <span style="color:#9BD3A8;">await</span> expect(page).toHaveURL(<span style="color:#E2A93B;">'/products'</span>);
+});</pre>
+          </div>
+        </div>
       </div>
     </section>
+
 
     <!-- ─── 06 · SETUP ─── -->
     <section class="slide" style="justify-content:center;">
@@ -559,24 +520,15 @@
         <div class="step-block">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">prd</span>
-          </div>
-          <h4>מכינים PRD</h4>
-          <p>כותבים או מייבאים מסמך PRD. חשוב לכלול: user flows, acceptance criteria, וקריטריוני הצלחה.</p>
-          <div class="step-action">
-            <span class="arr">→</span>
-            PRD.md — מסמך דרישות בפורמט Markdown
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">2</span>
             <span class="lbl">playwright</span>
           </div>
           <h4>מתקינים Playwright</h4>
-          <p>מוסיפים Playwright לפרויקט. Claude Code ידאג לקבצי הגדרה בסיסיים.</p>
+          <p>מתקינים את חבילת הבדיקות ואת הדפדפנים הנדרשים.</p>
           <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">npm</span> i -D <span class="arg">@playwright/test</span></span>
+          </div>
+          <div class="step-code" style="margin-top:8px;">
             <span class="prompt">&gt;_</span>
             <span class="cmd"><span class="kw">npx</span> playwright install</span>
           </div>
@@ -584,61 +536,74 @@
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">3</span>
-            <span class="lbl">skill</span>
+            <span class="badge">2</span>
+            <span class="lbl">init-agents</span>
           </div>
-          <h4>מגדירים את ה-Skill</h4>
-          <p>מגדירים Skill שמנחה את Claude Code לקרוא PRD וליצור test cases לפי פורמט הפרויקט.</p>
+          <h4>מאתחלים את ה-Agents</h4>
+          <p>מייצרים את הגדרות ה-Agents בפרויקט. יש לחזור על זה בכל עדכון של Playwright.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">npx</span> playwright init-agents <span class="kw">--loop=claude</span></span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">seed</span>
+          </div>
+          <h4>כותבים Seed Test</h4>
+          <p>טסט קצר שמכיל את כל ה-fixtures, ה-setup וה-login הנדרשים — הבסיס לכל הסוכנים.</p>
           <div class="step-action">
             <span class="arr">→</span>
-            .claude/test-generator.md — Skill מותאם
+            <span dir="ltr">tests/seed.spec.ts</span>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 07 · RUNNING THE GENERATOR ─── -->
+    <!-- ─── 07 · RUNNING THE AGENTS ─── -->
     <section class="slide" style="justify-content:center;">
-      <h2 class="title">מריצים את ה<em>Generator</em></h2>
+      <h2 class="title">מריצים את ה<em>Agents</em></h2>
       <div class="steps-grid">
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">invoke</span>
+            <span class="lbl">planner</span>
           </div>
-          <h4>מפעילים את ה-Agent</h4>
-          <p>מפעילים את Claude Code עם ה-Skill ומצביעים על קובץ ה-PRD. ה-Agent מתחיל לקרוא ולנתח.</p>
+          <h4>🎭 Planner</h4>
+          <p>מבקשים מהסוכן לסייר באפליקציה וליצור תוכנית בדיקות. מצרפים את ה-seed test כהקשר.</p>
           <div class="step-action">
             <span class="arr">→</span>
-            /test-generator PRD.md — מפעיל את ה-Skill
+            <span dir="ltr">Generate a plan for guest checkout using seed.spec.ts</span>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">review</span>
+            <span class="lbl">generator</span>
           </div>
-          <h4>בודקים את התוצאות</h4>
-          <p>ה-Agent מציג את ה-test cases שייצר לפני כתיבתם. אנחנו יכולים לאשר, לדחות, או לבקש שינויים.</p>
+          <h4>🎭 Generator</h4>
+          <p>מבקשים מהסוכן לקחת את התוכנית מ-specs/ וליצור ממנה קבצי Playwright אמיתיים.</p>
           <div class="step-action">
             <span class="arr">→</span>
-            Claude Code מציג test plan לאישור
+            <span dir="ltr">Generate tests from specs/basic-operations.md</span>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">3</span>
-            <span class="lbl">run</span>
+            <span class="lbl">healer</span>
           </div>
-          <h4>מריצים ומתקנים</h4>
-          <p>אחרי אישור, ה-Agent כותב את הקבצים ומריץ. שגיאות מפורשות ומתוקנות אוטומטית.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">npx</span> playwright test</span>
+          <h4>🎭 Healer</h4>
+          <p>כשטסט נכשל — מבקשים מהסוכן לתקן. הוא מנתח את הכשל, מתקן ומריץ מחדש.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            <span dir="ltr">Fix the failing test: tests/add-valid-todo.spec.ts</span>
           </div>
         </div>
 
@@ -648,8 +613,8 @@
     <!-- ─── 08 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
-        <h1>נקרא<span style="color:var(--border)">.</span><br><em>נייצר</em><span style="color:var(--border)">.</span><br>נריץ<span style="color:var(--border)">.</span></h1>
-        <div class="sig">winnerit · ai course · <em>test generator</em></div>
+        <h1>נתכנן<span style="color:var(--border)">.</span><br><em>נייצר</em><span style="color:var(--border)">.</span><br>נתקן<span style="color:var(--border)">.</span></h1>
+        <div class="sig">winnerit · ai course · <em>automated test generator</em></div>
       </div>
     </section>
 
