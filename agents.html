@@ -644,6 +644,38 @@
   .step-code .copy:hover { color: #9BD3A8; background: rgba(155, 211, 168, 0.1); }
   .step-code .copy.copied { color: #9BD3A8; }
   .step-code .copy svg { width: 14px; height: 14px; }
+  .step-action {
+    background: var(--bg-2); border: 1px solid var(--border-soft); border-radius: 6px;
+    padding: 10px 14px; font-size: 13px; color: var(--ink-soft);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .step-action .arr { color: var(--coral); font-weight: 700; flex-shrink: 0; }
+  .step-action .prompt-text { flex: 1; direction: ltr; text-align: left; font-family: var(--mono); font-size: 12px; line-height: 1.5; }
+  .step-action .copy {
+    border: none; background: transparent; color: var(--muted); cursor: pointer;
+    padding: 4px; border-radius: 4px; display: flex; align-items: center;
+    justify-content: center; transition: color 0.2s; flex-shrink: 0; margin-top: 1px;
+  }
+  .step-action .copy:hover { color: var(--coral); }
+  .step-action .copy.copied { color: var(--forest); }
+  .step-action .copy svg { width: 14px; height: 14px; }
+  .create-location {
+    display: flex; gap: 12px; margin-top: 20px; direction: ltr;
+  }
+  .loc-option {
+    flex: 1; background: var(--bg-3); border: 1px solid var(--border); border-radius: 6px;
+    padding: 12px 16px; display: flex; flex-direction: column; gap: 4px;
+  }
+  .loc-option .loc-label {
+    font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--coral);
+    letter-spacing: 0.05em;
+  }
+  .loc-option .loc-path {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+  }
+  .loc-option .loc-desc {
+    font-size: 13px; color: var(--ink-soft); margin-top: 2px;
+  }
   @media (max-width: 1024px) { .steps-grid { grid-template-columns: 1fr; } }
 
   /* ─── CLOSING ─── */
@@ -802,7 +834,7 @@
   .ma-orch-sub {
     display: block;
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 13px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
@@ -820,17 +852,17 @@
   .ma-worker-col { display: flex; flex-direction: column; align-items: center; }
   .ma-leg { width: 2px; height: 28px; background: var(--border); }
   .ma-worker {
-    padding: 20px 28px;
+    padding: 28px 44px;
     background: var(--bg-3);
     border: 1px solid var(--border);
     text-align: center;
-    min-width: 155px;
+    min-width: 200px;
     transition: border-color 0.2s;
   }
   .ma-worker:hover { border-color: var(--coral); }
-  .ma-worker .mw-icon { width: 28px; height: 28px; margin: 0 auto 10px; }
-  .ma-worker .mw-name { font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--ink); }
-  .ma-worker .mw-role { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+  .ma-worker .mw-icon { width: 36px; height: 36px; margin: 0 auto 14px; }
+  .ma-worker .mw-name { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--ink); }
+  .ma-worker .mw-role { font-family: var(--mono); font-size: 14px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; margin-top: 6px; }
   .ma-worker.search .mw-icon { color: var(--sky); }
   .ma-worker.code .mw-icon { color: var(--forest); }
   .ma-worker.write .mw-icon { color: var(--mustard); }
@@ -1060,7 +1092,7 @@
           <h3>Chat</h3>
           <div class="lbl">one-shot</div>
           <ul>
-            <li><span class="p">·</span>שאלה אחת → תשובה אחת</li>
+            <li><span class="p">·</span>שאלה אחת ← תשובה אחת</li>
             <li><span class="p">·</span>אין זיכרון בין שיחות</li>
             <li><span class="p">·</span>אין גישה לכלים חיצוניים</li>
             <li><span class="p">·</span>תמיד זקוק לאדם בלולאה</li>
@@ -1096,15 +1128,15 @@
             <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
           <h4>חיפוש רשת</h4>
-          <p>שליחת שאילתה למנוע חיפוש וקבלת תוצאות בזמן אמת. הסוכן מקבל מידע עדכני שאינו נמצא בתוך המודל.</p>
+          <p>שולח שאילתא ומקבל מידע עדכני שלא קיים במודל. לדוגמה — מושך תיעוד עדכני מ-context7 לפני שכותב קוד.</p>
         </div>
 
         <div class="mini-card">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
           </svg>
-          <h4>הרצת קוד</h4>
-          <p>כתיבה והרצה של קוד Python בתוך sandbox. הסוכן מחשב, מנתח נתונים ומייצר גרפים באופן אוטונומי.</p>
+          <h4>הרצת קוד ופקודות</h4>
+          <p>כותב ומריץ קוד בכל שפה — Python, JS, Bash ועוד. מבצע פקודות shell, מתקין חבילות ומריץ תהליכים על המחשב.</p>
         </div>
 
         <div class="mini-card">
@@ -1179,7 +1211,114 @@
       </div>
     </section>
 
-    <!-- ─── 11 · MULTI-AGENT ─── -->
+    <!-- ─── 11 · CREATE AGENT ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">יצירת <em>Agent</em></h2>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">01</span>
+            <span class="lbl">open</span>
+          </div>
+          <h4>פותחים <code style="font-family:var(--mono);font-size:0.82em;direction:ltr;unicode-bidi:embed;">/agents</code></h4>
+          <p>מריצים <code style="font-family:var(--mono);font-size:0.9em;direction:ltr;unicode-bidi:embed;">/agents</code> ב-Claude Code. עוברים ל-Library tab ובוחרים Create new agent.</p>
+          <div class="step-code">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">/agents</span></span>
+            <button class="copy" aria-label="העתק">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">02</span>
+            <span class="lbl">generate</span>
+          </div>
+          <h4>Claude יוצר את ה-Agent</h4>
+          <p>בוחרים Generate with Claude ומתארים מה ה-Agent צריך לעשות. Claude מגדיר שם, תיאור ו-system prompt.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            <span class="prompt-text">An agent that reviews code and suggests improvements for readability, performance, and best practices. It explains each issue, shows the current code, and provides an improved version.</span>
+            <button class="copy" aria-label="העתק">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">03</span>
+            <span class="lbl">configure</span>
+          </div>
+          <h4>מגדירים ושומרים</h4>
+          <p>בוחרים כלים (read-only לסוקר קוד), מודל, צבע וזיכרון.<br>לוחצים Save — ה-Agent זמין מיד לשימוש.</p>
+          <div class="step-action">
+            <span class="arr">→</span>
+            <span class="prompt-text">Use the code-improver agent to scan all TypeScript files in src/ and suggest improvements — focus on readability and performance</span>
+            <button class="copy" aria-label="העתק">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="create-location">
+        <div class="loc-option">
+          <span class="loc-label">Personal</span>
+          <span class="loc-path">~/.claude/agents/</span>
+          <span class="loc-desc">זמין בכל הפרויקטים על המחשב</span>
+        </div>
+        <div class="loc-option">
+          <span class="loc-label">Project</span>
+          <span class="loc-path">.claude/agents/</span>
+          <span class="loc-desc">ייחודי לפרויקט הנוכחי — משותף לצוות</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 12 · RISKS ─── -->
+    <section class="slide slide-three" style="justify-content:center;">
+      <h2 class="title">סיכונים <em>שצריך להכיר</em></h2>
+      <div class="grid-3">
+
+        <div class="mini-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <h4>שגיאות בכלים</h4>
+          <p>הסוכן קורא לכלים, אך עשוי לשגות בפרמטרים, לפרש תוצאות בטעות, ולהמשיך לפעול על מידע שגוי.</p>
+        </div>
+
+        <div class="mini-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <polyline points="17 1 21 5 17 9"/>
+            <path d="M3 11V9a4 4 0 014-4h14"/>
+            <polyline points="7 23 3 19 7 15"/>
+            <path d="M21 13v2a4 4 0 01-4 4H3"/>
+          </svg>
+          <h4>לולאות אינסופיות</h4>
+          <p>סוכן ללא הגבלה ממשיך לנצח — שורף קריאות API, כסף וזמן עד שייעצר מבחוץ.</p>
+        </div>
+
+        <div class="mini-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+          <h4>הרשאות-יתר</h4>
+          <p>גישה רחבה מדי — מחיקת קבצים, שינויי DB, שליחת בקשות לא מכוונות — עלולה לגרום נזק בלתי הפיך.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 13 · MULTI-AGENT ─── -->
     <section class="slide slide-statement">
       <h2 class="title">מערכות <em>multi-agent</em></h2>
       <p class="lead" style="margin-top:12px;max-width:780px;">סוכן ראשי (orchestrator) מנהל קבוצה של סוכני-עובד מתמחים — כל אחד מבצע את החלק שלו.</p>
@@ -1191,7 +1330,6 @@
         </div>
         <div class="ma-stem"></div>
         <div style="display:flex;flex-direction:column;align-items:center;width:100%;max-width:560px;">
-          <div style="width:2px;height:0;border-top:2px solid var(--border);width:60%;align-self:center;"></div>
           <div style="width:60%;height:2px;background:var(--border);align-self:center;"></div>
           <div class="ma-workers">
             <div class="ma-worker-col">
@@ -1220,77 +1358,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ─── 12 · CREATE AGENTS ─── -->
-    <section class="slide slide-three" style="justify-content:center;">
-      <h2 class="title">ניהול <em>Agents</em></h2>
-      <div class="grid-3">
-
-        <div class="mini-card">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
-          </svg>
-          <h4 style="direction:ltr;text-align:left;">/agents</h4>
-          <p>פקודה שפותחת ממשק עם טאבים לניהול כל ה-Agents — built-in, user, project ו-plugin.</p>
-        </div>
-
-        <div class="mini-card">
-          <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10"/>
-            <polygon points="10 8 16 12 10 16 10 8"/>
-          </svg>
-          <h4>Running Tab</h4>
-          <p>מציג את כל ה-Agents הפעילים כרגע. אפשר לפתוח agent לצפייה בפעולות שלו או לעצור אותו.</p>
-        </div>
-
-        <div class="mini-card">
-          <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
-          </svg>
-          <h4>Library Tab</h4>
-          <p>רשימת כל ה-Agents הזמינים. יוצרים agent חדש עם Claude או ידנית, עורכים הגדרות, ומוחקים.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── 13 · RISKS ─── -->
-    <section class="slide slide-three" style="justify-content:center;">
-      <h2 class="title">סיכונים <em>שצריך להכיר</em></h2>
-      <div class="grid-3">
-
-        <div class="mini-card">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-            <line x1="12" y1="9" x2="12" y2="13"/>
-            <line x1="12" y1="17" x2="12.01" y2="17"/>
-          </svg>
-          <h4>שגיאות בכלים</h4>
-          <p>הסוכן קורא לכלים, אך עשוי לשגות בפרמטרים, לפרש תוצאות בטעות, ולהמשיך לפעול על מידע שגוי.<br><strong style="color:var(--coral);">תמיד בודקים את ה-trace.</strong></p>
-        </div>
-
-        <div class="mini-card">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <polyline points="17 1 21 5 17 9"/>
-            <path d="M3 11V9a4 4 0 014-4h14"/>
-            <polyline points="7 23 3 19 7 15"/>
-            <path d="M21 13v2a4 4 0 01-4 4H3"/>
-          </svg>
-          <h4>לולאות אינסופיות</h4>
-          <p>סוכן ללא הגבלה ממשיך לנצח — שורף קריאות API, כסף וזמן עד שייעצר מבחוץ.<br><strong style="color:var(--coral);">תמיד מגדירים max_steps.</strong></p>
-        </div>
-
-        <div class="mini-card">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="11" width="18" height="11" rx="2"/>
-            <path d="M7 11V7a5 5 0 0110 0v4"/>
-          </svg>
-          <h4>הרשאות-יתר</h4>
-          <p>גישה רחבה מדי — מחיקת קבצים, שינויי DB, שליחת בקשות לא מכוונות — עלולה לגרום נזק בלתי הפיך.<br><strong style="color:var(--coral);">sandbox + מינימום הרשאות.</strong></p>
-        </div>
-
       </div>
     </section>
 
@@ -1431,10 +1498,14 @@
   updateUI();
   requestAnimationFrame(snapToCurrent);
 
-  document.querySelectorAll('.step-code .copy').forEach(btn => {
+  document.querySelectorAll('.step-code .copy, .step-action .copy').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       e.stopPropagation();
-      const cmd = btn.closest('.step-code').querySelector('.cmd').textContent.trim();
+      const codeEl = btn.closest('.step-code');
+      const actionEl = btn.closest('.step-action');
+      const cmd = codeEl
+        ? codeEl.querySelector('.cmd').textContent.trim()
+        : actionEl.querySelector('.prompt-text').textContent.trim();
       try {
         await navigator.clipboard.writeText(cmd);
         btn.classList.add('copied');
