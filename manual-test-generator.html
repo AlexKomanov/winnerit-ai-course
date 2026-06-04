@@ -324,7 +324,7 @@
     </div>
     <div class="right">
       <span>Manual Test Generator · בדיקות ידניות עם Gem</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 06</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 07</span></span>
     </div>
   </header>
 
@@ -471,7 +471,34 @@
       </div>
     </section>
 
-    <!-- ─── 04 · INSTRUCTIONS BLOCK ─── -->
+    <!-- ─── 04 · NAME & DESCRIPTION ─── -->
+    <section class="slide slide-instructions">
+      <h2 class="title">שם ותיאור <em>ה-Gem</em></h2>
+
+      <div class="instr-block" style="flex:none;max-height:none;">
+        <div class="instr-bar">
+          <span class="instr-bar-label">gem · name</span>
+          <button class="instr-copy" id="nameCopyBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            העתק
+          </button>
+        </div>
+        <div class="instr-body" id="nameText" style="padding:16px 28px;white-space:nowrap;overflow:hidden;">Voltline QA Engineer — Manual Test Case Generator</div>
+      </div>
+
+      <div class="instr-block" style="margin-top:16px;">
+        <div class="instr-bar">
+          <span class="instr-bar-label">gem · description</span>
+          <button class="instr-copy" id="descCopyBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            העתק
+          </button>
+        </div>
+        <div class="instr-body" id="descText">Specialized QA assistant for the Voltline electronics e-commerce app. Give it any feature, page, user flow, or scenario from the PRD and it instantly generates structured manual test cases — always covering a happy path, negative path, and edge case. Every test case includes the exact route, real UI element names, real product names, PRD requirement IDs, and clear pass/fail criteria. Built from the Voltline PRD covering 7 routes, 30 products, 6 categories, and 5 core user flows.</div>
+      </div>
+    </section>
+
+    <!-- ─── 05 · INSTRUCTIONS BLOCK ─── -->
     <section class="slide slide-instructions">
       <h2 class="title">ה-<em>Instructions</em> של ה-Gem</h2>
       <div class="instr-block">
@@ -522,7 +549,7 @@ Rules:
       </div>
     </section>
 
-    <!-- ─── 05 · HOW TO USE ─── -->
+    <!-- ─── 06 · HOW TO USE ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">איך <em>עובדים</em></h2>
       <div class="steps-grid">
@@ -569,7 +596,7 @@ Rules:
       </div>
     </section>
 
-    <!-- ─── 06 · CLOSING ─── -->
+    <!-- ─── 07 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
         <h1>נשאל<span style="color:var(--border)">.</span><br><em>נקבל</em><span style="color:var(--border)">.</span><br>נבדוק<span style="color:var(--border)">.</span></h1>
@@ -678,6 +705,25 @@ Rules:
 
   update();
   requestAnimationFrame(snapToCurrent);
+
+  // Name & Description copy buttons
+  ['nameCopyBtn', 'descCopyBtn'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
+      const srcId = id === 'nameCopyBtn' ? 'nameText' : 'descText';
+      const text = document.getElementById(srcId).textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.classList.add('copied');
+        btn.childNodes[btn.childNodes.length - 1].textContent = ' הועתק!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.childNodes[btn.childNodes.length - 1].textContent = ' העתק';
+        }, 1400);
+      } catch (err) {}
+    });
+  });
 
   // Instructions copy button
   const instrCopyBtn = document.getElementById('instrCopyBtn');
