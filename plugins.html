@@ -479,7 +479,6 @@
           <h4>בוחרים Plugin</h4>
           <p>בוחרים Plugin מהרשימה — לדוגמה <strong>skill-creator</strong> ליצירת Skills חדשים.</p>
           <div class="step-action">
-            <span class="arr">→</span>
             skill-creator, code-review, ועוד
           </div>
         </div>
@@ -492,7 +491,6 @@
           <h4>ה-Plugin רץ</h4>
           <p>Claude Code מפעיל את ה-Plugin. הוא מנחה תהליך מובנה ומגיע לתוצאה מוכנה.</p>
           <div class="step-action">
-            <span class="arr">→</span>
             Claude מנחה את התהליך צעד אחר צעד
           </div>
         </div>
@@ -513,7 +511,6 @@
           <h4>Discover Tab</h4>
           <p>פותחים <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 4px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/plugin</code> ועוברים ל-Discover tab — רואים את כל ה-Plugins הזמינים ומתקינים ישירות מהממשק.</p>
           <div class="step-action">
-            <span class="arr">→</span>
             <span dir="ltr">/plugin → Discover → Install</span>
           </div>
         </div>
@@ -528,6 +525,7 @@
           <div class="step-code">
             <span class="prompt">&gt;_</span>
             <span class="cmd"><span class="kw">/plugin</span> install github@claude-plugins-official</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
@@ -537,10 +535,14 @@
             <span class="lbl">marketplace</span>
           </div>
           <h4>הוספת Marketplace</h4>
-          <p>מוסיפים Marketplace נוסף — קהילתי, של הצוות, או כל מקור אחר (GitHub, GitLab, URL).</p>
+          <p>מוסיפים Marketplace נוסף — קהילתי, של הצוות, או כל מקור אחר. אפשר בפקודה ישירה, או דרך הממשק.</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">/plugin</span> marketplace add anthropics/claude-plugins-community</span>
+            <span class="cmd"><span class="kw">/plugin</span> marketplace add anthropics/claude-plugins-official</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+          <div class="step-action" style="margin-top:8px;">
+            <span>או: <code style="font-family:var(--mono);font-size:11px;direction:ltr;unicode-bidi:embed;">/plugin</code> ← <strong dir="ltr">+ Add Marketplace</strong> ← מקלידים <strong dir="ltr">owner/repo</strong></span>
           </div>
         </div>
 
