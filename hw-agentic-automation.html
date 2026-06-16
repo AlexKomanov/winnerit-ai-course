@@ -175,7 +175,7 @@
     </div>
     <div class="right">
       <span>שיעורי בית · Agentic Automation</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 10</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
     </div>
   </header>
 
@@ -282,7 +282,7 @@
 
     <!-- ─── 03 · LINEAR + MCPs ─── -->
     <section class="slide" style="justify-content:center;">
-      <h2 class="title">מתחילים עם <em>Linear</em></h2>
+      <h2 class="title"><em>Linear</em> + <em>Playwright</em></h2>
       <div class="steps-grid">
 
         <div class="step-block">
@@ -314,13 +314,13 @@
         <div class="step-block">
           <div class="step-num"><span class="badge">1</span><span class="lbl">open project</span></div>
           <h4>פותחים את הפרויקט</h4>
-          <p>פותחים Claude Code בתוך תיקיית הפרויקט מהשיעור הקודם. Claude Code יזהה את הקוד, יקרא את מבנה הפרויקט ויכין את עצמו לעבודה.</p>
+          <p>פותחים Claude Code בתוך תיקיית פרויקט ה-Lovable שבנינו בשיעור הקודם. Claude Code יזהה את הקוד ויכין את עצמו לעבודה.</p>
         </div>
 
         <div class="step-block">
           <div class="step-num"><span class="badge">2</span><span class="lbl">add prd</span></div>
           <h4>מוסיפים את ה-PRD</h4>
-          <p>מעתיקים את קובץ ה-PRD מהשיעור הקודם לתיקיית הפרויקט ושומרים אותו בתור PRD.md. זהו ה"תקציר" שינחה את כל הבדיקות שניצור.</p>
+          <p>מוסיפים לתיקיית הפרויקט את ה-PRD שיצרנו עם Playwright MCP ו-Claude Desktop — קובץ ה-docx שמתאר את האפליקציה. זהו ה"תקציר" שינחה את כל הבדיקות שניצור.</p>
         </div>
 
       </div>
@@ -333,11 +333,11 @@
 
         <div class="step-block">
           <div class="step-num"><span class="badge">1</span><span class="lbl">qa project</span></div>
-          <h4>פרויקט QA חדש ב-Linear</h4>
-          <p>מבקשים מ-Claude Code ליצור פרויקט חדש ב-Linear ייעודי לאוטומציה — נפריד בין טיקטי פיתוח לטיקטי QA.</p>
+          <h4>פרויקט חדש ב-Linear</h4>
+          <p>מבקשים מ-Claude Code ליצור פרויקט חדש ב-Linear לניהול כל העבודה — פיצ'רים חדשים, שיפורים ובדיקות QA.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">Create a new Linear project called "QA Automation" for tracking all test automation tickets</span>
+            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">Create a new Linear project called "[App Name]" for tracking features, improvements and QA tickets</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -345,10 +345,10 @@
         <div class="step-block">
           <div class="step-num"><span class="badge">2</span><span class="lbl">create tickets</span></div>
           <h4>טיקטים מה-PRD</h4>
-          <p>מבקשים מ-Claude Code לקרוא את PRD.md וליצור טיקטי QA לכל פיצ'ר — כל טיקט יכלול שלבי בדיקה ממוספרים וקריטריוני הצלחה ברורים.</p>
+          <p>מבקשים מ-Claude Code לקרוא את PRD.docx וליצור טיקטים של צוות QA לכל פיצ'ר — כל טיקט יכלול תרחישי בדיקה מפורטים, שלבים ממוספרים וקריטריוני הצלחה.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">Read PRD.md and create QA automation tickets in the "QA Automation" Linear project. Each ticket must include: what to test, numbered test steps, and expected results</span>
+            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">Read PRD.docx and create QA tickets in Linear for every feature and user flow. Each ticket must include: a clear title, a step-by-step test scenario (numbered), expected result for each step, edge cases to cover, and acceptance criteria. Set all tickets to Todo status and label them "qa"</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -366,7 +366,7 @@
           <h4>סקירת הטיקטים ב-Linear</h4>
           <p>נפתח את פרויקט ה-QA ב-Linear ונעבור על כל הטיקטים שנוצרו. נבדוק שלבי בדיקה, קריטריוני הצלחה ותיעדוף.</p>
           <div class="step-action">
-            <span dir="ltr">Linear → QA Automation → All Issues → review each ticket</span>
+            <span dir="ltr">Linear → [App Name] → All Issues → review each ticket</span>
           </div>
         </div>
 
@@ -384,29 +384,24 @@
       </div>
     </section>
 
-    <!-- ─── 07 · WRITE + RUN ─── -->
+    <!-- ─── 07 · EXECUTE + TRACK ─── -->
     <section class="slide" style="justify-content:center;">
-      <h2 class="title">כותבים ו<em>מריצים</em></h2>
+      <h2 class="title">ביצוע ו<em>מעקב</em></h2>
       <div class="steps-grid two">
 
         <div class="step-block">
-          <div class="step-num"><span class="badge">1</span><span class="lbl">write tests</span></div>
-          <h4>כותבים בדיקות E2E</h4>
-          <p>מבקשים מ-Claude Code לקחת את הטיקטים מה-Linear QA ולכתוב בדיקות Playwright לכל אחד. הוא יסמן כל טיקט "In Progress" בזמן שהוא כותב.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">Take all open tickets from the Linear "QA Automation" project and write Playwright E2E tests for each one. Mark each ticket "In Progress" when you start working on it</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
+          <div class="step-num"><span class="badge">1</span><span class="lbl">what we ask</span></div>
+          <h4>מה נבקש מ-Claude Code</h4>
+          <p>בשיחה אחת נבקש לעבור על כל טיקטי ה-QA ב-Linear, לבצע כל תרחיש עם Playwright MCP שלב-שלב, לעדכן סטטוסים בזמן אמת — ולפתוח טיקטי באג מפורטים לכל תרחיש שנכשל.</p>
         </div>
 
         <div class="step-block">
-          <div class="step-num"><span class="badge">2</span><span class="lbl">run</span></div>
-          <h4>מריצים ורואים</h4>
-          <p>מריצים את כל הבדיקות ועוקבים אחרי התוצאות — מה עבר, מה נכשל, ואיפה יש בעיות באפליקציה.</p>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">prompt</span></div>
+          <h4>הפרומפט</h4>
+          <p>בקשה אחת מפורטת שמכסה ביצוע, עדכון סטטוסים ופתיחת באגים — הכל בפעולה אחת.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd"><span class="kw">npx playwright</span> <span class="arg">test --reporter=list</span></span>
+            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">Go through each QA ticket in the Linear project one by one. For each ticket: execute the test scenario step by step using Playwright MCP, verify the expected result at each step, then update the ticket status — mark "Done" if all steps pass, or keep it open if anything fails. For each failed scenario, create a Bug ticket in Linear with label "bug", describe the failing step, the expected vs actual behavior, and link it to the original QA ticket</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -414,47 +409,7 @@
       </div>
     </section>
 
-    <!-- ─── 08 · STATUSES + BUGS ─── -->
-    <section class="slide" style="justify-content:center;">
-      <h2 class="title">סטטוסים ו<em>באגים</em></h2>
-      <div class="steps-grid two">
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">1</span><span class="lbl">update status</span></div>
-          <h4>עדכון סטטוסים</h4>
-          <p>מבקשים מ-Claude Code לעבור על תוצאות הבדיקות ולסמן כל טיקט שעבר בהצלחה כ-"Done" בפרויקט ה-QA ב-Linear.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">Review the test results and mark all passing test tickets as "Done" in the Linear QA Automation project</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num"><span class="badge">2</span><span class="lbl">open bugs</span></div>
-          <h4>פותחים באגים ב-Linear</h4>
-          <p>עבור כל בדיקה שנכשלה, מבקשים מ-Claude Code לפתוח טיקט באג ב-Linear עם label "bug" ופרטי הכישלון.</p>
-          <div class="step-code">
-            <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">For each failing Playwright test, create a Bug ticket in Linear with label "bug", include the error message and the expected vs actual behavior</span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── 09 · POSTER ─── -->
-    <section class="slide slide-poster">
-      <h1 class="mega">
-        <span class="a">נצור.</span><br>
-        <span class="b">נריץ.</span><br>
-        <span class="c">נתקן.</span>
-      </h1>
-      <div class="sub">Claude Code מחבר בין הקוד, הבדיקות ו-Linear — הסטטוסים מתעדכנים לבד, הבאגים נפתחים לבד.</div>
-    </section>
-
-    <!-- ─── 10 · CLOSING ─── -->
+    <!-- ─── 09 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
         <h1>נצור<span style="color:var(--border)">.</span><br><em>נריץ</em><span style="color:var(--border)">.</span><br>נתקן<span style="color:var(--border)">.</span></h1>
