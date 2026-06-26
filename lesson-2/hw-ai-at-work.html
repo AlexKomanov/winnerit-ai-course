@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Git · מעקב שינויים ועבודה בצוות</title>
+<title>שיעורי בית · AI at Work</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -171,34 +171,6 @@
   .info-card.get  ul li .ic { color: var(--forest); }
   .info-card ul li strong { color: var(--ink); font-weight: 700; }
 
-  /* ─── STATEMENT ─── */
-  .slide-statement { justify-content: center; }
-  .slide-statement .body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-
-  /* ─── MINI CARDS (4-up) ─── */
-  .slide-four { justify-content: center; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 52px; }
-  .mini-card { border: 1px solid var(--border); padding: 38px 34px; background: var(--bg-3); }
-  .mini-card .num {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--muted);
-    margin-bottom: 20px; display: flex; align-items: center; gap: 8px; direction: ltr;
-  }
-  .mini-card .num .nb {
-    width: 22px; height: 22px; border-radius: 4px; background: rgba(224,78,54,0.1);
-    color: var(--coral); display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 12px;
-  }
-  .mini-card h4 { font-family: var(--display); font-size: 30px; font-weight: 900; margin-bottom: 6px; line-height: 1.05; color: var(--ink); }
-  .mini-card .en-label {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 16px; direction: ltr;
-  }
-  .mini-card p { font-size: 16px; color: var(--ink-soft); line-height: 1.55; }
-  .mini-card.p1 { border-top: 3px solid var(--coral); }
-  .mini-card.p2 { border-top: 3px solid var(--forest); }
-  .mini-card.p3 { border-top: 3px solid var(--mustard); }
-  .mini-card.p4 { border-top: 3px solid var(--sky); }
-
   /* ─── POSTER ─── */
   .slide-poster { justify-content: center; align-items: center; text-align: center; }
   .slide-poster h1.mega {
@@ -215,6 +187,7 @@
 
   /* ─── STEP BLOCKS ─── */
   .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  .steps-grid.two { grid-template-columns: repeat(2, 1fr); }
   .step-block {
     border: 1px solid var(--border); background: var(--bg-3); padding: 26px 24px 22px;
     display: flex; flex-direction: column;
@@ -240,6 +213,10 @@
   .step-code .cmd::-webkit-scrollbar { display: none; }
   .step-code .kw { color: #E04E36; }
   .step-code .arg { color: #E2A93B; }
+  .step-code .copy { border: none; background: transparent; color: rgba(242,237,227,0.35); cursor: pointer; padding: 4px; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s, background 0.2s; flex-shrink: 0; }
+  .step-code .copy:hover { color: #9BD3A8; background: rgba(155,211,168,0.1); }
+  .step-code .copy.copied { color: #9BD3A8; }
+  .step-code .copy svg { width: 14px; height: 14px; }
   .step-action {
     background: var(--bg-2); border: 1px solid var(--border-soft); border-radius: 6px;
     padding: 10px 14px; font-size: 13px; color: var(--ink-soft);
@@ -299,9 +276,8 @@
   @media (max-width: 900px) {
     .slide { padding: 4vh 5vw; }
     .info-grid { grid-template-columns: 1fr; }
-    .grid-4 { grid-template-columns: 1fr 1fr; }
     .steps-grid { grid-template-columns: 1fr; }
-    .slide-statement .body-grid { grid-template-columns: 1fr; }
+    .steps-grid.two { grid-template-columns: 1fr; }
   }
 
   @media (max-height: 900px) {
@@ -317,10 +293,6 @@
     .step-block { padding: 16px 18px 14px; }
     .step-block h4 { font-size: 18px; }
     .step-block p { font-size: 14px; margin-bottom: 10px; }
-    .grid-4 { margin-top: 24px; gap: 14px; }
-    .mini-card { padding: 20px 22px; }
-    .mini-card h4 { font-size: 20px; }
-    .mini-card p { font-size: 15px; }
     .slide-end h1 { font-size: clamp(40px, 7vw, 108px); }
     .slide-end .sig { margin-top: 36px; }
     .slide-poster h1.mega { font-size: clamp(36px, 6vw, 96px); }
@@ -332,15 +304,16 @@
 <div class="frame">
 
   <header class="topbar">
-    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a>
-    <button class="fs-btn" id="btn-fs" aria-label="מסך מלא" title="מסך מלא">
-      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
-      <svg class="icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="display:none"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
-    </button>
-  </div>
+    <div class="left">
+      <a href="../index.html" class="back-home">חזרה לכל השיעורים</a>
+      <button class="fs-btn" id="btn-fs" aria-label="מסך מלא" title="מסך מלא">
+        <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+        <svg class="icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="display:none"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
+      </button>
+    </div>
     <div class="right">
-      <span>Git · מעקב שינויים ועבודה בצוות</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 09</span></span>
+      <span>שיעורי בית · AI at Work</span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
     </div>
   </header>
 
@@ -350,50 +323,49 @@
     <section class="slide slide-cover">
       <div class="cover-mark"><span class="pin"></span> WinnerIT · AI Course</div>
 
-      <!-- Branch tree -->
-      <svg class="deco deco-1" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-        <line x1="40" y1="8" x2="40" y2="72"/>
-        <circle cx="40" cy="14" r="4"/>
-        <circle cx="40" cy="36" r="4"/>
-        <circle cx="40" cy="58" r="4"/>
-        <line x1="40" y1="36" x2="68" y2="22"/>
-        <circle cx="68" cy="22" r="4"/>
-        <line x1="40" y1="58" x2="68" y2="44"/>
-        <circle cx="68" cy="44" r="4"/>
+      <!-- Plugin / puzzle -->
+      <svg class="deco deco-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 22v-5"/>
+        <path d="M9 8V2"/>
+        <path d="M15 8V2"/>
+        <path d="M18 8v5a4 4 0 01-4 4h-4a4 4 0 01-4-4V8h12z"/>
       </svg>
 
-      <!-- Terminal prompt -->
-      <svg class="deco deco-2" viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-        <rect x="2" y="2" width="60" height="44" rx="4"/>
-        <line x1="10" y1="16" x2="22" y2="24"/><line x1="22" y1="24" x2="10" y2="32"/>
-        <line x1="28" y1="32" x2="44" y2="32"/>
+      <!-- Wand / skill -->
+      <svg class="deco deco-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 4V2"/><path d="M15 16v-2"/>
+        <path d="M8 9h2"/><path d="M20 9h2"/>
+        <path d="M17.8 11.8L19 13"/><path d="M15 9h.01"/>
+        <path d="M17.8 6.2L19 5"/>
+        <path d="M3 21l9-9"/>
+        <path d="M12.2 6.2L11 5"/>
       </svg>
 
-      <!-- Commit circles -->
-      <svg class="deco deco-3" viewBox="0 0 60 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-        <line x1="2" y1="12" x2="58" y2="12"/>
-        <circle cx="12" cy="12" r="5"/>
-        <circle cx="30" cy="12" r="5"/>
-        <circle cx="48" cy="12" r="5"/>
+      <!-- Clipboard / test plan -->
+      <svg class="deco deco-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="8" y="2" width="8" height="4" rx="1"/>
+        <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/>
+        <line x1="12" y1="11" x2="16" y2="11"/>
+        <line x1="12" y1="16" x2="16" y2="16"/>
+        <line x1="8" y1="11" x2="8.01" y2="11"/>
+        <line x1="8" y1="16" x2="8.01" y2="16"/>
       </svg>
 
-      <!-- Sync arrows -->
-      <svg class="deco deco-4" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M8 20 C8 10 48 10 48 20"/>
-        <polyline points="42 14 48 20 42 26"/>
-        <path d="M48 36 C48 46 8 46 8 36"/>
-        <polyline points="14 42 8 36 14 30"/>
+      <!-- Camera / Playwright -->
+      <svg class="deco deco-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+        <circle cx="12" cy="13" r="4"/>
       </svg>
 
-      <!-- Small diamond -->
+      <!-- Small star -->
       <svg class="deco deco-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-        <polygon points="12,2 22,12 12,22 2,12"/>
+        <path d="M12 2L14.4 9.6 22 12 14.4 14.4 12 22 9.6 14.4 2 12 9.6 9.6z"/>
       </svg>
 
       <div class="cover-center">
-        <h1 class="cover-title"><span class="l">G</span>IT</h1>
+        <h1 class="cover-title"><span class="l">H</span>W</h1>
         <div class="cover-rule"></div>
-        <div class="cover-sub">מעקב שינויים ועבודה בצוות</div>
+        <div class="cover-sub">שיעורי בית · AI at Work</div>
       </div>
 
       <div class="cover-cta"><span class="arr">←</span> להתחיל</div>
@@ -401,23 +373,31 @@
 
     <!-- ─── 02 · OVERVIEW ─── -->
     <section class="slide slide-info">
-      <h2 class="title">מה <em>נלמד</em></h2>
+      <h2 class="title">מה <em>נעשה</em></h2>
       <div class="info-grid">
 
         <div class="info-card need">
           <div class="info-lbl">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            קצת רקע
+            צריך
           </div>
-          <h3>כבר עשינו</h3>
+          <h3>לפני שמתחילים</h3>
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>Git</strong> מותקן ומוגדר אצלנו</span>
+              <span>פרויקט <strong>Lovable</strong> מ-שיעורי בית שיעור 1</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>יש לנו חשבון <strong>GitHub</strong></span>
+              <span><strong>Claude Code</strong> מותקן ופעיל ב-IDE</span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Claude Desktop</strong> עם <strong>Playwright MCP</strong> מחובר</span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>חשבון <strong>Gemini</strong> פעיל</span>
             </li>
           </ul>
         </div>
@@ -431,15 +411,19 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>הבנת <strong>שלושת האזורים</strong> של Git</span>
+              <span>האפליקציה עם <strong>פיצ׳רים חדשים</strong></span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>יכולת לעבוד עם: <strong>clone, commit, push, pull</strong></span>
+              <span><strong>Plugins</strong> מותקנים — superpowers, code-review, frontend-design, skill-creator</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span><strong>flow יומי</strong> ברור ומהיר לעבודה עם קוד</span>
+              <span><strong>Documentation Skill</strong> שמוסיף יכולת לכתוב דוקומנטציה של הפרויקט</span>
+            </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span><strong>Feature Writer</strong> — סוכן שיודע לכתוב פיצ׳רים חדשים</span>
             </li>
           </ul>
         </div>
@@ -447,277 +431,236 @@
       </div>
     </section>
 
-    <!-- ─── 03 · WHAT IS GIT ─── -->
-    <section class="slide slide-statement">
-      <div class="body-grid">
-        <div>
-          <h2 class="title">מה זה <em>Git</em>?</h2>
-          <p class="lead" style="margin-top:28px;">
-            Git הוא מערכת לניהול גרסאות — הוא עוקב אחרי
-            <strong style="color:var(--ink);">כל שינוי בקוד</strong>
-            ומאפשר לנו לחזור לכל נקודה בזמן, לעבוד במקביל ולמזג שינויים בבטחה.
-          </p>
-          <p class="lead" style="margin-top:18px;">
-            Git עובד עם
-            <em style="color:var(--coral);">שלושה אזורים</em>
-            — Working Directory, Staging Area, ו-Repository.
-          </p>
-        </div>
+    <!-- ─── 03 · PLUGINS ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">התקנת <em>Plugins</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;">
 
-        <!-- 4-zone flow diagram: Working Dir → Staging → Local Repo → GitHub -->
-        <svg viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg"
-             style="width:100%;max-width:600px;align-self:center;direction:ltr" aria-label="Git zones diagram">
-          <!-- All boxes drawn first so arrows render on top -->
-
-          <!-- Working Dir -->
-          <rect x="4" y="40" width="72" height="120" rx="4" fill="#FBF8F1" stroke="#D8CCB5" stroke-width="1"/>
-          <text x="40" y="64" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#8B8A82" letter-spacing="1">WORKING</text>
-          <text x="40" y="75" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#8B8A82" letter-spacing="1">DIR</text>
-          <rect x="14" y="90" width="52" height="10" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="40" y="99" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#4D556C">index.html</text>
-          <rect x="14" y="106" width="52" height="10" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="40" y="115" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#4D556C">style.css</text>
-          <rect x="14" y="122" width="52" height="10" rx="2" fill="rgba(224,78,54,0.08)" stroke="rgba(224,78,54,0.3)" stroke-width="0.8"/>
-          <text x="40" y="131" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#E04E36">app.js ✎</text>
-
-          <!-- Staging Area -->
-          <rect x="108" y="40" width="72" height="120" rx="4" fill="#FBF8F1" stroke="#E04E36" stroke-width="1.2"/>
-          <text x="144" y="64" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#E04E36" letter-spacing="1">STAGING</text>
-          <text x="144" y="75" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#E04E36" letter-spacing="1">AREA</text>
-          <rect x="118" y="90" width="52" height="10" rx="2" fill="rgba(224,78,54,0.08)" stroke="rgba(224,78,54,0.3)" stroke-width="0.8"/>
-          <text x="144" y="99" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#E04E36">app.js ✓</text>
-          <text x="144" y="133" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#8B8A82" direction="rtl" unicode-bidi="embed">מוכן ל-commit</text>
-
-          <!-- Local Repo (shifted +20px right for wider gap) -->
-          <rect x="232" y="40" width="72" height="120" rx="4" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.2"/>
-          <text x="268" y="64" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#2F6B49" letter-spacing="1">LOCAL</text>
-          <text x="268" y="75" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="#2F6B49" letter-spacing="1">REPO</text>
-          <rect x="242" y="90" width="52" height="10" rx="2" fill="rgba(47,107,73,0.08)" stroke="#2F6B49" stroke-width="0.8"/>
-          <text x="268" y="99" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#2F6B49">commit c3</text>
-          <rect x="242" y="106" width="52" height="10" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="268" y="115" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#4D556C">commit c2</text>
-          <rect x="242" y="122" width="52" height="10" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="268" y="131" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#4D556C">commit c1</text>
-
-          <!-- GitHub box -->
-          <rect x="338" y="60" width="18" height="80" rx="2" fill="#1B2336"/>
-          <text x="347" y="105" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#F2EDE3" letter-spacing="1" transform="rotate(-90 347 105)">GITHUB</text>
-
-          <!-- Arrows drawn last so labels are never covered by boxes -->
-
-          <!-- git add arrow -->
-          <line x1="78" y1="100" x2="106" y2="100" stroke="#E04E36" stroke-width="1.2"/>
-          <polygon points="106,100 100,96.5 100,103.5" fill="#E04E36"/>
-          <text x="92" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#E04E36">git add</text>
-
-          <!-- git commit arrow (52px gap: 180→232, label fits on one line) -->
-          <line x1="182" y1="100" x2="230" y2="100" stroke="#2F6B49" stroke-width="1.2"/>
-          <polygon points="230,100 224,96.5 224,103.5" fill="#2F6B49"/>
-          <text x="206" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#2F6B49">git commit</text>
-
-          <!-- git push arrow -->
-          <line x1="306" y1="88" x2="334" y2="78" stroke="#4A7BA8" stroke-width="1.2" stroke-dasharray="3 2"/>
-          <polygon points="334,78 327,75 329,82" fill="#4A7BA8"/>
-          <text x="322" y="71" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4A7BA8">push</text>
-
-          <!-- git pull arrow -->
-          <line x1="334" y1="115" x2="306" y2="125" stroke="#4A7BA8" stroke-width="1.2" stroke-dasharray="3 2"/>
-          <polygon points="306,125 313,122 312,129" fill="#4A7BA8"/>
-          <text x="322" y="136" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7" fill="#4A7BA8">pull</text>
-        </svg>
-      </div>
-    </section>
-
-    <!-- ─── 04 · CORE CONCEPTS ─── -->
-    <section class="slide slide-four">
-      <h2 class="title">פקודות <em>ליבה</em></h2>
-      <div class="grid-4">
-
-        <div class="mini-card p1">
-          <div class="num"><span class="nb">1</span> clone</div>
-          <h4>clone</h4>
-          <p>מורידים עותק מלא של repository מ-GitHub למחשב — כולל כל ההיסטוריה.</p>
-        </div>
-
-        <div class="mini-card p2">
-          <div class="num"><span class="nb">2</span> add</div>
-          <h4>add</h4>
-          <p>מסמנים אילו קבצים לכלול ב-commit הבא — רק מה שנסמן יישמר.</p>
-        </div>
-
-        <div class="mini-card p3">
-          <div class="num"><span class="nb">3</span> commit</div>
-          <h4>commit</h4>
-          <p>שומרים snapshot של השינויים עם הודעה תיאורית — כל commit הוא נקודת חזרה.</p>
-        </div>
-
-        <div class="mini-card p4">
-          <div class="num"><span class="nb">4</span> push / pull</div>
-          <h4>push / pull</h4>
-          <p>push שולח commits ל-GitHub. pull מביא שינויים חדשים מ-GitHub אלינו.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── 05 · CLONE ─── -->
-    <section class="slide" style="justify-content: center;">
-      <h2 class="title"><em>משכפלים</em> repository</h2>
-      <div class="steps-grid">
-
-        <div class="step-block">
+        <div class="step-block" style="grid-column:1/-1;">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">copy url</span>
+            <span class="lbl">how to install</span>
           </div>
-          <h4>מעתיקים את ה-URL</h4>
-          <p>ב-GitHub נכנסים לדף הפרויקט, לוחצים Code → HTTPS ומעתיקים את הכתובת.</p>
+          <h4>איך מתקינים plugin</h4>
+          <p>נפתח את לוח ה-Plugins, נחפש ונתקין ב-user scope.</p>
           <div class="step-action">
-            GitHub · Code · HTTPS · Copy URL
+            <span dir="ltr"><strong>/plugin</strong> → Discover → Search and choose → <strong>Install for you</strong> (user scope)</span>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">clone</span>
+            <span class="lbl">plugins</span>
           </div>
-          <h4>משכפלים</h4>
-          <p>מריצים את הפקודה בטרמינל — Git יוצר תיקייה עם כל הקוד וההיסטוריה.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> clone https://github.com/user/repo.git</span>
+          <h4>Plugins להתקין</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;font-family:var(--mono);font-size:14px;direction:ltr;color:var(--ink);line-height:1.4;">
+            <span>· superpowers</span>
+            <span>· code-review</span>
+            <span>· frontend-design</span>
+            <span>· skill-creator</span>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">3</span>
-            <span class="lbl">enter</span>
+            <span class="lbl">reload</span>
           </div>
-          <h4>נכנסים לתיקייה</h4>
-          <p>Git יצר תיקייה בשם הפרויקט. נכנסים אליה ומוכנים לעבוד.</p>
+          <h4>טוענים מחדש</h4>
+          <p>לאחר ההתקנה, נריץ reload כדי שכל ה-Plugins יהיו פעילים.</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">cd</span> repo-name &amp;&amp; <span class="kw">ls</span></span>
+            <span class="prompt">›</span>
+            <span class="cmd"><span class="kw">/reload-plugins</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 06 · STAGE & COMMIT ─── -->
-    <section class="slide" style="justify-content: center;">
-      <h2 class="title"><em>שומרים</em> שינויים</h2>
+    <!-- ─── 04 · DOCUMENTATION SKILL ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">Documentation <em>Skill</em></h2>
       <div class="steps-grid">
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">status</span>
+            <span class="lbl">skill-creator</span>
           </div>
-          <h4>בודקים מצב</h4>
-          <p>רואים אילו קבצים השתנו — קבצים אדומים עדיין לא סומנו, ירוקים מוכנים ל-commit.</p>
+          <h4>יוצרים Documentation Skill</h4>
+          <p>נשתמש ב-<strong>skill-creator</strong> ליצירת ה-Skill. הוא יופעל אוטומטית על בסיס ההקשר — נתאר מה ה-Skill צריך לעשות:</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> status</span>
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Create a documentation skill that reads the project structure and key files, then generates clear markdown documentation describing the architecture, main components, and how to run the project</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">add</span>
+            <span class="lbl">scope</span>
           </div>
-          <h4>מסמנים קבצים</h4>
-          <p>מוסיפים לסטייג'ינג — <code style="font-family:var(--mono);font-size:11px;color:var(--coral);direction:ltr;unicode-bidi:embed">"add ."</code> אומר ״הכל״, אפשר גם לציין קובץ ספציפי.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> add <span class="arg">.</span></span>
-          </div>
+          <h4>שומרים ב-user scope</h4>
+          <p>skill-creator ישאל איפה לשמור את ה-Skill — נבחר <strong>user scope</strong> כדי שיהיה זמין בכל הפרויקטים על המחשב (<code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 5px;border-radius:3px;direction:ltr;unicode-bidi:embed;">~/.claude/skills/</code>).</p>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">3</span>
-            <span class="lbl">commit</span>
+            <span class="lbl">use</span>
           </div>
-          <h4>שומרים snapshot</h4>
-          <p>יוצרים commit עם הודעה תיאורית קצרה — מה השתנה ולמה. זה ישמר בהיסטוריה.</p>
+          <h4>מפעילים את ה-Skill</h4>
+          <p>לאחר היצירה, נוכל להריץ אותו בכל פרויקט:</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> commit -m <span class="arg">"add login page"</span></span>
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Generate documentation for this project</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 07 · PUSH & PULL ─── -->
-    <section class="slide" style="justify-content: center;">
-      <h2 class="title"><em>מסנכרנים</em> עם GitHub</h2>
-      <div class="steps-grid">
+    <!-- ─── 05 · פיצ׳ר חדש עם AGENT ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">פיצ׳ר חדש עם <em>Agent</em></h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;">
+
+        <div class="step-block" style="grid-column:1/-1;">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">create</span>
+          </div>
+          <h4>יוצרים Feature Writer Agent</h4>
+          <div class="step-action">
+            <span dir="ltr">/agents → Library → Create new agent</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">capabilities</span>
+          </div>
+          <h4>מגדירים את יכולות של הסוכן שניצור</h4>
+          <ul style="list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:5px;font-size:15px;color:var(--ink-soft);line-height:1.4;">
+            <li>· מושך קוד עדכני מ-GitHub</li>
+            <li>· שואל על הפיצ׳ר הרצוי</li>
+            <li>· סורק את מבנה הפרויקט</li>
+            <li>· <strong>frontend-design</strong> + <strong>superpowers</strong> לתכנון</li>
+            <li>· <strong>code-review</strong> על הקוד</li>
+            <li>· מציג שינויים לבדיקה</li>
+            <li>· commit + push לאחר אישור</li>
+          </ul>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">settings</span>
+          </div>
+          <h4>מגדירים את ה-Agent</h4>
+          <ul style="list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--ink-soft);line-height:1.4;">
+            <li>· <strong>User scope</strong> — זמין בכל הפרויקטים</li>
+            <li>· <strong>Color</strong> — צבע ויזואלי לזיהוי</li>
+            <li>· <strong>Confirmation</strong> — מאשרים לפני שה-Agent נוצר</li>
+          </ul>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">4</span>
+            <span class="lbl">invoke</span>
+          </div>
+          <h4>מפעילים את ה-Agent</h4>
+          <p>מתארים את הפיצ׳ר — ה-Agent יעבור את כל השלבים.</p>
+          <div class="step-code">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Use the feature writer agent to add [describe your feature] to the app</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">5</span>
+            <span class="lbl">approve</span>
+          </div>
+          <h4>מאשרים את השינויים</h4>
+          <p>ה-Agent יציג שינויים לביקורת — לאחר אישורנו יבצע commit + push אוטומטית.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 06 · PLAYWRIGHT MCP + PRD ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title"><em>Playwright MCP</em> + PRD</h2>
+      <div class="steps-grid two">
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">push</span>
+            <span class="lbl">validate</span>
           </div>
-          <h4>שולחים ל-GitHub</h4>
-          <p>שולחים את ה-commits שלנו ל-GitHub — מעדכנים את הענן עם הגרסה העדכנית שלנו.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> push</span>
+          <h4>מוודאים חיבור MCP</h4>
+          <p>נוודא ש-Playwright MCP מחובר ופעיל ב-Claude Desktop לפני שמתחילים.</p>
+          <div class="step-action">
+            <span dir="ltr">Claude Desktop → Settings → Developer → Local MCP servers → <strong>Playwright</strong> ✓</span>
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">pull</span>
+            <span class="lbl">explore + prd</span>
           </div>
-          <h4>מושכים מ-GitHub</h4>
-          <p>מביאים שינויים חדשים מ-GitHub — מישהו אחר דחף קוד, או שינינו משכשהו אחר.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> pull</span>
+          <h4>סיור ויצירת PRD</h4>
+          <p>בבקשה אחת נבקש מ-Claude Desktop לסייר באפליקציה עם Playwright MCP — לעבור על כל הדפים, הכפתורים והטפסים — ולאחר מכן לכתוב PRD מלא הכולל סקירת מוצר, זרימות משתמש, רשימת פיצ׳רים ותרחישי בדיקה, ולשמור אותו כקובץ Markdown או Doc.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 07 · GEMINI GEM ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title"><em>Gem</em> לבדיקות</h2>
+      <div class="steps-grid two">
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">create gem</span>
           </div>
+          <h4>יוצרים Gem ב-Gemini</h4>
+          <p>ניצור Gem חדש שיהיה סוכן לייצור test cases. נוסיף את ה-PRD מהשלב הקודם כ-resource — או כל PRD קיים אחר — ונגדיר את תפקידו כסוכן QA.</p>
         </div>
 
         <div class="step-block">
           <div class="step-num">
-            <span class="badge">3</span>
-            <span class="lbl">log</span>
+            <span class="badge">2</span>
+            <span class="lbl">generate</span>
           </div>
-          <h4>רואים היסטוריה</h4>
-          <p>מציגים רשימה קצרה של ה-commits האחרונים — מי שינה מה ומתי.</p>
+          <h4>מייצרים Test Cases</h4>
+          <p>נבקש מה-Gem לייצר test cases על בסיס ה-PRD — כבר יש לו את כל ההוראות הדרושות.</p>
           <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">git</span> log --oneline</span>
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Create several tests for the [feature name] feature</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 08 · POSTER ─── -->
-    <section class="slide slide-poster">
-      <h1 class="mega">
-        <span class="a">שכפל.</span><br>
-        <span class="b">שמור.</span><br>
-        <span class="c">שלח.</span>
-      </h1>
-      <div class="sub">
-        clone → status → add → commit → push —
-        ה-flow היומי שמחזיק את הצוות מסונכרן.
-      </div>
-    </section>
-
-    <!-- ─── 09 · CLOSING ─── -->
+    <!-- ─── 08 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
-        <h1>נשכפל<span style="color:var(--border)">.</span><br><em>נשמור</em><span style="color:var(--border)">.</span><br>נשלח<span style="color:var(--border)">.</span></h1>
-        <div class="sig">winnerit · ai course · <em>git</em></div>
+        <h1>נתקין<span style="color:var(--border)">.</span><br><em>נבנה</em><span style="color:var(--border)">.</span><br>נתעד<span style="color:var(--border)">.</span></h1>
+        <div class="sig">winnerit · ai course · <em>homework</em></div>
       </div>
     </section>
 
@@ -813,24 +756,32 @@
   update();
 })();
 
-  // Fullscreen toggle
-  (function(){
-    const btn = document.getElementById('btn-fs');
-    if (!btn) return;
-    btn.addEventListener('click', () => {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      } else {
-        document.exitFullscreen();
-      }
+(function(){
+  const btn = document.getElementById('btn-fs');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen(); }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    const full = !!document.fullscreenElement;
+    btn.querySelector('.icon-expand').style.display = full ? 'none' : '';
+    btn.querySelector('.icon-compress').style.display = full ? '' : 'none';
+    btn.setAttribute('aria-label', full ? 'צא ממסך מלא' : 'מסך מלא');
+  });
+  document.querySelectorAll('.step-code .copy').forEach(btn => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const cmd = btn.closest('.step-code').querySelector('.cmd').textContent.trim();
+      try {
+        await navigator.clipboard.writeText(cmd);
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 1400);
+      } catch (err) {}
     });
-    document.addEventListener('fullscreenchange', () => {
-      const full = !!document.fullscreenElement;
-      btn.querySelector('.icon-expand').style.display = full ? 'none' : '';
-      btn.querySelector('.icon-compress').style.display = full ? '' : 'none';
-      btn.setAttribute('aria-label', full ? 'צא ממסך מלא' : 'מסך מלא');
-    });
-  })();
+  });
+})();
 </script>
+<script src="../nav.js"></script>
 </body>
 </html>

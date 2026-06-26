@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Automation · WinnerIT AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EDE3; --bg-2: #EAE2D2; --bg-3: #FBF8F1;
+    --ink: #1B2336; --ink-soft: #4D556C; --muted: #8B8A82;
+    --border: #D8CCB5; --border-soft: #E5DDC9;
+    --coral: #E04E36; --forest: #2F6B49; --mustard: #E2A93B; --sky: #4A7BA8;
+    --accent: #4A7BA8;
+    --display: 'Frank Ruhl Libre', 'Heebo', serif;
+    --body: 'Heebo', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh; background: var(--bg); color: var(--ink);
+    font-family: var(--body); line-height: 1.55; direction: rtl;
+    background-image: radial-gradient(circle at 1px 1px, rgba(27,35,54,0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .bg-icons { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .bg-icon { position: absolute; }
+  main { position: relative; z-index: 1; }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 10; height: 56px; padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border-soft);
+    background: rgba(242,237,227,0.88); backdrop-filter: blur(10px);
+  }
+  .topbar-right { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .back-home {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); padding: 6px 14px;
+    border: 1.5px solid var(--accent); border-radius: 6px;
+    text-decoration: none; transition: background 0.15s, color 0.15s;
+  }
+  .back-home:hover { background: var(--accent); color: #fff; }
+
+  .lesson-hero { padding: 72px 48px 52px; max-width: 860px; margin: 0 auto; position: relative; overflow: hidden; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+  }
+  .hero-eyebrow .line { width: 36px; height: 1px; background: var(--accent); }
+  .lesson-hero h1 {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(52px, 7vw, 96px); line-height: 1;
+    letter-spacing: -0.025em; color: var(--ink); margin-bottom: 20px;
+  }
+  .lesson-hero h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .hero-desc { font-size: 17px; color: var(--ink-soft); font-weight: 300; max-width: 520px; line-height: 1.6; margin-bottom: 24px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 9px;
+    border: 1px solid var(--border); color: var(--muted); background: var(--bg-2);
+  }
+  .hero-bg-num {
+    position: absolute; left: 32px; bottom: 20px;
+    font-family: var(--display); font-weight: 900;
+    font-size: 180px; line-height: 1; color: rgba(27,35,54,0.035);
+    pointer-events: none; letter-spacing: -0.04em; user-select: none; direction: ltr;
+  }
+
+  hr.divider { border: none; border-top: 1px solid var(--border-soft); margin: 0 48px; }
+  .pres-section { padding: 48px 48px 96px; max-width: 860px; margin: 0 auto; }
+  .pres-label { font-family: var(--mono); font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+
+  .pres-list { display: flex; flex-direction: column; position: relative; background: var(--bg-3); border: 1px solid var(--border); }
+  .pres-list::before {
+    content: ''; position: absolute;
+    top: 28px; right: 46px; bottom: 28px; width: 1px;
+    background: repeating-linear-gradient(to bottom, rgba(74,123,168,0.4) 0, rgba(74,123,168,0.4) 5px, transparent 5px, transparent 10px);
+    pointer-events: none; z-index: 0;
+  }
+  .pres-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 32px; border-bottom: 1px solid var(--border-soft);
+    text-decoration: none; color: inherit; transition: background 0.15s; position: relative;
+  }
+  .pres-row:last-child { border-bottom: none; }
+  .pres-row:hover { background: var(--bg-2); }
+  .pres-num {
+    width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; z-index: 1;
+    background: rgba(74,123,168,0.1); border: 1px solid rgba(74,123,168,0.25); color: var(--accent);
+  }
+  .pres-info { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .pres-name { font-size: 17px; font-weight: 700; color: var(--ink); }
+  .pres-desc { font-size: 15px; color: var(--ink-soft); }
+  .pres-cta {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--coral); padding: 6px 14px; border: 1.5px solid var(--coral);
+    border-radius: 6px; flex-shrink: 0; transition: background 0.15s, color 0.15s;
+  }
+  .pres-row:hover .pres-cta { background: var(--coral); color: #fff; }
+
+  .hw-row {
+    padding: 14px 32px; display: flex; align-items: center; gap: 14px;
+    background: var(--bg-2); border-top: 1px dashed var(--border);
+    text-decoration: none; color: inherit; transition: background 0.15s;
+  }
+  .hw-row:hover { background: var(--border-soft); }
+  .hw-icon {
+    width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
+    background: rgba(226,169,59,0.12); border: 1px solid rgba(226,169,59,0.3);
+    color: var(--mustard); display: flex; align-items: center; justify-content: center;
+  }
+  .hw-icon svg { width: 14px; height: 14px; }
+  .hw-text { flex: 1; }
+  .hw-label { font-size: 15px; font-weight: 700; color: var(--ink); }
+  .hw-desc { font-size: 13px; color: var(--muted); margin-top: 1px; }
+  .hw-cta {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--coral); padding: 6px 14px; border: 1.5px solid var(--coral);
+    border-radius: 6px; flex-shrink: 0; transition: background 0.15s, color 0.15s;
+  }
+  .hw-row:hover .hw-cta { background: var(--coral); color: #fff; }
+
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999;
+  }
+  @media (max-width: 640px) {
+    .topbar { padding: 0 20px; }
+    .lesson-hero { padding: 48px 20px 40px; }
+    hr.divider { margin: 0 20px; }
+    .pres-section { padding: 40px 20px 64px; }
+    .pres-row { padding: 14px 20px; }
+    .hw-row { padding: 12px 20px; }
+    .hero-bg-num { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg-icons" aria-hidden="true">
+    <!-- Flow diagram — upper right -->
+    <svg class="bg-icon" style="width:320px;top:10px;left:-10px;opacity:.065;transform:rotate(6deg)" viewBox="0 0 280 120" fill="none">
+      <rect x="4" y="40" width="52" height="36" rx="6" stroke="rgba(74,123,168,0.45)" stroke-width="1.5" fill="rgba(74,123,168,0.07)"/>
+      <line x1="56" y1="58" x2="90" y2="58" stroke="rgba(74,123,168,0.5)" stroke-width="1.5"/>
+      <polyline points="87,52 90,58 87,64" stroke="rgba(74,123,168,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="90" y="40" width="52" height="36" rx="6" stroke="rgba(74,123,168,0.5)" stroke-width="2" fill="rgba(74,123,168,0.1)"/>
+      <line x1="142" y1="58" x2="176" y2="58" stroke="rgba(74,123,168,0.5)" stroke-width="1.5"/>
+      <polyline points="173,52 176,58 173,64" stroke="rgba(74,123,168,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="176" y="40" width="52" height="36" rx="6" stroke="rgba(74,123,168,0.45)" stroke-width="1.5" fill="rgba(74,123,168,0.07)"/>
+      <circle cx="20" cy="30" r="3" fill="rgba(74,123,168,0.5)"/>
+      <circle cx="28" cy="30" r="3" fill="rgba(74,123,168,0.3)"/>
+      <circle cx="36" cy="30" r="3" fill="rgba(74,123,168,0.2)"/>
+      <line x1="8" y1="64" x2="54" y2="64" stroke="rgba(74,123,168,0.15)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="94" y1="55" x2="140" y2="55" stroke="rgba(74,123,168,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="94" y1="64" x2="140" y2="64" stroke="rgba(74,123,168,0.15)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="180" y1="55" x2="226" y2="55" stroke="rgba(74,123,168,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="180" y1="64" x2="226" y2="64" stroke="rgba(74,123,168,0.15)" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- curved connector above -->
+      <path d="M 30 40 Q 30 15 116 15 Q 202 15 202 40" stroke="rgba(74,123,168,0.2)" stroke-width="1" fill="none" stroke-dasharray="5 3"/>
+    </svg>
+
+    <!-- Grid / circuit pattern — lower right -->
+    <svg class="bg-icon" style="width:220px;bottom:4%;right:2%;opacity:.055;transform:rotate(-10deg)" viewBox="0 0 160 160" fill="none">
+      <line x1="0" y1="40" x2="160" y2="40" stroke="rgba(74,123,168,0.25)" stroke-width="1"/>
+      <line x1="0" y1="80" x2="160" y2="80" stroke="rgba(74,123,168,0.25)" stroke-width="1"/>
+      <line x1="0" y1="120" x2="160" y2="120" stroke="rgba(74,123,168,0.25)" stroke-width="1"/>
+      <line x1="40" y1="0" x2="40" y2="160" stroke="rgba(74,123,168,0.25)" stroke-width="1"/>
+      <line x1="80" y1="0" x2="80" y2="160" stroke="rgba(74,123,168,0.25)" stroke-width="1"/>
+      <line x1="120" y1="0" x2="120" y2="160" stroke="rgba(74,123,168,0.25)" stroke-width="1"/>
+      <circle cx="40" cy="40" r="4" fill="rgba(74,123,168,0.45)"/>
+      <circle cx="80" cy="40" r="3" fill="rgba(74,123,168,0.3)"/>
+      <circle cx="120" cy="80" r="4" fill="rgba(74,123,168,0.45)"/>
+      <circle cx="40" cy="120" r="3" fill="rgba(74,123,168,0.3)"/>
+      <circle cx="80" cy="80" r="5" fill="rgba(74,123,168,0.5)"/>
+      <circle cx="120" cy="120" r="3" fill="rgba(74,123,168,0.25)"/>
+      <line x1="40" y1="40" x2="80" y2="80" stroke="rgba(74,123,168,0.35)" stroke-width="1.5"/>
+      <line x1="80" y1="80" x2="120" y2="80" stroke="rgba(74,123,168,0.35)" stroke-width="1.5"/>
+      <line x1="80" y1="80" x2="40" y2="120" stroke="rgba(74,123,168,0.25)" stroke-width="1" stroke-dasharray="4 2"/>
+    </svg>
+
+    <!-- Small flow — lower left -->
+    <svg class="bg-icon" style="width:160px;bottom:20%;left:4%;opacity:.06;transform:rotate(8deg)" viewBox="0 0 140 80" fill="none">
+      <rect x="4" y="24" width="36" height="28" rx="5" stroke="rgba(74,123,168,0.35)" stroke-width="1.5" fill="rgba(74,123,168,0.05)"/>
+      <line x1="40" y1="38" x2="60" y2="38" stroke="rgba(74,123,168,0.4)" stroke-width="1.5"/>
+      <polyline points="57,33 60,38 57,43" stroke="rgba(74,123,168,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="60" y="24" width="36" height="28" rx="5" stroke="rgba(74,123,168,0.4)" stroke-width="1.5" fill="rgba(74,123,168,0.07)"/>
+      <line x1="96" y1="38" x2="116" y2="38" stroke="rgba(74,123,168,0.4)" stroke-width="1.5"/>
+      <polyline points="113,33 116,38 113,43" stroke="rgba(74,123,168,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="116" y="24" width="20" height="28" rx="5" stroke="rgba(74,123,168,0.35)" stroke-width="1.5" fill="rgba(74,123,168,0.05)"/>
+    </svg>
+  </div>
+
+  <header class="topbar">
+    <div class="left">
+      <a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    </div>
+    <div class="topbar-right">03 · agentic automation</div>
+  </header>
+
+  <main>
+    <section class="lesson-hero">
+      <div class="hero-bg-num">03</div>
+      <div class="hero-eyebrow">
+        <div class="line"></div>
+        <span>03 · agentic automation</span>
+      </div>
+      <h1>אוטומציה<br>עם <em>סוכני AI</em></h1>
+      <p class="hero-desc">
+        Claude Desktop, MCP ו-Linear — חיבור AI לכלים חיצוניים ואוטומציה של תהליכי עבודה שלמים.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">Claude Desktop</span>
+        <span class="tag">MCP</span>
+        <span class="tag">Linear</span>
+        <span class="tag">Claude Code</span>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="pres-section">
+      <div class="pres-label">מצגות · presentations</div>
+      <div class="pres-list">
+
+        <a class="pres-row" href="./lesson-3/mcp-intro.html">
+          <div class="pres-num">1</div>
+          <div class="pres-info">
+            <div class="pres-name">MCP — מבוא</div>
+            <div class="pres-desc">Model Context Protocol — הפרוטוקול שמחבר AI לעולם</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-3/claude-desktop.html">
+          <div class="pres-num">2</div>
+          <div class="pres-info">
+            <div class="pres-name">Claude Desktop</div>
+            <div class="pres-desc">Claude Desktop — שולחן עבודה חכם עם MCP מובנה</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-3/claude-code-mcp.html">
+          <div class="pres-num">3</div>
+          <div class="pres-info">
+            <div class="pres-name">Claude Code + MCP</div>
+            <div class="pres-desc">MCP ב-Claude Code — חיבור שרתים ישירות מהטרמינל</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-3/linear-and-mcp.html">
+          <div class="pres-num">4</div>
+          <div class="pres-info">
+            <div class="pres-name">Linear + MCP</div>
+            <div class="pres-desc">ניהול פרויקט עם Linear ו-Claude — tickets, PR ו-planning</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-3/linear.html">
+          <div class="pres-num">5</div>
+          <div class="pres-info">
+            <div class="pres-name">Linear</div>
+            <div class="pres-desc">ניהול טיקטים חכם עם Linear — issues, cycles, projects</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-3/linear-mcp.html">
+          <div class="pres-num">6</div>
+          <div class="pres-info">
+            <div class="pres-name">Linear MCP</div>
+            <div class="pres-desc">ניהול טיקטים ישירות מה-AI — Linear דרך MCP</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-3/playwright-mcp-cli.html">
+          <div class="pres-num">7</div>
+          <div class="pres-info">
+            <div class="pres-name">MCP CLI</div>
+            <div class="pres-desc">ניהול שרתי MCP מהטרמינל — התקנה, הסרה, רשימה</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="hw-row" href="./lesson-3/hw-agentic-automation.html">
+          <div class="hw-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div class="hw-text">
+            <div class="hw-label">שיעורי בית</div>
+            <div class="hw-desc">MCP + Linear + Claude Code · ה-flow המלא</div>
+          </div>
+          <div class="hw-cta">פתיחה</div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

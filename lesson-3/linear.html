@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>API Testing · בדיקות UI עם Playwright</title>
+<title>Linear · ניהול טיקטים חכם</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -336,14 +336,14 @@
 <div class="frame">
 
   <header class="topbar">
-    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    <div class="left"><a href="../index.html" class="back-home">חזרה לכל השיעורים</a>
     <button class="fs-btn" id="btn-fs" aria-label="מסך מלא" title="מסך מלא">
       <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
       <svg class="icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="display:none"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
     </button>
   </div>
     <div class="right">
-      <span>API Testing · בדיקות UI עם Playwright</span>
+      <span>Linear · ניהול טיקטים חכם</span>
       <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
     </div>
   </header>
@@ -354,51 +354,44 @@
     <section class="slide slide-cover">
       <div class="cover-mark"><span class="pin"></span> WinnerIT · AI Course</div>
 
-      <!-- Browser window outline -->
-      <svg class="deco deco-1" viewBox="0 0 88 72" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect x="4" y="4" width="80" height="64" rx="5"/>
-        <line x1="4" y1="18" x2="84" y2="18"/>
-        <circle cx="14" cy="11" r="2.5"/>
-        <circle cx="23" cy="11" r="2.5"/>
-        <circle cx="32" cy="11" r="2.5"/>
-        <rect x="40" y="7" width="36" height="8" rx="3"/>
+      <!-- Ticket / Issue icon -->
+      <svg class="deco deco-1" viewBox="0 0 88 88" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
+        <rect x="8" y="18" width="72" height="52" rx="6"/>
+        <line x1="8" y1="34" x2="80" y2="34"/>
+        <line x1="24" y1="50" x2="54" y2="50"/>
+        <line x1="24" y1="60" x2="44" y2="60"/>
+        <circle cx="68" cy="55" r="6"/>
       </svg>
 
-      <!-- Terminal -->
-      <svg class="deco deco-2" viewBox="0 0 60 52" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect x="3" y="3" width="54" height="46" rx="4"/>
-        <polyline points="12 20 22 28 12 36"/>
-        <line x1="26" y1="36" x2="46" y2="36"/>
+      <!-- Cycle arrow -->
+      <svg class="deco deco-2" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 30 A20 20 0 1 1 30 50"/>
+        <polyline points="24 44 30 50 24 56"/>
       </svg>
 
-      <!-- Network / API lines -->
-      <svg class="deco deco-3" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
-        <circle cx="26" cy="26" r="8"/>
-        <line x1="26" y1="4" x2="26" y2="18"/>
-        <line x1="26" y1="34" x2="26" y2="48"/>
-        <line x1="4" y1="26" x2="18" y2="26"/>
-        <line x1="34" y1="26" x2="48" y2="26"/>
-        <circle cx="26" cy="4" r="3"/>
-        <circle cx="26" cy="48" r="3"/>
-        <circle cx="4" cy="26" r="3"/>
-        <circle cx="48" cy="26" r="3"/>
+      <!-- Project grid -->
+      <svg class="deco deco-3" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <rect x="4" y="4" width="20" height="20" rx="2"/>
+        <rect x="32" y="4" width="20" height="20" rx="2"/>
+        <rect x="4" y="32" width="20" height="20" rx="2"/>
+        <rect x="32" y="32" width="20" height="20" rx="2"/>
       </svg>
 
       <!-- Checkmark -->
-      <svg class="deco deco-4" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="27" cy="27" r="23"/>
-        <polyline points="16 27 23 34 38 19"/>
+      <svg class="deco deco-4" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="28" cy="28" r="22"/>
+        <polyline points="16 28 24 36 40 20"/>
       </svg>
 
-      <!-- Star -->
+      <!-- Small star -->
       <svg class="deco deco-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <path d="M12 2L14.4 9.6 22 12 14.4 14.4 12 22 9.6 14.4 2 12 9.6 9.6z"/>
       </svg>
 
       <div class="cover-center">
-        <h1 class="cover-title"><span class="l">A</span>PI TEST</h1>
+        <h1 class="cover-title"><span class="l">L</span>INEAR</h1>
         <div class="cover-rule"></div>
-        <div class="cover-sub">בדיקות ממשק משתמש עם Playwright ו-Claude Code</div>
+        <div class="cover-sub">ניהול טיקטים ופרויקטים — מהר, חכם, עם AI</div>
       </div>
 
       <div class="cover-cta"><span class="arr">←</span> להתחיל</div>
@@ -418,11 +411,11 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>יש לנו Claude Code CLI מותקן</span>
+              <span>אנחנו יודעים מה זה Git ו-GitHub</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>יש לנו פרויקט עם ממשק משתמש (UI)</span>
+              <span>יש לנו פרויקט פעיל לניהול</span>
             </li>
           </ul>
         </div>
@@ -436,19 +429,19 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>הבנה מה זה <strong>Playwright</strong> ולמה הוא הסטנדרט</span>
+              <span>הבנה מה זה <strong>Linear</strong> ולמה הוא שונה מ-Jira</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>יכולת לכתוב <strong>בדיקות E2E</strong> עם AI</span>
+              <span>שליטה במושגים: Issues, Cycles, Projects</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>שימוש ב-<strong>API calls</strong> לבדיקת UI</span>
+              <span><strong>workflow</strong> יומי יעיל עם AI</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>flow אוטומטי: כתיבה, הרצה, תיקון</span>
+              <span>חיבור ל-GitHub ולכלי הפיתוח</span>
             </li>
           </ul>
         </div>
@@ -456,109 +449,89 @@
       </div>
     </section>
 
-    <!-- ─── 03 · WHAT IS PLAYWRIGHT ─── -->
+    <!-- ─── 03 · WHAT IS LINEAR ─── -->
     <section class="slide slide-statement">
       <div class="body-grid">
         <div>
-          <h2 class="title">מה זה <em>Playwright</em>?</h2>
+          <h2 class="title">מה זה <em>Linear</em>?</h2>
           <p class="lead" style="margin-top:28px;">
-            Playwright הוא כלי בדיקות E2E (End-to-End) של Microsoft — מריץ דפדפן אוטומטית, לוחץ, ממלא טפסים, ובודק שה-UI מתנהג נכון.
+            Linear הוא כלי ניהול פרויקטים מודרני שבנוי בשביל מפתחים — מהיר, נקי, ומכוון לעבודה אמיתית.
           </p>
           <p class="lead" style="margin-top:18px;">
-            עם Claude Code, אנחנו כותבים את הבדיקות <em style="color:var(--coral);">בשפה טבעית</em> וה-AI מתרגם לקוד Playwright מלא.
+            במקום טפסים ארוכים ו-workflows מסורבלים, Linear מדגיש
+            <em style="color:var(--coral);">מהירות ופשטות</em>
+            — issue נפתח תוך שניות ו-backlog תמיד מסודר.
           </p>
-          <p class="caption" style="margin-top:32px;">end-to-end · cross-browser · AI-assisted</p>
+          <p class="caption" style="margin-top:32px;">linear.app · fast · keyboard-first</p>
         </div>
 
-        <!-- Diagram: Claude Code → test.spec.ts → Playwright → Browser → UI -->
-        <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg"
-             style="width:100%;max-width:560px;align-self:center;direction:ltr" aria-label="Claude Code to Playwright flow">
-          <!-- Claude Code box -->
-          <rect x="10" y="90" width="80" height="36" rx="4" fill="#FBF8F1" stroke="#E04E36" stroke-width="1.5"/>
-          <text x="50" y="104" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#E04E36" letter-spacing="1">CLAUDE</text>
-          <text x="50" y="116" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#E04E36" letter-spacing="1">CODE</text>
+        <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg"
+             style="width:100%;max-width:560px;align-self:center;direction:ltr" aria-label="Jira vs Linear">
+          <!-- Jira column -->
+          <rect x="10" y="10" width="130" height="240" rx="4" fill="#FBF8F1" stroke="#D8CCB5" stroke-width="1"/>
+          <text x="75" y="36" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8B8A82" letter-spacing="2">JIRA</text>
+          <rect x="22" y="50" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="75" y="61" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">טפסים ארוכים</text>
+          <rect x="22" y="72" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="75" y="83" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">הגדרות מורכבות</text>
+          <rect x="22" y="94" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="75" y="105" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">workflow מסורבל</text>
+          <rect x="22" y="116" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="75" y="127" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">טעינה איטית</text>
+          <text x="75" y="168" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="11" fill="#E04E36">עשרות קליקים</text>
+          <text x="75" y="186" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="10" fill="#8B8A82">לפתוח issue אחד</text>
 
-          <!-- Arrow 1 -->
-          <line x1="92" y1="108" x2="112" y2="108" stroke="#D8CCB5" stroke-width="1.2"/>
-          <polyline points="108,104 114,108 108,112" stroke="#D8CCB5" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="102" y="100" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#8B8A82">כותב</text>
-
-          <!-- test.spec.ts box -->
-          <rect x="114" y="84" width="92" height="48" rx="4" fill="#FBF8F1" stroke="#D8CCB5" stroke-width="1"/>
-          <text x="160" y="103" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#1B2336">test.spec.ts</text>
-          <text x="160" y="120" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#8B8A82">קובץ הבדיקות</text>
-
-          <!-- Arrow 2 -->
-          <line x1="208" y1="108" x2="228" y2="108" stroke="#D8CCB5" stroke-width="1.2"/>
-          <polyline points="224,104 230,108 224,112" stroke="#D8CCB5" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="218" y="100" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#8B8A82">מריץ</text>
-
-          <!-- Playwright box -->
-          <rect x="230" y="90" width="80" height="36" rx="4" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.5"/>
-          <text x="270" y="104" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#2F6B49" letter-spacing="1">PLAY</text>
-          <text x="270" y="116" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#2F6B49" letter-spacing="1">WRIGHT</text>
-
-          <!-- Arrow down from Playwright -->
-          <line x1="270" y1="128" x2="270" y2="155" stroke="#D8CCB5" stroke-width="1.2"/>
-          <polyline points="266,150 270,157 274,150" stroke="#D8CCB5" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="282" y="145" font-family="'Heebo',sans-serif" font-size="7.5" fill="#8B8A82">פותח</text>
-
-          <!-- Browser box -->
-          <rect x="210" y="158" width="120" height="48" rx="4" fill="#FBF8F1" stroke="#4A7BA8" stroke-width="1.5"/>
-          <line x1="210" y1="172" x2="330" y2="172" stroke="#4A7BA8" stroke-width="0.8"/>
-          <circle cx="222" cy="165" r="2.5" fill="#4A7BA8" opacity="0.5"/>
-          <circle cx="232" cy="165" r="2.5" fill="#4A7BA8" opacity="0.5"/>
-          <circle cx="242" cy="165" r="2.5" fill="#4A7BA8" opacity="0.5"/>
-          <text x="270" y="188" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#4A7BA8">Browser</text>
-          <text x="270" y="200" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#8B8A82">Chrome / Firefox / Safari</text>
-
-          <!-- Arrow left from Browser -->
-          <line x1="210" y1="182" x2="170" y2="182" stroke="#D8CCB5" stroke-width="1.2"/>
-          <polyline points="174,178 168,182 174,186" stroke="#D8CCB5" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="190" y="175" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#8B8A82">בודק</text>
-
-          <!-- UI box -->
-          <rect x="50" y="158" width="116" height="48" rx="4" fill="rgba(224,78,54,0.07)" stroke="#E04E36" stroke-width="1"/>
-          <text x="108" y="178" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8.5" fill="#E04E36">UI</text>
-          <text x="108" y="195" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="7.5" fill="#8B8A82">ממשק המשתמש</text>
-
-          <!-- checkmark at UI -->
-          <text x="142" y="175" font-family="'Heebo',sans-serif" font-size="13" fill="#2F6B49">✓</text>
+          <!-- Linear column -->
+          <rect x="180" y="10" width="130" height="240" rx="4" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.5"/>
+          <text x="245" y="36" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#2F6B49" letter-spacing="2">LINEAR</text>
+          <rect x="192" y="50" width="106" height="52" rx="2" fill="rgba(47,107,73,0.08)" stroke="#2F6B49" stroke-width="1"/>
+          <text x="245" y="68" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9.5" fill="#2F6B49" font-weight="700">לוחצים /</text>
+          <text x="245" y="82" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">כותבים כותרת</text>
+          <text x="245" y="94" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">Enter — זהו</text>
+          <line x1="245" y1="104" x2="245" y2="118" stroke="#D8CCB5" stroke-width="1"/>
+          <rect x="192" y="118" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="245" y="129" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">ממשק נקי ✓</text>
+          <rect x="192" y="140" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="245" y="151" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">keyboard-first ✓</text>
+          <rect x="192" y="162" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="245" y="173" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">GitHub sync ✓</text>
+          <text x="245" y="213" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="11" fill="#2F6B49">שניות</text>
+          <text x="245" y="231" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="10" fill="#8B8A82">לפתוח issue</text>
         </svg>
       </div>
     </section>
 
-    <!-- ─── 04 · TESTING STACK ─── -->
+    <!-- ─── 04 · CORE CONCEPTS ─── -->
     <section class="slide slide-four">
-      <h2 class="title">ה<em>stack</em> של הבדיקות</h2>
+      <h2 class="title">המושגים ה<em>בסיסיים</em></h2>
       <div class="grid-4">
 
         <div class="mini-card p1">
-          <div class="num"><span class="nb">1</span> playwright</div>
-          <h4>Playwright</h4>
-          <div class="en-label">Test Runner</div>
-          <p>מריץ דפדפן (Chrome, Firefox, Safari) אוטומטית ומאמת שה-UI עובד כמצופה בכל סביבה.</p>
+          <div class="num"><span class="nb">1</span> issues</div>
+          <h4>Issues</h4>
+          <div class="en-label">Tickets</div>
+          <p>יחידת העבודה הבסיסית. כל issue מקבל כותרת, תיאור, priority, assignee ו-status. נוצר בשניות עם <strong>/</strong> shortcut.</p>
         </div>
 
         <div class="mini-card p2">
-          <div class="num"><span class="nb">2</span> api</div>
-          <h4>API Layer</h4>
-          <div class="en-label">Request Testing</div>
-          <p>בדיקת ה-API שמאחורי ה-UI — endpoints, status codes, response format, וביצועים.</p>
+          <div class="num"><span class="nb">2</span> cycles</div>
+          <h4>Cycles</h4>
+          <div class="en-label">Sprints</div>
+          <p>ספרינט ב-Linear — פרק זמן קצוב עם issues ממוקדים. הצוות מתחייב לסיים את ה-cycle בזמן.</p>
         </div>
 
         <div class="mini-card p3">
-          <div class="num"><span class="nb">3</span> claude</div>
-          <h4>Claude Code</h4>
-          <div class="en-label">AI Writer</div>
-          <p>כותב test cases, מפרש שגיאות, ומתקן בדיקות שנכשלו — בלי לעזוב את הטרמינל.</p>
+          <div class="num"><span class="nb">3</span> projects</div>
+          <h4>Projects</h4>
+          <div class="en-label">Initiatives</div>
+          <p>קיבוץ של issues סביב מטרה גדולה — feature חדש, ריפקטור, או milestone. מראה progress מצטבר.</p>
         </div>
 
         <div class="mini-card p4">
-          <div class="num"><span class="nb">4</span> ci</div>
-          <h4>CI/CD</h4>
-          <div class="en-label">Automation</div>
-          <p>הבדיקות רצות אוטומטית בכל push — GitHub Actions, Vercel, או כל pipeline אחר.</p>
+          <div class="num"><span class="nb">4</span> views</div>
+          <h4>Views</h4>
+          <div class="en-label">My Work</div>
+          <p>תצוגות חכמות — My Issues, Active Cycle, Backlog. הכל filter בלחיצה, ניתן להתאמה אישית.</p>
         </div>
 
       </div>
@@ -567,63 +540,62 @@
     <!-- ─── 05 · POSTER ─── -->
     <section class="slide slide-poster">
       <h1 class="mega">
-        <span class="a">כתוב.</span><br>
-        <span class="b">הרץ.</span><br>
-        <em style="color:var(--mustard);font-style:italic;font-weight:500;">תקן.</em>
+        <span class="a">פתח.</span><br>
+        <span class="b">עדכן.</span><br>
+        <em style="color:var(--mustard);font-style:italic;font-weight:500;">סגור.</em>
       </h1>
       <div class="sub">
-        בדיקות UI שכותב AI ומריץ AI — אנחנו רק מגדירים מה לבדוק.
+        Issue שנפתח בשניות, מעודכן בצ'אט, ונסגר עם commit — זה ה-flow של Linear.
       </div>
     </section>
 
-    <!-- ─── 06 · SETUP ─── -->
+    <!-- ─── 06 · DAILY WORKFLOW ─── -->
     <section class="slide" style="justify-content:center;">
-      <h2 class="title">מגדירים את <em>הסביבה</em></h2>
+      <h2 class="title">ה<em>flow</em> היומי</h2>
       <div class="steps-grid">
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">1</span>
-            <span class="lbl">install</span>
+            <span class="lbl">triage</span>
           </div>
-          <h4>מתקינים Playwright</h4>
-          <p>מוסיפים Playwright לפרויקט עם npx. הפקודה מגדירה הכל — תלויות, תצורה, ודפדפנים.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">npx</span> <span style="color:#9BD3A8">playwright</span> install</span>
+          <h4>מסדרים את ה-Backlog</h4>
+          <p>כל בוקר עוברים על ה-Inbox — מסדרים priority, מוסיפים ל-Cycle הנוכחי, ומבטלים מה שלא רלוונטי.</p>
+          <div class="step-action">
+            My Issues → Active Cycle → Review
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">config</span>
+            <span class="lbl">work</span>
           </div>
-          <h4>מגדירים את ה-baseURL</h4>
-          <p>בקובץ <code style="font-family:var(--mono);font-size:13px;color:var(--coral)">playwright.config.ts</code> מגדירים את כתובת האפליקציה שנבדק. Claude Code יכול לכתוב את הקובץ הזה.</p>
+          <h4>עובדים על Issue</h4>
+          <p>פותחים issue, קוראים את התיאור, עוברים ל-branch ב-GitHub. Linear מחבר אוטומטית בין branches ל-issues.</p>
           <div class="step-action">
-            <span><code style="font-family:var(--mono);font-size:12px">playwright.config.ts</code> — baseURL + timeout + browser</span>
+            Issue → Open Branch → Code → PR
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">3</span>
-            <span class="lbl">first</span>
+            <span class="lbl">close</span>
           </div>
-          <h4>בדיקה ראשונה</h4>
-          <p>מבקשים מ-Claude Code לכתוב test פשוט לדף הבית — login form, navigation, או כפתור אחד.</p>
+          <h4>סוגרים ומדווחים</h4>
+          <p>כשה-PR נמזג, ה-issue נסגר אוטומטית. הצוות רואה progress ב-Cycle ובדוח ה-Sprint.</p>
           <div class="step-action">
-            "כתוב test ל-login form" — Claude Code כותב
+            PR merged → Issue Done → Cycle Progress ✓
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 07 · RUNNING TESTS ─── -->
+    <!-- ─── 07 · LINEAR + AI ─── -->
     <section class="slide" style="justify-content:center;">
-      <h2 class="title">כותבים ו<em>מריצים</em></h2>
+      <h2 class="title">Linear <em>+ AI</em></h2>
       <div class="steps-grid">
 
         <div class="step-block">
@@ -631,35 +603,34 @@
             <span class="badge">1</span>
             <span class="lbl">write</span>
           </div>
-          <h4>כותבים בדיקות עם AI</h4>
-          <p>מתארים ל-Claude Code מה לבדוק — "בדוק שמשתמש יכול להתחבר עם אימייל ופסוורד". ה-AI כותב test מלא.</p>
+          <h4>AI כותב טיקטים</h4>
+          <p>מתארים בשפה טבעית מה צריך לעשות — Claude Code מנסח issue מפורט עם acceptance criteria ו-edge cases.</p>
           <div class="step-action">
-            Claude Code כותב <code style="font-family:var(--mono);font-size:12px">test.spec.ts</code> מלא
+            "כתוב issue לbug בlogin" — Claude Code מנסח
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">2</span>
-            <span class="lbl">run</span>
+            <span class="lbl">triage</span>
           </div>
-          <h4>מריצים ורואים תוצאות</h4>
-          <p>מריצים את כל הבדיקות. Playwright פותח דפדפן, מבצע actions, ומדווח מה עבר ומה נכשל.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">npx</span> <span style="color:#9BD3A8">playwright test</span> --reporter=html</span>
+          <h4>AI עוזר בתעדוף</h4>
+          <p>מראים לAI את ה-backlog ושואלים על priority — הוא מנתח dependencies, effort, ו-impact ומציע סדר.</p>
+          <div class="step-action">
+            Claude Code מנתח backlog ומציע תעדוף
           </div>
         </div>
 
         <div class="step-block">
           <div class="step-num">
             <span class="badge">3</span>
-            <span class="lbl">fix</span>
+            <span class="lbl">mcp</span>
           </div>
-          <h4>מתקנים עם AI</h4>
-          <p>העתקת שגיאות ל-Claude Code מספיקה — הוא מבין את הבעיה, מציע תיקון, ומעדכן את הבדיקה.</p>
+          <h4>Linear MCP</h4>
+          <p>עם Linear MCP, Claude Code מתחבר ישירות ל-Linear — פותח issues, מעדכן status, ומנהל cycles בלי לעזוב את הטרמינל.</p>
           <div class="step-action">
-            Claude Code מתקן ומריץ מחדש
+            Claude Code + Linear MCP = ניהול ישיר
           </div>
         </div>
 
@@ -669,8 +640,8 @@
     <!-- ─── 08 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
-        <h1>נכתוב<span style="color:var(--border)">.</span><br><em>נריץ</em><span style="color:var(--border)">.</span><br>נתקן<span style="color:var(--border)">.</span></h1>
-        <div class="sig">winnerit · ai course · <em>api testing</em></div>
+        <h1>נפתח<span style="color:var(--border)">.</span><br><em>נעדכן</em><span style="color:var(--border)">.</span><br>נסגור<span style="color:var(--border)">.</span></h1>
+        <div class="sig">winnerit · ai course · <em>linear</em></div>
       </div>
     </section>
 
@@ -785,5 +756,6 @@
     });
   })();
 </script>
+<script src="../nav.js"></script>
 </body>
 </html>

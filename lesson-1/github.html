@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Linear · ניהול טיקטים חכם</title>
+<title>GitHub · ניהול קוד ושיתוף פעולה</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -105,17 +105,12 @@
   }
   h2.title em { font-style: italic; font-weight: 500; color: var(--coral); }
   p.lead {
-    font-size: clamp(17px, 1.45vw, 23px); line-height: 1.55;
+    font-size: clamp(20px, 1.7vw, 27px); line-height: 1.55;
     color: var(--ink-soft); font-weight: 300; max-width: 700px;
   }
   p.caption {
     font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em;
     color: var(--muted); text-transform: uppercase;
-  }
-  .corner-num {
-    position: absolute; bottom: 5vh; inset-inline-end: 8vw;
-    font-family: var(--display); font-weight: 900; font-size: 200px;
-    line-height: 1; color: var(--coral); opacity: 0.07; direction: ltr; pointer-events: none;
   }
 
   /* ─── COVER ─── */
@@ -146,9 +141,9 @@
   }
   .deco { position: absolute; pointer-events: none; z-index: 1; opacity: 0.9; }
   .deco-1 { top: 12%; right: 10%; width: 88px; color: var(--coral); }
-  .deco-2 { top: 18%; left: 12%; width: 60px; color: var(--forest); }
-  .deco-3 { bottom: 20%; left: 16%; width: 52px; color: var(--mustard); }
-  .deco-4 { bottom: 18%; right: 13%; width: 54px; color: var(--sky); }
+  .deco-2 { top: 18%; left: 12%; width: 60px; color: var(--sky); }
+  .deco-3 { bottom: 20%; left: 16%; width: 52px; color: var(--forest); }
+  .deco-4 { bottom: 18%; right: 13%; width: 54px; color: var(--mustard); }
   .deco-5 { top: 58%; right: 7%; width: 28px; color: var(--coral); opacity: 0.6; }
 
   /* ─── INFO CARDS ─── */
@@ -168,7 +163,7 @@
   .info-card ul { list-style: none; }
   .info-card ul li {
     padding: 13px 0; border-bottom: 1px dashed var(--border-soft);
-    color: var(--ink-soft); font-size: 15px; display: flex; gap: 14px; align-items: flex-start;
+    color: var(--ink-soft); font-size: 17px; display: flex; gap: 14px; align-items: flex-start;
   }
   .info-card ul li:last-child { border-bottom: none; }
   .info-card ul li .ic { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
@@ -234,7 +229,7 @@
   }
   .step-num .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
   .step-block h4 { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
-  .step-block p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; flex: 1; margin-bottom: 18px; }
+  .step-block p { font-size: 16px; color: var(--ink-soft); line-height: 1.55; flex: 1; margin-bottom: 18px; }
   .step-code {
     background: var(--ink); color: #F2EDE3; border-radius: 6px; padding: 10px 14px;
     font-family: var(--mono); font-size: 12px; direction: ltr; text-align: left;
@@ -336,14 +331,14 @@
 <div class="frame">
 
   <header class="topbar">
-    <div class="left"><a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    <div class="left"><a href="../index.html" class="back-home">חזרה לכל השיעורים</a>
     <button class="fs-btn" id="btn-fs" aria-label="מסך מלא" title="מסך מלא">
       <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
       <svg class="icon-compress" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="display:none"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
     </button>
   </div>
     <div class="right">
-      <span>Linear · ניהול טיקטים חכם</span>
+      <span>GitHub · ניהול קוד ושיתוף פעולה</span>
       <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
     </div>
   </header>
@@ -354,44 +349,50 @@
     <section class="slide slide-cover">
       <div class="cover-mark"><span class="pin"></span> WinnerIT · AI Course</div>
 
-      <!-- Ticket / Issue icon -->
-      <svg class="deco deco-1" viewBox="0 0 88 88" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
-        <rect x="8" y="18" width="72" height="52" rx="6"/>
-        <line x1="8" y1="34" x2="80" y2="34"/>
-        <line x1="24" y1="50" x2="54" y2="50"/>
-        <line x1="24" y1="60" x2="44" y2="60"/>
-        <circle cx="68" cy="55" r="6"/>
+      <!-- Branch network -->
+      <svg class="deco deco-1" viewBox="0 0 90 80" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+        <circle cx="20" cy="20" r="6"/>
+        <circle cx="70" cy="20" r="6"/>
+        <circle cx="45" cy="60" r="6"/>
+        <line x1="26" y1="20" x2="64" y2="20"/>
+        <line x1="20" y1="26" x2="42" y2="54"/>
+        <line x1="70" y1="26" x2="48" y2="54"/>
       </svg>
 
-      <!-- Cycle arrow -->
+      <!-- Star -->
       <svg class="deco deco-2" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M10 30 A20 20 0 1 1 30 50"/>
-        <polyline points="24 44 30 50 24 56"/>
+        <polygon points="30,4 37,22 56,22 42,34 47,52 30,41 13,52 18,34 4,22 23,22"/>
       </svg>
 
-      <!-- Project grid -->
-      <svg class="deco deco-3" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
-        <rect x="4" y="4" width="20" height="20" rx="2"/>
-        <rect x="32" y="4" width="20" height="20" rx="2"/>
-        <rect x="4" y="32" width="20" height="20" rx="2"/>
-        <rect x="32" y="32" width="20" height="20" rx="2"/>
+      <!-- Fork arrows -->
+      <svg class="deco deco-3" viewBox="0 0 56 70" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="28" cy="10" r="5"/>
+        <circle cx="12" cy="55" r="5"/>
+        <circle cx="44" cy="55" r="5"/>
+        <line x1="28" y1="15" x2="28" y2="30"/>
+        <path d="M28 30 C28 40 12 40 12 50"/>
+        <path d="M28 30 C28 40 44 40 44 50"/>
       </svg>
 
-      <!-- Checkmark -->
+      <!-- Merge arrows -->
       <svg class="deco deco-4" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="28" cy="28" r="22"/>
-        <polyline points="16 28 24 36 40 20"/>
+        <circle cx="14" cy="14" r="5"/>
+        <circle cx="42" cy="14" r="5"/>
+        <circle cx="28" cy="46" r="5"/>
+        <path d="M14 19 C14 32 28 32 28 41"/>
+        <path d="M42 19 C42 32 28 32 28 41"/>
       </svg>
 
-      <!-- Small star -->
+      <!-- Small dot -->
       <svg class="deco deco-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-        <path d="M12 2L14.4 9.6 22 12 14.4 14.4 12 22 9.6 14.4 2 12 9.6 9.6z"/>
+        <circle cx="12" cy="12" r="8"/>
+        <circle cx="12" cy="12" r="3" fill="currentColor"/>
       </svg>
 
       <div class="cover-center">
-        <h1 class="cover-title"><span class="l">L</span>INEAR</h1>
+        <h1 class="cover-title"><span class="l">G</span>ITHUB</h1>
         <div class="cover-rule"></div>
-        <div class="cover-sub">ניהול טיקטים ופרויקטים — מהר, חכם, עם AI</div>
+        <div class="cover-sub">ניהול קוד ושיתוף פעולה</div>
       </div>
 
       <div class="cover-cta"><span class="arr">←</span> להתחיל</div>
@@ -411,11 +412,11 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>אנחנו יודעים מה זה Git ו-GitHub</span>
+              <span>פתחנו חשבון ב-<strong>GitHub</strong></span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>יש לנו פרויקט פעיל לניהול</span>
+              <span><strong>Git</strong> מותקן אצלנו</span>
             </li>
           </ul>
         </div>
@@ -429,19 +430,15 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>הבנה מה זה <strong>Linear</strong> ולמה הוא שונה מ-Jira</span>
+              <span>הבנה מה זה <strong>repository</strong> ואיך הוא עובד</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>שליטה במושגים: Issues, Cycles, Projects</span>
+              <span>יכולת <strong>ליצור, לשכפל ולעדכן</strong> repo</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span><strong>workflow</strong> יומי יעיל עם AI</span>
-            </li>
-            <li>
-              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>חיבור ל-GitHub ולכלי הפיתוח</span>
+              <span>הבנת ה-flow של <strong>Branch ו-Pull Request</strong></span>
             </li>
           </ul>
         </div>
@@ -449,199 +446,179 @@
       </div>
     </section>
 
-    <!-- ─── 03 · WHAT IS LINEAR ─── -->
+    <!-- ─── 03 · WHAT IS GITHUB ─── -->
     <section class="slide slide-statement">
       <div class="body-grid">
         <div>
-          <h2 class="title">מה זה <em>Linear</em>?</h2>
+          <h2 class="title">מה זה <em>GitHub</em>?</h2>
           <p class="lead" style="margin-top:28px;">
-            Linear הוא כלי ניהול פרויקטים מודרני שבנוי בשביל מפתחים — מהיר, נקי, ומכוון לעבודה אמיתית.
+            GitHub היא פלטפורמת ענן לאחסון ושיתוף קוד.
+            היא לא Git — היא <strong style="color:var(--ink);">הבית שבו הפרויקטים שלנו חיים ברשת</strong>
+            ומאפשרת לצוות לעבוד יחד על אותו קוד.
           </p>
           <p class="lead" style="margin-top:18px;">
-            במקום טפסים ארוכים ו-workflows מסורבלים, Linear מדגיש
-            <em style="color:var(--coral);">מהירות ופשטות</em>
-            — issue נפתח תוך שניות ו-backlog תמיד מסודר.
+            כל שינוי, כל גרסה, כל שיתוף —
+            <em style="color:var(--coral);">נשמרים ומסונכרנים אוטומטית.</em>
           </p>
-          <p class="caption" style="margin-top:32px;">linear.app · fast · keyboard-first</p>
         </div>
 
-        <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg"
-             style="width:100%;max-width:560px;align-self:center;direction:ltr" aria-label="Jira vs Linear">
-          <!-- Jira column -->
-          <rect x="10" y="10" width="130" height="240" rx="4" fill="#FBF8F1" stroke="#D8CCB5" stroke-width="1"/>
-          <text x="75" y="36" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8B8A82" letter-spacing="2">JIRA</text>
-          <rect x="22" y="50" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="75" y="61" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">טפסים ארוכים</text>
-          <rect x="22" y="72" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="75" y="83" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">הגדרות מורכבות</text>
-          <rect x="22" y="94" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="75" y="105" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">workflow מסורבל</text>
-          <rect x="22" y="116" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="75" y="127" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">טעינה איטית</text>
-          <text x="75" y="168" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="11" fill="#E04E36">עשרות קליקים</text>
-          <text x="75" y="186" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="10" fill="#8B8A82">לפתוח issue אחד</text>
+        <!-- Local ↔ GitHub diagram -->
+        <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg"
+             style="width:100%;max-width:520px;align-self:center;direction:ltr" aria-label="Local to GitHub">
+          <!-- Local machine box -->
+          <rect x="10" y="60" width="110" height="80" rx="4" fill="#FBF8F1" stroke="#D8CCB5" stroke-width="1"/>
+          <text x="65" y="86" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#8B8A82" letter-spacing="1.5">LOCAL</text>
+          <rect x="22" y="96" width="86" height="12" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="65" y="106" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">📁 my-project</text>
+          <rect x="22" y="114" width="86" height="12" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="65" y="124" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">🌿 main branch</text>
 
-          <!-- Linear column -->
-          <rect x="180" y="10" width="130" height="240" rx="4" fill="#FBF8F1" stroke="#2F6B49" stroke-width="1.5"/>
-          <text x="245" y="36" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#2F6B49" letter-spacing="2">LINEAR</text>
-          <rect x="192" y="50" width="106" height="52" rx="2" fill="rgba(47,107,73,0.08)" stroke="#2F6B49" stroke-width="1"/>
-          <text x="245" y="68" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9.5" fill="#2F6B49" font-weight="700">לוחצים /</text>
-          <text x="245" y="82" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">כותבים כותרת</text>
-          <text x="245" y="94" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8.5" fill="#4D556C">Enter — זהו</text>
-          <line x1="245" y1="104" x2="245" y2="118" stroke="#D8CCB5" stroke-width="1"/>
-          <rect x="192" y="118" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="245" y="129" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">ממשק נקי ✓</text>
-          <rect x="192" y="140" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="245" y="151" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">keyboard-first ✓</text>
-          <rect x="192" y="162" width="106" height="14" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
-          <text x="245" y="173" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">GitHub sync ✓</text>
-          <text x="245" y="213" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="11" fill="#2F6B49">שניות</text>
-          <text x="245" y="231" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="10" fill="#8B8A82">לפתוח issue</text>
+          <!-- Arrows -->
+          <line x1="122" y1="95" x2="196" y2="80" stroke="#E04E36" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <polygon points="196,80 188,76 189,84" fill="#E04E36"/>
+          <text x="155" y="82" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#E04E36">push</text>
+
+          <line x1="196" y1="120" x2="122" y2="135" stroke="#2F6B49" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <polygon points="122,135 130,131 131,139" fill="#2F6B49"/>
+          <text x="163" y="135" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="8" fill="#2F6B49">pull</text>
+
+          <!-- GitHub cloud box -->
+          <rect x="200" y="30" width="110" height="140" rx="4" fill="#FBF8F1" stroke="#1B2336" stroke-width="1.5"/>
+          <text x="255" y="54" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="#1B2336" letter-spacing="1.5">GITHUB</text>
+          <rect x="212" y="62" width="86" height="12" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="255" y="72" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">📦 repository</text>
+          <rect x="212" y="80" width="86" height="12" rx="2" fill="#EAE2D2" stroke="#D8CCB5" stroke-width="0.8"/>
+          <text x="255" y="90" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#4D556C">🌿 main</text>
+          <rect x="212" y="98" width="86" height="12" rx="2" fill="rgba(47,107,73,0.08)" stroke="#2F6B49" stroke-width="0.8"/>
+          <text x="255" y="108" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#2F6B49">🌿 feature/login</text>
+          <rect x="212" y="116" width="86" height="12" rx="2" fill="rgba(47,107,73,0.08)" stroke="#2F6B49" stroke-width="0.8"/>
+          <text x="255" y="126" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="8" fill="#2F6B49">🌿 feature/ui</text>
+          <text x="255" y="154" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#8B8A82">היסטוריה מלאה ✓</text>
+          <text x="255" y="166" text-anchor="middle" font-family="'Heebo',sans-serif" font-size="9" fill="#8B8A82">גיבוי בענן ✓</text>
         </svg>
       </div>
     </section>
 
     <!-- ─── 04 · CORE CONCEPTS ─── -->
     <section class="slide slide-four">
-      <h2 class="title">המושגים ה<em>בסיסיים</em></h2>
+      <h2 class="title">מושגי <em>ליבה</em></h2>
       <div class="grid-4">
 
         <div class="mini-card p1">
-          <div class="num"><span class="nb">1</span> issues</div>
-          <h4>Issues</h4>
-          <div class="en-label">Tickets</div>
-          <p>יחידת העבודה הבסיסית. כל issue מקבל כותרת, תיאור, priority, assignee ו-status. נוצר בשניות עם <strong>/</strong> shortcut.</p>
+          <div class="num"><span class="nb">1</span> repo</div>
+          <h4>Repository</h4>
+          <p>כל הקבצים, ההיסטוריה וה-commits של הפרויקט — כולם בתיקייה אחת, מסונכרנת לענן.</p>
         </div>
 
         <div class="mini-card p2">
-          <div class="num"><span class="nb">2</span> cycles</div>
-          <h4>Cycles</h4>
-          <div class="en-label">Sprints</div>
-          <p>ספרינט ב-Linear — פרק זמן קצוב עם issues ממוקדים. הצוות מתחייב לסיים את ה-cycle בזמן.</p>
+          <div class="num"><span class="nb">2</span> branch</div>
+          <h4>Branch</h4>
+          <p>עובדים על פיצ'ר חדש <strong>בנפרד</strong> מהקוד הראשי — בלי לשבור את מה שעובד.</p>
         </div>
 
         <div class="mini-card p3">
-          <div class="num"><span class="nb">3</span> projects</div>
-          <h4>Projects</h4>
-          <div class="en-label">Initiatives</div>
-          <p>קיבוץ של issues סביב מטרה גדולה — feature חדש, ריפקטור, או milestone. מראה progress מצטבר.</p>
+          <div class="num"><span class="nb">3</span> fork</div>
+          <h4>Fork</h4>
+          <p>עותק אישי של repository של מישהו אחר — הבסיס לתרומה לפרויקטי <strong>קוד פתוח</strong>.</p>
         </div>
 
         <div class="mini-card p4">
-          <div class="num"><span class="nb">4</span> views</div>
-          <h4>Views</h4>
-          <div class="en-label">My Work</div>
-          <p>תצוגות חכמות — My Issues, Active Cycle, Backlog. הכל filter בלחיצה, ניתן להתאמה אישית.</p>
+          <div class="num"><span class="nb">4</span> PR</div>
+          <h4>Pull Request</h4>
+          <p>בקשה לאחד שינויים מ-branch חזרה ל-main — כולל אפשרות ל-<strong>code review</strong>.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 05 · POSTER ─── -->
+    <!-- ─── 05 · CREATE & CLONE ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title"><em>יוצרים</em> ומשכפלים</h2>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">create</span>
+          </div>
+          <h4>יוצרים Repository</h4>
+          <p>ב-GitHub לוחצים New → מזינים שם לפרויקט → בוחרים Public או Private → לוחצים Create repository.</p>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">clone</span>
+          </div>
+          <h4>משכפלים למחשב</h4>
+          <p>לוחצים על Code ב-GitHub, מעתיקים את ה-URL, ומריצים git clone בטרמינל — Git יוצר תיקייה מקומית עם כל הקוד.</p>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">open</span>
+          </div>
+          <h4>פותחים בעורך הקוד</h4>
+          <p>נכנסים לתיקייה שנוצרה ופותחים אותה ב-VS Code — מוכנים להתחיל לעבוד.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 06 · PULL REQUEST FLOW ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">Pull <em>Request</em></h2>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">branch</span>
+          </div>
+          <h4>עובדים על ענף</h4>
+          <p>יוצרים ענף חדש לכל פיצ'ר או תיקון — כך ה-main נשאר יציב ונקי, ואפשר לעבוד במקביל.</p>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">push</span>
+          </div>
+          <h4>שולחים לענן</h4>
+          <p>אחרי commits, שולחים את הענף ל-GitHub — הוא מופיע שם ואחרים יכולים לראות ולהעיר.</p>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">open PR</span>
+          </div>
+          <h4>פותחים Pull Request</h4>
+          <p>ב-GitHub לוחצים Compare &amp; pull request, מוסיפים תיאור ושולחים לעיון לפני מיזוג.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 07 · POSTER ─── -->
     <section class="slide slide-poster">
       <h1 class="mega">
-        <span class="a">פתח.</span><br>
-        <span class="b">עדכן.</span><br>
-        <em style="color:var(--mustard);font-style:italic;font-weight:500;">סגור.</em>
+        <span class="a">צור.</span><br>
+        <span class="b">שתף.</span><br>
+        <span class="c">שתף פעולה.</span>
       </h1>
       <div class="sub">
-        Issue שנפתח בשניות, מעודכן בצ'אט, ונסגר עם commit — זה ה-flow של Linear.
-      </div>
-    </section>
-
-    <!-- ─── 06 · DAILY WORKFLOW ─── -->
-    <section class="slide" style="justify-content:center;">
-      <h2 class="title">ה<em>flow</em> היומי</h2>
-      <div class="steps-grid">
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">1</span>
-            <span class="lbl">triage</span>
-          </div>
-          <h4>מסדרים את ה-Backlog</h4>
-          <p>כל בוקר עוברים על ה-Inbox — מסדרים priority, מוסיפים ל-Cycle הנוכחי, ומבטלים מה שלא רלוונטי.</p>
-          <div class="step-action">
-            My Issues → Active Cycle → Review
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">2</span>
-            <span class="lbl">work</span>
-          </div>
-          <h4>עובדים על Issue</h4>
-          <p>פותחים issue, קוראים את התיאור, עוברים ל-branch ב-GitHub. Linear מחבר אוטומטית בין branches ל-issues.</p>
-          <div class="step-action">
-            Issue → Open Branch → Code → PR
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">3</span>
-            <span class="lbl">close</span>
-          </div>
-          <h4>סוגרים ומדווחים</h4>
-          <p>כשה-PR נמזג, ה-issue נסגר אוטומטית. הצוות רואה progress ב-Cycle ובדוח ה-Sprint.</p>
-          <div class="step-action">
-            PR merged → Issue Done → Cycle Progress ✓
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── 07 · LINEAR + AI ─── -->
-    <section class="slide" style="justify-content:center;">
-      <h2 class="title">Linear <em>+ AI</em></h2>
-      <div class="steps-grid">
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">1</span>
-            <span class="lbl">write</span>
-          </div>
-          <h4>AI כותב טיקטים</h4>
-          <p>מתארים בשפה טבעית מה צריך לעשות — Claude Code מנסח issue מפורט עם acceptance criteria ו-edge cases.</p>
-          <div class="step-action">
-            "כתוב issue לbug בlogin" — Claude Code מנסח
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">2</span>
-            <span class="lbl">triage</span>
-          </div>
-          <h4>AI עוזר בתעדוף</h4>
-          <p>מראים לAI את ה-backlog ושואלים על priority — הוא מנתח dependencies, effort, ו-impact ומציע סדר.</p>
-          <div class="step-action">
-            Claude Code מנתח backlog ומציע תעדוף
-          </div>
-        </div>
-
-        <div class="step-block">
-          <div class="step-num">
-            <span class="badge">3</span>
-            <span class="lbl">mcp</span>
-          </div>
-          <h4>Linear MCP</h4>
-          <p>עם Linear MCP, Claude Code מתחבר ישירות ל-Linear — פותח issues, מעדכן status, ומנהל cycles בלי לעזוב את הטרמינל.</p>
-          <div class="step-action">
-            Claude Code + Linear MCP = ניהול ישיר
-          </div>
-        </div>
-
+        כל שינוי, כל גרסה, כל שיתוף פעולה —
+        נשמרים ומסונכרנים ב-GitHub.
       </div>
     </section>
 
     <!-- ─── 08 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
-        <h1>נפתח<span style="color:var(--border)">.</span><br><em>נעדכן</em><span style="color:var(--border)">.</span><br>נסגור<span style="color:var(--border)">.</span></h1>
-        <div class="sig">winnerit · ai course · <em>linear</em></div>
+        <h1>ניצור<span style="color:var(--border)">.</span><br><em>נשכפל</em><span style="color:var(--border)">.</span><br>נשתף<span style="color:var(--border)">.</span></h1>
+        <div class="sig">winnerit · ai course · <em>github</em></div>
       </div>
     </section>
 
@@ -756,5 +733,6 @@
     });
   })();
 </script>
+<script src="../nav.js"></script>
 </body>
 </html>

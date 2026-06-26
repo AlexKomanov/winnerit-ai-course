@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הכנות · WinnerIT AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EDE3; --bg-2: #EAE2D2; --bg-3: #FBF8F1;
+    --ink: #1B2336; --ink-soft: #4D556C; --muted: #8B8A82;
+    --border: #D8CCB5; --border-soft: #E5DDC9;
+    --coral: #E04E36; --forest: #2F6B49; --mustard: #E2A93B; --sky: #4A7BA8;
+    --accent: #E04E36;
+    --display: 'Frank Ruhl Libre', 'Heebo', serif;
+    --body: 'Heebo', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh; background: var(--bg); color: var(--ink);
+    font-family: var(--body); line-height: 1.55; direction: rtl;
+    background-image: radial-gradient(circle at 1px 1px, rgba(27,35,54,0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .bg-icons { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .bg-icon { position: absolute; }
+  main { position: relative; z-index: 1; }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 10; height: 56px; padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border-soft);
+    background: rgba(242,237,227,0.88); backdrop-filter: blur(10px);
+  }
+  .topbar-right { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .back-home {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); padding: 6px 14px;
+    border: 1.5px solid var(--accent); border-radius: 6px;
+    text-decoration: none; transition: background 0.15s, color 0.15s;
+  }
+  .back-home:hover { background: var(--accent); color: #fff; }
+
+  .lesson-hero {
+    padding: 72px 48px 52px; max-width: 860px; margin: 0 auto; position: relative; overflow: hidden;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+  }
+  .hero-eyebrow .line { width: 36px; height: 1px; background: var(--accent); }
+  .lesson-hero h1 {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(52px, 7vw, 96px); line-height: 1;
+    letter-spacing: -0.025em; color: var(--ink); margin-bottom: 20px;
+  }
+  .lesson-hero h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .hero-desc {
+    font-size: 17px; color: var(--ink-soft); font-weight: 300;
+    max-width: 520px; line-height: 1.6; margin-bottom: 24px;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 9px;
+    border: 1px solid var(--border); color: var(--muted); background: var(--bg-2);
+  }
+  .hero-bg-num {
+    position: absolute; left: 32px; bottom: 20px;
+    font-family: var(--display); font-weight: 900;
+    font-size: 180px; line-height: 1; color: rgba(27,35,54,0.035);
+    pointer-events: none; letter-spacing: -0.04em; user-select: none; direction: ltr;
+  }
+
+  hr.divider { border: none; border-top: 1px solid var(--border-soft); margin: 0 48px; }
+
+  .pres-section { padding: 48px 48px 96px; max-width: 860px; margin: 0 auto; }
+  .pres-label {
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 32px;
+  }
+
+  .pres-list { display: flex; flex-direction: column; position: relative; }
+  .pres-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 32px; border-bottom: 1px solid var(--border-soft);
+    border-right: none; border-left: none;
+    background: var(--bg-3); border: 1px solid var(--border);
+    text-decoration: none; color: inherit; transition: background 0.15s;
+    margin-bottom: 12px;
+  }
+  .pres-row:hover { background: var(--bg-2); }
+  .pres-num {
+    width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(224,78,54,0.1); border: 1px solid rgba(224,78,54,0.25); color: var(--accent);
+    z-index: 1;
+  }
+  .pres-info { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .pres-name { font-size: 17px; font-weight: 700; color: var(--ink); }
+  .pres-desc { font-size: 15px; color: var(--ink-soft); }
+  .pres-cta {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--coral); padding: 6px 14px; border: 1.5px solid var(--coral);
+    border-radius: 6px; flex-shrink: 0; transition: background 0.15s, color 0.15s;
+  }
+  .pres-row:hover .pres-cta { background: var(--coral); color: #fff; }
+
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999;
+  }
+  @media (max-width: 640px) {
+    .topbar { padding: 0 20px; }
+    .lesson-hero { padding: 48px 20px 40px; }
+    hr.divider { margin: 0 20px; }
+    .pres-section { padding: 40px 20px 64px; }
+    .pres-row { padding: 14px 20px; }
+    .hero-bg-num { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg-icons" aria-hidden="true">
+    <!-- Large terminal window — upper right -->
+    <svg class="bg-icon" style="width:260px;top:-20px;left:2%;opacity:.065;transform:rotate(12deg)" viewBox="0 0 200 150" fill="none">
+      <rect x="1" y="1" width="198" height="148" rx="10" stroke="rgba(224,78,54,0.35)" stroke-width="2" fill="rgba(224,78,54,0.04)"/>
+      <rect x="1" y="1" width="198" height="36" rx="10" fill="rgba(224,78,54,0.08)"/>
+      <rect x="1" y="27" width="198" height="10" fill="rgba(224,78,54,0.08)"/>
+      <circle cx="20" cy="19" r="6" fill="rgba(224,78,54,0.45)"/>
+      <circle cx="36" cy="19" r="6" fill="rgba(224,78,54,0.25)"/>
+      <circle cx="52" cy="19" r="6" fill="rgba(224,78,54,0.15)"/>
+      <line x1="16" y1="58" x2="120" y2="58" stroke="rgba(224,78,54,0.5)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="16" y1="78" x2="160" y2="78" stroke="rgba(224,78,54,0.3)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="16" y1="98" x2="90" y2="98" stroke="rgba(224,78,54,0.45)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="16" y1="118" x2="140" y2="118" stroke="rgba(224,78,54,0.25)" stroke-width="3" stroke-linecap="round"/>
+      <rect x="95" y="110" width="12" height="18" rx="2" fill="rgba(224,78,54,0.6)"/>
+    </svg>
+
+    <!-- Gear — lower right -->
+    <svg class="bg-icon" style="width:200px;bottom:5%;right:3%;opacity:.055;transform:rotate(-8deg)" viewBox="0 0 100 100" fill="none">
+      <path d="M50 5 L60 18 L75 12 L78 27 L92 32 L85 45 L95 57 L82 63 L82 78 L68 77 L60 90 L48 82 L37 90 L28 77 L14 78 L14 63 L1 57 L11 45 L5 32 L18 27 L22 12 L37 18 Z" stroke="rgba(224,78,54,0.3)" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="50" cy="50" r="18" stroke="rgba(224,78,54,0.3)" stroke-width="2"/>
+    </svg>
+
+    <!-- Small terminal — lower left -->
+    <svg class="bg-icon" style="width:140px;bottom:20%;left:6%;opacity:.06;transform:rotate(5deg)" viewBox="0 0 200 150" fill="none">
+      <rect x="1" y="1" width="198" height="148" rx="10" stroke="rgba(224,78,54,0.2)" stroke-width="2" fill="rgba(224,78,54,0.03)"/>
+      <rect x="1" y="1" width="198" height="36" rx="10" fill="rgba(224,78,54,0.06)"/>
+      <rect x="1" y="27" width="198" height="10" fill="rgba(224,78,54,0.06)"/>
+      <circle cx="20" cy="19" r="6" fill="rgba(224,78,54,0.3)"/>
+      <circle cx="36" cy="19" r="6" fill="rgba(224,78,54,0.18)"/>
+      <line x1="16" y1="60" x2="110" y2="60" stroke="rgba(224,78,54,0.3)" stroke-width="3" stroke-linecap="round"/>
+      <line x1="16" y1="80" x2="150" y2="80" stroke="rgba(224,78,54,0.2)" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <header class="topbar">
+    <div class="left">
+      <a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    </div>
+    <div class="topbar-right">00 · setup · installations</div>
+  </header>
+
+  <main>
+    <section class="lesson-hero">
+      <div class="hero-bg-num">00</div>
+      <div class="hero-eyebrow">
+        <div class="line"></div>
+        <span>00 · setup</span>
+      </div>
+      <h1>הכנות <em>וכלים</em></h1>
+      <p class="hero-desc">
+        כל הכלים שנצטרך לפני שמתחילים — מדריך התקנה שלב-אחר-שלב לכל הסביבה.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">Git</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">VS Code</span>
+        <span class="tag">Claude</span>
+        <span class="tag">Ollama</span>
+        <span class="tag">Lovable</span>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="pres-section">
+      <div class="pres-label">מצגות · presentations</div>
+      <div class="pres-list">
+
+        <a class="pres-row" href="./installations.html?from=lesson-0">
+          <div class="pres-num">1</div>
+          <div class="pres-info">
+            <div class="pres-name">מדריך ההתקנות</div>
+            <div class="pres-desc">כל הכלים שנצטרך — צעד אחר צעד</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

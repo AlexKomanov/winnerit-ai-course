@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Testing · WinnerIT AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EDE3; --bg-2: #EAE2D2; --bg-3: #FBF8F1;
+    --ink: #1B2336; --ink-soft: #4D556C; --muted: #8B8A82;
+    --border: #D8CCB5; --border-soft: #E5DDC9;
+    --coral: #E04E36; --forest: #2F6B49; --mustard: #E2A93B; --sky: #4A7BA8;
+    --accent: #E04E36;
+    --display: 'Frank Ruhl Libre', 'Heebo', serif;
+    --body: 'Heebo', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh; background: var(--bg); color: var(--ink);
+    font-family: var(--body); line-height: 1.55; direction: rtl;
+    background-image: radial-gradient(circle at 1px 1px, rgba(27,35,54,0.06) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .bg-icons { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .bg-icon { position: absolute; }
+  main { position: relative; z-index: 1; }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 10; height: 56px; padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border-soft);
+    background: rgba(242,237,227,0.88); backdrop-filter: blur(10px);
+  }
+  .topbar-right { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .back-home {
+    font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); padding: 6px 14px;
+    border: 1.5px solid var(--accent); border-radius: 6px;
+    text-decoration: none; transition: background 0.15s, color 0.15s;
+  }
+  .back-home:hover { background: var(--accent); color: #fff; }
+
+  .lesson-hero { padding: 72px 48px 52px; max-width: 860px; margin: 0 auto; position: relative; overflow: hidden; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+  }
+  .hero-eyebrow .line { width: 36px; height: 1px; background: var(--accent); }
+  .lesson-hero h1 {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(52px, 7vw, 96px); line-height: 1;
+    letter-spacing: -0.025em; color: var(--ink); margin-bottom: 20px;
+  }
+  .lesson-hero h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .hero-desc { font-size: 17px; color: var(--ink-soft); font-weight: 300; max-width: 520px; line-height: 1.6; margin-bottom: 24px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 4px 9px;
+    border: 1px solid var(--border); color: var(--muted); background: var(--bg-2);
+  }
+  .hero-bg-num {
+    position: absolute; left: 32px; bottom: 20px;
+    font-family: var(--display); font-weight: 900;
+    font-size: 160px; line-height: 1; color: rgba(27,35,54,0.035);
+    pointer-events: none; letter-spacing: -0.04em; user-select: none; direction: ltr;
+  }
+  .bonus-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 10px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--coral); border: 1.5px solid rgba(224,78,54,0.35);
+    padding: 4px 10px; border-radius: 4px; background: rgba(224,78,54,0.06);
+    margin-bottom: 16px;
+  }
+
+  hr.divider { border: none; border-top: 1px solid var(--border-soft); margin: 0 48px; }
+  .pres-section { padding: 48px 48px 96px; max-width: 860px; margin: 0 auto; }
+  .pres-label { font-family: var(--mono); font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+
+  .pres-list { display: flex; flex-direction: column; position: relative; background: var(--bg-3); border: 1px solid var(--border); }
+  .pres-list::before {
+    content: ''; position: absolute;
+    top: 28px; right: 46px; bottom: 28px; width: 1px;
+    background: repeating-linear-gradient(to bottom, rgba(224,78,54,0.35) 0, rgba(224,78,54,0.35) 5px, transparent 5px, transparent 10px);
+    pointer-events: none; z-index: 0;
+  }
+  .pres-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 32px; border-bottom: 1px solid var(--border-soft);
+    text-decoration: none; color: inherit; transition: background 0.15s; position: relative;
+  }
+  .pres-row:last-child { border-bottom: none; }
+  .pres-row:hover { background: var(--bg-2); }
+  .pres-num {
+    width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0;
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; z-index: 1;
+    background: rgba(224,78,54,0.1); border: 1px solid rgba(224,78,54,0.25); color: var(--accent);
+  }
+  .pres-info { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .pres-name { font-size: 17px; font-weight: 700; color: var(--ink); }
+  .pres-desc { font-size: 15px; color: var(--ink-soft); }
+  .pres-cta {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--coral); padding: 6px 14px; border: 1.5px solid var(--coral);
+    border-radius: 6px; flex-shrink: 0; transition: background 0.15s, color 0.15s;
+  }
+  .pres-row:hover .pres-cta { background: var(--coral); color: #fff; }
+
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999;
+  }
+  @media (max-width: 640px) {
+    .topbar { padding: 0 20px; }
+    .lesson-hero { padding: 48px 20px 40px; }
+    hr.divider { margin: 0 20px; }
+    .pres-section { padding: 40px 20px 64px; }
+    .pres-row { padding: 14px 20px; }
+    .hero-bg-num { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg-icons" aria-hidden="true">
+    <!-- Playwright triple circles — upper right -->
+    <svg class="bg-icon" style="width:300px;top:-20px;left:-5%;opacity:.065;transform:rotate(8deg)" viewBox="0 0 260 180" fill="none">
+      <circle cx="90" cy="80" r="62" stroke="rgba(224,78,54,0.2)" stroke-width="2" fill="rgba(224,78,54,0.04)"/>
+      <circle cx="170" cy="80" r="62" stroke="rgba(224,78,54,0.2)" stroke-width="2" fill="rgba(224,78,54,0.04)"/>
+      <circle cx="130" cy="145" r="62" stroke="rgba(224,78,54,0.2)" stroke-width="2" fill="rgba(224,78,54,0.04)"/>
+      <!-- Playwright checkmark in center -->
+      <polyline points="100,105 120,125 165,80" stroke="rgba(224,78,54,0.65)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+
+    <!-- Checkmark circle — lower right -->
+    <svg class="bg-icon" style="width:180px;bottom:6%;right:2%;opacity:.06;transform:rotate(-10deg)" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="45" stroke="rgba(224,78,54,0.35)" stroke-width="2" fill="rgba(224,78,54,0.05)"/>
+      <polyline points="25,52 42,68 75,32" stroke="rgba(224,78,54,0.65)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+
+    <!-- Small overlapping circles — lower left -->
+    <svg class="bg-icon" style="width:150px;bottom:22%;left:3%;opacity:.055;transform:rotate(12deg)" viewBox="0 0 120 100" fill="none">
+      <circle cx="40" cy="45" r="32" stroke="rgba(224,78,54,0.2)" stroke-width="1.5" fill="rgba(224,78,54,0.04)"/>
+      <circle cx="80" cy="45" r="32" stroke="rgba(224,78,54,0.2)" stroke-width="1.5" fill="rgba(224,78,54,0.04)"/>
+      <circle cx="60" cy="78" r="32" stroke="rgba(224,78,54,0.2)" stroke-width="1.5" fill="rgba(224,78,54,0.04)"/>
+    </svg>
+  </div>
+
+  <header class="topbar">
+    <div class="left">
+      <a href="index.html" class="back-home">חזרה לכל השיעורים</a>
+    </div>
+    <div class="topbar-right">04 · bonus · automated testing</div>
+  </header>
+
+  <main>
+    <section class="lesson-hero">
+      <div class="hero-bg-num">04</div>
+      <div class="bonus-badge">bonus</div>
+      <div class="hero-eyebrow">
+        <div class="line"></div>
+        <span>04 · automated testing</span>
+      </div>
+      <h1>בדיקות<br><em>אוטומטיות</em></h1>
+      <p class="hero-desc">
+        API testing ובדיקות E2E עם Playwright ו-Claude Code — כולל Ollama ו-LLM שרץ על המחשב שלנו.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">API Testing</span>
+        <span class="tag">Playwright</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Ollama</span>
+        <span class="tag">Local LLM</span>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section class="pres-section">
+      <div class="pres-label">מצגות · presentations</div>
+      <div class="pres-list">
+
+        <a class="pres-row" href="./lesson-4/api-testing.html">
+          <div class="pres-num">1</div>
+          <div class="pres-info">
+            <div class="pres-name">API Testing</div>
+            <div class="pres-desc">בדיקות API — מ-HTTP ועד אוטומציה עם Claude Code</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-4/automated-test-generator.html">
+          <div class="pres-num">2</div>
+          <div class="pres-info">
+            <div class="pres-name">Automated Test Generator</div>
+            <div class="pres-desc">Claude Code שכותב בדיקות E2E עם Playwright — מ-PRD ועד test suite</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-4/ollama.html">
+          <div class="pres-num">3</div>
+          <div class="pres-info">
+            <div class="pres-name">Ollama</div>
+            <div class="pres-desc">LLM מקומי על המחשב שלנו — ללא cloud, ללא עלויות</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+        <a class="pres-row" href="./lesson-4/claude-code-ollama.html">
+          <div class="pres-num">4</div>
+          <div class="pres-info">
+            <div class="pres-name">Claude Code + Ollama</div>
+            <div class="pres-desc">חיבור Claude Code ל-Ollama — בדיקות אוטומטיות עם מודל מקומי</div>
+          </div>
+          <div class="pres-cta">פתיחה</div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
