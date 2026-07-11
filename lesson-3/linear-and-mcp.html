@@ -113,6 +113,8 @@
   /* POSTER */
   .slide-poster { justify-content: center; align-items: center; text-align: center; }
   .slide-poster h1.mega { font-family: var(--display); font-weight: 900; font-size: clamp(52px, 8.5vw, 140px); line-height: 0.93; letter-spacing: -0.03em; color: var(--ink); }
+  .slide-poster h1.mega .a { color: var(--coral); }
+  .slide-poster h1.mega .b { color: var(--forest); font-style: italic; font-weight: 500; }
   .slide-poster .sub { font-family: var(--display); font-style: italic; font-size: clamp(20px, 2.2vw, 34px); font-weight: 500; color: var(--ink-soft); margin-top: 36px; max-width: 680px; }
 
   /* STEPS */
@@ -204,7 +206,7 @@
     </div>
     <div class="right">
       <span>Linear + MCP · ניהול Issues חכם עם AI</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 09</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 12</span></span>
     </div>
   </header>
 
@@ -398,7 +400,78 @@
       </div>
     </section>
 
-    <!-- ─── 05 · WHAT IS LINEAR MCP ─── -->
+    <!-- ─── 05 · DAILY WORKFLOW ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">ה<em>flow</em> היומי</h2>
+      <div class="steps-grid">
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">triage</span>
+          </div>
+          <h4>מסדרים את היום</h4>
+          <p style="flex:unset;margin-bottom:0;">מתחילים את היום ב-<strong>Inbox</strong> — שם מחכה כל מה שדורש את תשומת הלב שלנו:</p>
+          <ul style="list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--ink-soft);line-height:1.45;flex:1;">
+            <li>· issues חדשים שהוקצו לנו לבדיקה</li>
+            <li>· באגים שתוקנו ומחכים לאימות שלנו (verification)</li>
+            <li>· תגובות ושאלות מהמפתחים על באגים שדיווחנו</li>
+          </ul>
+          <div class="step-action" style="margin-top:14px;">
+            <span dir="ltr">Inbox → My Issues → Active Cycle</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">test</span>
+          </div>
+          <h4>בודקים ומתעדים</h4>
+          <p style="flex:unset;margin-bottom:0;">בוחרים issue מה-Cycle ומעבירים אותו ל-<span dir="ltr">In Progress</span> — כך כולם רואים מה נבדק עכשיו:</p>
+          <ul style="list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--ink-soft);line-height:1.45;flex:1;">
+            <li>· קוראים את התיאור ואת תנאי הקבלה (acceptance criteria) — הם רשימת הבדיקה שלנו</li>
+            <li>· מריצים את התרחישים על האפליקציה, צעד אחרי צעד</li>
+            <li>· מתעדים הכל בתוך ה-issue — תגובות, צילומי מסך והצעדים המדויקים שביצענו</li>
+          </ul>
+          <div class="step-action" style="margin-top:14px;">
+            <span dir="ltr">In Progress → Test → Comment + Screenshot</span>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">report</span>
+          </div>
+          <h4>מדווחים וסוגרים</h4>
+          <p style="flex:unset;margin-bottom:0;">בסוף כל בדיקה ה-issue זז — לפי מה שמצאנו:</p>
+          <ul style="list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--ink-soft);line-height:1.45;flex:1;">
+            <li>· מצאנו באג — פותחים issue חדש עם צעדי שחזור (steps to reproduce), התנהגות צפויה מול מה שקרה בפועל, צילום מסך ו-priority</li>
+            <li>· התיקון עובד — מעבירים את ה-issue ל-<span dir="ltr">Done</span></li>
+            <li>· התיקון לא עובד — מחזירים ל-<span dir="ltr">In Progress</span> עם תגובה שמסבירה מה עדיין נכשל</li>
+          </ul>
+          <div class="step-action" style="margin-top:14px;">
+            <span dir="ltr">Bug → New Issue · Fix works → Done</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 06 · POSTER ─── -->
+    <section class="slide slide-poster">
+      <h1 class="mega">
+        <span class="a">פתח.</span><br>
+        <span class="b">עדכן.</span><br>
+        <em style="color:var(--mustard);font-style:italic;font-weight:500;">סגור.</em>
+      </h1>
+      <div class="sub">
+        Issue שנפתח בשניות, מתועד בצילומי מסך, ונסגר אחרי אימות — זה ה-flow של Linear.
+      </div>
+    </section>
+
+    <!-- ─── 07 · WHAT IS LINEAR MCP ─── -->
     <section class="slide slide-statement">
       <div class="body-grid">
         <div>
@@ -435,7 +508,7 @@
       </div>
     </section>
 
-    <!-- ─── 06 · SETUP ─── -->
+    <!-- ─── 08 · SETUP ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">התקנה <em>וחיבור</em></h2>
 
@@ -517,7 +590,7 @@
       </div>
     </section>
 
-    <!-- ─── 07 · OPERATIONS ─── -->
+    <!-- ─── 09 · OPERATIONS ─── -->
 
     <section class="slide" style="justify-content:center;">
       <h2 class="title">פעולות <em>בסיסיות</em></h2>
@@ -559,7 +632,37 @@
       </div>
     </section>
 
-    <!-- ─── 08 · EXAMPLE ─── -->
+    <!-- ─── 10 · WORKFLOW ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title"><em>Workflow</em> מלא</h2>
+      <div class="steps-grid two">
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">1</span><span class="lbl">from bug to issue</span></div>
+          <h4>מבאג ל-Issue</h4>
+          <p>מוצאים בעיה בקוד — מתארים ל-Claude Code בצ'אט. הוא מנסח issue מפורט עם steps to reproduce, expected behavior ו-impact, ופותח אותו ב-Linear.</p>
+          <div class="step-code">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">create a bug report for what I just found: users can't log in after password reset</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num"><span class="badge">2</span><span class="lbl">from prd to backlog</span></div>
+          <h4>מ-PRD ל-Backlog</h4>
+          <p>מדביקים PRD בצ'אט ומבקשים מ-Claude Code לפרק אותו לרשימת issues ב-Linear. תוך שניות יש backlog מסודר לפי feature, priority ו-team.</p>
+          <div class="step-code">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:12px;white-space:normal;line-height:1.4;">read this PRD and create Linear issues for each feature, grouped by component</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 11 · EXAMPLE ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">דוגמה: <em><span dir="ltr">PRD → בדיקות → עדכון</span></em></h2>
 
@@ -631,7 +734,7 @@
       </div>
     </section>
 
-    <!-- ─── 09 · CLOSING ─── -->
+    <!-- ─── 12 · CLOSING ─── -->
 
     <section class="slide slide-end">
       <div class="inner">
