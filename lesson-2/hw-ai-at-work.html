@@ -313,7 +313,7 @@
     </div>
     <div class="right">
       <span>שיעורי בית · AI at Work</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 08</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 09</span></span>
     </div>
   </header>
 
@@ -596,7 +596,59 @@
       </div>
     </section>
 
-    <!-- ─── 06 · PLAYWRIGHT MCP + PRD ─── -->
+    <!-- ─── 06 · AGENT — הדרך החדשה ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">יצירת <em>Agent</em> — הדרך החדשה</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;">
+
+        <div class="step-block" style="grid-column:1/-1;">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">ask claude</span>
+          </div>
+          <h4>מבקשים מ-Claude ליצור את הסוכן</h4>
+          <p>בגרסאות החדשות של Claude Code (<span dir="ltr">2.1.198+</span>) הפקודה <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 5px;border-radius:3px;direction:ltr;unicode-bidi:embed;">/agents</code> כבר לא פותחת מסך יצירה — במקום זה נתאר ל-Claude בשפה חופשית מה הסוכן צריך לעשות, והוא ייצור את הקובץ בשבילנו. בפרומפט נבקש Feature Writer Agent עם אותן יכולות:</p>
+          <ul style="list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:5px;font-size:15px;color:var(--ink-soft);line-height:1.4;">
+            <li>· מושך קוד עדכני מ-GitHub ושואל על הפיצ׳ר הרצוי</li>
+            <li>· סורק את מבנה הפרויקט</li>
+            <li>· מתכנן עם <strong>frontend-design</strong> + <strong>superpowers</strong></li>
+            <li>· מריץ <strong>code-review</strong> ומציג שינויים לבדיקה</li>
+            <li>· commit + push לאחר אישורנו</li>
+          </ul>
+          <div class="step-code" style="margin-top:12px;">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Create a feature-writer agent in ~/.claude/agents/ that pulls the latest code from GitHub, asks which feature we want, scans the project structure, plans with frontend-design and superpowers, runs code-review on the code, shows the changes for review, and commits and pushes after approval</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">review</span>
+          </div>
+          <h4>בודקים את הקובץ שנוצר</h4>
+          <p>Claude ייצור קובץ Markdown עם <span dir="ltr">name / description / tools / model</span> ו-system prompt. נפתח את <code style="font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:1px 5px;border-radius:3px;direction:ltr;unicode-bidi:embed;">~/.claude/agents/feature-writer.md</code> ונוודא שההגדרות תואמות למה שביקשנו. התיקייה הזו היא ה-<strong>user scope</strong> — התיקייה הראשית על המחשב שלנו, ולכן הסוכן יהיה זמין בכל הפרויקטים, לא רק בפרויקט הנוכחי.</p>
+        </div>
+
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">invoke</span>
+          </div>
+          <h4>מפעילים את ה-Agent</h4>
+          <p>בדיוק כמו בדרך הישנה — מתארים את הפיצ׳ר וה-Agent יעבור את כל השלבים. אם הסוכן לא נמצא, נסגור ונפתח מחדש את Claude Code.</p>
+          <div class="step-code">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Use the feature-writer agent to add [describe your feature] to the app</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── 07 · PLAYWRIGHT MCP + PRD ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title"><em>Playwright MCP</em> + PRD</h2>
       <div class="steps-grid two">
@@ -625,7 +677,7 @@
       </div>
     </section>
 
-    <!-- ─── 07 · GEMINI GEM ─── -->
+    <!-- ─── 08 · GEMINI GEM ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title"><em>Gem</em> לבדיקות</h2>
       <div class="steps-grid two">
@@ -656,7 +708,7 @@
       </div>
     </section>
 
-    <!-- ─── 08 · CLOSING ─── -->
+    <!-- ─── 09 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
         <h1>נתקין<span style="color:var(--border)">.</span><br><em>נבנה</em><span style="color:var(--border)">.</span><br>נתעד<span style="color:var(--border)">.</span></h1>
