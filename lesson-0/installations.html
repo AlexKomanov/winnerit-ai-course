@@ -380,7 +380,7 @@
   </div>
     <div class="right">
       <span>מדריך ההתקנות</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 15</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 13</span></span>
     </div>
   </header>
 
@@ -493,14 +493,14 @@
         </div>
 
         <div class="mini-card">
-          <span class="tool-lbl">06 · local ai + builder</span>
+          <span class="tool-lbl">06 · builder</span>
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/>
             <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
             <line x1="12" y1="4" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="20"/>
           </svg>
-          <h4>Ollama · Lovable</h4>
-          <p>AI מקומי ובנאי אפליקציות</p>
+          <h4>Lovable</h4>
+          <p>בנאי אפליקציות עם AI</p>
         </div>
 
       </div>
@@ -631,10 +631,15 @@
         <div class="step-block">
           <span class="os-tag mac">macOS · Installer / brew</span>
           <h4>macOS — installer</h4>
-          <p>נוריד מהאתר הרשמי, נבחר LTS ונריץ את ה-.pkg. דרך Homebrew אפשרית גם: <code style="font-family:var(--mono);color:var(--coral);">brew install node</code></p>
+          <p>נוריד מהאתר הרשמי, נבחר LTS ונריץ את ה-.pkg — או שנתקין בפקודה אחת דרך Homebrew.</p>
           <div class="step-code">
             <span class="prompt">→</span>
             <span class="cmd"><span class="arg">nodejs.org/en/download → LTS → .pkg</span></span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+          <div class="step-code" style="margin-top:8px;">
+            <span class="prompt">&gt;_</span>
+            <span class="cmd"><span class="kw">brew</span> <span class="arg">install node</span></span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -806,7 +811,7 @@
         <div class="step-block">
           <div class="step-num"><span class="badge">3</span><span class="lbl">first chat</span></div>
           <h4>שיחה ראשונה</h4>
-          <p>נוודא שהחשבון עובד — נפתח שיחה חדשה ונשאל משהו פשוט. ניתן להשאיר את המודל כברירת מחדל, או לבחור Claude Sonnet 4.5 ומעלה.</p>
+          <p>נוודא שהחשבון עובד — נפתח שיחה חדשה ונשאל משהו פשוט. ניתן להשאיר את המודל כברירת מחדל, או לבחור מודל מהיר כמו Haiku.</p>
           <div class="step-action">
             <span class="act-arrow">→</span>
             <span class="act-text">New chat → "שלום!" ✓</span>
@@ -893,70 +898,6 @@
       </div>
     </section>
 
-    <!-- ─── 15 · OLLAMA (macOS + Windows) ─── -->
-    <section class="slide" style="justify-content:center;">
-      <h2 class="title"><em>Ollama</em></h2>
-      <p class="lead">כלי להרצת מודלי AI מקומית — נבחר את דרך ההתקנה המתאימה למערכת שלנו.</p>
-      <div class="steps-grid two">
-
-        <div class="step-block">
-          <span class="os-tag mac">macOS · curl / dmg</span>
-          <h4>macOS — Terminal</h4>
-          <p>הסקריפט מזהה את המארכיטקטורה (Apple Silicon / Intel) ומתקין אוטומטית. חלופה גרפית: <span dir="ltr">.dmg</span> מ-<code style="font-family:var(--mono);color:var(--coral);">ollama.com/download</code></p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">curl</span> <span class="arg">-fsSL https://ollama.com/install.sh | sh</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <span class="os-tag win">Windows · PowerShell / exe</span>
-          <h4>Windows — PowerShell</h4>
-          <p>הסקריפט מתקין Ollama אוטומטית. חלופה גרפית: קובץ <span dir="ltr">.exe</span> מ-<code style="font-family:var(--mono);color:var(--coral);">ollama.com/download</code></p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">irm</span> <span class="arg">https://ollama.com/install.ps1 | iex</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── 17 · OLLAMA PULL & RUN ─── -->
-    <section class="slide" style="justify-content:center;">
-      <h2 class="title">Ollama · <em>הרצה</em></h2>
-      <p class="lead">נוריד מודל מקומי ונשוחח איתו — הורדה חד-פעמית, לאחריה עובד offline לחלוטין.</p>
-      <div class="steps-grid two">
-
-        <div class="step-block">
-          <span class="os-tag both">macOS · Windows</span>
-          <div class="step-num"><span class="badge">1</span><span class="lbl">pull model</span></div>
-          <h4>הורדת מודל</h4>
-          <p>נוריד את gemma4 — מודל קל ומהיר של Google. כ-2GB, הורדה חד-פעמית. תוצגנה שורות התקדמות.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">ollama</span> <span class="arg">pull gemma4</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-        <div class="step-block">
-          <span class="os-tag both">macOS · Windows</span>
-          <div class="step-num"><span class="badge">2</span><span class="lbl">run & chat</span></div>
-          <h4>הרצה ושיחה</h4>
-          <p>נריץ ונתחיל שיחה ישירות בטרמינל. לצאת: <code dir="ltr" style="font-family:var(--mono);color:var(--coral);">/bye</code>. המודל עובד לגמרי מקומית, ללא רשת.</p>
-          <div class="step-code">
-            <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">ollama</span> <span class="arg">run gemma4</span></span>
-            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- ─── 18 · LOVABLE ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title"><em>Lovable</em></h2>
@@ -1010,7 +951,6 @@
           <span class="ready-item"><span class="chk">✓</span> Node.js</span>
           <span class="ready-item"><span class="chk">✓</span> VS Code Insiders</span>
           <span class="ready-item"><span class="chk">✓</span> Claude</span>
-          <span class="ready-item"><span class="chk">✓</span> Ollama</span>
           <span class="ready-item"><span class="chk">✓</span> Lovable</span>
         </div>
         <div class="sig">WinnerIT · <em>AI Course</em></div>
