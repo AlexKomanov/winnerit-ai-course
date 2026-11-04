@@ -2,7 +2,9 @@
 
 Hebrew-language HTML presentations for the WinnerIT AI course. Each lesson is a single self-contained HTML file (no build step, no dependencies) intended to be opened directly in a browser and presented.
 
-Each `.html` file in the project root is a lesson (or `index.html`, the catalog). To see what files exist and what they cover, read the directory and the file titles — do not rely on any list here.
+Presentations live in `lesson-N/` folders. Each `lesson-N.html` in the root is that lesson's page: numbered `.pres-row` links in teaching order, plus a `.hw-row` for homework. `index.html` is the course catalog. Presentations inside a lesson folder link back with `../index.html`. To see what exists, read the directories and file titles — do not rely on any list here.
+
+**Lesson 1 teaching order:** Vibe Coding → Claude Code → Git → GitHub → Lovable → homework. The "כבר עשינו" card on each deck's overview slide must match this order (a deck may only assume what earlier decks taught).
 
 ---
 
@@ -224,6 +226,44 @@ Add `class="flow-module"` to a module card when the lessons have a required read
 
 ---
 
+## Content clarity
+
+Learned from the lesson 1 review, where the user flagged slide after slide as "לא ברור":
+
+- **Define every term before using it.** One plain sentence, then an everyday analogy (Branch = a draft of a document; Fork = copying a recipe from a friend's notebook into ours). A deck that comes earlier in the order cannot rely on terms from a later deck — add a short glossary slide instead (see `lesson-1/git.html`, "המילים של Git").
+- **Say what we actually do.** Each card/step names the concrete action and result ("לוחצים Publish ומקבלים URL"), not a feature description ("שינויים בזמן אמת").
+- **Frame a slide as a plain question** with a one-line lead under the title ("מי כותב את הקוד?", "מה יקרה אם זה יישבר?"). Avoid abstract titles and 2×2 matrices — three labelled columns read better.
+- **Drop asides students can't use** (e.g. "creating a branch doesn't duplicate the project" — keep only if phrased simply).
+- **Don't list several English terms inside a Hebrew sentence** — bidi reorders them and it overloads the slide. Move them to the slide that explains them.
+- **No poster slide that repeats the closing slide.** Merge the poster's line into the closing slide (`.flow-line` under the `h1`).
+- **No troubleshooting / reference slides unless asked** — the user removed them from the Git deck and trimmed the homework one to two rows.
+- **Homework decks have two parts:** a mandatory part and an optional advanced part. Tag step slides with `<span class="part must">חובה</span>` / `<span class="part extra">רשות</span>` inside `.where`, and split the final checklist the same way (see `lesson-1/hw-vibe-coding.html`).
+
+## Infographic patterns
+
+Added in the lesson 1 refresh — copy the CSS (base + `max-width` + `max-height` rules) from the file named:
+
+| Pattern | Classes | Example file |
+|---|---|---|
+| Horizontal flow with loop-back | `.flow`, `.flow-node`, `.flow-loop`, `.under-hood` | `lovable.html`, `claude-code.html` |
+| Spectrum / scale with 4 stops | `.spectrum`, `.spectrum-stops`, `.stop` | `vibe-coding.html`, `claude-code.html` |
+| Zones with commands on arrows | `.zones`, `.zone`, `.zone-arrow` | `git.html` |
+| Concept slide: text + SVG diagram + analogy | `.concept-svg`, `.analogy`, `.concept-list` | `github.html` (Branch, Fork) |
+| Sync map + "where are we" chips | `.sync-map`, `.where` | `hw-vibe-coding.html` |
+| UI mockup inside a step | `.gh-mock` | `hw-vibe-coding.html` |
+
+- **Hebrew inside SVG `<text>`** needs `direction="rtl" unicode-bidi="embed"`, otherwise mixed Hebrew/English labels ("ה-Fork שלנו") render reversed.
+- Keep SVG labels out of each other's way — route arrows around boxes rather than squeezing a label into a narrow gap.
+
+## Facts about tools
+
+Check claims against the official docs before writing them (Claude Code: `code.claude.com/docs`, Lovable: `docs.lovable.dev`), and don't upgrade a hedge into a stronger claim. Verified in November 2026 — recheck if older than a few months:
+
+- Claude Code: `auto` is the starting permission mode for interactive terminal / VS Code sessions (v2.1.283+); `claude -p` and the SDK start in Manual. `Shift+Tab` cycles modes. `claude "q"` opens an interactive session; `claude -p "q"` answers once and exits.
+- Lovable: later changes go live only after **Publish → Publish changes**. Git sync is two-way but only for the active branch. Chat mode has a daily free allowance — it is not unconditionally free.
+
+---
+
 ## Model names in presentations
 
 Model names (e.g., in ollama.html, claude-code-ollama.html) go stale quickly. Before updating any presentation that shows model names: check `https://ollama.com/search` for the current list, then find and replace all occurrences in the file. Model names appear in: models grid, terminal demo, step blocks, CLI command table, RAM/memory notes.
@@ -257,6 +297,7 @@ Model names (e.g., in ollama.html, claude-code-ollama.html) go stale quickly. Be
 - **index.html tags:** when adding a lesson to a module card, update the `module-tags` to include the new topic. Tags must reflect only what's actually covered.
 - **Minimum card body font size: 16px.** `.mini-card p` and `.step-block p` must never be below `16px` in the base CSS. Smaller sizes look unreadable when projected or on a laptop screen. Files with 13–14px base were a known bug; the standard is 16px.
 - **Laptop viewport (`@media (max-height: 900px)`) minimums:** `.mini-card p` min `15px`, `.step-block p` min `14px`. Do not reduce card body text below these thresholds in the max-height query.
+- **Small-text minimums (base CSS, raised in the lesson 1 refresh):** mono labels / eyebrows / `.lbl` / `.en-label` / topbar `12px`, `.step-code` `14px`, `.step-action` `15px`, `.info-card ul li` `18px`, card paragraphs `17px`. Code samples in big blocks (`pre.cb`, CLAUDE.md examples) stay around `15px` — when asked for a "bigger" example, add content, not font size.
 - **Every presentation must include `@media (max-height: 900px)`** — the compact-viewport query that scales down paddings, title sizes, and margins for MacBook screens (~700–900px viewport height). The script that adds it lives in the project; when creating a new presentation, copy the block from any recent `.html` file.
 - **Hebrew/English bidi mixing:** when a line contains Hebrew connectors ("או", "ומעלה", "מעבד") interspersed with English tech terms, the browser's bidi algorithm visually reverses the English words. Fix: replace Hebrew connectors with punctuation (`/`, `+`) and wrap the English value portion in `<span dir="ltr">…</span>`. Example: `<strong>Terminal</strong> · <span dir="ltr">Bash / Zsh / PowerShell / CMD</span>`. This rule applies equally to `module-desc` and `lesson-row-title` in `index.html` — not just presentation slides.
 - **Slash commands inline in Hebrew text:** an inline `<code>` element containing a slash command (e.g. `/clear`) inside an RTL paragraph will render the slash on the wrong side. Always add `direction:ltr;unicode-bidi:embed` to the `<code>` style: `<code style="…;direction:ltr;unicode-bidi:embed;">/clear</code>`.
