@@ -47,13 +47,13 @@
   .topbar {
     height: 56px; padding: 0 32px;
     display: flex; justify-content: space-between; align-items: center;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--muted); border-bottom: 1px solid var(--border-soft);
     background: rgba(242,237,227,0.85); backdrop-filter: blur(8px); z-index: 10;
   }
   .topbar .left { display: flex; align-items: center; gap: 14px; direction: ltr; }
   .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
-  .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
+  .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 12px; letter-spacing: 0.05em; transition: all 0.15s; }
   .back-home:hover { background: var(--coral); color: #fff; }
   .fs-btn {
     border: 1.5px solid var(--border); background: transparent; border-radius: 6px;
@@ -109,7 +109,7 @@
     color: var(--ink-soft); font-weight: 300; max-width: 700px;
   }
   p.caption {
-    font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em;
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.12em;
     color: var(--muted); text-transform: uppercase;
   }
 
@@ -117,13 +117,13 @@
   .slide-cover { align-items: center; justify-content: center; position: relative; }
   .cover-mark {
     position: absolute; top: 5vh; right: 8vw;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--muted); direction: ltr; display: flex; align-items: center; gap: 10px;
   }
   .cover-mark .pin { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
   .cover-cta {
     position: absolute; bottom: 6vh; left: 8vw;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; color: var(--muted);
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; color: var(--muted);
     direction: ltr; display: flex; align-items: center; gap: 12px;
   }
   .cover-cta .arr { color: var(--coral); font-size: 16px; }
@@ -153,7 +153,7 @@
   .info-card.need { border-top: 3px solid var(--coral); }
   .info-card.get  { border-top: 3px solid var(--forest); }
   .info-card .info-lbl {
-    font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
     margin-bottom: 18px; display: flex; align-items: center; gap: 8px; direction: rtl;
   }
   .info-card .info-lbl svg { flex-shrink: 0; width: 16px; height: 16px; }
@@ -163,7 +163,7 @@
   .info-card ul { list-style: none; }
   .info-card ul li {
     padding: 13px 0; border-bottom: 1px dashed var(--border-soft);
-    color: var(--ink-soft); font-size: 17px; display: flex; gap: 14px; align-items: flex-start;
+    color: var(--ink-soft); font-size: 18px; display: flex; gap: 14px; align-items: flex-start;
   }
   .info-card ul li:last-child { border-bottom: none; }
   .info-card ul li .ic { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
@@ -198,14 +198,14 @@
   .step-num .badge {
     width: 26px; height: 26px; border-radius: 6px; background: rgba(224,78,54,0.12);
     color: var(--coral); display: inline-flex; align-items: center; justify-content: center;
-    font-family: var(--mono); font-weight: 700; font-size: 13px;
+    font-family: var(--mono); font-weight: 700; font-size: 14px;
   }
-  .step-num .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+  .step-num .lbl { font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
   .step-block h4 { font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
-  .step-block p { font-size: 16px; color: var(--ink-soft); line-height: 1.55; flex: 1; margin-bottom: 18px; }
+  .step-block p { font-size: 17px; color: var(--ink-soft); line-height: 1.55; flex: 1; margin-bottom: 18px; }
   .step-code {
     background: var(--ink); color: #F2EDE3; border-radius: 6px; padding: 10px 14px;
-    font-family: var(--mono); font-size: 12px; direction: ltr; text-align: left;
+    font-family: var(--mono); font-size: 14px; direction: ltr; text-align: left;
     display: flex; align-items: center; gap: 8px;
   }
   .step-code .prompt { color: rgba(242,237,227,0.38); user-select: none; flex-shrink: 0; }
@@ -218,10 +218,60 @@
   .step-code .copy svg { width: 14px; height: 14px; }
   .step-action {
     background: var(--bg-2); border: 1px solid var(--border-soft); border-radius: 6px;
-    padding: 10px 14px; font-size: 13px; color: var(--ink-soft);
+    padding: 10px 14px; font-size: 15px; color: var(--ink-soft);
     display: flex; align-items: flex-start; gap: 10px;
   }
   .step-action .arr { color: var(--coral); font-weight: 700; flex-shrink: 0; }
+
+  /* ─── INFOGRAPHIC: SYNC MAP ─── */
+  .sync-map { display: grid; grid-template-columns: 1fr 190px 1fr 190px 1fr; align-items: stretch; margin-top: 52px; }
+  .sync-node { border: 1px solid var(--border); border-top: 3px solid var(--coral); background: var(--bg-3); padding: 26px 22px; text-align: center; }
+  .sync-node.hub { border-top-color: var(--ink); }
+  .sync-node.local { border-top-color: var(--forest); }
+  .sync-node h4 { font-family: var(--display); font-size: 30px; font-weight: 900; line-height: 1.1; color: var(--ink); margin-bottom: 8px; }
+  .sync-node p { font-size: 17px; line-height: 1.45; color: var(--ink-soft); }
+  .sync-link { display: flex; flex-direction: column; justify-content: center; gap: 16px; padding: 0 10px; }
+  .sync-link div { text-align: center; font-size: 15px; line-height: 1.25; color: var(--ink-soft); }
+  .sync-link span { display: block; font-size: 22px; font-weight: 700; line-height: 1; color: var(--coral); }
+  .sync-out { display: flex; gap: 18px; justify-content: center; align-items: center; margin-top: 26px; font-size: 18px; color: var(--ink-soft); }
+  .sync-out strong { color: var(--ink); }
+  .sync-out code { font-family: var(--mono); font-size: 16px; color: var(--coral); direction: ltr; unicode-bidi: embed; }
+
+  /* ─── WHERE WE ARE ─── */
+  .where { display: flex; gap: 10px; align-items: center; margin-top: 16px; font-size: 15px; color: var(--muted); }
+  .where span { padding: 3px 12px; border: 1px solid var(--border); border-radius: 12px; }
+  .where span.on { background: var(--coral); border-color: var(--coral); color: #fff; font-weight: 700; }
+  .where + .steps-grid { margin-top: 28px; }
+
+  .where .part { border: none; padding: 3px 10px; border-radius: 4px; font-weight: 700; color: #fff; margin-inline-end: 6px; }
+  .where .part.must { background: var(--ink); }
+  .where .part.extra { background: var(--forest); }
+  .warn-card { margin-top: 22px; border: 1px solid var(--border); border-inline-start: 3px solid var(--forest); background: var(--bg-3); padding: 14px 20px; font-size: 17px; line-height: 1.5; color: var(--ink-soft); }
+  .warn-card strong { color: var(--ink); }
+
+  /* ─── GITHUB PR MOCKUP ─── */
+  .gh-mock { border: 1px solid var(--border); border-radius: 6px; background: #fff; direction: ltr; text-align: left; font-size: 13px; overflow: hidden; }
+  .gh-banner { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; background: #FFF8C5; border-bottom: 1px solid var(--border-soft); color: var(--ink); }
+  .gh-banner b { font-family: var(--mono); font-weight: 700; }
+  .gh-btn { flex-shrink: 0; background: #1F883D; color: #fff; font-weight: 700; border-radius: 5px; padding: 4px 9px; white-space: nowrap; }
+  .gh-form { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; }
+  .gh-field { border: 1px solid var(--border); border-radius: 4px; padding: 5px 8px; color: var(--ink); }
+  .gh-field.area { direction: rtl; text-align: right; line-height: 1.45; color: var(--ink-soft); }
+  .gh-field.area strong { color: var(--ink); }
+  .gh-form .gh-btn { align-self: flex-start; }
+  .gh-pointer { color: var(--coral); font-weight: 700; }
+
+  /* ─── TROUBLESHOOTING + CHECKLIST ─── */
+  .fix-list { margin-top: 36px; border: 1px solid var(--border); background: var(--bg-3); }
+  .fix-row { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 24px; align-items: center; padding: 15px 24px; border-bottom: 1px dashed var(--border); }
+  .fix-row:last-child { border-bottom: none; }
+  .fix-row .prob { font-size: 19px; font-weight: 500; color: var(--ink); line-height: 1.35; }
+  .fix-row .sol { font-size: 17px; color: var(--ink-soft); line-height: 1.45; }
+  .check-list { list-style: none; margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li { display: flex; gap: 16px; align-items: center; border: 1px solid var(--border); background: var(--bg-3); padding: 16px 24px; font-size: 20px; color: var(--ink); line-height: 1.35; }
+  .check-list .box { flex-shrink: 0; width: 24px; height: 24px; border: 2px solid var(--forest); border-radius: 5px; }
+  .check-list li.check-group { border: none; background: none; padding: 6px 0 0; font-size: 16px; font-weight: 700; color: var(--muted); }
+  .check-list li.extra { background: transparent; border-style: dashed; }
 
   /* ─── CLOSING ─── */
   .slide-end {
@@ -238,7 +288,7 @@
   }
   .slide-end h1 em { font-style: italic; font-weight: 500; color: var(--coral); }
   .slide-end .sig {
-    margin-top: 72px; font-family: var(--mono); font-size: 11px;
+    margin-top: 72px; font-family: var(--mono); font-size: 12px;
     letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); direction: ltr;
   }
   .slide-end .sig em { color: var(--coral); font-style: italic; }
@@ -277,6 +327,8 @@
     .info-grid { grid-template-columns: 1fr; }
     .steps-grid { grid-template-columns: 1fr; }
     .steps-grid.two { grid-template-columns: 1fr; }
+    .sync-map, .fix-row { grid-template-columns: 1fr; }
+    .sync-link { padding: 12px 0; }
   }
 
   @media (max-height: 900px) {
@@ -287,11 +339,33 @@
     .info-grid { margin-top: 24px; gap: 20px; }
     .info-card { padding: 20px 22px; }
     .info-card h3 { font-size: 26px; margin-bottom: 12px; }
-    .info-card ul li { padding: 7px 0; font-size: 15px; }
+    .info-card ul li { padding: 7px 0; font-size: 16px; }
     .steps-grid { margin-top: 24px; gap: 14px; }
+    .sync-map { margin-top: 24px; grid-template-columns: 1fr 160px 1fr 160px 1fr; }
+    .sync-node { padding: 16px 16px; }
+    .sync-node h4 { font-size: 22px; margin-bottom: 4px; }
+    .sync-node p { font-size: 15px; }
+    .sync-link { gap: 10px; }
+    .sync-link div { font-size: 14px; }
+    .sync-out { margin-top: 14px; font-size: 16px; }
+    .where { margin-top: 8px; font-size: 14px; }
+    .where + .steps-grid { margin-top: 14px; }
+    .fix-list { margin-top: 18px; }
+    .fix-row { padding: 8px 18px; gap: 16px; }
+    .fix-row .prob { font-size: 16px; }
+    .fix-row .sol { font-size: 15px; line-height: 1.35; }
+    .check-list { margin-top: 20px; gap: 8px; }
+    .check-list li { padding: 9px 18px; font-size: 16px; }
+    .check-list .box { width: 20px; height: 20px; }
+    .check-list li.check-group { padding: 2px 0 0; font-size: 14px; }
+    .warn-card { margin-top: 12px; padding: 9px 15px; font-size: 15px; }
+    .gh-mock { font-size: 12px; }
+    .gh-banner { padding: 5px 8px; }
+    .gh-form { padding: 6px 8px 8px; gap: 4px; }
+    .gh-field { padding: 3px 7px; }
     .step-block { padding: 16px 18px 14px; }
     .step-block h4 { font-size: 18px; }
-    .step-block p { font-size: 14px; margin-bottom: 10px; }
+    .step-block p { font-size: 15px; margin-bottom: 10px; }
     .slide-end h1 { font-size: clamp(40px, 7vw, 108px); }
     .slide-end .sig { margin-top: 36px; }
     .slide-poster h1.mega { font-size: clamp(36px, 6vw, 96px); }
@@ -312,7 +386,7 @@
     </div>
     <div class="right">
       <span>שיעורי בית · Lovable + Claude Code</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 09</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 15</span></span>
     </div>
   </header>
 
@@ -405,7 +479,7 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              <span>פרויקט <strong>מפורסם</strong> עם URL ציבורי</span>
+              <span>פרויקט <strong>מפורסם</strong> עם URL ציבורי (חובה)</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -419,15 +493,48 @@
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               <span>ניסיון מעשי עם <strong>Claude Code</strong> בפרויקט אמיתי</span>
             </li>
+            <li>
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>רשות: עבודה עם <strong>Branch ו-Pull Request</strong></span>
+            </li>
           </ul>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 03 · LOVABLE: BUILD & PUBLISH ─── -->
+    <!-- ─── 03 · THE MAP ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">המפה <em>שלנו</em></h2>
+      <div class="sync-map">
+        <div class="sync-node">
+          <h4>Lovable</h4>
+          <p>בונים ומשפרים בצ'אט, ומפרסמים את האתר</p>
+        </div>
+        <div class="sync-link">
+          <div><span>←</span>commits ש-push הביא</div>
+          <div><span>→</span>שינויים מהצ'אט</div>
+        </div>
+        <div class="sync-node hub">
+          <h4>GitHub</h4>
+          <p>ה-repository שמחבר בין שני הצדדים</p>
+        </div>
+        <div class="sync-link">
+          <div><span>←</span>clone ו-pull</div>
+          <div><span>→</span>commit ו-push</div>
+        </div>
+        <div class="sync-node local">
+          <h4>המחשב שלנו</h4>
+          <p>Claude Code ו-VSCode, עם שרת פיתוח מקומי</p>
+        </div>
+      </div>
+      <p class="sync-out"><span><strong>חשוב לזכור:</strong> האתר החי מתעדכן רק כשנלחץ ב-Lovable על <code>Publish changes</code></span></p>
+    </section>
+
+    <!-- ─── 04 · LOVABLE: BUILD & PUBLISH ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">מתחילים ב-<em>Lovable</em></h2>
+      <div class="where"><span class="part must">חובה</span><span class="on">Lovable</span><span class="on">GitHub</span><span>המחשב שלנו</span></div>
       <div class="steps-grid">
 
         <div class="step-block">
@@ -454,15 +561,16 @@
             <span class="lbl">github</span>
           </div>
           <h4>מחברים GitHub</h4>
-          <p>מחברים את Lovable לחשבון GitHub. כל הקוד עולה אוטומטית ל-<span dir="ltr">GitHub</span> ל-<span dir="ltr">repository</span> חדש.</p>
+          <p>מחברים את Lovable לחשבון GitHub. Lovable יוצר <span dir="ltr">repository</span> חדש, והקוד מסתנכרן אליו.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 04 · LOCAL SETUP ─── -->
+    <!-- ─── 05 · LOCAL SETUP ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title"><em>Setup</em> מקומי</h2>
+      <div class="where"><span class="part must">חובה</span><span>Lovable</span><span>GitHub</span><span class="on">המחשב שלנו</span></div>
       <div class="steps-grid">
 
         <div class="step-block">
@@ -483,7 +591,7 @@
           <p>מבקשים מ-Claude Code לשכפל את הפרויקט — הוא מריץ git clone ושם את הקוד בתיקייה שנבחר.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Clone [paste HTTPS URL from GitHub] to a local folder</span>
+            <span class="cmd" style="font-family:var(--body);font-size:15px;white-space:normal;line-height:1.4;">Clone [paste HTTPS URL from GitHub] to a local folder</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -500,9 +608,10 @@
       </div>
     </section>
 
-    <!-- ─── 05 · RUN LOCALLY ─── -->
+    <!-- ─── 06 · RUN LOCALLY ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">מריצים <em>מקומית</em></h2>
+      <div class="where"><span class="part must">חובה</span><span>Lovable</span><span>GitHub</span><span class="on">המחשב שלנו</span></div>
       <div class="steps-grid">
 
         <div class="step-block">
@@ -514,7 +623,7 @@
           <p>מבקשים מ-Claude Code להתקין את כל חבילות הפרויקט ולהפעיל שרת פיתוח מקומי. פותחים דפדפן ומוודאים שרואים את האפליקציה.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Install all npm dependencies and start the local development server</span>
+            <span class="cmd" style="font-family:var(--body);font-size:15px;white-space:normal;line-height:1.4;">Install all npm dependencies and start the local development server</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -540,7 +649,7 @@
           </div>
           <h4>CLAUDE.md לדוגמה</h4>
           <p>הקובץ שנוצר נראה בערך כך — Claude Code ישתמש בו בכל שיחה כדי להבין את הפרויקט.</p>
-          <pre style="background:#1B2336;color:#EAE2D2;font-family:var(--mono);font-size:11px;border-radius:8px;padding:10px 12px;margin-top:10px;line-height:1.6;direction:ltr;text-align:left;overflow:hidden;flex-shrink:0;"># My Todo App
+          <pre style="background:#1B2336;color:#EAE2D2;font-family:var(--mono);font-size:13px;border-radius:8px;padding:10px 12px;margin-top:10px;line-height:1.6;direction:ltr;text-align:left;overflow:hidden;flex-shrink:0;"># My Todo App
 
 React + Supabase task manager.
 
@@ -557,9 +666,10 @@ src/lib/        – Supabase client</pre>
       </div>
     </section>
 
-    <!-- ─── 06 · CLAUDE CODE IN ACTION ─── -->
+    <!-- ─── 07 · CLAUDE CODE IN ACTION ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">Claude Code <em>בפעולה</em></h2>
+      <div class="where"><span class="part must">חובה</span><span>Lovable</span><span class="on">GitHub</span><span class="on">המחשב שלנו</span></div>
       <div class="steps-grid two">
 
         <div class="step-block">
@@ -571,7 +681,7 @@ src/lib/        – Supabase client</pre>
           <p>כותבים בצ'אט של Claude Code בקשה לשינוי קטן. מוודאים שהשינוי נראה בדפדפן על השרת המקומי.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Change the main heading color to blue and increase its font size by 20%</span>
+            <span class="cmd" style="font-family:var(--body);font-size:15px;white-space:normal;line-height:1.4;">Change the main heading color to blue and increase its font size by 20%</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -585,7 +695,7 @@ src/lib/        – Supabase client</pre>
           <p>מבקשים מ-Claude Code לבצע commit עם הודעה ברורה ולדחוף ל-GitHub — הוא מריץ את כל פקודות ה-git בשבילנו.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Commit all changes with a descriptive message and push to the main branch</span>
+            <span class="cmd" style="font-family:var(--body);font-size:15px;white-space:normal;line-height:1.4;">Commit all changes with a descriptive message and push to the main branch</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -593,9 +703,10 @@ src/lib/        – Supabase client</pre>
       </div>
     </section>
 
-    <!-- ─── 07 · BACK TO LOVABLE ─── -->
+    <!-- ─── 08 · BACK TO LOVABLE ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">חוזרים ל-<em>Lovable</em></h2>
+      <div class="where"><span class="part must">חובה</span><span class="on">Lovable</span><span class="on">GitHub</span><span>המחשב שלנו</span></div>
       <div class="steps-grid two">
 
         <div class="step-block">
@@ -604,7 +715,7 @@ src/lib/        – Supabase client</pre>
             <span class="lbl">sync</span>
           </div>
           <h4>Lovable מזהה שינויים</h4>
-          <p>Lovable עוקב אחרי ה-repository ב-GitHub ומזהה את ה-commit החדש אוטומטית — אין צורך לסנכרן ידנית.</p>
+          <p>מה שנדחף ל-branch הפעיל ב-GitHub מסתנכרן חזרה ל-Lovable אוטומטית — אין צורך לסנכרן ידנית.</p>
         </div>
 
         <div class="step-block">
@@ -612,16 +723,17 @@ src/lib/        – Supabase client</pre>
             <span class="badge">2</span>
             <span class="lbl">deploy</span>
           </div>
-          <h4>Update ב-Lovable</h4>
-          <p>לוחצים Update ב-Lovable כדי שהגרסה הפרוסה תשקף את הקוד המעודכן שהגיע מ-GitHub.</p>
+          <h4>מעדכנים את האתר</h4>
+          <p>האתר החי לא מתעדכן לבד. לוחצים <strong>Publish</strong> ואז <strong>Publish changes</strong> כדי שישקף את הקוד החדש.</p>
         </div>
 
       </div>
     </section>
 
-    <!-- ─── 08 · TWO-WAY SYNC ─── -->
+    <!-- ─── 09 · TWO-WAY SYNC ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">סנכרון <em>דו-כיווני</em></h2>
+      <div class="where"><span class="part must">חובה</span><span class="on">Lovable</span><span class="on">GitHub</span><span class="on">המחשב שלנו</span></div>
       <div class="steps-grid">
 
         <div class="step-block">
@@ -630,7 +742,7 @@ src/lib/        – Supabase client</pre>
             <span class="lbl">lovable</span>
           </div>
           <h4>שינוי מ-Lovable</h4>
-          <p>מבצעים שינוי נוסף דרך צ'אט Lovable. כשמרוצים לוחצים Publish — Lovable מבצע commit לשינוי ומפרסם את הגרסה.</p>
+          <p>מבצעים שינוי נוסף דרך צ'אט Lovable. השינוי מסתנכרן ל-GitHub, ו-Publish נדרש רק כדי לעדכן את האתר החי.</p>
         </div>
 
         <div class="step-block">
@@ -639,7 +751,7 @@ src/lib/        – Supabase client</pre>
             <span class="lbl">github</span>
           </div>
           <h4>GitHub מתעדכן</h4>
-          <p>פותחים את ה-repository ב-GitHub. רואים שה-commit החדש מ-Lovable הגיע אוטומטית ל-branch הראשי.</p>
+          <p>פותחים את ה-repository ב-GitHub. רואים שה-commit החדש מ-Lovable הגיע אוטומטית ל-branch המסונכרן.</p>
         </div>
 
         <div class="step-block">
@@ -651,7 +763,7 @@ src/lib/        – Supabase client</pre>
           <p>מבקשים מ-Claude Code למשוך את השינויים מ-GitHub — השרת המקומי מתעדכן ורואים מיד את מה שנעשה ב-Lovable.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd" style="font-family:var(--body);font-size:13px;white-space:normal;line-height:1.4;">Pull the latest changes from GitHub</span>
+            <span class="cmd" style="font-family:var(--body);font-size:15px;white-space:normal;line-height:1.4;">Pull the latest changes from GitHub</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -659,7 +771,132 @@ src/lib/        – Supabase client</pre>
       </div>
     </section>
 
-    <!-- ─── 09 · CLOSING ─── -->
+    <!-- ─── 10 · TROUBLESHOOTING ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">אם <em>נתקענו</em></h2>
+      <div class="fix-list">
+        <div class="fix-row">
+          <div class="prob">האתר החי לא השתנה</div>
+          <div class="sol">פרסום הוא snapshot. נלחץ <strong>Publish</strong> ואז <strong>Publish changes</strong>.</div>
+        </div>
+        <div class="fix-row">
+          <div class="prob">השרת המקומי לא עולה</div>
+          <div class="sol">נדביק את השגיאה ל-Claude Code ונבקש ממנו לאבחן ולתקן.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 11 · OPTIONAL PART ─── -->
+    <section class="slide slide-poster">
+      <h1 class="mega">
+        <span class="a" dir="ltr">Branch.</span><br>
+        <span class="b" dir="ltr">PR.</span><br>
+        <span class="c" dir="ltr">Merge.</span>
+      </h1>
+      <div class="sub">
+        חלק הרשות: נעבוד כמו צוות אמיתי,
+        וכל שינוי ייכנס דרך Pull Request.
+      </div>
+    </section>
+
+    <!-- ─── 12 · BRANCH & PR ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">Branch <em>ו-PR</em></h2>
+      <div class="where"><span class="part extra">רשות</span><span>Lovable</span><span class="on">GitHub</span><span class="on">המחשב שלנו</span></div>
+      <div class="steps-grid">
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">branch</span>
+          </div>
+          <h4>Branch חדש</h4>
+          <p>מבקשים מ-Claude Code ליצור branch לפיצ'ר ולעבור אליו. main נשאר כמו שהוא.</p>
+          <div class="step-code">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:15px;white-space:normal;line-height:1.4;">Create a new branch called feature/dark-mode and switch to it</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">feature</span>
+          </div>
+          <h4>פיצ'ר ו-Push</h4>
+          <p>מבקשים פיצ'ר קטן, בודקים אותו בדפדפן, ודוחפים את ה-branch ל-GitHub.</p>
+          <div class="step-code">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:15px;white-space:normal;line-height:1.4;">Add a dark mode toggle, then commit and push this branch to GitHub</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">3</span>
+            <span class="lbl">open PR</span>
+          </div>
+          <h4>פותחים Pull Request</h4>
+          <p>Pull Request היא בקשה לאחד את ה-branch שלנו ל-main. נכנסים ל-repository ב-GitHub, לוחצים על <strong>Compare &amp; pull request</strong>, כותבים מה שינינו, ולוחצים <strong>Create pull request</strong>.</p>
+          <div class="gh-mock" aria-label="איור: הפס הצהוב ב-GitHub וטופס פתיחת Pull Request">
+            <div class="gh-banner"><span><b>feature/dark-mode</b> had recent pushes</span><span class="gh-btn">Compare &amp; pull request</span></div>
+            <div class="gh-form">
+              <div class="gh-field">Add dark mode toggle</div>
+              <div class="gh-field area"><strong>מה השתנה:</strong> כפתור למצב כהה<br><strong>איך בודקים:</strong> לוחצים על הכפתור, והצבעים מתחלפים</div>
+              <span class="gh-btn">Create pull request</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="warn-card"><strong>למה ה-dark mode עוד לא ב-Lovable?</strong> Lovable מתעדכן רק מ-main, והשינוי שלנו נמצא כרגע ב-branch נפרד. הוא יגיע ל-Lovable אחרי ה-merge, בשקף הבא.</div>
+    </section>
+
+    <!-- ─── 13 · MERGE ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">מאשרים <em>Merge</em></h2>
+      <div class="where"><span class="part extra">רשות</span><span class="on">Lovable</span><span class="on">GitHub</span><span class="on">המחשב שלנו</span></div>
+      <div class="steps-grid two">
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">1</span>
+            <span class="lbl">merge</span>
+          </div>
+          <h4>ממזגים</h4>
+          <p>ב-GitHub מאשרים את המיזוג של ה-branch ל-main. אחר כך אפשר למחוק את ה-branch שסיים את תפקידו.</p>
+          <div class="step-action"><span dir="ltr"><strong>Merge pull request</strong> → Confirm merge → Delete branch</span></div>
+        </div>
+        <div class="step-block">
+          <div class="step-num">
+            <span class="badge">2</span>
+            <span class="lbl">sync</span>
+          </div>
+          <h4>חוזרים ל-main</h4>
+          <p>מבקשים מ-Claude Code לעבור ל-main ולמשוך את השינויים, כך שהפרויקט על המחשב שלנו יכלול את ה-merge. ב-Lovable השינוי מופיע לבד, ונלחץ Publish changes כדי לעדכן את האתר החי.</p>
+          <div class="step-code">
+            <span class="prompt">›</span>
+            <span class="cmd" style="font-family:var(--body);font-size:15px;white-space:normal;line-height:1.4;">Switch to main and pull the latest changes from GitHub</span>
+            <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 14 · CHECKLIST ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">סיימנו <em>כש...</em></h2>
+      <ul class="check-list">
+        <li class="check-group">חובה</li>
+        <li><span class="box"></span>האפליקציה מפורסמת, ויש לנו URL ציבורי שעובד</li>
+        <li><span class="box"></span>הקוד נמצא ב-repository שלנו ב-GitHub</li>
+        <li><span class="box"></span>האפליקציה רצה אצלנו מקומית, עם CLAUDE.md בפרויקט</li>
+        <li><span class="box"></span>שינוי מ-Claude Code הגיע ל-Lovable ולאתר החי</li>
+        <li><span class="box"></span>שינוי מ-Lovable הגיע למחשב שלנו דרך pull</li>
+        <li class="check-group">רשות</li>
+        <li class="extra"><span class="box"></span>Pull Request שאושר ומוזג ל-main</li>
+        <li class="extra"><span class="box"></span>הפיצ'ר מה-PR מופיע ב-Lovable ובאתר החי</li>
+      </ul>
+    </section>
+
+    <!-- ─── 15 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
         <h1>נבנה<span style="color:var(--border)">.</span><br><em>נסנכרן</em><span style="color:var(--border)">.</span><br>נפרסם<span style="color:var(--border)">.</span></h1>

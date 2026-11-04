@@ -47,13 +47,13 @@
   .topbar {
     height: 56px; padding: 0 32px;
     display: flex; justify-content: space-between; align-items: center;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--muted); border-bottom: 1px solid var(--border-soft);
     background: rgba(242,237,227,0.85); backdrop-filter: blur(8px); z-index: 10;
   }
   .topbar .left { display: flex; align-items: center; gap: 14px; direction: ltr; }
   .topbar .right { display: flex; align-items: center; gap: 24px; direction: ltr; }
-  .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 11px; letter-spacing: 0.05em; transition: all 0.15s; }
+  .back-home { color: var(--coral); text-decoration: none; display: flex; align-items: center; gap: 5px; padding: 5px 12px; border: 1.5px solid var(--coral); border-radius: 6px; font-weight: 700; font-size: 12px; letter-spacing: 0.05em; transition: all 0.15s; }
   .back-home:hover { background: var(--coral); color: #fff; }
   .fs-btn {
     border: 1.5px solid var(--border); background: transparent; border-radius: 6px;
@@ -105,11 +105,11 @@
   }
   h2.title em { font-style: italic; font-weight: 500; color: var(--coral); }
   p.lead {
-    font-size: clamp(17px, 1.45vw, 23px); line-height: 1.55;
+    font-size: clamp(18px, 1.55vw, 25px); line-height: 1.55;
     color: var(--ink-soft); font-weight: 300; max-width: 700px;
   }
   p.caption {
-    font-family: var(--mono); font-size: 13px; letter-spacing: 0.12em;
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.12em;
     color: var(--muted); text-transform: uppercase;
   }
 
@@ -117,13 +117,13 @@
   .slide-cover { align-items: center; justify-content: center; position: relative; }
   .cover-mark {
     position: absolute; top: 5vh; right: 8vw;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
     color: var(--muted); direction: ltr; display: flex; align-items: center; gap: 10px;
   }
   .cover-mark .pin { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
   .cover-cta {
     position: absolute; bottom: 6vh; left: 8vw;
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; color: var(--muted);
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; color: var(--muted);
     direction: ltr; display: flex; align-items: center; gap: 12px;
   }
   .cover-cta .arr { color: var(--coral); font-size: 16px; }
@@ -152,7 +152,7 @@
   .info-card.need { border-top: 3px solid var(--coral); }
   .info-card.get  { border-top: 3px solid var(--forest); }
   .info-card .info-lbl {
-    font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
     margin-bottom: 18px; display: flex; align-items: center; gap: 8px; direction: rtl;
   }
   .info-card .info-lbl svg { flex-shrink: 0; width: 16px; height: 16px; }
@@ -162,7 +162,7 @@
   .info-card ul { list-style: none; }
   .info-card ul li {
     padding: 13px 0; border-bottom: 1px dashed var(--border-soft);
-    color: var(--ink-soft); font-size: 15px; display: flex; gap: 14px; align-items: flex-start;
+    color: var(--ink-soft); font-size: 18px; display: flex; gap: 14px; align-items: flex-start;
   }
   .info-card ul li:last-child { border-bottom: none; }
   .info-card ul li .ic { flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
@@ -198,7 +198,7 @@
   }
   .mini-card .ico { width: 36px; height: 36px; color: var(--coral); margin-bottom: 24px; }
   .mini-card h4 { font-family: var(--display); font-size: 28px; font-weight: 700; margin-bottom: 8px; line-height: 1.1; color: var(--ink); }
-  .mini-card p { font-size: 16px; color: var(--ink-soft); line-height: 1.55; }
+  .mini-card p { font-size: 17px; color: var(--ink-soft); line-height: 1.55; }
   .mini-card.c1 { border-top: 3px solid var(--coral); }
   .mini-card.c2 { border-top: 3px solid var(--forest); }
   .mini-card.c3 { border-top: 3px solid var(--mustard); }
@@ -215,11 +215,30 @@
   .mini-card-4 { border: 1px solid var(--border); padding: 30px 24px; background: var(--bg-3); }
   .mini-card-4 .ico { width: 32px; height: 32px; margin-bottom: 20px; }
   .mini-card-4 h4 { font-family: var(--display); font-size: 24px; font-weight: 700; margin-bottom: 8px; line-height: 1.1; color: var(--ink); }
-  .mini-card-4 p { font-size: 16px; color: var(--ink-soft); line-height: 1.55; }
+  .mini-card-4 p { font-size: 17px; color: var(--ink-soft); line-height: 1.55; }
   .mini-card-4.p1 { border-top: 3px solid var(--coral); }
   .mini-card-4.p2 { border-top: 3px solid var(--forest); }
   .mini-card-4.p3 { border-top: 3px solid var(--mustard); }
   .mini-card-4.p4 { border-top: 3px solid var(--sky); }
+
+  /* ─── INFOGRAPHIC: LOOP ─── */
+  .loop-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: center; margin-top: 32px; }
+  .loop-svg { width: 100%; max-width: 440px; max-height: 58vh; justify-self: center; direction: ltr; }
+  .loop-list { display: flex; flex-direction: column; gap: 14px; }
+  .loop-list .mini-card { padding: 20px 24px; }
+  .loop-list .mini-card h4 { font-size: 24px; }
+
+  /* ─── INFOGRAPHIC: SPECTRUM ─── */
+  .spectrum { margin-top: 56px; }
+  .spectrum-bar { height: 10px; border-radius: 5px; background: linear-gradient(to left, var(--coral), var(--mustard), var(--forest), var(--sky)); }
+  .spectrum-ends { display: flex; justify-content: space-between; margin-top: 10px; font-size: 16px; font-weight: 500; color: var(--muted); }
+  .spectrum-stops { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 22px; }
+  .stop { border: 1px solid var(--border); background: var(--bg-3); padding: 20px 22px; }
+  .stop h4 { font-family: var(--display); font-size: 24px; font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 6px; }
+  .stop .tools { font-family: var(--mono); font-size: 14px; color: var(--coral); direction: ltr; text-align: right; margin-bottom: 10px; }
+  .stop p { font-size: 17px; line-height: 1.5; color: var(--ink-soft); }
+  .spectrum-note { margin-top: 24px; font-size: 18px; color: var(--ink-soft); }
+  .spectrum-note strong { color: var(--ink); }
 
   /* ─── CLOSING ─── */
   .slide-end {
@@ -236,7 +255,7 @@
   }
   .slide-end h1 em { font-style: italic; font-weight: 500; color: var(--coral); }
   .slide-end .sig {
-    margin-top: 72px; font-family: var(--mono); font-size: 11px;
+    margin-top: 72px; font-family: var(--mono); font-size: 12px;
     letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); direction: ltr;
   }
   .slide-end .sig em { color: var(--coral); font-style: italic; }
@@ -273,7 +292,7 @@
   @media (max-width: 900px) {
     .slide { padding: 4vh 5vw; }
     .info-grid { grid-template-columns: 1fr; }
-    .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .grid-3, .grid-4, .loop-grid, .spectrum-stops { grid-template-columns: 1fr; }
     .slide-statement .body-grid { grid-template-columns: 1fr; }
   }
 
@@ -285,15 +304,34 @@
     .info-grid { margin-top: 24px; gap: 20px; }
     .info-card { padding: 20px 22px; }
     .info-card h3 { font-size: 26px; margin-bottom: 12px; }
-    .info-card ul li { padding: 7px 0; font-size: 15px; }
+    .info-card ul li { padding: 7px 0; font-size: 16px; }
     .steps-grid { margin-top: 24px; gap: 14px; }
     .step-block { padding: 16px 18px 14px; }
     .step-block h4 { font-size: 18px; }
-    .step-block p { font-size: 14px; margin-bottom: 10px; }
+    .step-block p { font-size: 15px; margin-bottom: 10px; }
     .grid-4 { margin-top: 24px; gap: 14px; }
+    .grid-3 { margin-top: 24px; gap: 14px; }
+    .mini-card-4 { padding: 18px 18px; }
+    .mini-card-4 .ico { width: 26px; height: 26px; margin-bottom: 10px; }
+    .mini-card-4 h4 { font-size: 20px; }
+    .mini-card-4 p { font-size: 16px; line-height: 1.45; }
+    .loop-grid { margin-top: 14px; gap: 28px; }
+    .loop-svg { max-height: 52vh; }
+    .loop-list { gap: 10px; }
+    .loop-list .mini-card { padding: 12px 18px; }
+    .loop-list .mini-card h4 { font-size: 19px; margin-bottom: 4px; }
+    .loop-list .mini-card p { font-size: 15px; line-height: 1.45; }
+    .spectrum { margin-top: 24px; }
+    .spectrum-ends { font-size: 15px; margin-top: 6px; }
+    .spectrum-stops { margin-top: 12px; gap: 12px; }
+    .stop { padding: 14px 16px; }
+    .stop h4 { font-size: 19px; }
+    .stop .tools { font-size: 13px; margin-bottom: 6px; }
+    .stop p { font-size: 15px; line-height: 1.45; }
+    .spectrum-note { margin-top: 14px; font-size: 16px; }
     .mini-card { padding: 20px 22px; }
     .mini-card h4 { font-size: 20px; }
-    .mini-card p { font-size: 15px; }
+    .mini-card p { font-size: 16px; }
     .slide-end h1 { font-size: clamp(40px, 7vw, 108px); }
     .slide-end .sig { margin-top: 36px; }
     .slide-poster h1.mega { font-size: clamp(36px, 6vw, 96px); }
@@ -313,7 +351,7 @@
   </div>
     <div class="right">
       <span>Vibe Coding · בניית מוצרים עם AI</span>
-      <span class="counter"><span id="cur">01</span> <span class="total">/ 10</span></span>
+      <span class="counter"><span id="cur">01</span> <span class="total">/ 12</span></span>
     </div>
   </header>
 
@@ -335,7 +373,7 @@
         <p class="cover-sub">לחשוב, לתאר, לבנות — בלי לכתוב שורת קוד אחת</p>
       </div>
 
-      <div class="cover-cta"><span class="arr">→</span> לחץ ← להתחלה</div>
+      <div class="cover-cta"><span class="arr">←</span> להתחיל</div>
     </section>
 
     <!-- ─── 02 · OVERVIEW ─── -->
@@ -352,11 +390,11 @@
           <ul>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>הכרנו את <strong>GitHub</strong>, <strong>Git</strong> ו-<strong>Claude Code</strong></span>
+              <span>התקנו את <strong>כלי העבודה</strong> במחשב</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>הבנו שאפשר לתת ל-AI לכתוב <strong>קוד</strong> בשבילנו</span>
+              <span>יודעים מה זה <strong>LLM</strong> ואיך לדבר איתו</span>
             </li>
           </ul>
         </div>
@@ -395,16 +433,16 @@
             מושג שטבע <strong>Andrej Karpathy</strong> ב-2025: במקום לכתוב קוד — אנחנו <em>מתארים</em> מה אנחנו רוצים. ה-AI כותב, אנחנו בודקים וממשיכים הלאה. הקוד עצמו כמעט לא מעניין אותנו.
           </p>
           <p class="lead" style="margin-top:28px;">
-            זה לא קיצור דרך — זו דרך עבודה שלמה. כלים כמו <strong>Lovable</strong>, <strong>Claude Code</strong> ו-<strong>Cursor</strong> נגיש לכולם.
+            זה לא קיצור דרך — זו דרך עבודה שלמה. כלים כמו <strong>Lovable</strong>, <strong>Claude Code</strong> ו-<strong>Cursor</strong> הפכו אותה לנגישה לכולם.
           </p>
         </div>
         <div style="display:flex;flex-direction:column;gap:20px;">
           <div style="border:1px solid var(--border);border-top:3px solid var(--coral);background:var(--bg-3);padding:28px 24px;">
-            <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;direction:ltr;">andrej karpathy · 2025</p>
-            <p style="font-size:16px;color:var(--ink-soft);line-height:1.6;font-style:italic;">"I mostly just vibe code now... I don't really read the code, I just describe it."</p>
+            <p style="font-family:var(--mono);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;direction:ltr;">andrej karpathy · february 2025</p>
+            <p dir="ltr" style="font-size:19px;color:var(--ink-soft);line-height:1.5;font-style:italic;text-align:left;">"...fully give in to the vibes, embrace exponentials, and forget that the code even exists."</p>
           </div>
           <div style="border:1px solid var(--border-soft);background:var(--bg-2);padding:24px;border-radius:2px;">
-            <p style="font-size:14px;color:var(--ink-soft);line-height:1.6;">הרעיון: ה-AI הוא המפתח. אנחנו אחראים על <strong style="color:var(--ink);">הכיוון, הבדיקה והאיטרציה</strong> — לא על כתיבת השורות.</p>
+            <p style="font-size:17px;color:var(--ink-soft);line-height:1.55;">הרעיון: ה-AI הוא המפתח. אנחנו אחראים על <strong style="color:var(--ink);">הכיוון, הבדיקה והאיטרציה</strong> — לא על כתיבת השורות.</p>
           </div>
         </div>
       </div>
@@ -412,33 +450,46 @@
 
     <!-- ─── 04 · THE LOOP POSTER ─── -->
     <section class="slide slide-poster">
-      <h1 class="mega"><span class="a">תאר.</span><br><span class="b">קבל.</span><br><span class="c">בדוק.</span></h1>
+      <h1 class="mega"><span class="a">נתאר.</span><br><span class="b">נקבל.</span><br><span class="c">נבדוק.</span></h1>
       <p class="sub">לא נכתוב קוד — נכוון, נבדוק, ונחזור על התהליך.</p>
     </section>
 
     <!-- ─── 05 · THE LOOP ─── -->
     <section class="slide slide-three">
       <h2 class="title">ה-<em>loop</em> של vibe coding</h2>
-      <div class="grid-3">
-
-        <div class="mini-card c1">
-          <div class="step-badge">1</div>
-          <h4>תאר בשפה טבעית</h4>
-          <p>נכתוב מה נרצה לבנות — בעברית או באנגלית, בפרוזה רגילה. ככל שנהיה ספציפיים יותר, כך ה-AI יבין טוב יותר.</p>
+      <div class="loop-grid">
+        <svg class="loop-svg" viewBox="0 0 360 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="לולאה: נתאר, ה-AI כותב, נבדוק, וחוזר חלילה">
+          <defs>
+            <marker id="loop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="#E04E36"/>
+            </marker>
+          </defs>
+          <path d="M127.4 67.1 A120 120 0 0 0 60.3 183.4" stroke="#E04E36" stroke-width="2.5" marker-end="url(#loop-arrow)"/>
+          <path d="M112.9 274.5 A120 120 0 0 0 247.1 274.5" stroke="#E04E36" stroke-width="2.5" marker-end="url(#loop-arrow)"/>
+          <path d="M299.7 183.4 A120 120 0 0 0 232.6 67.1" stroke="#E04E36" stroke-width="2.5" marker-end="url(#loop-arrow)"/>
+          <circle cx="180" cy="55" r="44" fill="#FBF8F1" stroke="#E04E36" stroke-width="2.5"/>
+          <text direction="rtl" unicode-bidi="embed" x="180" y="62" text-anchor="middle" font-family="'Frank Ruhl Libre',serif" font-weight="700" font-size="22" fill="#1B2336">נתאר</text>
+          <circle cx="76" cy="235" r="44" fill="#FBF8F1" stroke="#2F6B49" stroke-width="2.5"/>
+          <text direction="rtl" unicode-bidi="embed" x="76" y="242" text-anchor="middle" font-family="'Frank Ruhl Libre',serif" font-weight="700" font-size="20" fill="#1B2336">AI כותב</text>
+          <circle cx="284" cy="235" r="44" fill="#FBF8F1" stroke="#E2A93B" stroke-width="2.5"/>
+          <text direction="rtl" unicode-bidi="embed" x="284" y="242" text-anchor="middle" font-family="'Frank Ruhl Libre',serif" font-weight="700" font-size="22" fill="#1B2336">נבדוק</text>
+          <text direction="rtl" unicode-bidi="embed" x="180" y="170" text-anchor="middle" font-family="'Heebo',sans-serif" font-weight="500" font-size="16" fill="#4D556C">לא עובד?</text>
+          <text direction="rtl" unicode-bidi="embed" x="180" y="192" text-anchor="middle" font-family="'Heebo',sans-serif" font-weight="500" font-size="16" fill="#4D556C">נתאר את הבעיה</text>
+        </svg>
+        <div class="loop-list">
+          <div class="mini-card c1">
+            <h4>1. נתאר בשפה טבעית</h4>
+            <p>נכתוב מה נרצה לבנות — בעברית או באנגלית, בפרוזה רגילה. ככל שנהיה ספציפיים יותר, כך ה-AI יבין טוב יותר.</p>
+          </div>
+          <div class="mini-card c2">
+            <h4>2. ה-AI כותב קוד</h4>
+            <p>הכלי מייצר קוד עובד — בדרך כלל תוך דקות. לא חייבים לקרוא כל שורה. מספיק לבדוק שהפלט נראה כמו שציפינו.</p>
+          </div>
+          <div class="mini-card c3">
+            <h4>3. נבדוק ונמשיך</h4>
+            <p>נפעיל את הפיצ'ר, נבדוק שהוא עובד, ונחזור לתאר את השלב הבא. כשמשהו לא עובד — נתאר את הבעיה ונבקש תיקון.</p>
+          </div>
         </div>
-
-        <div class="mini-card c2">
-          <div class="step-badge" style="background:rgba(47,107,73,0.1);color:var(--forest);">2</div>
-          <h4>ה-AI כותב קוד</h4>
-          <p>הכלי מייצר קוד עובד — בדרך כלל תוך דקות. לא חייבים לקרוא כל שורה. מספיק לבדוק שהפלט נראה כמו שציפינו.</p>
-        </div>
-
-        <div class="mini-card c3">
-          <div class="step-badge" style="background:rgba(226,169,59,0.1);color:var(--mustard);">3</div>
-          <h4>נבדוק ונמשיך</h4>
-          <p>נפעיל את הפיצ'ר, נבדוק שהוא עובד, ונחזור לתאר את השלב הבא. כשמשהו לא עובד — נתאר את הבעיה ונבקש תיקון.</p>
-        </div>
-
       </div>
     </section>
 
@@ -456,7 +507,7 @@
         <div class="mini-card-4 p2">
           <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
           <h4>Base44</h4>
-          <p>כלי ישראלי לבניית מוצרים דיגיטליים עם AI. ממשק פשוט, מתמקד בהפיכת רעיונות למוצרים עובדים.</p>
+          <p>כלי ישראלי לבניית מוצרים עם AI, שנרכש ב-2025 על ידי Wix. ממשק פשוט שהופך רעיונות למוצרים עובדים.</p>
         </div>
 
         <div class="mini-card-4 p3">
@@ -468,14 +519,47 @@
         <div class="mini-card-4 p4">
           <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
           <h4>OpenAI Codex</h4>
-          <p>סוכן הקידוד של OpenAI. עובד בענן עם גישה לטרמינל, מריץ קוד, בודק ומתקן — בלי לפתוח IDE.</p>
+          <p>סוכן הקידוד של OpenAI. זמין כ-CLI, כתוסף ל-IDE, כאפליקציה ובענן. מריץ קוד, בודק ומתקן.</p>
         </div>
 
       </div>
       <p style="margin-top:32px;font-size:16px;color:var(--muted);font-family:var(--mono);letter-spacing:0.04em;">✦ &nbsp;עוד כלים: Cursor · Replit Agent · Bolt · v0 · Windsurf</p>
     </section>
 
-    <!-- ─── 07 · WHAT IT UNLOCKS ─── -->
+    <!-- ─── 07 · SPECTRUM ─── -->
+    <section class="slide" style="justify-content:center;">
+      <h2 class="title">מי <em>כותב</em> את הקוד?</h2>
+      <p class="lead" style="margin-top:20px;max-width:none;">אפשר לעבוד עם AI בארבע רמות: מ-AI שכותב הכל, ועד מצב שבו אנחנו כותבים הכל.</p>
+      <div class="spectrum">
+        <div class="spectrum-bar"></div>
+        <div class="spectrum-ends"><span>ה-AI כותב</span><span>אנחנו כותבים</span></div>
+        <div class="spectrum-stops">
+          <div class="stop">
+            <h4>ה-AI כותב הכל</h4>
+            <div class="tools">Lovable · Base44</div>
+            <p>אנחנו לא רואים את הקוד. בודקים רק שהאפליקציה עובדת.</p>
+          </div>
+          <div class="stop">
+            <h4>ה-AI כותב, אנחנו בודקים</h4>
+            <div class="tools">Claude Code · Codex</div>
+            <p>ה-AI משנה קבצים בפרויקט, ואנחנו קוראים מה הוא שינה.</p>
+          </div>
+          <div class="stop">
+            <h4>כותבים ביחד</h4>
+            <div class="tools">Cursor</div>
+            <p>אנחנו כותבים בעורך הקוד, וה-AI משלים ומציע.</p>
+          </div>
+          <div class="stop">
+            <h4>אנחנו כותבים הכל</h4>
+            <div class="tools">VS Code</div>
+            <p>כל שורה שלנו. ה-AI עוזר רק כשאנחנו שואלים.</p>
+          </div>
+        </div>
+      </div>
+      <p class="spectrum-note"><strong>vibe coding הוא הרמה הראשונה מימין.</strong> ככל שהמוצר חשוב יותר, נזוז שמאלה ונקרא יותר מהקוד.</p>
+    </section>
+
+    <!-- ─── 08 · WHAT IT UNLOCKS ─── -->
 
     <section class="slide slide-four">
       <h2 class="title">מה <em>היתרונות</em></h2>
@@ -508,35 +592,69 @@
       </div>
     </section>
 
-    <!-- ─── 07 · WHEN TO USE ─── -->
+    <!-- ─── 09 · WHEN TO USE ─── -->
     <section class="slide slide-three">
       <h2 class="title">מתי <em>כן</em> ומתי <em>לא</em></h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;">
-
+      <p class="lead" style="margin-top:20px;max-width:none;">השאלה שנשאל את עצמנו: <strong style="color:var(--ink);">מה יקרה אם זה יישבר?</strong></p>
+      <div class="grid-3" style="margin-top:32px;">
         <div class="mini-card c2">
-          <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-          <h4>מתי כן</h4>
-          <ul style="margin:0;padding-inline-start:22px;color:var(--ink-soft);font-size:16px;line-height:1.8;">
-            <li>פרוטוטייפים ו-MVP מהירים</li>
-            <li>כלים פנימיים ואוטומציות</li>
-            <li>דאשבורדים ואפליקציות צד</li>
+          <h4>כן, בלי חשש</h4>
+          <p>אם זה נשבר, פשוט נבנה מחדש.</p>
+          <ul style="margin:12px 0 0;padding-inline-start:20px;color:var(--ink-soft);font-size:17px;line-height:1.7;">
+            <li>פרוטוטייפ ו-MVP</li>
+            <li>הדגמה ללקוח או לצוות</li>
+            <li>כלי אישי קטן</li>
           </ul>
         </div>
-
+        <div class="mini-card c3">
+          <h4>כן, עם בדיקה</h4>
+          <p>אנשים משתמשים בזה, אז נבדוק ונשמור ב-Git.</p>
+          <ul style="margin:12px 0 0;padding-inline-start:20px;color:var(--ink-soft);font-size:17px;line-height:1.7;">
+            <li>כלים פנימיים לצוות</li>
+            <li>דאשבורדים ואוטומציות</li>
+            <li>סקריפט שרץ על נתונים אמיתיים</li>
+          </ul>
+        </div>
         <div class="mini-card c1">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          <h4>מתי לא</h4>
-          <ul style="margin:0;padding-inline-start:22px;color:var(--ink-soft);font-size:16px;line-height:1.8;">
-            <li>מערכות production קריטיות</li>
-            <li>קוד שמישהו אחר מתחזק</li>
+          <h4>לא vibe coding</h4>
+          <p>תקלה פוגעת בלקוחות. ה-AI עוזר, אבל אנחנו קוראים כל שינוי.</p>
+          <ul style="margin:12px 0 0;padding-inline-start:20px;color:var(--ink-soft);font-size:17px;line-height:1.7;">
+            <li>מערכות production</li>
+            <li>תשלומים ומידע אישי</li>
             <li>לוגיקה עסקית מורכבת</li>
           </ul>
         </div>
-
       </div>
     </section>
 
-    <!-- ─── 08 · TIPS ─── -->
+    <!-- ─── 10 · WHAT CAN GO WRONG ─── -->
+    <section class="slide slide-four">
+      <h2 class="title">מה יכול <em>להשתבש</em>?</h2>
+      <div class="grid-4">
+        <div class="mini-card-4 p1">
+          <svg class="ico" style="color:var(--coral);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h4>אבטחה</h4>
+          <p>הרשאות פתוחות מדי או נתונים חשופים. נבדוק מי יכול לראות מה, גם בלי להתחבר.</p>
+        </div>
+        <div class="mini-card-4 p2">
+          <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg>
+          <h4>סודות בקוד</h4>
+          <p>מפתחות API שנכתבו בקוד ועלו ל-repository. נשמור אותם במשתני סביבה בלבד.</p>
+        </div>
+        <div class="mini-card-4 p3">
+          <svg class="ico" style="color:var(--mustard);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2.3-.7-.7-2.3z"/></svg>
+          <h4>תחזוקה</h4>
+          <p>קוד שאף אחד לא קרא קשה לשנות אחר כך. נתעד החלטות ונשמור commits קטנים.</p>
+        </div>
+        <div class="mini-card-4 p4">
+          <svg class="ico" style="color:var(--sky);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <h4>עובד רק בדמו</h4>
+          <p>המסלול הרגיל עובד, והקצוות נשברים. נבדוק קלט שגוי, מצב ריק ושימוש לא צפוי.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 11 · TIPS ─── -->
     <section class="slide slide-three">
       <h2 class="title">טיפים <em>לשיטה</em></h2>
       <div class="grid-3">
@@ -544,13 +662,13 @@
         <div class="mini-card c1">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           <h4>לתאר בדיוק</h4>
-          <p>ככל שנתאר את הבעיה בצורה ברורה יותר — הפלט יהיה טוב יותר. הקפידו על הקשר, דוגמאות ומגבלות.</p>
+          <p>ככל שנתאר את הבעיה בצורה ברורה יותר — הפלט יהיה טוב יותר. נקפיד על הקשר, דוגמאות ומגבלות.</p>
         </div>
 
         <div class="mini-card c2">
           <svg class="ico" style="color:var(--forest);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
           <h4>איטרציות קצרות</h4>
-          <p>עדיף לבקש צעד קטן, לבדוק, ולמשיך — מאשר לבנות הכל בבקשה אחת גדולה שקשה לתקן.</p>
+          <p>עדיף לבקש צעד קטן, לבדוק, ולהמשיך — מאשר לבנות הכל בבקשה אחת גדולה שקשה לתקן.</p>
         </div>
 
         <div class="mini-card c3">
@@ -562,7 +680,7 @@
       </div>
     </section>
 
-    <!-- ─── 09 · CLOSING ─── -->
+    <!-- ─── 12 · CLOSING ─── -->
     <section class="slide slide-end">
       <div class="inner">
         <h1>נחשוב<span style="color:var(--border)">.</span><br><em>נתאר</em><span style="color:var(--border)">.</span><br>נבנה<span style="color:var(--border)">.</span></h1>
