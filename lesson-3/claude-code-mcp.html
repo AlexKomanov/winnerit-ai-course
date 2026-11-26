@@ -324,7 +324,7 @@
           <text x="22" y="60" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(242,237,227,0.35)">$</text>
           <text x="34" y="60" font-family="'JetBrains Mono',monospace" font-size="9" fill="#E04E36">claude mcp add</text>
           <text x="113" y="60" font-family="'JetBrains Mono',monospace" font-size="9" fill="#9BD3A8"> playwright</text>
-          <text x="170" y="60" font-family="'JetBrains Mono',monospace" font-size="9" fill="#E2A93B"> npx @playwright/mcp@latest</text>
+          <text x="170" y="60" font-family="'JetBrains Mono',monospace" font-size="9" fill="#E2A93B"> -- npx @playwright/mcp@latest</text>
           <text x="22" y="78" font-family="'JetBrains Mono',monospace" font-size="9" fill="#2F6B49">✓ Added MCP server "playwright"</text>
 
           <!-- list — aligned columns -->
@@ -336,7 +336,7 @@
           <text x="116" y="139" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(242,237,227,0.45)">https://mcp.linear.app/mcp</text>
 
           <rect x="10" y="160" width="370" height="1" fill="rgba(242,237,227,0.06)"/>
-          <text x="22" y="174" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(242,237,227,0.22)">~/.claude/settings.json</text>
+          <text x="22" y="174" font-family="'JetBrains Mono',monospace" font-size="8" fill="rgba(242,237,227,0.22)">~/.claude.json · .mcp.json</text>
         </svg>
       </div>
     </section>
@@ -352,7 +352,7 @@
           <p>רץ על המחשב שלנו. Claude Code מפעיל אותו אוטומטית — לדוגמה <span dir="ltr">Playwright</span>.</p>
           <div class="step-code">
             <span class="prompt">›</span>
-            <span class="cmd"><span class="kw">claude mcp add</span> <span class="arg">playwright</span> npx @playwright/mcp@latest</span>
+            <span class="cmd"><span class="kw">claude mcp add</span> <span class="arg">playwright</span> -- npx @playwright/mcp@latest</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -371,7 +371,7 @@
         <div class="step-block" style="grid-column:1/-1;">
           <div class="step-num"><span class="badge">3</span><span class="lbl">status · remove</span></div>
           <h4>ניהול servers</h4>
-          <p>בדיקת servers פעילים בסשן הנוכחי, והסרה לפי שם מהטרמינל.</p>
+          <p>בתוך Claude Code נריץ <code>/mcp</code> ונראה אילו servers מחוברים. הסרה לפי שם נעשית מהטרמינל.</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:auto;">
             <div class="step-code" style="align-items:center;height:42px;">
               <span class="prompt">›</span>
@@ -380,7 +380,7 @@
             </div>
             <div class="step-code" style="align-items:center;height:42px;">
               <span class="prompt">›</span>
-              <span class="cmd"><span class="kw">/mcp remove</span> <span class="arg">playwright</span></span>
+              <span class="cmd"><span class="kw">claude mcp remove</span> <span class="arg">playwright</span></span>
               <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
             </div>
           </div>
@@ -391,25 +391,26 @@
 
     <!-- ─── 06 · Scope ─── -->
     <section class="slide" style="justify-content:center;">
-      <h2 class="title"><em>Scope</em> — גלובלי ומקומי</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;">
+      <h2 class="title"><em>Scope</em> — איפה ה-server זמין?</h2>
+      <p class="lead" style="margin-top:8px;font-size:17px;max-width:none;">ברירת המחדל היא <strong>local</strong>: רק אצלנו, ורק בפרויקט הנוכחי. שתי האפשרויות האחרות:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px;">
 
         <div class="step-block">
           <div class="step-num"><span class="badge">1</span><span class="lbl">user · global</span></div>
           <h4>User — לכל הפרויקטים</h4>
-          <p>ברירת המחדל. ה-server זמין בכל תיקייה שפותחים בה Claude Code. מתאים לכלים כמו <span dir="ltr">Playwright, Linear</span> — שמשמשים בכל פרויקט.</p>
+          <p>ה-server זמין בכל תיקייה שנפתח בה Claude Code, אבל רק אצלנו. מתאים לכלים כמו <span dir="ltr">Playwright, Linear</span> — שמשמשים בכל פרויקט.</p>
           <div class="step-code">
             <span class="prompt">›</span>
             <span class="cmd"><span class="kw">claude mcp add</span> <span class="arg">--scope user</span> <span class="flag">playwright</span> ...</span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
-          <div style="margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--muted);direction:ltr;">~/.claude/settings.json</div>
+          <div style="margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--muted);direction:ltr;">~/.claude.json</div>
         </div>
 
         <div class="step-block">
-          <div class="step-num"><span class="badge">2</span><span class="lbl">project · local</span></div>
+          <div class="step-num"><span class="badge">2</span><span class="lbl">project · shared</span></div>
           <h4>Project — לפרויקט ספציפי</h4>
-          <p>ה-server מוגדר רק בפרויקט הנוכחי. קובץ ה-JSON ניתן ל-commit ב-Git — כל הצוות מקבל את אותן ההגדרות.</p>
+          <p>ה-server נשמר בקובץ בתיקיית הפרויקט. נעשה לו commit ב-Git, וכל הצוות יקבל את אותן ההגדרות.</p>
           <div class="step-code">
             <span class="prompt">›</span>
             <span class="cmd"><span class="kw">claude mcp add</span> <span class="arg">--scope project</span> <span class="flag">playwright</span> ...</span>
@@ -421,19 +422,6 @@
         <div style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
 
           <div style="background:#1B2336;border-radius:10px;padding:20px 24px;direction:ltr;border:1px solid rgba(216,204,181,0.12);">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(242,237,227,0.28);margin-bottom:12px;letter-spacing:0.1em;">project scope — general example</div>
-            <pre style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;margin:0;"><span style="color:rgba(242,237,227,0.5);">{</span>
-  <span style="color:#4A7BA8;">"mcpServers"</span><span style="color:rgba(242,237,227,0.5);">: {</span>
-    <span style="color:#4A7BA8;">"shared-server"</span><span style="color:rgba(242,237,227,0.5);">: {</span>
-      <span style="color:#4A7BA8;">"command"</span><span style="color:rgba(242,237,227,0.5);">: </span><span style="color:#9BD3A8;">"/path/to/server"</span><span style="color:rgba(242,237,227,0.5);">,</span>
-      <span style="color:#4A7BA8;">"args"</span><span style="color:rgba(242,237,227,0.5);">:    </span><span style="color:#E2A93B;">[]</span><span style="color:rgba(242,237,227,0.5);">,</span>
-      <span style="color:#4A7BA8;">"env"</span><span style="color:rgba(242,237,227,0.5);">:     </span><span style="color:#E2A93B;">{}</span>
-    <span style="color:rgba(242,237,227,0.5);">}</span>
-  <span style="color:rgba(242,237,227,0.5);">}</span>
-<span style="color:rgba(242,237,227,0.5);">}</span></pre>
-          </div>
-
-          <div style="background:#1B2336;border-radius:10px;padding:20px 24px;direction:ltr;border:1px solid rgba(216,204,181,0.12);">
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(242,237,227,0.28);margin-bottom:12px;letter-spacing:0.1em;">user scope — playwright mcp example</div>
             <pre style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;margin:0;"><span style="color:rgba(242,237,227,0.5);">{</span>
   <span style="color:#4A7BA8;">"mcpServers"</span><span style="color:rgba(242,237,227,0.5);">: {</span>
@@ -442,6 +430,19 @@
       <span style="color:#4A7BA8;">"args"</span><span style="color:rgba(242,237,227,0.5);">: [</span>
         <span style="color:#9BD3A8;">"@playwright/mcp@latest"</span>
       <span style="color:rgba(242,237,227,0.5);">]</span>
+    <span style="color:rgba(242,237,227,0.5);">}</span>
+  <span style="color:rgba(242,237,227,0.5);">}</span>
+<span style="color:rgba(242,237,227,0.5);">}</span></pre>
+          </div>
+
+          <div style="background:#1B2336;border-radius:10px;padding:20px 24px;direction:ltr;border:1px solid rgba(216,204,181,0.12);">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(242,237,227,0.28);margin-bottom:12px;letter-spacing:0.1em;">project scope — general example</div>
+            <pre style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;margin:0;"><span style="color:rgba(242,237,227,0.5);">{</span>
+  <span style="color:#4A7BA8;">"mcpServers"</span><span style="color:rgba(242,237,227,0.5);">: {</span>
+    <span style="color:#4A7BA8;">"shared-server"</span><span style="color:rgba(242,237,227,0.5);">: {</span>
+      <span style="color:#4A7BA8;">"command"</span><span style="color:rgba(242,237,227,0.5);">: </span><span style="color:#9BD3A8;">"/path/to/server"</span><span style="color:rgba(242,237,227,0.5);">,</span>
+      <span style="color:#4A7BA8;">"args"</span><span style="color:rgba(242,237,227,0.5);">:    </span><span style="color:#E2A93B;">[]</span><span style="color:rgba(242,237,227,0.5);">,</span>
+      <span style="color:#4A7BA8;">"env"</span><span style="color:rgba(242,237,227,0.5);">:     </span><span style="color:#E2A93B;">{}</span>
     <span style="color:rgba(242,237,227,0.5);">}</span>
   <span style="color:rgba(242,237,227,0.5);">}</span>
 <span style="color:rgba(242,237,227,0.5);">}</span></pre>
@@ -463,7 +464,7 @@
             <h4>מוסיפים</h4>
             <div class="step-code">
               <span class="prompt">›</span>
-              <span class="cmd"><span class="kw">claude mcp add</span> <span class="arg">playwright</span> npx @playwright/mcp@latest</span>
+              <span class="cmd"><span class="kw">claude mcp add</span> <span class="arg">playwright</span> -- npx @playwright/mcp@latest</span>
               <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
             </div>
           </div>
@@ -491,27 +492,27 @@
           </div>
 
           <div style="border:1px solid rgba(74,123,168,0.35);border-radius:6px;padding:9px 14px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ playwright_navigate</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ browser_navigate</div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(242,237,227,0.35);margin-top:3px;">  url: "https://myapp.com/login"</div>
           </div>
 
           <div style="border:1px solid rgba(74,123,168,0.35);border-radius:6px;padding:9px 14px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ playwright_snapshot</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ browser_snapshot</div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(242,237,227,0.35);margin-top:3px;">  → page loaded, 2 input fields found</div>
           </div>
 
           <div style="border:1px solid rgba(74,123,168,0.35);border-radius:6px;padding:9px 14px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ playwright_fill</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ browser_type</div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(242,237,227,0.35);margin-top:3px;">  element: "email", value: "user@test.com"</div>
           </div>
 
           <div style="border:1px solid rgba(74,123,168,0.35);border-radius:6px;padding:9px 14px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ playwright_fill</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ browser_type</div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(242,237,227,0.35);margin-top:3px;">  element: "password", value: "••••••••"</div>
           </div>
 
           <div style="border:1px solid rgba(74,123,168,0.35);border-radius:6px;padding:9px 14px;">
-            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ playwright_click</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#4A7BA8;">⚙ browser_click</div>
             <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(242,237,227,0.35);margin-top:3px;">  element: "button[type=submit]"</div>
           </div>
 
@@ -525,14 +526,14 @@
 
     <!-- ─── 07 · בתוך הסשן ─── -->
     <section class="slide" style="justify-content:center;">
-      <h2 class="title">בתוך <em>הסשן</em></h2>
+      <h2 class="title">בדיקה <em>ותיקון</em></h2>
       <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:28px;margin-top:28px;align-items:start;">
 
         <div style="display:flex;flex-direction:column;gap:12px;">
           <div class="step-block">
             <div class="step-num"><span class="badge">1</span><span class="lbl">status</span></div>
             <h4>בדיקת חיבור</h4>
-            <p>מריצים <code style="direction:ltr;unicode-bidi:embed;">/mcp</code> בתוך Claude Code כדי לראות אילו servers מחוברים.</p>
+            <p>רואים אילו servers מחוברים, ומה הסטטוס של כל אחד.</p>
             <div class="step-action">
               <span>מקלידים <code style="direction:ltr;unicode-bidi:embed;">/mcp</code> בתוך Claude Code</span>
             </div>
@@ -541,29 +542,27 @@
           <div class="step-block">
             <div class="step-num"><span class="badge">2</span><span class="lbl">get</span></div>
             <h4>פרטי server</h4>
-            <p>מציג הגדרות מלאות — scope, סטטוס, command. שימושי לדיבאג.</p>
+            <p>פקודה בטרמינל שמציגה scope, סטטוס ו-command.</p>
             <div class="step-code">
               <span class="prompt">›</span>
-              <span class="cmd"><span class="kw">/mcp get</span> <span class="flag">playwright</span></span>
+              <span class="cmd"><span class="kw">claude mcp get</span> <span class="flag">playwright</span></span>
               <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
             </div>
           </div>
 
           <div class="step-block">
-            <div class="step-num"><span class="badge">3</span><span class="lbl">reset</span></div>
-            <h4>אתחול חיבור</h4>
-            <p>אם server תקוע — סוגרים ופותחים מחדש בלי לצאת מהסשן.</p>
-            <div class="step-code">
-              <span class="prompt">›</span>
-              <span class="cmd"><span class="kw">/mcp reset</span> <span class="flag">playwright</span></span>
-              <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+            <div class="step-num"><span class="badge">3</span><span class="lbl">reconnect</span></div>
+            <h4>חיבור מחדש</h4>
+            <p>server נכשל? נחבר אותו מחדש מהתפריט שלו.</p>
+            <div class="step-action">
+              <span dir="ltr"><strong>/mcp</strong> → playwright → <strong>Reconnect</strong></span>
             </div>
           </div>
         </div>
 
         <div style="background:#1B2336;border-radius:14px;padding:24px;direction:ltr;border:1px solid rgba(216,204,181,0.15);font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;">
-          <div style="color:rgba(242,237,227,0.35);margin-bottom:16px;font-size:11px;">claude&gt;
-            <span style="color:#E04E36;"> /mcp get</span>
+          <div style="color:rgba(242,237,227,0.35);margin-bottom:16px;font-size:11px;">$
+            <span style="color:#E04E36;"> claude mcp get</span>
             <span style="color:#9BD3A8;"> playwright</span>
           </div>
           <div style="color:#E2A93B;font-weight:700;margin-bottom:10px;">playwright:</div>
@@ -655,6 +654,7 @@
     document.getElementById('btn-next').disabled = current === N-1;
     document.getElementById('nb-prev').disabled  = current === 0;
     document.getElementById('nb-next').disabled  = current === N-1;
+    try { history.replaceState(null, '', '#' + (current + 1)); } catch (e) {}
   }
 
   document.getElementById('btn-prev').addEventListener('click', () => goTo(current - 1));
@@ -683,6 +683,21 @@
     e.preventDefault(); clearTimeout(wt);
     wt = setTimeout(() => { goTo(e.deltaY > 0 ? current + 1 : current - 1); }, 60);
   }, { passive: false });
+
+  // Deep link: #N opens slide N (on load and when the hash is edited)
+  function slideFromHash() {
+    const n = parseInt(location.hash.slice(1), 10);
+    return Number.isInteger(n) && n >= 1 && n <= N ? n - 1 : null;
+  }
+  const startIdx = slideFromHash();
+  if (startIdx !== null) {
+    current = startIdx;
+    slides[startIdx].scrollIntoView({ inline: 'start', behavior: 'instant' });
+  }
+  window.addEventListener('hashchange', () => {
+    const i = slideFromHash();
+    if (i !== null && i !== current) goTo(i);
+  });
 
   update();
 })();

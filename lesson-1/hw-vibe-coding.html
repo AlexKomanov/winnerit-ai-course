@@ -465,7 +465,7 @@
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>
-              <span><strong>VSCode</strong> ו-<strong>Node.js</strong> מותקנים</span>
+              <span><strong>VS Code</strong> ו-<strong>Node.js</strong> מותקנים</span>
             </li>
           </ul>
         </div>
@@ -525,7 +525,7 @@
         </div>
         <div class="sync-node local">
           <h4>המחשב שלנו</h4>
-          <p>Claude Code ו-VSCode, עם שרת פיתוח מקומי</p>
+          <p>Claude Code ו-VS Code, עם שרת פיתוח מקומי</p>
         </div>
       </div>
       <p class="sync-out"><span><strong>חשוב לזכור:</strong> האתר החי מתעדכן רק כשנלחץ ב-Lovable על <code>Publish changes</code></span></p>
@@ -561,7 +561,7 @@
             <span class="lbl">github</span>
           </div>
           <h4>מחברים GitHub</h4>
-          <p>מחברים את Lovable לחשבון GitHub. Lovable יוצר <span dir="ltr">repository</span> חדש, והקוד מסתנכרן אליו.</p>
+          <p>ב-Project settings נפתח את Git ונחבר את חשבון GitHub. Lovable יוצר <span dir="ltr">repository</span> חדש ופרטי, והקוד מסתנכרן אליו.</p>
         </div>
 
       </div>
@@ -601,8 +601,8 @@
             <span class="badge">3</span>
             <span class="lbl">vscode</span>
           </div>
-          <h4>פותחים ב-VSCode</h4>
-          <p>פותחים את תיקיית הפרויקט ב-VSCode, פותחים Terminal ומריצים Claude Code.</p>
+          <h4>פותחים ב-VS Code</h4>
+          <p>פותחים את תיקיית הפרויקט ב-VS Code, פותחים Terminal ומריצים Claude Code.</p>
         </div>
 
       </div>
@@ -963,6 +963,7 @@ src/lib/        – Supabase client</pre>
     document.getElementById('btn-next').disabled = current === N-1;
     document.getElementById('nb-prev').disabled  = current === 0;
     document.getElementById('nb-next').disabled  = current === N-1;
+    try { history.replaceState(null, '', '#' + (current + 1)); } catch (e) {}
   }
 
   document.getElementById('btn-prev').addEventListener('click', () => goTo(current - 1));
@@ -992,6 +993,21 @@ src/lib/        – Supabase client</pre>
     clearTimeout(wt);
     wt = setTimeout(() => { goTo(e.deltaY > 0 ? current + 1 : current - 1); }, 60);
   }, { passive: false });
+
+  // Deep link: #N opens slide N (on load and when the hash is edited)
+  function slideFromHash() {
+    const n = parseInt(location.hash.slice(1), 10);
+    return Number.isInteger(n) && n >= 1 && n <= N ? n - 1 : null;
+  }
+  const startIdx = slideFromHash();
+  if (startIdx !== null) {
+    current = startIdx;
+    slides[startIdx].scrollIntoView({ inline: 'start', behavior: 'instant' });
+  }
+  window.addEventListener('hashchange', () => {
+    const i = slideFromHash();
+    if (i !== null && i !== current) goTo(i);
+  });
 
   update();
 })();

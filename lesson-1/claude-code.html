@@ -747,6 +747,7 @@
   pre.cb .pu { color: #E2A93B; }
 
   /* ─── CLAUDE.MD SLIDE ─── */
+  .slide-claudemd { justify-content: center; }
   .slide-claudemd .body-grid {
     display: grid;
     grid-template-columns: 1fr 1.3fr;
@@ -1101,7 +1102,7 @@
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-              <span>Anthropic Console · תשלום לפי שימוש, ללא מינוי חודשי</span>
+              <span>Anthropic Console · קרדיט בתשלום מראש, ללא מנוי חודשי</span>
             </li>
             <li>
               <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -1280,7 +1281,7 @@
           </div>
           <div class="cli-row">
             <div class="cmd"><span class="a">/clear</span></div>
-            <div class="desc">ניקוי היסטוריית השיחה הנוכחית</div>
+            <div class="desc">שיחה חדשה עם context ריק. לקודמת חוזרים עם /resume</div>
           </div>
           <div class="cli-row">
             <div class="cmd"><span class="a">/compact</span></div>
@@ -1288,7 +1289,7 @@
           </div>
           <div class="cli-row">
             <div class="cmd"><span class="a">/memory</span></div>
-            <div class="desc">ניהול זיכרון — user memory, project memory ו-auto-memory</div>
+            <div class="desc">עריכת קובצי CLAUDE.md וניהול ה-auto memory</div>
           </div>
           <div class="cli-row">
             <div class="cmd"><span class="a">/init</span></div>
@@ -1328,7 +1329,7 @@
           </div>
           <div class="cli-row">
             <div class="cmd"><span class="a">Esc</span> <span class="a">Esc</span></div>
-            <div class="desc">פתיחת תפריט ה-rewind, כשהשורה ריקה</div>
+            <div class="desc">חזרה אחורה לנקודה קודמת, כמו <span dir="ltr">/rewind</span> (כשלא כתוב כלום בשורת הכתיבה)</div>
           </div>
         </div>
 
@@ -1345,7 +1346,7 @@
           </p>
           <p style="margin-top:26px;font-size:15px;font-weight:700;color:var(--muted);">איך יוצרים אותו</p>
           <div class="md-steps">
-            <div class="md-step"><span class="n">1</span><div>מריצים <code>/init</code> בתוך Claude Code. הוא סורק את הפרויקט וכותב טיוטה.</div></div>
+            <div class="md-step"><span class="n">1</span><div>מריצים <code dir="ltr" style="unicode-bidi:isolate;">/init</code> בתוך Claude Code. הוא סורק את הפרויקט וכותב טיוטה.</div></div>
             <div class="md-step"><span class="n">2</span><div>קוראים ומתקנים. זה קובץ טקסט רגיל, אז אפשר לערוך אותו בעורך או לבקש מ-Claude Code לעדכן.</div></div>
             <div class="md-step"><span class="n">3</span><div>שומרים אותו ב-Git, כך שכל הצוות עובד עם אותן הנחיות.</div></div>
           </div>
@@ -1408,7 +1409,13 @@
         </div>
       </div>
       <p class="spectrum-note"><strong>בגרסאות החדשות, auto הוא מצב ההתחלה בטרמינל וב-VS Code.</strong> נעבור בין המצבים עם Shift+Tab, למשל ל-Manual כשנרצה לאשר כל צעד בעצמנו.</p>
-      <div class="warn-card"><strong dir="ltr">bypassPermissions</strong> מדלג על כל בקשות האישור, ולכן נשמור אותו לסביבה מבודדת בלבד.</div>
+      <div class="warn-card"><strong dir="ltr">bypassPermissions</strong> לא מופיע ב-Shift+Tab. כדי להיכנס אליו, נפתח את Claude Code עם הפקודה הזו. המצב הזה מדלג על כל בקשות האישור, ולכן נשמור אותו לסביבה מבודדת בלבד.
+        <div class="step-code" style="margin-top:10px;">
+          <span class="prompt">&gt;_</span>
+          <span class="cmd"><span class="kw">claude</span> <span class="arg">--dangerously-skip-permissions</span></span>
+          <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
+        </div>
+      </div>
     </section>
 
     <!-- ─── 11 · REWIND ─── -->
@@ -1465,7 +1472,7 @@
             <path d="M8 6h13M8 12h13M8 18h13"/>
           </svg>
           <h4>נשמור על שיחות קצרות</h4>
-          <p>אחרי כל משימה — <code style="font-family:var(--mono);background:var(--bg-2);padding:1px 5px;border-radius:3px;color:var(--coral);direction:ltr;unicode-bidi:embed;">/clear</code>.<br><span>שיחות קצרות = context נקי = תוצאות טובות יותר.</span></p>
+          <p>אחרי כל משימה — <code style="font-family:var(--mono);background:var(--bg-2);padding:1px 5px;border-radius:3px;color:var(--coral);direction:ltr;unicode-bidi:embed;">/clear</code>, או פשוט פותחים שיחה חדשה.<br><span>שיחות קצרות = context נקי = תוצאות טובות יותר.</span></p>
         </div>
       </div>
     </section>
@@ -1612,6 +1619,7 @@
     nextBtn.disabled = current === total - 1;
     edgePrev.disabled = current === 0;
     edgeNext.disabled = current === total - 1;
+    try { history.replaceState(null, '', '#' + (current + 1)); } catch (e) {}
   }
 
   const obs = new IntersectionObserver((entries) => {
@@ -1670,6 +1678,21 @@
   }
   window.addEventListener('resize', snapToCurrent);
   window.addEventListener('load', snapToCurrent);
+
+  // Deep link: #N opens slide N (on load and when the hash is edited)
+  function slideFromHash() {
+    const n = parseInt(location.hash.slice(1), 10);
+    return Number.isInteger(n) && n >= 1 && n <= total ? n - 1 : null;
+  }
+  const startIdx = slideFromHash();
+  if (startIdx !== null) {
+    current = startIdx;
+    slides[startIdx].scrollIntoView({ inline: 'start', behavior: 'instant' });
+  }
+  window.addEventListener('hashchange', () => {
+    const i = slideFromHash();
+    if (i !== null && i !== current) goTo(i);
+  });
 
   updateUI();
   requestAnimationFrame(snapToCurrent);

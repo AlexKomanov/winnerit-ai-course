@@ -508,7 +508,7 @@
           <h2 class="title">מה זה <em>Lovable</em>?</h2>
           <p class="lead" style="margin-top:28px;">
             Lovable הוא כלי AI שהופך <strong style="color:var(--ink);font-weight:700;">תיאור טקסטואלי</strong>
-            לאפליקציית React מלאה — עם ממשק, לוגיקה, ומסד נתונים.
+            לאפליקציית web מלאה — עם ממשק, לוגיקה, ומסד נתונים.
           </p>
           <p class="lead" style="margin-top:18px;">
             במקום לכתוב קוד ידנית, אנחנו
@@ -569,7 +569,7 @@
           <div class="num"><span class="nb">2</span> full-stack</div>
           <h4>Full-Stack</h4>
           <div class="en-label">Frontend + Backend</div>
-          <p>React בצד הלקוח, ו-<strong>Backend מובנה</strong> עם מסד נתונים, התחברות ואחסון קבצים. אפשר גם לחבר Supabase משלנו.</p>
+          <p>ממשק בצד הלקוח, ו-<strong>Backend מובנה</strong> עם מסד נתונים, התחברות ואחסון קבצים. אפשר גם לחבר Supabase משלנו.</p>
         </div>
 
         <div class="mini-card p3">
@@ -621,7 +621,7 @@
         <div class="flow-loop">↺ נחזור על הלולאה עד שנהיה מרוצים</div>
       </div>
       <div class="under-hood">
-        <div><strong>Frontend</strong>ממשק ב-React שנבנה בשבילנו</div>
+        <div><strong>Frontend</strong>הממשק שהמשתמש רואה, שנבנה בשבילנו</div>
         <div><strong>Backend</strong>מסד נתונים, התחברות ואחסון קבצים</div>
         <div><strong>GitHub</strong>אפשר לסנכרן את הקוד ל-repository שלנו</div>
       </div>
@@ -722,7 +722,7 @@
         <div class="mini-card p3">
           <h4>Plan</h4>
           <div class="en-label">plans first</div>
-          <p>Lovable חוקר ומתכנן, בלי לגעת בקוד.</p>
+          <p>Lovable חוקר וכותב תוכנית, ואנחנו מאשרים אותה לפני הבנייה. כל הודעה עולה credit אחד לפחות.</p>
           <div class="when"><strong>מתי:</strong> לפני שינוי גדול, כדי לראות את הכיוון קודם.</div>
         </div>
       </div>
@@ -749,7 +749,7 @@
             <span class="lbl">undo</span>
           </div>
           <h4>טעינו? חוזרים אחורה</h4>
-          <p><strong>Undo</strong> מבטל את השינוי האחרון. ב-<strong>History</strong> רואים את כל הגרסאות הקודמות, ואפשר לחזור לכל אחת מהן.</p>
+          <p><strong>Undo latest edit</strong> מבטל את השינוי האחרון. ב-<strong>History</strong> בוחרים גרסה קודמת ולוחצים <strong>Revert</strong>. חוזר רק הקוד, לא הנתונים שבמסד.</p>
         </div>
 
         <div class="step-block">
@@ -831,6 +831,7 @@
     document.getElementById('btn-next').disabled = current === N-1;
     document.getElementById('nb-prev').disabled  = current === 0;
     document.getElementById('nb-next').disabled  = current === N-1;
+    try { history.replaceState(null, '', '#' + (current + 1)); } catch (e) {}
   }
 
   document.getElementById('btn-prev').addEventListener('click', () => goTo(current - 1));
@@ -860,6 +861,21 @@
     clearTimeout(wt);
     wt = setTimeout(() => { goTo(e.deltaY > 0 ? current + 1 : current - 1); }, 60);
   }, { passive: false });
+
+  // Deep link: #N opens slide N (on load and when the hash is edited)
+  function slideFromHash() {
+    const n = parseInt(location.hash.slice(1), 10);
+    return Number.isInteger(n) && n >= 1 && n <= N ? n - 1 : null;
+  }
+  const startIdx = slideFromHash();
+  if (startIdx !== null) {
+    current = startIdx;
+    slides[startIdx].scrollIntoView({ inline: 'start', behavior: 'instant' });
+  }
+  window.addEventListener('hashchange', () => {
+    const i = slideFromHash();
+    if (i !== null && i !== current) goTo(i);
+  });
 
   update();
 })();

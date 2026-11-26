@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ollama · מודלי שפה במחשב שלך</title>
+<title>Ollama · מודלי שפה במחשב שלנו</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -1465,7 +1465,7 @@
           <h2 class="title">Ollama מריץ <em>LLM</em> ישירות במחשב שלנו.</h2>
           <p class="lead" style="margin-top:32px;">
             אפשר להוריד ולהריץ בשתי פקודות (<code style="font-family:var(--mono);color:var(--coral);">ollama pull</code> ואז <code style="font-family:var(--mono);color:var(--coral);">ollama run</code>) — או הכל בפקודה אחת עם <code style="font-family:var(--mono);color:var(--coral);">ollama run</code> בלבד.
-            ב־30 שניות נקבל LLM פרטי שרץ מקומית — בלי ענן, בלי מנוי, בלי הגבלות.
+            אחרי הורדה אחת נקבל LLM פרטי שרץ מקומית — בלי ענן, בלי מנוי, בלי הגבלות.
           </p>
         </div>
         <div class="term">
@@ -1473,7 +1473,7 @@
           <div class="term-body">
             <div><span class="pr">➜</span> <span>ollama run gemma4</span></div>
             <div><span class="out">pulling manifest...</span></div>
-            <div><span class="out">downloading 2.0 GB ▕████████▏</span></div>
+            <div><span class="out">downloading 6.6 GB ▕████████▏</span></div>
             <div><span class="ok">✓ success</span></div>
             <div><span class="arrow">&gt;&gt;&gt;</span> <span class="cur"></span></div>
           </div>
@@ -1577,8 +1577,8 @@
         <div class="model"><div class="badge">Q</div><div class="info"><div class="name">qwen 3.5</div><div class="by">Alibaba · רב־לשוני</div></div></div>
         <div class="model"><div class="badge">M</div><div class="info"><div class="name">mistral-medium-3.5</div><div class="by">Mistral AI · צרפת</div></div></div>
         <div class="model"><div class="badge">D</div><div class="info"><div class="name">deepseek-v4-pro</div><div class="by">DeepSeek · reasoning</div></div></div>
-        <div class="model"><div class="badge">GL</div><div class="info"><div class="name">glm-5.1</div><div class="by">Zhipu AI · קוד פתוח</div></div></div>
-        <div class="model"><div class="badge">Gi</div><div class="info"><div class="name">gemini-3-flash-preview</div><div class="by">Google · ענן בלבד</div></div></div>
+        <div class="model"><div class="badge">GL</div><div class="info"><div class="name">glm-5.3</div><div class="by">Z.ai · ענן</div></div></div>
+        <div class="model"><div class="badge">O</div><div class="info"><div class="name">gpt-oss</div><div class="by">OpenAI · משקלים פתוחים</div></div></div>
       </div>
     </section>
 
@@ -1751,13 +1751,13 @@
     <!-- ─── 13 · QUICK START · 3 STEPS ─── -->
     <section class="slide" style="justify-content:center;">
       <h2 class="title">המודל הראשון — <em>בשלושה צעדים</em></h2>
-      <p class="lead" style="margin-top:20px;">שלוש פקודות בסיסיות לעבודה עם Ollama. העתק את הפקודה והדבק בטרמינל.</p>
+      <p class="lead" style="margin-top:20px;">שלוש פקודות בסיסיות לעבודה עם Ollama. נעתיק את הפקודה ונדביק בטרמינל.</p>
       <div class="steps-grid">
 
         <div class="step-block">
           <div class="step-num"><span class="badge">1</span><span class="lbl">step · pull</span></div>
           <h4>נוריד את המודל</h4>
-          <p>פעם אחת — Ollama מוריד את הקבצים מהקטלוג הרשמי. בערך 2GB ל־gemma4.</p>
+          <p>פעם אחת — Ollama מוריד את הקבצים מהקטלוג הרשמי. בערך 7GB ל־gemma4.</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
             <span class="cmd"><span class="kw">ollama</span> <span class="arg">pull gemma4</span></span>
@@ -1882,15 +1882,15 @@
             <line x1="12" y1="19" x2="20" y2="19"/>
           </svg>
           <h4>אותו ה־CLI</h4>
-          <p>אותן הפקודות שכבר הכרנו — רק עם תג <code style="font-family:var(--mono);background:var(--bg-2);padding:1px 6px;border-radius:3px;color:var(--coral);direction:ltr;display:inline-block;">:cloud</code> בסוף שם המודל.</p>
+          <p>אותן הפקודות שכבר הכרנו — רק עם תג ענן, לרוב <code style="font-family:var(--mono);background:var(--bg-2);padding:1px 6px;border-radius:3px;color:var(--coral);direction:ltr;display:inline-block;">:cloud</code> בסוף שם המודל.</p>
         </div>
         <div class="mini-card">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <circle cx="12" cy="12" r="10"/>
             <polyline points="12 6 12 12 16 14"/>
           </svg>
-          <h4>תוכנית עם מגבלות</h4>
-          <p>נרשמים בחינם ב־<strong>ollama.com</strong>. יש מגבלת שימוש לפי session ושבועית; ניתן לשדרג בתשלום.</p>
+          <h4>תשלום לפי שימוש</h4>
+          <p>נרשמים ב־<strong>ollama.com</strong>. בענן משלמים לפי tokens, או במנוי חודשי שכולל קרדיט שימוש. הרצה מקומית נשארת בלי הגבלה.</p>
         </div>
       </div>
     </section>
@@ -1904,7 +1904,7 @@
         <div class="step-block">
           <div class="step-num"><span class="badge">1</span><span class="lbl">step · signup</span></div>
           <h4>הרשמה ל־Ollama</h4>
-          <p>ניצור חשבון חינמי באתר. אחרי האימות נקבל גישה לתוכנית הבסיסית עם מכסת שימוש.</p>
+          <p>ניצור חשבון באתר. ההרשמה בלי דמי מנוי, והשימוש במודלי הענן מחויב לפי tokens.</p>
           <div class="step-code">
             <span class="prompt">→</span>
             <span class="cmd"><span class="arg">ollama.com/signup</span></span>
@@ -1928,9 +1928,9 @@
         </div>
 
         <div class="step-block">
-          <div class="step-num"><span class="badge">3</span><span class="lbl">step · pull + run</span></div>
-          <h4>נמשוך ונריץ</h4>
-          <p>גם למודל ענן צריך לעשות <strong>pull</strong> תחילה — זה רושם אותו ב־CLI. אחר כך מריצים עם תג <strong style="direction:ltr;display:inline-block;">:cloud</strong>.</p>
+          <div class="step-num"><span class="badge">3</span><span class="lbl">step · run</span></div>
+          <h4>נריץ מודל ענן</h4>
+          <p>מודל ענן לא יורד למחשב, אז מריצים אותו ישר עם תג <strong style="direction:ltr;display:inline-block;">:cloud</strong> — הוא רץ בשרתים של Ollama.</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
             <span class="cmd"><span class="kw">ollama</span> <span class="arg">run deepseek-v4-pro:cloud</span></span>
@@ -2094,6 +2094,7 @@
     nextBtn.disabled = current === total - 1;
     edgePrev.disabled = current === 0;
     edgeNext.disabled = current === total - 1;
+    try { history.replaceState(null, '', '#' + (current + 1)); } catch (e) {}
   }
 
   // Detect current slide via IntersectionObserver — works under RTL/LTR
@@ -2156,6 +2157,21 @@
   }
   window.addEventListener('resize', snapToCurrent);
   window.addEventListener('load', snapToCurrent);
+
+  // Deep link: #N opens slide N (on load and when the hash is edited)
+  function slideFromHash() {
+    const n = parseInt(location.hash.slice(1), 10);
+    return Number.isInteger(n) && n >= 1 && n <= total ? n - 1 : null;
+  }
+  const startIdx = slideFromHash();
+  if (startIdx !== null) {
+    current = startIdx;
+    slides[startIdx].scrollIntoView({ inline: 'start', behavior: 'instant' });
+  }
+  window.addEventListener('hashchange', () => {
+    const i = slideFromHash();
+    if (i !== null && i !== current) goTo(i);
+  });
 
   updateUI();
   // initial snap in case load already fired

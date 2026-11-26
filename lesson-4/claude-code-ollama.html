@@ -827,8 +827,8 @@
         <div class="model">
           <div class="badge">G</div>
           <div class="info">
-            <div class="name">glm-5.1</div>
-            <div class="by">Zhipu AI · 30B MoE · 19 GB</div>
+            <div class="name">qwen3.5:27b</div>
+            <div class="by">Alibaba · 27B · 17 GB</div>
             <span class="tag local">local · 32 GB RAM</span>
           </div>
         </div>
@@ -876,7 +876,7 @@
           <p>נוסיף <code style="font-family:var(--mono);color:var(--coral);font-size:13px;">--model</code> לבחירת מודל. Ollama יוריד את המודל אוטומטית אם הוא לא קיים.</p>
           <div class="step-code">
             <span class="prompt">&gt;_</span>
-            <span class="cmd"><span class="kw">ollama</span> <span class="arg">launch claude --model glm-5.1</span></span>
+            <span class="cmd"><span class="kw">ollama</span> <span class="arg">launch claude --model gpt-oss:20b</span></span>
             <button class="copy" aria-label="copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></button>
           </div>
         </div>
@@ -919,7 +919,7 @@
           <div class="term-bar"><i></i><i></i><i></i><div class="tt">* Claude Code · ~/project</div></div>
           <div class="term-body" style="font-size:12.5px;line-height:1.6;">
             <div style="border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;margin-bottom:10px;">
-              <div style="color:var(--coral);font-weight:700;">Claude Code v2.1.9</div>
+              <div style="color:var(--coral);font-weight:700;">Claude Code v2.1.318</div>
               <div class="dim">  qwen3.5 · via Ollama · ~/project</div>
             </div>
             <div class="dim">  Tips for getting started</div>
@@ -973,7 +973,7 @@
             <div class="desc">הפעלה עם מודל ברירת מחדל</div>
           </div>
           <div class="cli-row">
-            <div class="cmd"><span class="a">ollama</span> launch claude --model <span class="b">glm-5.1</span></div>
+            <div class="cmd"><span class="a">ollama</span> launch claude --model <span class="b">gpt-oss:20b</span></div>
             <div class="desc">בחירת מודל ספציפי</div>
           </div>
           <div class="cli-row">
@@ -981,7 +981,7 @@
             <div class="desc">מצב ענן (דרוש חשבון)</div>
           </div>
           <div class="cli-row">
-            <div class="cmd"><span class="a">ollama</span> login</div>
+            <div class="cmd"><span class="a">ollama</span> signin</div>
             <div class="desc">התחברות לחשבון Ollama</div>
           </div>
         </div>
@@ -1065,6 +1065,7 @@
     nextBtn.disabled = current === total - 1;
     edgePrev.disabled = current === 0;
     edgeNext.disabled = current === total - 1;
+    try { history.replaceState(null, '', '#' + (current + 1)); } catch (e) {}
   }
 
   const obs = new IntersectionObserver((entries) => {
@@ -1116,6 +1117,21 @@
   }
   window.addEventListener('resize', snapToCurrent);
   window.addEventListener('load', snapToCurrent);
+
+  // Deep link: #N opens slide N (on load and when the hash is edited)
+  function slideFromHash() {
+    const n = parseInt(location.hash.slice(1), 10);
+    return Number.isInteger(n) && n >= 1 && n <= total ? n - 1 : null;
+  }
+  const startIdx = slideFromHash();
+  if (startIdx !== null) {
+    current = startIdx;
+    slides[startIdx].scrollIntoView({ inline: 'start', behavior: 'instant' });
+  }
+  window.addEventListener('hashchange', () => {
+    const i = slideFromHash();
+    if (i !== null && i !== current) goTo(i);
+  });
 
   updateUI();
   requestAnimationFrame(snapToCurrent);
